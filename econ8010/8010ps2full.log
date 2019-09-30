@@ -1,0 +1,130 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.10)  30 SEP 2019 14:05
+entering extended mode
+**./8010ps2full.tex
+(8010ps2full.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
+
+("C:\Users\Ian Davis\AppData\Local\Programs\MiKTeX 2.9_redo\tex/latex\base\arti
+cle.cls"
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+
+("C:\Users\Ian Davis\AppData\Local\Programs\MiKTeX 2.9_redo\tex/latex\base\size
+11.clo"
+File: size11.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (8010ps2full.aux)
+\openout1 = `8010ps2full.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 9.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 9.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--40
+
+ []
+
+[1
+
+{C:/Users/Ian Davis/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+[2] (8010ps2full.aux) ) 
+Here is how much of TeX's memory you used:
+ 226 strings out of 493305
+ 2802 string characters out of 3128060
+ 58825 words of memory out of 3000000
+ 3854 multiletter control sequences out of 15000+200000
+ 7033 words of font info for 25 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 21i,4n,19p,530b,107s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_re
+do/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ian Davis/AppData/Local/
+Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ia
+n Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX
+ 2.9_redo/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Ian Davis/AppData/L
+ocal/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
+rs/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts
+/cm/cmti10.pfb>
+Output written on 8010ps2full.pdf (2 pages, 86439 bytes).
+PDF statistics:
+ 37 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
