@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\begin{flushleft}
+Ian Davis\\
+Economics 8010\\
+Fall 2019\\
+\bigskip
+\textbf{2-Good Cobb-Douglass Nash-Bargaining Example}\\
+\end{flushleft}
+Consider an endowment economy with two people, Ann and Bob. Let Ann's preferences be represented by the function $U_A = X_A^\alpha Y_A^\beta$, while Bob's are represented by the function $U_B = X_B^\gamma Y_A^\mu$. At the initial endowment, Ann has all the X ($X_T = X_A + X_B$) and Bob has all the Y ($Y_T = Y_A + Y_B$). What is the allocation of X and Y under the Nash bargaining solution if $0 < \alpha + \beta < 1$ and $0 < \gamma + \mu < 1$?\\
+\bigskip
+Define initial utilitiy for indvidual $k \equiv \underline{U}_k$\\
+Hence,\\
+\bigskip
+$\underline{U}_A = X_T^\alpha (0)^\beta = 0$\\
+$\underline{U}_B = (0)^\gamma Y_T^mu = 0$\\
+\bigskip 
+and we have that no agreement between Ann and Bob will yield utility of zero for both individuals.\\
+\bigskip
+Now, we define Ann's share of X and Y as\\
+\bigskip
+$X_A = X_T\theta_x$\\
+$Y_A = Y_T\theta_y$\\
+\bigskip
+which also yields\\
+\bigskip
+$X_B = X_T(1-\theta_x)$\\
+$Y_B = Y_T(1-\theta_y)$\\
+\bigskip
+We know the solution to the Nash-Bargaining problem can be found via\\
+\bigskip
+$Max_{\theta_x,\theta_y}: [U_A(X_T\theta_x,Y_T\theta_y)][U_B(X_T(1-\theta_x),Y_T(1-\theta_y))]$ \\
+\bigskip
+which differs from what is in the class notes due to the initial utilities begin equal to zero.\\
+\bigskip
+Now, to solve, we simply find the values of $\theta_1$ and $\theta_2$ that satisfy the following first order conditions\\
+\begin{enumerate}
+  \item $\frac{\delta NP}{\delta \theta_1} = 0$
+  \item $\frac{\delta NP}{\delta \theta_2} = 0$
+\end{enumerate}
+Considering first $\frac{\delta NP}{\delta \theta_1} = 0$, we get\\
+\bigskip
+$NP = ((X_T\theta_1)^\alpha (Y_T\theta_2)^\beta)((X_T(1-\theta_x))^\gamma (Y_T(1-\theta_y))^\mu)$\\
+\bigskip
+$\implies \frac{\delta NP}{\delta \theta_1} = [(Y_T\theta_2)^\beta (Y_T(1-\theta_y))^\mu]\alpha (X_T\theta_1)^{\alpha-1}(X_T(1-\theta_x))^\gamma X_T + \gamma (X_T\theta_1)^\alpha (X_T(1-\theta_x))^{\gamma -1}(-X_T) = 0$\\
+\bigskip
+And because the bracketed term out front is a constant, it can be divided out and we are left with\\
+\bigskip
+$\alpha (X_T\theta_1)^{\alpha-1}(X_T(1-\theta_x))^\gamma X_T + \gamma (X_T\theta_1)^\alpha (X_T(1-\theta_x))^{\gamma -1}(-X_T) = 0$\\
+\bigskip
+$\implies \alpha (X_T\theta_1)^{\alpha-1}(X_T(1-\theta_x))^\gamma X_T = \gamma (X_T\theta_1)^\alpha (X_T(1-\theta_x))^{\gamma -1}(X_T)$\\
+\bigskip Dividing out $X_T$ and then rearranging gives us\\
+\bigskip
+$\alpha (X_T\theta_1)^{\alpha-1}(X_T(1-\theta_x))^\gamma = \gamma (X_T\theta_1)^\alpha (X_T(1-\theta_x))^{\gamma -1}$\\
+\bigskip
+$\implies \frac{\alpha (X_T\theta_1)^{\alpha-1}(X_T(1-\theta_x))^\gamma}{\gamma (X_T\theta_1)^\alpha (X_T(1-\theta_x))^{\gamma -1}}$
+\bigskip
+$\implies \frac{\alpha (X_T(1-\theta_1)}{\gamma (X_T\theta_1)} = 1$\\
+\bigskip
+$\implies \alpha X_T - \alpha X_T\theta_1 = \gamma X_T\theta_1$\\
+\bigskip
+$\implies \alpha X_T = X_T\theta_1(\gamma - \alpha)$\\
+\bigskip
+$\implies \frac{\alpha}{\gamma - \alpha} = \theta_1$\\
+\bigskip
+Finally, because the FOC to find $\theta_2$ is of the same form, we can replace the relevant values and get\\
+\bigskip
+$\frac{\beta}{\mu - \beta} = \theta_2$
+\end{document}

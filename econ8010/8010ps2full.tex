@@ -1,16 +1,39 @@
 \documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{centernot}
 \begin{document}
 
 \begin{flushleft}
 Ian Davis\\
 Economics 8010\\
-Problem Set 2 Rewrite\\
+Fall 2019\\
+\bigskip
+\textbf{Problem Set 2 Rewrite}\\
 \end{flushleft}
 \textbf{A.} A function $f(x,y)$ is homogeneous (of degree $\rho$) if, for some constants $k$ and $\rho$, $f(kx,ky) = k^\rho f(x,y)$. A function $f(x,y)$ is \textit{homothetic} if the slopes of the level-set boundaries it generates depend only on the ratio $y/x$ (i.e. they have slopes that are the same along any ray through the origin). Which of these functions, if any, are homogeneous? Which, if any, are homoethetic? (In each of these function, all terms except X and Y are constants.)\\
 \\
 $1. f(X,Y) = AX^\alpha Y^\beta\\
+\\
+\textbf{Answer: } f(tx,ty) = A(tX)^\alpha (tY)^\beta\\
+= At^\alpha X^\alpha t^\beta Y^\beta\\
+= t^{\alpha + \beta}X^\alpha Y^\beta = t^{\alpha + \beta}f(x,y) \implies homogenous\\
+\&\\
+f_X = \alpha AX^{\alpha - 1}y^\beta\\
+f_Y = \beta AX^\alpha y^{\beta -1}\\
+-\frac{f_x}{f_y} = -\frac{\alpha}{\beta}\frac{Y}{X} \implies homothetic\\
+\\
 2. f(X,Y) = A + BX^\alpha Y^\beta \\
+\\
+\textbf{Answer: } f(tx,ty) = A + B(tX)^\alpha (tY)^\beta\\
+= A + t^{\alpha + \beta}BX^\alpha Y^\beta \centernot\implies homogenous\\
+\&\\
+f_X = \alpha BX^{\alpha -1}Y^\beta\\
+f_Y = \beta BX^\alpha Y^{\beta -1}\\
+-\frac{f_X}{f_Y} = -\frac{\alpha}{\beta}\frac{Y}{X} \implies homothetic\\
+\\
 3. f(X,Y) = A[\alpha X^\beta + (1-\alpha )Y^\beta ]^{\gamma /\beta}\\
+\\
 4. f(X,Y) = A(X-B)^\alpha (Y-C)^\beta\\
 5. f(X,Y) = \alpha Y + \beta X - (\gamma /2)X^2\\\
 $\\
@@ -30,11 +53,10 @@ $\\
 \\
 3. The invention of a drug that will make it easier to quit smoking would increase smoking rates.\\
 \\
-\textbf{D.} Consider an endowment economy with two people, Ann and Bob. Let Ann's preferences be represented by the function $U_A = X_A^\alpha Y_A^\beta$, while Bob's are represented by the function $U_B = X_B^\gamma Y_A^\mu$.\\
+\textbf{D.} Consider an endowment economy with two people, Ann and Bob. Let Ann's preferences be represented by the function $U_A = X_A^\alpha Y_A^\beta$, while Bob's are represented by the function $U_B = X_B^\gamma Y_A^\mu$. At the initial endowment, Ann has all the X and Bob has all the Y.\\
 \\
 1. Show that the contract curve is linear if $(\alpha /\beta) = (\gamma /\mu)$\\
 \\
 2. How will the shape of the contract curve differ from a straight line if $(\alpha /\beta) > (\gamma /\mu)$? (That is, if Ann likes X relatively more than Bob does.)\\
 \\
-3. What is the allocation of X and Y under the Nash bargaining solution if $0 < \alpha + \beta < 1$ and $0 < \gamma + \mu < 1$?
 \end{document}
