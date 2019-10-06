@@ -11,33 +11,67 @@ Fall 2019\\
 \bigskip
 \textbf{Problem Set 4 Rewrite}\\
 \end{flushleft}
+\textbf{Note: }I was feeling pretty lazy. Algebra will be added in at some point. Probably.\\
 \textbf{A. } For the utility function $U = (X_1 - a)^\alpha (X_2 - b)^\beta$,\\
 \\
 1. Find the income elasticities of demand for goods 1 and 2.\\
+\textbf{Answer: } Let\\
+$\hat{x_1} = (x_1-a)\\
+\hat{x_1} = (x_2-b)\\
+\&\\
+\hat{U} = \hat{x_1}^\alpha \hat{x_2}^\beta$
+Because this is in Cobb-Douglass form, we get\\
+$\hat{x_1}^* = \frac({\alpha}{\alpha + \beta})(\frac{M}{P_1})\\
+\implies X_1^* = \frac{M - bP_2 + aP_1\frac{\beta}{\alpha}}{(1 + \frac{\beta}{\alpha}P_1})$\\
+\&\\
+$\hat{x_2}^* = \frac({\beta}{\beta + \alpha})(\frac{M}{P_2})\\
+\implies X_2^* =  \frac{M - aP_1 + bP_2\frac{\alpha}{\beta}}{(1 + \frac{\alpha}{\beta}P_2})$\\
+\\
+Now for the elasticies of demand,\\
+$\frac{\delta x_1}{\delta M} * \frac{M}{x_1} = \frac{M}{M - bP_2 + aP_1\frac{\beta}{\alpha}}$\\
+$\frac{\delta x_2}{\delta M} * \frac{M}{x_2} = \frac{M}{M - aP_1 + bP_2\frac{\alpha}{\beta}}$\\
 \\
 2. Find the own- price elasticity of demand for good 1.\\
+$\frac{\delta x_1}{\delta P_1} * \frac{P_1}{x_1} = \frac{bP_2 - M}{M - bP_2 + aP_1\frac{\beta}{\alpha}}$\\
 \\
-3. Find the cross-elasticitity of demand for good 1 with respect to the price of good 2. 
+3. Find the cross-elasticity of demand for good 1 with respect to the price of good 2.\\
+$\frac{\delta x_1}{\delta P_2} * \frac{P_2}{x_1} = \frac{- bP_2}{M - bP_2 + aP_1\frac{\beta}{\alpha}}$\\
 \\
-4. Verify the relevant adding up coniditions.\\
+4. Verify the relevant adding up conditions.\\
+a. $\theta_1\frac{\delta x_1}{\delta M} + \theta_2\frac{\delta x_2}{\delta M} = 1\\
+\implies \theta_1\frac{M}{M - bP_2 + aP_1\frac{\beta}{\alpha}} + \theta_2\frac{M}{M - aP_1 + bP_2\frac{\alpha}{\beta}} = 1$\\
+\\
+b. $\varepsilon_11 + \varepsilon_12 + \eta_1 = 0$\\
+\\
+c. $\frac{\theta_1}{\theta_1}\varepsilon_11 + \frac{\theta_2}{\theta_1}\varepsilon_12$ = 1\\
 \\
 5. Explain how it models "needs".\\
+The utility function models needs in the sense that any bundle where $(x_1 > a, x_2 > b)$ is preferred to any bundle where only one good is greater than its minumum needed value.\\
 \\
+\textbf{B. }For the utility function $U = \alpha Y + \beta X - (\gamma /2)X^2$, derive the demand function for X.\\
 \\
-\\
-\textbf{B. }For the utilityfunction $U = \alpha Y + \beta X - (\gamma /2)X^2$, derive the demand function for X.\\
-\\
-1. What is the general shape of this demand funciton?\\
+1. What is the general shape of this demand function?\\
+\textbf{Answer: } $x^* = \frac{\beta}{\gamma} - \frac{\alpha P_x}{\gamma P_2}$\\
+$x^*$ starts at the quantity $\frac{\beta}{\gamma}$ and slopes downward at a rate of $\frac{\alpha}{\gamma P_y}$ until $P_x = \frac{\gamma P_y}{\alpha}$ which is the point where no untis of $x$ will be demanded. Additionally, a change in the level of income does not affect the demand curve.\\
 \\
 2. What is the income elasticity of demand for X?\\
+\textbf{Answer: }$\frac{\delta x}{\delta M}*\frac{I}{x} = 0$\\
 \\
 3. What is the implied income elasticity of demand for Y?\\
-\\
-\\
+\textbf{Answer: }$\frac{\delta x}{\delta M}*\frac{I}{x} = 0\\
+\implies \theta_y\frac{dY}{dI}\frac{I}{Y} = 1\\
+\implies \frac{dY}{dI}\frac{I}{Y} = \frac{1}{\theta_y} = \frac{I}{p_yY}$\\
+which is the reciprocal of the fraction of income spent on good Y.\\
 \\
 \textbf{C: }For the utility function $U = \gamma (\alpha X^\rho + \beta Y^\rho )^{\mu / \rho }$, find the elasticity of substitution between X and Y.\\
+\textbf{Answer: }$\frac{U_X}{U_Y} = \frac{\alpha X^{\rho - 1}}{\beta Y^{\rho - 1}}\\
+d\ln\frac{Y}{X} = d\ln(Y) - d\ln(X) = \frac{1}{Y}dY - \frac{1}{X}dX\\
+d\ln\frac{U_X}{U_Y} = d\ln\frac{\alpha X^{\rho - 1}}{\beta Y^{\rho - 1}}\\
+= d\ln(\alpha) + (\rho - 1)\ln(X) - d\ln(\beta) - (\rho - 1)\ln(Y)\\
+= 0 + (\rho - 1)\frac{1}{X}dX - 0 - (\rho - 1)\frac{1}{Y}dY\\
+\implies \frac{d\ln\frac{Y}{X}}{d\ln\frac{U_X}{U_Y}} = \frac{(-1)}{\rho - 1}\\
+= \frac{1}{1 - \rho}$\\
 \\
-\\
-\\
-\textbf{B: }If we find that an individual's 1990 consumption bundle cost \$20,000 in 1990 and \$30,000 in 2000 and this same person's 2000 consumption bundle cost \$45,000 in 2000 and \$20,000 in 1990, we can reject the hypothesis that this individual has stable, homothetic preferences. 
+\textbf{D: }If we find that an individual's 1990 consumption bundle cost \$20,000 in 1990 and \$30,000 in 2000 and this same person's 2000 consumption bundle cost \$45,000 in 2000 and \$20,000 in 1990, we can reject the hypothesis that this individual has stable, homothetic preferences.\\
+\textbf{Answer: } Because a shift in relative prices can explain completely the behavior described above, we fail to reject the hypothesis that this individual has stable, homothetic preferences
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.10)  4 OCT 2019 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.10)  5 OCT 2019 14:03
 entering extended mode
 **./8010ps2full.tex
 (8010ps2full.tex
@@ -131,92 +131,130 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--62
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--118
 
  []
 
 [1
 
 {C:/Users/Ian Davis/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[2] (8010ps2full.aux) ) 
+[2] [3] [4] [5] (8010ps2full.aux) ) 
 Here is how much of TeX's memory you used:
  1138 strings out of 493305
  13849 string characters out of 3128060
- 72666 words of memory out of 3000000
+ 88666 words of memory out of 3000000
  4724 multiletter control sequences out of 15000+200000
  9563 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,8n,26p,583b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_re
-do/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ian Davis/AppData/Local/
-Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ia
+ 27i,8n,26p,783b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Ian Davis/AppData/Local/Programs/M
+iKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ian Davis/Ap
+pData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/a
+msfonts/cm/cmmi6.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Ian Davis/AppData/Local/Pro
+grams/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Ian Da
+vis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmr6.
+pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_r
+edo/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ian Davis/AppData/Local
+/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Ia
 n Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX
- 2.9_redo/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Ian Davis/AppData/
-Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
-s/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/
-type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Ian Davis/AppData/Local/Programs/M
-iKTeX 2.9_redo/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on 8010ps2full.pdf (2 pages, 109391 bytes).
+msy8.pfb><C:/Users/Ian Davis/AppData/Local/Programs/MiKTeX 2.9_redo/fonts/type1
+/public/amsfonts/cm/cmti10.pfb>
+Output written on 8010ps2full.pdf (5 pages, 138520 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
+ 62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

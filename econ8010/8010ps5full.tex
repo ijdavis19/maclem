@@ -14,18 +14,80 @@ Fall 2019\\
 \textbf{A. } For a consumer with the utility function $U(X_1,X_2,X_3) = X_1^\alpha ,X_2^\beta , X_3^\gamma$\\
 \\
 1. Derive the compensated demand functions for $X_1$, $X_2$, and $X_3$, and verify that they satify the relevant adding-up and symmetry properties.\\
+\textbf{Answer: } Assume $\alpha + \beta + \gamma = 1$ (we can do this because it would be a monotonic transformation)\\
+\\standard Cobb-Douglas operations give us\\
+$X_1^* = \alpha\frac{M}{P_1}\\
+X_2^* = \beta\frac{M}{P_2}\\
+X_3^* = \gamma\frac{M}{P_3}$\\
+so\\
+$V = (\alpha\frac{M}{P_1})^\alpha (\beta\frac{M}{P_2})^\beta (\gamma\frac{M}{P_3})^\gamma\\
+= M(\frac{\alpha}{P_1})^\alpha (\frac{\beta}{P_2})^\beta (\frac{\gamma}{P_3})^\gamma\\
+\implies E = V(\frac{\alpha}{P_1})^\alpha (\frac{\beta}{P_2})^\beta (\frac{\gamma}{P_3})^\gamma$\\
+Now, we take partial derivates to find the compensated demand functions\\
+$X_1^C = \frac{\delta E}{\delta X_1} = \frac{V}{\alpha^\alpha \beta^\beta \gamma^\gamma}\alpha P_1^{\alpha -1}P_2^\beta P_3^\gamma\\
+X_2^C = \frac{\delta E}{\delta X_1} = \frac{V}{\alpha^\alpha \beta^\beta \gamma^\gamma}\beta P_1^\alpha P_2^{\beta -1}P_3^\gamma\\
+X_3^C = \frac{\delta E}{\delta X_1} = \frac{V}{\alpha^\alpha \beta^\beta \gamma^\gamma}\gamma P_1^\alpha P_2^\beta P_3^{\gamma-1}$\\
+Prove: $\varepsilon_11 + \varepsilon_12 + \varepsilon_13 = 0\\
+\ln(X_1^C) = \ln(A) \ln(\alpha) (\alpha - 1_)\ln(P_1) \beta\ln(P_2) \gamma\ln(P_3)\\
+\varepsilon_11 = \frac{\delta\ln X_1^C}{\delta\ln P_1} = \alpha - 1\\
+\varepsilon_12 = \beta\\
+\varepsilon_13 = \gamma\\
+\alpha - 1 + \beta + \gamma = 1 - 1 = 0$\\
+analysis will be the same for the other 2 goods\\
+Prove: $\theta_1\varepsilon_12 = \theta_2\varepsilon_21\\
+\theta_1\varepsilon_12 = \theta_2\varepsilon_21 \implies \alpha \beta = \beta \alpha$\\
 \\
 2. Derive algebraic expressions for both the compensating variation and equivalent variation measures of the net welfare effect of a 10\% fall in the price of $X_1$ coupled with a 20\% rise in the price of $X_2$ and a 15\% fall in the price of $X_3$.\\
-\\
+$\%\Delta P_1 = -10\% \implies .9P_1$\\
+$\%\Delta P_2 = 20\% \implies 1.2P_2$\\
+$\%\Delta P_3 = -15\% \implies .85P_3$\\
+Also recall that $CV = E(V^0,P^0) - E(V^0,P_1) \& EV =E(V^1,P^0) - E(V^1,P_1)$\\
+CV:\\
+$E(V^0,P^0) = M\\
+E(V^0,P^1) = \frac{V^0}{\alpha^\alpha \beta^\beta \gamma^\gamma}(.9P_1)^\alpha(1.2P_2)^\beta(.85P_3)^\gamma\\
+= \frac{(\alpha\frac{M}{P_1})^\alpha (\beta\frac{M}{P_2})^\beta (\gamma\frac{M}{P_3})^\gamma}{\alpha^\alpha \beta^\beta \gamma^\gamma}(.9P_1)^\alpha(1.2P_2)^\beta(.85P_3)^\gamma\\
+= M(.9)^\alpha(1.2)^\beta(.85)^\gamma\\
+CV = M - M(.9)^\alpha(1.2)^\beta(.85)^\gamma\\
+= M(1 - (.9)^\alpha(1.2)^\beta(.85)^\gamma)$\\
+EV:\\
+$E(V^1,P^1) = M\\
+E(V^1,P^1) = \frac{V^1}{\alpha^\alpha \beta^\beta \gamma^\gamma}(P_1){0\alpha}(P_2){0\beta}(P_3)^{0\gamma}\\
+= \frac{V^1}{\alpha^\alpha \beta^\beta \gamma^\gamma}\frac{(P_1){1\alpha}(P_2){1\beta}(P_3)^{1\gamma}}{(.9)(1.2)(.85)}\\
+= \frac{M}{(.9)(1.2)(.85)}\\
+EV = M - \frac{V^1}{\alpha^\alpha \beta^\beta \gamma^\gamma}\frac{(P_1){1\alpha}(P_2){1\beta}(P_3)^{1\gamma}}{(.9)(1.2)(.85)}\\
+= M(1 - \frac{1}{(.9)(1.2)(.85)}$\\
+ \\
 3. Calculate the values of the Laspeyres and Paashe price indices representing the change in the cost of living for the price changes in part 2 above.\\
-\\
-\\
+Laspeyres:\\
+$L_p = \frac{P_1^1X_1^0 + P_2^1X_2^0 + P_3^1X_3^0}{P_0^1X_1^0 + P_2^0X_2^0 + P_3^0X_3^0}\\
+= \frac{.9P_1\alpha\frac{I}{P_1} + 1.2P_2\beta\frac{I}{P_2} + .85P_3\gamma\frac{I}{P_3}}{P_1\alpha\frac{I}{P_1} + P_2\beta\frac{I}{P_2} + P_3\gamma\frac{I}{P_3}}\\
+=  \frac{.9\alpha I + 1.2\beta I + .85\gamma I}{\alpha I + \beta I + \gamma I}\\
+= .9\alpha + 1.2\beta + .85\gamma$\\
+Paashe:\\
+$P_p = \frac{P_1^1X_1^1 + P_2^1X_2^1 + P_3^1X_3^1}{P_0^1X_1^1 + P_2^0X_2^1 + P_3^0X_3^1}\\
+= \frac{.9P_1\alpha\frac{I}{.9P_1} + 1.2P_2\beta\frac{I}{1.2P_2} + .85P_3\gamma\frac{I}{.85P_3}}{P_1\alpha\frac{I}{.9P_1} + P_2\beta\frac{I}{1.2P_2} + P_3\gamma\frac{I}{.85P_3}}\\
+= \frac{1}{\frac{\alpha}{.9} + \frac{\beta}{1.2} + \frac{\gamma}{.85}}$\\
 \\
 \textbf{B. }Jane is a customer of Getflix, which offers movies on demand via streaming video. Under her current contract, each movie she watches costs her \$5. Getflix has recently introduced the option of an alternative contract, which offers the opportunity to view up to 20 movies per month for a monthly fee of \$75 with no per-movie charge.\\
 \\
-Jane's utility function is $U = X^.1Y^.9$, where $X$ represents movies watched per month and Y represents a bundle of all the other goods that she consumes. the untis of the items in the bundle "all other goods" are defined in such a way to make the price of one unit of this bundle equal to \$10. Jane's current monthly expenditures are \$500.\\
+Jane's utility function is $U = X^{.1}Y^{.9}$, where $X$ represents movies watched per month and Y represents a bundle of all the other goods that she consumes. the untis of the items in the bundle "all other goods" are defined in such a way to make the price of one unit of this bundle equal to \$10. Jane's current monthly expenditures are \$500.\\
 \\
 1. Will Jane switch to the new contract? Explain.\\
-\\
+$U = X^{.1}Y^{.9}\\
+P_X^0 = \$5.00\\
+P_Y^0 = \$10.00\\
+X_0 = .1(\frac{500}{5}) = .1(100) = 10\\
+Y_0 = .9(\frac{500}{10}) = .9(50) = 45$\\
+so $U_0 = (10^{.1})(45^{.9}) = 38.72$\\
+switching $X$ to 20 and its total cost to \$75.00, we get\\
+$Y = \frac{(500-75)}{10} = 42.5\\
+\implies U_1 = (20^{.1})(42.5^{.9}) = 39.41$\\
+and because $U_1 > U_0$, Jane will switch
 2. What is the dollar value of the gain or loss to Jane from switching to the new contract as measured by both the compensating surplus and the equivalent surplus?\\
+CS:\\
+For the compensated surplus, we want to hold $X$ at its new quantity, and consider its corresponding quantity of $Y$, and the $Y$ that would return Jane to her original utility. We then find the monetary value of the difference in the diffferences between the original $Y$ and the two new quantities of $Y$.\\
+\textbf{work still needed}\\
+\\
+ES:\\
+For the equivalent surplus, we want to hold $X$ to its original quantity, and consider its corresponding quantity of $Y$, and the $Y$ that would give Jane the new utiltiy. We then take the differences between these $Y$s and the $Y$ corresponding to what would be the new bundle.
 \end{document}
