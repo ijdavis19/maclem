@@ -1,0 +1,33 @@
+******************************************************
+ ****** README - Byker: US Paid Parental Leave ******
+******************************************************
+
+* do file: Byker_Paid_Leave.do
+
+* data set: SIPP_Paid_Leave.dta
+
+
+* Variables in SIPP_Paid_Leave.dta
+
+  obs:       103,624                          
+ vars:            14                          11 Jan 2016 
+ size:     3,937,712                          
+---------------------------------------------------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+---------------------------------------------------------------------------------------------------------------------------
+ssuid           str12   %12s                  SU: Sample Unit Identifier
+spanel          int     %10.0g     spanel     SU: Sample Code - Indicates Panel Year
+swave           byte    %8.0g                 SU: Wave of data collection
+srefmon         byte    %22.0g     srefmon    SU: Reference month of this record
+rhcalmn         byte    %9.0g      rhcalmn    SU: Calendar month for this reference month.
+rhcalyr         int     %8.0g                 SU: Calendar year for this reference month
+tfipsst         byte    %14.0g     tfipsst    HH: FIPS State Code
+epppnum         int     %10.0g                PE: Person number
+esex            byte    %8.0g      esex       PE: Sex of this person
+wpfinwgt        double  %10.0g                WW: Person weight
+tage            byte    %25.0g     tage       PE: Age as of last birthday
+eeducate        byte    %33.0g     eeducate   ED: Highest Degree received or grade completed
+rmesr           byte    %33.0g     rmesr      LF: Employment status recode for month
+birth_month     float   %tm                   CR: Date (month and year) of birth of child
+---------------------------------------------------------------------------------------------------------------------------
