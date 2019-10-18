@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+
+\noindent \textbf{Economics 8010}\\
+\noindent \textbf{Fall 2019}\\
+\noindent \textbf{Midterm Exam}\\
+\\
+This exam contains 75 possible points, or a point per minute of exam time. Answer each question as clearly, but briefly as you can. The point value of each question is shown in brackets.\\ 
+\\
+Write your answers on only one side of each page, and number each page in the upper right-hand corner. You may answer the questions in any order you prefer, but you should assemble them in the order in which they are asked to be done.\\
+\\
+Label any diagrams clearly. Please highlight any algebraic answers by drawing a box around them.\\
+\\
+Good luck!\\
+\\
+\\
+A. Determine whether each of the following statements is \textbf{true, false} or \textbf{uncertain}, and justify your answer. Your score will depend entirely upon your justification.\\
+\\
+\\
+1. If an "addictive" good is one for which the marginal rate of substitution between it and all other goods is increasing in its rate of consumption, then the quantity, of that good consumed will be invariant to its price. [6]\\
+\textbf{Answer: False}\\
+The increasing marginal rate of substitution will trivialize regular prices but quantity consumed will still have an upper bound of $\frac{M}{p_1}$ where $P_1$ is the price of the addictive good \& $M$ is money incoe. Hence, a change in price will still affect the quantity of the good consumed even if the utility optimizing bundle is a corner solution.\\
+\\
+2. An increase in the present value of lifetime income caused by a fall in real interest rates will increase current consumption. [7]\\
+\textbf{Answer: Uncertain}\\
+Recall $C_1 + \frac{C_2}{1+r} = I_1 + \frac{I_2}{1+r}$\\
+Whether or not consumption will increase will depend on if an individual is a net borrower or saver.\\
+\\
+\\
+B. Demand\\
+\\
+1. For a household with per-period utility function $U = X^\alpha Y^\beta$ and numeraire income M each period, derive each of the following for good (be sure to show your derivation):\\
+\\
+a. the ordinary (or Marshallian) demand function [4]\\
+$max U = X^\alpha Y^\beta$ such that $P_xX + P_yY = M\\
+L = X^\alpha Y^\beta + \lambda[M-P_xX - P_yY]$\\
+FOCs\\
+$\alpha X^{\alpha - 1}Y^\beta - \lambda P_x = 0\\
+\alpha X^\alpha Y^{\beta - 1} - \lambda P_y = 0\\
+\implies \frac{\alpha}{\beta}\frac{Y}{X} = \frac{P_x}{P_y}\\
+\implies \frac{xP_x}{P_y}\frac{\alpha}{\beta} = Y$\\
+Plugging into the budget constraint we get\\
+$M = P_xX + P_y(\frac{xP_x}{P_y}\frac{\alpha}{\beta})\\
+\implies P_xX(1+\frac{\beta}{\alpha}) = M\\
+\implies X = \frac{M}{1+\frac{\beta}{\alpha}P_x}\\
+\&\\
+Y = \frac{M}{1+\frac{\alpha}{\beta}P_y}$\\
+\\
+b. the consumer cost (or expenditure) function [5]\\
+$V = (\frac{M}{1+\frac{\beta}{\alpha}P_x})^\alpha(\frac{M}{1+\frac{\alpha}{\beta}P_y})^\beta\\
+= \frac{\alpha^\alpha \beta^\beta}{(\alpha + \beta)^{\alpha + \beta}}P_x^{-\alpha}P_y^{-\beta}M^{\alpha + \beta}\\
+\implies M = E = (\frac{V(\alpha + \beta)^{\alpha + \beta}P_x^{\alpha}P_y^{\beta}}{\alpha^\alpha \beta^\beta})^{\frac{1}{\alpha + \beta}}$\\
+\\
+c. the utility-constant (or compensated, or Hicksian) demand function [3]\\
+$X^H = \frac{\delta E}{\delta P_x}\\
+=\frac{\alpha}{\alpha + \beta}(\frac{V(\alpha + \beta)^{\alpha + \beta}P_x^{\alpha}P_y^{\beta}}{\alpha^\alpha \beta^\beta})^{\frac{1}{\alpha + \beta}})P_x^{\frac{-\beta}{\alpha + \beta}}$\\
+\\
+d. the ordinary own-price, cross-price, and income elasticities of demand [2 each]\\
+$\varepsilon_{xx}^M = (\frac{\delta X^M}{\delta P_x})(\frac{P_x}{X^M})\\
+= (\frac{-\alpha}{\alpha + \beta})(\frac{M}{P_x^2})(\frac{P_x}{\frac{\alpha}{\alpha + \beta}\frac{M}{P_x}})\\
+= 1\\
+\\
+\varepsilon_{xy} = (\frac{\delta X^M}{\delta P_y})(\frac{P_y}{X^M})\\
+= 0\\
+\\
+\eta_{x} = (\frac{\delta X^M}{\delta M})(\frac{M}{X^M})\\
+= \frac{1}{(1 + \frac{\beta}{\alpha})P_x}\frac{M}{\frac{M}{(1 + \frac{\beta}{\alpha})P_x}} = 1$\\
+\\
+e. the compensated own-price and cross-price elasticities of demand [3 each]\\
+$\varepsilon_{xy}^c = \varepsilon_{xy}^M + \frac{\beta}{\alpha + \beta}\eta_x = \frac{\beta}{\alpha + \beta}$\\
+$\varepsilon_{xx}^c = \varepsilon_{xx}^M + \eta_x\\
+= -1 + \frac{\alpha}{\alpha + \beta} = \frac{-\beta}{\alpha + \beta}$\\
+\\
+f. the elasticity of substitution between X and Y [4]\\
+$MU_X = \frac{\delta U}{\delta X} = \alpha X^{\alpha - 1}Y^\beta$\\
+$MU_Y = \frac{\delta U}{\delta Y} = \beta X^\alpha Y^{\beta - 1}$\\
+$\implies \frac{MU_X}{MU_Y} = \frac{\alpha Y}{\beta X}$\\
+$\implies ln(\frac{MU_X}{MU_Y}) = ln(\frac{\alpha}{\beta}) + ln(\frac{Y}{X})$\\
+$\implies ln(\frac{Y}{X}) = ln(\frac{MU_X}{MU_Y}) - ln(\frac{\alpha}{\beta})$\\
+\\
+g. a general expression for expected lifetime utility as a function of income, if income in each period is a random variable with a constant mean and variance, with no correlation between the disturbance terms in any two periods [4]\\
+$U = \frac{\alpha^\alpha \beta^\beta}{(\alpha + \beta)^{\alpha + \beta}}P_x^{-\alpha}P_y^{-\beta}M^{\alpha + \beta}\\
+\implies EU = E[\frac{\alpha^\alpha \beta^\beta}{(\alpha + \beta)^{\alpha + \beta}}P_x^{-\alpha}P_y^{-\beta}M^{\alpha + \beta}]$\\
+\\
+and if we let the constant in front of $M$ be $A$, we get\\
+$EU = E(AM^{\alpha + \beta}) = AE(M^{\alpha + \beta})$\\
+\\
+Taking the present value then gives us\\
+$\frac{AE(M^{\alpha + \beta})}{1 - r}$\\
+\textbf{NOTE: }Taylor Series expansion is preferred in this case. Refer to notes created after familiarization to method.\\
+\\
+h. the coefficients of absolute and relative risk aversion in each period [4]\\
+$ARA = -\frac{U''(M)}{U'(M)} = \frac{1 - \alpha - \beta}{M}$\\
+$RRA = -\frac{MU''(M)}{U'(M)} = 1 - \alpha - \beta$\\
+\\
+2. Verify that your answers to parts d and e above satisfy the relevant adding up constraints [6]\\
+$\varepsilon_{XY}^M \varepsilon_{XX}^M + \eta_X = 0\\
+0 + (-1) + 1 = 0\\
+\\
+\varepsilon_{XX}^c + \varepsilon_{XY}^C = 0\\
+\frac{\beta}{\alpha + \beta} + \frac{-beta}{\alpha + \beta} = 0$\\
+\\
+3. What is the compensating variation measure of the change in this household's welfare if the price of X rises by $\pi_x$ percent, and income rises by $g$ percent? [5]\\
+$V = e(V^0,P^0) - e(V^0,P^1)\\
+= M - M(1 + \pi_x)^{\frac{\alpha}{\alpha + \beta}}(1 + \pi_y)^{\frac{\beta}{\alpha + \beta}}$\\
+\\
+4. How much of good Y would this household be willing to give up in order to increase its consumption of X by $k$ percent, assuming that the household cannot re-sell any goods? [5]\\
+$U^0 = (X^0)^\alpha (Y^0)^\beta\\
+= (X^0(1 + k))^\alpha (Y^1)^\beta\\
+\implies Y' = (\frac{\beta M}{(\alpha + \beta)P_y}^\beta (1-k)^\alpha\\
+\implies V = \frac{\beta M}{(\alpha + \beta)P_y}[1-(1-k)^\frac{-\alpha}{\beta}]$\\
+\\
+\\
+C. Arbitrage\\
+\\
+Denote the period-1 price of Clemsonite as $P_1$, the expected period-2 price as $P_2^e$, and the interest between periods 1 and 2 as $r$. Assume that the cost of selling Clemsonite is so low that it can be ignored.\\
+\\
+Consider a competitive market for a natural resource ("Clemsonite") that is in fixed total supply (what is known as an "exhaustible" resource) and for which the total supply is known with certainty. To simplify the problem, assume that any amount of Clemsonite that remains unconsumed after two more periods of time will become unusable. Clemsonite is owned by a great many individuals, each of whom takes its market price as given.\\
+\\
+1. Derive an expression for the optimal quantity of Clemsonite to be sold in period 1 by any individual owner, assuming that every owner seeks to maximize the expected present value of his or her stock of this resource. Explain what your expression means, in a few words. [4]\\
+\textbf{Answer: }Let $\bar{Q} = Q_1 + Q_2$\\
+We want to $max(Q_1,Q_2) \frac{P_1Q_1 + P_1^eQ_2}{1+r}$ such that $\bar{Q} = Q_1 + Q_2$ \\
+Substitute $Q_2 = \bar{Q} - Q_1$\\
+and now we get $P_1Q_1 +\frac{P_2^e\bar{Q}-Q_1}{1+r}$\\
+FOC: $P_1 = \frac{P_2^3e}{1+r}$\\
+$P_1 > P_2^e(\frac{1}{1+r}) \implies$ sell everything in $T_1$\\
+$P_1 = P_2^e(\frac{1}{1+r}) \implies$ indifferent between selling in $T_1$ and $T_2$\\
+$P_1 < P_2^e(\frac{1}{1+r}) \implies$ sell everything in $T_2$\\
+\\
+\\
+2. The answer to question 1 implies a \textit{market-wide} equilibrium relationship between $P_1$ and $P_2^e$. What is that relationship. [6]\\
+\textbf{Answer: } If $P_2^e(\frac{1}{1+r}) > P_1$, then you could buy everything in $T_1$ with loans and then sell everything in $T_2$ to pay off the loans and then keep the profit. 
+\end{document}
