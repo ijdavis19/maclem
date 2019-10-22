@@ -108,4 +108,115 @@ replace IBirth=50 if birth>24
 //Event-study dummies interacted with indicator for whether the birth occured in CA or NJ after the paid leave mandate was implemented
 xi, prefix(_L) i.IBirth*i.post_policy
 
-save "$storage/econ816_presentation/US_PAID_leave_analysis.dta", replace
+save "$output/US_PAID_leave_analysis.dta", replace
+
+**Create datafile to store Event-Study DD coefficients (can be used to make figures)
+clear
+set obs 49
+gen time = _n -25
+save "$output/ES_DD_estimates", replace emptyok
+
+*Pattern of LFP around birth for mothers giving birth in CA and NJ before and after paid leave mandates
+foreach i of numlist 1 2 {
+use "$output/US_PAID_leave_analysis.dta", clear
+local X1  "_IBirth_2-_IBirth_51  [fweight=end_weight] if  post_policy==1 & (state==6 | state==34) "
+local X2  "_IBirth_2-_IBirth_51  [fweight=end_weight] if  post_policy==0 & (state==6 | state==34) "
+qui reg rm_lfp `X`i'', vce(cluster sippid)
+
+use "$output/ES_DD_estimates", clear
+quietly {
+		 gen b_X`i'=.
+		 forval j=1/49{
+		 			   if `j'==1{
+		 			   			  replace b_X`i'=_b[_cons] in `j'
+		 			   			  }
+		 			   	else {
+		 			   		  replace b_X`i'=_b[_IBirth_`j'] + _b[_cons] in `j'
+		 			   	}
+		 			}
+		}
+	save "$output/ES_DD_estimates", replace
+	}
+
+*Simple difference estimates
+*Some combinations of years and relative-to-birth do not exist
+*If panel only included part of a year, these will be omitted
+
+use "$output/US_PAID_leave_analysis.dta", replace
+qui reg rm_lfp i.IBirth i.post_policy _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [fweight=end_weight] if (state==6 | state==34),  vce(cluster sippid)
+
+use "$output/ES_DD_estimates", clear
+qui {
+         gen b_X3=.
+		 		 forval j=1/49{       
+							local var`j'=`j'+0
+							if `j'>=1 & `j'<=7{
+					              replace b_X3=0 in `j'
+								  }
+						else {
+		                      replace b_X3=_b[_LIBiXpos_`var`j''_1]  in `j'
+							 
+			}
+			}
+          }
+        save "$output/ES_DD_estimates", replace
+
+*Event-Study DD estimates for full sample and by education 
+foreach i of numlist 4 5 6 {
+use "$output/US_PAID_leave_analysis.dta"
+local X4  " i.rhcalyr i.IBirth i.rhcalyr#i.state i.IBirth#i.state i.IBirth#i.rhcalyr _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [pweight=end_weight] "
+local X5  " i.rhcalyr i.IBirth i.rhcalyr#i.state i.IBirth#i.state i.IBirth#i.rhcalyr _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [pweight=end_weight] if  lt_college==0 "
+local X6  " i.rhcalyr i.IBirth i.rhcalyr#i.state i.IBirth#i.state i.IBirth#i.rhcalyr _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [pweight=end_weight] if  lt_college==1 "
+qui xtreg rm_lfp `X`i'', fe  vce(cluster sippid)
+
+di "joint test for mth -3 to +3:"
+qui test _LIBiXpos_22_1 _LIBiXpos_23_1 _LIBiXpos_24_1 _LIBiXpos_25_1 _LIBiXpos_26_1 _LIBiXpos_27_1 _LIBiXpos_28_1
+di r(p)
+
+use "$output/ES_DD_estimates", clear
+qui {
+         gen b_X`i'=.
+		 		 forval j=1/49{       
+							local var`j'=`j'+0
+							if `j'>=1 & `j'<=7{
+					              replace b_X`i'=0 in `j'
+								  }
+						else {
+		                      replace b_X`i'=_b[_LIBiXpos_`var`j''_1]  in `j'
+							 
+			}
+			}
+          }
+		save "$output/ES_DD_estimates", replace  
+      }                    			        
+
+*Decomposing LFP DD estimates into component parts: 'With a Job' and 'Looking' (note there are a few other small categories not included (See SIPP definitions for coding above))
+foreach i of numlist 7 8 {
+use "$output/US_PAID_leave_analysis.dta", clear
+local X7  " looking i.rhcalyr i.IBirth i.rhcalyr#i.state i.IBirth#i.state i.IBirth#i.rhcalyr _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [pweight=end_weight] if  lt_college==1 "
+local X8  " working i.rhcalyr i.IBirth i.rhcalyr#i.state i.IBirth#i.state i.IBirth#i.rhcalyr _LIBiXpos_2_1 _LIBiXpos_8_1-_LIBiXpos_50_1 [pweight=end_weight] if  lt_college==1 "
+qui xtreg `X`i'', fe  vce(cluster sippid)
+di "joint test for mth +6 to +12:"
+qui test _LIBiXpos_31_1 _LIBiXpos_32_1 _LIBiXpos_33_1 _LIBiXpos_34_1 _LIBiXpos_35_1 _LIBiXpos_36_1 
+di r(p)
+
+use "$output/ES_DD_estimates", clear
+qui {
+         gen b_X`i'=.
+		 		 forval j=1/49{       
+							local var`j'=`j'+0
+							if `j'>=1 & `j'<=7{
+					              replace b_X`i'=0 in `j'
+								  }
+						else {
+		                      replace b_X`i'=_b[_LIBiXpos_`var`j''_1]  in `j'
+							 
+			}
+			}
+          }
+		save "$output/ES_DD_estimates", replace  
+      }                    			        
+	  
+	  
+	
+

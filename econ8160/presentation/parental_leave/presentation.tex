@@ -1,0 +1,279 @@
+% $Header$
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title[Economics 8160] % (optional, use only with long paper titles)
+{Paid Parental Leave Laws in the United States}
+
+\subtitle
+{Does Short-Duration Leave Affect Women's Labor Force Attachment?} % (optional)
+
+\author[Ian Davis] % (optional, use only with lots of authors)
+{Tanya S. Byker}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[American Economic Review] % (optional, but mostly needed)
+{American Economic Review: Papers \& Proceedings 2016,\\
+106(5): 242-246}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[Short Occasion] % (optional)
+{22 October 19}
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+	\begin{itemize}
+	\item
+	 Purpose of the Presentation
+	\item
+	 Policy Specifics and Context
+	\item
+	 Empirical Methodology
+	\item
+	 Results
+	\item
+	 Replication
+	\item
+	 Concluding Remarks
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Purpose of the Presentation}
+ 
+  \begin{itemize}
+  \item
+    Analyze the effect of paid family leave on female labor force participation
+  \item
+    Analyze the specific event-study difference-in-differences methodology utilized
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Policy Specifics and Context}
+	\begin{itemize}		
+	\item
+	 Family \& Medical Leave Act (1993)
+		\begin{itemize}
+		\item
+		 National Mandate guaranteeing up to 12 weeks of un-paid, job protected medical leave for qualified medical and family reasons
+		\item
+		 Qualified workers
+		\item
+		 Eligible firms
+		\item
+		 Birth of child covered by policy
+		\item
+		 Studies have shown little impact on woman's labor force attachment
+		\end{itemize}
+	\item
+	 No national mandate for paid family leave has been passed
+	\end{itemize}
+\end{frame}
+	
+\begin{frame}{Policy Specifics and Context}
+	\begin{itemize}
+	\item
+	 In 1980, less than 20\% of women reported having used paid parental leave
+	\item
+	 Substantial gains were made by the late 2000's but not equally distributed
+	\begin{itemize}
+	\item 44\% of women with bachelor's reported using paid parental leave
+	\item 26\% of women with less than a bachelor's degree reported using paid parental leave
+	\end{itemize}
+	\item
+		 By 2016, 5 states categorized pregnancy as a temporary disability, mandating paid time off around the birth of a child.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Policy Specifics and Context}
+	\begin{itemize}
+	\item
+	 California Paid Family Leave Act
+	\begin{itemize}
+	\item
+	 July 2004
+	\item
+	 55\% of wages up to \$1,067 per week up to six weeks
+	\end{itemize}
+	\item
+	 New Jersey Family Leave Insurance
+	\begin{itemize}
+	\item
+	 July 2009
+	\item
+	 66\% of wages up to \$584 per week up to six weeks
+	\end{itemize}
+	\item
+	 Both laws supplement the temporary disability insurance which already provides 10 weeks of replaced wages
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Empirical Methodology}
+	\begin{itemize}		
+	\item
+	 Survey of Income and Program Participants (SIPP)
+	\begin{itemize}
+		\item
+		 National 48 Month panel survey
+		\item
+		 1996, 2001, 2004, 2008
+		\item
+		 Large enough to study state level policy changes
+	\end{itemize}
+	\item
+	  Estimate the effect of CA and NJ laws on labor force participation around the event of the birth of child
+	 \end{itemize}
+\end{frame}
+
+\begin{frame}{Empirical Methodology}
+	\begin{itemize}
+	\item
+	 Treatment group consists of California and New Jersey
+	\item
+	 Control group consists of New York, Texas, and Florida
+	\begin{itemize}
+		\item
+		 Not the three other states offering temporary disability insurance for birth of a child
+		 \item
+		  Parallel trends assumption circumvents this issue
+	\end{itemize}
+	\item
+	Use of panel data makes triple difference model no longer needed
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Empirical Methodology}
+	 $Y_{its} = \alpha_i + \lambda_t +\theta_s\times\lambda_t + \sum_{j=-24}^{24} {\delta_j B_{it}^j} + \sum_{j=-24}^{24} {\gamma_j B_{it}^j} \times\lambda_t + \sum_{j=-24}^{24} {\pi_j B_{it}^j} \times\theta_s + \sum_{j=-24}^{24}{\beta_j B_{it}^j} \times{Policy}_{ts} +\varepsilon_{its}$
+\bigskip	
+	\begin{itemize}
+	\item
+	 $Y_{its} \equiv$ labor-force outcome for woman $i$ living in state $s$ in period $t$
+	\item
+	 $\alpha_i \equiv$ individual fixed effects
+	\item 
+	 $\lambda_t \equiv$ year fixed effects
+	\item
+	 $\theta_s \equiv$ state fixed effects
+	\item
+	 $B^j_{it} \equiv$ set of event-study dummy variables indicating each observation's timing relative to a birth with $j \in [-24,24]$
+	\item
+	 ${Policy}_{ts} \equiv$ indicator equal to one if a paid parental leave law is in effect in period $t$ in state $s$
+	\item
+	 $\beta_j \equiv$ vector of coefficients providing monthly estimates of the impact of laws around and after birth in terms of changes from pre-birth levels
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{center}
+	\includegraphics[scale=.5]{fig1_a}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{center}
+	\includegraphics[scale=.5]{fig1_b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{center}
+	\includegraphics[scale=.5]{fig2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{itemize}
+	\item
+	 P-Values from joint test of significance for months -3 to 3
+		 \begin{itemize}
+		  \item
+		   $p$-value for all mothers = .04
+		  \item
+		   $p$-value for mothers with less than a bachelor's degree = .02
+		  \item
+		   $p$-value for mothers with at least a bachelor's degree = .84
+	 	 \end{itemize}
+	 	 \item
+	 P-Values from joint test of significance for months -6 to 12 months after birth
+		 \begin{itemize}
+		  \item
+		   $p$-value for all mother looking for work = .03
+	 	 \end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Conclusions}
+	\begin{itemize}
+	\item
+	 Short-duration paid leave can potentially, increase labor-force attachment around the birth of a child
+	\item
+	 Policies are particularly effective for women with comparatively less education
+	\end{itemize}
+\end{frame}
+
+
+\end{document}
+
+
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
