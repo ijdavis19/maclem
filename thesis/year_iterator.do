@@ -15,6 +15,15 @@ global dataraw =  "$storage\thesis_antibiotics"
 global output = "$projects\thesis_antibiotics"
 
 //loop through datasets
-forval i = 1992/2016{
+forval i = 2006/2016{
 	use "$dataraw\namcs`i'-stata.dta", replace
+	if i >= 2006 & i < 2012{
+		forval k = 1/8
+	}
+	else if i == 2012 | i == 2013 {
+		forval k = 1/9
+	}
+	else {
+		forval k = 1/30
+	}
 }

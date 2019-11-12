@@ -31,10 +31,40 @@ egen abxnum = group(geneq)
 //For simplicity, drop all but 3 observations
 drop if abxnum >= 4
 
+//Make year variable
+gen p2010 = 0
+
+//save dataset
+save "$output/prescript_test.dta", replace
+
 //Pull out geneq as a local macro
-levels geneq if abxnum == 2, local(testmac)
+//levels geneq if abxnum == 2, local(testmac)
 
 //Jump to new dataset
 use "$dataraw\namcs2010-stata.dta", replace
 
 //gen variable for geneq
+gen script2 = 0
+replace script2 = 1 if DRUGID1 == "$k2"
+total script2
+mat script2 = e(b)
+drop script2
+
+//bring variable to new dataset
+use "$output/prescript_test.dta", replace
+replace p2010 = script2[1,1] if p
+if abxnum == 2
+
+//Jump to new dataset
+use "$dataraw\namcs2010-stata.dta", replace
+
+//gen variable for geneq
+gen script2 = 0
+replace script2 = 1 if DRUGID1 == "$k2"
+total script2
+mat script2 = e(b)
+drop script2
+
+//bring variable to new dataset
+use "$output/prescript_test.dta", replace
+replace p2010 = script2[1,1] if abxnum == 2
