@@ -23,15 +23,16 @@ rename v12 interest
 //give every antibiotic an easier identifying number to work with
 egen abxnum = group(geneq)
 
-//For simplicity, drop all but 3 observations
-drop if abxnum >= 4
+//determine highest abxnum
+sum abxnum
+local abh = r(max)
 
 //replace empty classes 'null' so code will run
 qui forval i = 1/7{
 	replace cl`i' = "null" if cl`i' == ""
 }
 //determine how many similarities exist between abx classes
-qui forval i = 1/3{
+qui forval i = 1/$_abh{
 	gen grrelto`i' = 0
 	forval j = 1/7 {
 			levels cl`j' if abxnum == `i', local(holder)
@@ -50,13 +51,13 @@ qui forval i = 1/3{
 bys abxnum: gen indnum=_n
 
 //determine how many similarities exist between abx indicators
-qui forval i = 1/3{
+qui forval i = 1/$_abh{
 	gen indrelto`i' = 0
 	sum indnum if abxnum == `i'
 	local indmax1 = r(max)
 	forval j = 1/$_indmax1{
 		levels indicator if indnum == `j' & abxnum == `i', local(hold1)
-		forval k = 1/3{
+		forval k = 1/$_abh{
 			sum indnum if abxnum == `k'
 			local indmax2 = r(max)
 			forval z = 1/$_indmax2{
@@ -75,3 +76,7 @@ qui forval i = 1/3{
 		}
 	ma drop _indmax1
 }
+drop if indnum > 1
+drop indicator
+
+save "$output/drug_relations.dta", replace
