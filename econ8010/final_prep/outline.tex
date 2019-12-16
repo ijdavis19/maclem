@@ -29,7 +29,7 @@
 			\end{itemize}
 		\end{itemize}
 		\item Supply problems
-		\end{itemize}
+	\end{itemize}
 	\item All types of elasticities
 	\begin{itemize}
 		\item Demand side
@@ -46,6 +46,9 @@
 				\item $\sum (\text{cross/own price}) = 0$
 			\end{itemize}
 			\item Marshallian-Hicksian conversion
+			\begin{itemize}
+				\item $\epsilon^M_{ij} = \epsilon^C_{ij} - \eta_i\theta_i$
+			\end{itemize}
 			\item Substitution
 		\end{itemize}
 		\item Supply side
@@ -59,31 +62,70 @@
 	\item Demand Curve
 	\item Supply Curve
 	\begin{itemize}
-	\item Long Run: Labor, Capital, and Managerial Skills are all variable
-	\item Short Run: Labor variable (most likely will be specified)		
-	\item $P = MC$
+		\item Long Run: Labor, Capital, and Managerial Skills are all variable
+		\item Short Run: Labor variable (most likely will be specified)		
+		\item $P = MC$
 	\end{itemize}
-	\item Absolute Risk Aversion
-	\item Relative Risk Aversion
-	\item Sharpe Ratio
+		\item Absolute Risk Aversion\\
+		$-\frac{f''(x)}{f'(x)}$
+		\item Relative Risk Aversion\\
+		$-\frac{xf''(x)}{f'(x)}$
+		\item Sharpe Ratio
 	\begin{itemize}
 		\item $\frac{R_p - R_f}{\sigma_p}$
 		\item $R_p = \text{Asset Retun}$
 		\item $R_f = \text{Risk Free Rate}$
 		\item $\sigma_p = \text{Standard Devation of} R_p$
 	\end{itemize}
-	\item Intertemporality
+	\item Price Indices
+	\begin{itemize}
+		\item Laspeyres: $L_P = \frac{\sum_i^N P_i^1\cdot X_i^0}{\sum_i^N P_i^0\cdot X_i^0}$
+		\item Paashe: $L_P = \frac{\sum_i^N P_i^1\cdot X_i^1}{\sum_i^N P_i^0\cdot X_i^1}$
+	\end{itemize}
+	\item Intertemporality \& Present Value
+	\begin{itemize}
+		\item Nothing really dynamic ever discussed
+		\item Present Value with known mean and variance:
+		\begin{itemize}
+			\item Define $\mu = \text{mean} \space \& \space \sigma^2 = \text{variance}$ of random variable $X$
+			\item Taylor Series\\
+			$\mathbb{E}[f(X)] = f(\mu) + f'(\mu)(X - \mu) + f''(\mu)(X - \mu)^2$
+			but $(X - \mu) = 0$ and $(X - \mu)^2 = \sigma^2$
+			So $f(X) = f(\mu) + f''(\mu)\sigma^2$
+			and, present value of $T$ periods is\\
+			$PV[f(X)] = \sum_{t = 1}^T\frac{\mathbb{E}[f(X)]}{(1 + r)^t}\\
+			= (f(\mu) + f''(\mu)\sigma^2)\sum_{t = 1}^T(1 + r)^{-t}$
+		\end{itemize}	
+	\end{itemize}
 	\item "Back of the Envelope" Price and Quantity changes
+	\begin{itemize}
+		\item Shift in Demand
+		\begin{itemize}
+			\item $\frac{\Delta P_1}{P_1^d} = \frac{\delta}{\varepsilon_{11}^s - (1 + \delta)\varepsilon_{11}^d}$
+		\end{itemize}
+	\item Shift in Supply
+		\begin{itemize}
+			\item $\frac{\Delta P_1}{P_1^d} = \frac{\delta}{\varepsilon_{11}^d - (1 + \delta)\varepsilon_{11}^s}$
+		\end{itemize}
+	\end{itemize}
 	\item Welfare Measures
 	\begin{itemize}
-		\item Consumer Surplus
-		\item Producer Surplus
-		\item Compensated Variation
-		\item Equivalent Variation
-		\item Compensated Surplus
-		\item Equivalent Surplus
+		\item Consumer Surplus: 
+		\item Producer Surplus:
+		\item Compensated Variation: $CV = E(V^0,P^0) - E(V^0,P^1) = M - E(V^0,P^1)$
+		\item Equivalent Variation: $EV = E(V^1,P^0) - E(V^1,P^1) = E(V^1,P^0) - M$
+		\item Compensated Surplus: $CV = E(V^1,P^1) - E(V^0,P^1) = M - E(V^0,P^1)$
+		\item Equivalent Surplus: $EV = E(V^1,P^0) - E(V^0,P^0) = E(V^1,P^0) - M$
+		\item I'm assumiing a compensated/equivalent surplus question won't be asked as analytically as CV or EV question. Look back at example in problem set 5.
 	\end{itemize}
 	\item Insurance
+	\begin{itemize}
+		\item Just remember that $\mathbb{E}[U(M)] \neq U(\mathbb{E}[M])$ 
+	\end{itemize}
 	\item Hicks-Kaldor???????
+	\begin{itemize}
+		\item No one is made worse off but someone is made better off
+		\item Basically Pareto Efficiency
+	\end{itemize}
 \end{itemize}
 \end{document}
