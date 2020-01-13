@@ -36,17 +36,21 @@ qui forval i = 2006/2016{
 	forval m = 0/12 {
 		if `m' == 0 {
 			gen p`i't = 0
+			gen p`i'tprb = 0
 		}
 		else {
-			gen p`i'm`m' = 0
+			gen p`i'mo`m' = 0
+			gen p`i'mo`m'prb = 0
 		}
 		save "$output/prescript_rates.dta", replace
 		forval j = 1/`abh'{
 			drop if abxnum != `j'
 			local v`j' = geneq
-			use "$dataraw/namcs`i'-stata.dta", replace
 			if `m' == 0 {
+				use "$dataraw/namcs`i'-stata.dta", replace
 				gen script`j' = 0
+				gen script`j'prb = 0
+				gen pop = _n
 					if `i' >= 2006 & `i' < 2012{
 						forval k = 1/8{
 							replace script`j' = 1 if DRUGID`k' == "`v`j''"
@@ -62,37 +66,60 @@ qui forval i = 2006/2016{
 							replace script`j' = 1 if DRUGID`k' == "`v`j''"
 						}
 					}
-					total script`j'
-					mat script`j' = e(b)
-					drop script`j'
-					use "$output/prescript_rates.dta", replace
-					replace p`i't = script`j'[1,1] if abxnum == `j'
-					mat drop script`j'
-				}
-			else {
-				gen script`j'm`m' = 0
-					if `i' >= 2006 & `i' < 2012{
-						forval k = 1/8{
-							replace script`j' = 1 if DRUGID`k' == "`v`j''" & VMONTH ==`m'
-						}
-					}
-					else if `i' == 2012 | `i' == 2013{
-						forval k = 1/9{
-							replace script`j' = 1 if DRUGID`k' == "`v`j''" & VMONTH == `m'
-						}
-					}
-					else {
-						forval k = 1/30{
-							replace script`j' = 1 if DRUGID`k' == "`v`j''" & VMONTH == `m'
-						}
-					}
-				total script`j'm`m'
-				mat script`j'm`m' = e(b)
-				drop script`j'm`m'
+				replace script`j'prb = script`j'
+				total script`j'
+				mat script`j' = e(b)
+				sum pop
+				replace script`j'prb = script`j'prb/r(max)
+				total script`j'prb
+				mat script`j'prb = e(b)
+				drop script`j'
+				drop script`j'prb
+				drop pop
 				use "$output/prescript_rates.dta", replace
-				replace p`i'm`m' = script`j'm`m'[1,1] if abxnum == `j'
-				mat drop script`j'm`m'
-		}
+				replace p`i't = script`j'[1,1] if abxnum == `j'
+				replace p`i'tprb = script`j'prb[1,1] if abxnum == `j'
+				save "$output/prescript_rates.dta", replace
+				mat drop script`j'
+				mat drop script`j'prb
+			}
+			else {
+				use "$dataraw/namcs`i'-stata.dta", replace
+				gen script`j'mo`m' = 0
+				gen script`j'mo`m'prb = 0
+				gen pop = _n
+					if `i' >= 2006 & `i' < 2012{
+						forval k = 1/8{
+							replace script`j'mo`m' = 1 if DRUGID`k' == "`v`j''" & VMONTH ==`m'
+						}
+					}
+					else if `i' == 2012 | `i' == 2013{
+						forval k = 1/9{
+							replace script`j'mo`m'  = 1 if DRUGID`k' == "`v`j''" & VMONTH == `m'
+						}
+					}
+					else {
+						forval k = 1/30{
+							replace script`j'mo`m' = 1 if DRUGID`k' == "`v`j''" & VMONTH == `m'
+						}
+					}
+				replace script`j'mo`m'prb = script`j'mo`m'
+				total script`j'mo`m'
+				mat script`j'mo`m' = e(b)
+				sum pop if VMONTH == `m'
+				replace script`j'mo`m'prb = script`j'mo`m'prb/r(max)
+				total script`j'mo`m'prb
+				mat script`j'mo`m'prb = e(b)
+				drop script`j'mo`m'
+				drop script`j'mo`m'prb
+				drop pop
+				use "$output/prescript_rates.dta", replace
+				replace p`i'mo`m' = script`j'mo`m'[1,1] if abxnum == `j'
+				replace p`i'mo`m'prb = script`j'mo`m'prb[1,1] if abxnum == `j'
+				save "$output/prescript_rates.dta", replace
+				mat drop script`j'mo`m'
+				mat drop script`j'mo`m'prb
+			}
 		save "$output/prescript_rates.dta", replace
 		}
 	}

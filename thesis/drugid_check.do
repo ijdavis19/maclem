@@ -1,5 +1,5 @@
 //More straight forward documentation of indv_prescription_rates.do
-//Retains all of the intermediate data and will allow for browsing of 
+//Retains all of the intermediate data and will allow for browsing of
 //documentations to see if code or variables are incorrect
 
 set more off
