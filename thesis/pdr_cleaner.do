@@ -7,8 +7,8 @@ global bootstraps 1000
 
 
 //set environmet variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
 
 //general locations
 global dataraw =  "$storage/thesis_antibiotics"
@@ -25,25 +25,25 @@ rename genericequivalentcode  geneq
 //fix generic appearance dates
 gen firstgenyear = firstgenapp
 gen firstgenmonth=.
-replace firstgenmonth =. if drug == "amikacin"
-replace firstgenmonth =. if drug == "amoxicillin"
-replace firstgenmonth =. if drug == "aztreonam"
-replace firstgenmonth =. if drug == "cefdinir"
-replace firstgenmonth =. if drug == "cefepime"
-replace firstgenmonth =. if drug == "cefotetan"
-replace firstgenmonth =. if drug == "cefpodoxime"
-replace firstgenmonth =. if drug == "cefproxil"
-replace firstgenmonth =. if drug == "ceftazidime"
-replace firstgenmonth =. if drug == "ceftibuten"
-replace firstgenmonth =. if drug == "ciprofloxacin"
-replace firstgenmonth =. if drug == "ethambutol"
-replace firstgenmonth =. if drug == "levofloxacin"
-replace firstgenmonth =. if drug == "lincomycin"
-replace firstgenmonth =. if drug == "linezolid"
-replace firstgenmonth =. if drug == "moxifloxacin"
-replace firstgenmonth =. if drug == "muprocin"
-replace firstgenmonth =. if drug == "sulfamethoxazole/trimethroprim"
-replace firstgenmonth =. if drug == "tinidazole"
+replace firstgenmonth =10 if drug == "amikacin"
+replace firstgenmonth =8 if drug == "amoxicillin"
+replace firstgenmonth =11 if drug == "aztreonam"
+replace firstgenmonth =5 if drug == "cefdinir"
+replace firstgenmonth =3 if drug == "cefepime"
+replace firstgenmonth =12 if drug == "cefotetan"
+replace firstgenmonth =6 if drug == "cefpodoxime"
+replace firstgenmonth =12 if drug == "cefprozil"
+replace firstgenmonth =11 if drug == "ceftazidime"
+replace firstgenmonth =10 if drug == "ceftibuten"
+replace firstgenmonth =8 if drug == "ciprofloxacin"
+replace firstgenmonth =11 if drug == "ethambutol"
+replace firstgenmonth =12 if drug == "levofloxacin"
+replace firstgenmonth =12 if drug == "lincomycin"
+replace firstgenmonth =4 if drug == "linezolid"
+replace firstgenmonth =5 if drug == "moxifloxacin"
+replace firstgenmonth =11 if drug == "mupirocin"
+replace firstgenmonth =7 if drug == "sulfamethoxazole/trimethroprim"
+replace firstgenmonth =4 if drug == "tinidazole"
 
 
 //fix generic equivalent codes

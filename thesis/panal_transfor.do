@@ -7,8 +7,8 @@ global bootstraps 1000
 
 
 //set environmet variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
 
 //general locations
 global dataraw =  "$storage/thesis_antibiotics"
@@ -28,6 +28,9 @@ gen year =.
 gen month =.
 gen scriptraw =.
 gen scriptprob =.
+gen firstgenyear=.
+gen firstgenmonth=.
+gen interest=.
 qui forval d = 1/69 {
   replace drugnum = `d' if id > (`d' - 1)*143 & id <= `d'*143
   forval y = 1/11 {
@@ -44,20 +47,31 @@ global panel = "$output/script_panel.dta"
 
 
 
-//drug names
+// Drug names
 qui forval d = 1/69{
   use $rates, replace
   drop if abxnum != `d'
   local dr`d' = drug
-  ma list
+  sum firstgenyear
+  mat y`d' = r(mean)
+  sum firstgenmonth
+  mat mo`d' = r(mean)
+  sum interest
+  mat int`d' = r(mean)
   use $panel, replace
-  replace drug = "`dr`d''" if id > (`d' - 1)*143 & id <= `d'*143
+  replace drug = "`dr`d''" if drugnum == `d'
+  replace firstgenyear = y`d'[1,1] if drugnum == `d'
+  replace firstgenmonth = mo`d'[1,1] if drugnum == `d'
+  replace interest = int`d'[1,1] if drugnum == `d'
+  ma drop dr`d'
+  ma drop y`d'
+  ma drop mo`d'
+  ma drop int`d'
   save $panel, replace
 }
 
 
-
-//this will kinda work for the not strings
+// Pull prescription rates from secondary datasets
 qui forval n = 1/69 {
   mat Scripts = [.,.]
   use $rates, replace
@@ -92,3 +106,13 @@ qui forval n = 1/69 {
   mat drop Scripts
   save $panel, replace
 }
+
+
+// Calculate Months and Years After for each observation
+replace firstgenyear =. if firstgenyear <= 2000
+gen longgen = 1 if firstgenyear ==.
+replace longgen = 0 if longgen != 1
+gen obsmonth = (year - 2000)*12 + month if month != 0
+gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
+gen monthsfromgen = obsmonth - genmonth
+save $panel, replace

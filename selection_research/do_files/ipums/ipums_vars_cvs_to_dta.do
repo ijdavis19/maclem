@@ -7,8 +7,8 @@ global bootstraps 1000
 
 
 //set environmet variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
 
 //general locations
 global dataraw =  "$storage/selection_research"

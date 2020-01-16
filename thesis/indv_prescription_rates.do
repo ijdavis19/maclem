@@ -1,8 +1,3 @@
-/*Note: this do file is set to use the cut down csv file relating antibiotics.
-Once re_abx.do is debugged, new code should be made importing the end product
-of that process
-*/
-
 set more off
 clear all
 set matsize 11000
@@ -12,18 +7,19 @@ global bootstraps 1000
 
 
 //set environmet variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
+global maclem: env maclem
 
 //general locations
 global dataraw =  "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibiotics"
+global dofiles = "$maclem/thesis"
 
-///import the pdr_info.csv
-import delim "$dataraw/pdr_info.csv"
+//run pdr_info.csv cleaner
+do "$dofiles/pdr_cleaner.do"
 
-//rename variable originally titled 'int' who's name didn't carry over
-rename v12 interest
+use "$output/pdr_cleaned.dta", replace
 
 //give every antibiotic an easier identifying number to work with
 egen abxnum = group(geneq)

@@ -14,19 +14,18 @@ set seed 0
 global bootstraps 1000
 
 //set environment variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
 
 //general locations
-global dataraw = "$storage\selection_research"
-global output = "$projects\selection_research"
+global dataraw = "$storage/selection_research"
+global output = "$projects/selection_research"
 
 
 
 ******************************PPP**********************************
-import delim "$dataraw\oecd_ppp.csv", clear
-label variable ïlocation "location"
-rename ïlocation location
+import delim "$dataraw/oecd_ppp.csv", clear
+save "$output/oecd_ppp.dta", replace
 gen country =""
 replace country = "brazil" if location == "BRA" //INCTOT //HRSMAIN
 replace country = "canada" if location == "CAN" //INCTOT //HRSWORK1
@@ -41,9 +40,9 @@ recast long time
 save "$output/oecd_ppp.dta", replace
 
 ******************************DEF**********************************
-use "$dataraw\deflator.dta", replace
+use "$dataraw/deflator.dta", replace
 gen time = 2020 - _n
 recast long time
 replace value = value * .01
 drop date
-save "$output\deflator.dta", replace
+save "$output/deflator.dta", replace

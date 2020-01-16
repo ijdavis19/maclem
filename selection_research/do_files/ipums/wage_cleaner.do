@@ -10,13 +10,13 @@ global bootstraps 1000
 //global storage: env storage
 
 //general locations & variables
-global dataraw = "$storage\selection_research"
-global output = "$projects\selection_research"
-global dofiles = "$maclem\selection_research\do_files"
+global dataraw = "$storage/selection_research"
+global output = "$projects/selection_research"
+global dofiles = "$maclem/selection_research\do_files"
 global COUNTRIES = "brazil canada india italy jamaica mexico panama puertorico southafrica venezuela"
 
 //convert PPP and EXR csv files to
-do "$dofiles\ipums\ppp_ex_csv_conv.do"
+do "$dofiles/ipums/ppp_ex_csv_conv.do"
 //'time' and 'location' are the respective year and
 //country variables
 
@@ -30,7 +30,7 @@ foreach country in $COUNTRIES {
     gen week_wage = incage/52
   }
 	gen hour_wage = week_wage/hrswork1
-  save "$output\`country'.dta", replace
+  save "$output/`country'.dta", replace
 	bysort year: gen yearnum = _n
 	drop if yearnum != 1
 	replace yearnum = _n
