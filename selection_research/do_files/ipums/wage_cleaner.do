@@ -6,8 +6,8 @@ set seed 0
 global bootstraps 1000
 
 //set environment variables
-//global projects: env projects
-//global storage: env storage
+global projects: env projects
+global storage: env storage
 
 //general locations & variables
 global dataraw = "$storage/selection_research"
@@ -41,23 +41,26 @@ foreach country in $COUNTRIES {
   mat Exr = [.]
   forval x = 1/$crosstotal {
     // loop through yearnums making 3 column matrix: year, ppp, exchange rate with a row for each year
-    mat X = year if yearnum == `x'
+    sum year if yearnum == `x'
+    mat X = r(mean)
     mat Year = Year\X
-    drop mat X
+    mat drop X
   }
   mat Year = Year[2...,1...]
   use "$output/oecd_ppp.dta", replace
   forval x = 1/$crosstotal {
-    mat X = value if time == Year[`x',1]
+    sum value if time == Year[`x',1]
+    mat X = r(mean)
     mat Ppp = Ppp\X
-    drop mat X
+    mat drop X
   }
   mat Ppp = Ppp[2...,1...]
   use "$output/oecd_exr.dta", replace //NEED DEFLATOR INSTEAD!
   forval x = 1/$crosstotal {
-    mat X = value if time == Year[`x',1]
+    sum value if time == Year[`x',1]
+    mat X = r(mean)
     mat Exr = Exr\X
-    drop mat X
+    mat drop X
   }
   mat Exr = Exr[2...,1...]
   use "$output/`country'.dta", replace
@@ -65,5 +68,5 @@ foreach country in $COUNTRIES {
   forval x = 1/$crosstotal {
     replace norm_wage = hour_wage*Ppp[`x',1]*Exr[`x',1] if year == Year[`x',1]
   }
-  ma drop Year Ppp Exr
+  mat drop Year Ppp Exr
 }
