@@ -34,7 +34,7 @@ gen interest=.
 qui forval d = 1/69 {
   replace drugnum = `d' if id > (`d' - 1)*143 & id <= `d'*143
   forval y = 1/11 {
-    replace year = 2005 + `y' if id >= (`d' -1)*143 + (`y'-1)*13 & id < (`d'-1)*143 + (`y')*13
+    replace year = 2005 + `y' if id > (`d' -1)*143 + (`y'-1)*13 & id <= (`d'-1)*143 + (`y')*13
 	  forval m = 0/12 {
 	   replace month = `m' if id == (`d' -1)*143 + (`y'-1)*13 + `m' + 1
 	  }
@@ -114,5 +114,45 @@ gen longgen = 1 if firstgenyear ==.
 replace longgen = 0 if longgen != 1
 gen obsmonth = (year - 2000)*12 + month if month != 0
 gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
-gen monthsfromgen = obsmonth - genmonth
+gen monthsAfterGen = obsmonth - genmonth
+gen genon = 1 if longgen == 1 | monthsfromgen >= 0
+replace genon = 0 if genon != 1
+gen genon1year = 1 if longgen == 1 | monthsfromgen >= 12
+replace genon1year = 0 if genon1year != 1
 save $panel, replace
+
+// Raw Month Observation totals
+gen monthTotalObs =.
+gen yearTotalObs =.
+save $panel, replace
+qui forval year = 2006/2016 {
+  forval month = 0/12{
+    use "$dataraw/namcs`year'-stata.dta", replace
+    if `month' != 0 {
+	     drop if VMONTH != `month'
+    }
+    gen pop = _n
+    sum pop
+    mat T = r(max)
+    use $panel, replace
+    if `month' == 0 {
+	     replace yearTotalObs = T[1,1] if year == `year'
+    }
+    replace monthTotalObs = T[1,1] if year == `year' & month == `month'
+    save $panel, replace
+  }
+}
+
+//Split Month and Calender Year Panels
+// Calandar Years
+drop if month != 0
+replace id = _n
+save $panel_calyear.dta, replace
+//Months
+use $panel, replace
+drop if month == 0
+replace id = _n
+gen yearsAfterGen = ceil(monthsAfterGen/12) +1
+save $panel_monthly.dta, replace
+
+// Make genYear probabilities
