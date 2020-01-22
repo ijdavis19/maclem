@@ -115,9 +115,9 @@ replace longgen = 0 if longgen != 1
 gen obsmonth = (year - 2000)*12 + month if month != 0
 gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
 gen monthsAfterGen = obsmonth - genmonth
-gen genon = 1 if longgen == 1 | monthsfromgen >= 0
+gen genon = 1 if longgen == 1 | monthsAfterGen >= 0
 replace genon = 0 if genon != 1
-gen genon1year = 1 if longgen == 1 | monthsfromgen >= 12
+gen genon1year = 1 if longgen == 1 | monthsAfterGen >= 12
 replace genon1year = 0 if genon1year != 1
 save $panel, replace
 
@@ -147,12 +147,12 @@ qui forval year = 2006/2016 {
 // Calandar Years
 drop if month != 0
 replace id = _n
-save $panel_calyear.dta, replace
+save "$output/panel_calyear.dta", replace
 //Months
 use $panel, replace
 drop if month == 0
 replace id = _n
 gen yearsAfterGen = ceil(monthsAfterGen/12) +1
-save $panel_monthly.dta, replace
+save "$output/panel_monthly.dta", replace
 
 // Make genYear probabilities
