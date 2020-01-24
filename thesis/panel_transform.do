@@ -143,6 +143,39 @@ qui forval year = 2006/2016 {
   }
 }
 
+// Relevant Reasons for Visit (NOT USING ABx RELATIONS)
+//Collect RFV's
+sum drugnum
+local drugNumMax = r(max)
+forval j = 1/`drugNumMax' {
+	forval year = 2006/2016 {
+		use "$dataraw/namcs`year'-stata.dta", replace
+		gen script`j'=.
+		if `year' >= 2006 & `year' < 2012{
+			forval k = 1/8{
+				replace script`j' = 1 if DRUGID`k' == "`v`j''"
+			}
+		}
+		else if `i' == 2012 | `i' == 2013{
+			forval k = 1/9{
+				replace script`j' = 1 if DRUGID`k' == "`v`j''"
+			}
+		}
+		else {
+			forval k = 1/30{
+					replace script`j' = 1 if DRUGID`k' == "`v`j''"
+			}
+		}
+		//sum script`j'
+		//local RFV`year' = r(total)
+		//
+		//
+		//
+		//
+	}
+}
+
+
 //Split Month and Calender Year Panels
 // Calandar Years
 drop if month != 0

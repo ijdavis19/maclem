@@ -1,0 +1,205 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8050: Problem Set 1, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8050: Problem Set 1 }
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Chugh, \textit{Modern Macroeconomics}, Chapter 2: Questions 1-6}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+
+	
+\begin{exercise}
+\textbf{Interaction of consumption tax and wage tax.} A basic idea of President George W. Bush's economic advisers throughout his administration was to try to move the United States further away from a system of investment taxes and more toward a system of consumption taxes. A nationwide consumption tax would essentially be a national sales tax, a system that many Western European countries have in place. You are asked to modify our basic consumption-leisure model to include both a proportional wage tax (which we will now denote by $t_c$, where $0 \leq t_c < 1$). A proportional consumption tax means that for every dollar on the price tags of items the consumer buys, the consumer must pay $(1 + t_c)$ dollars. Throughout the following, suppose that economic polcy has no effect on wages or prices (i.e., the nominal wage $W$ and the price of consumption $P$ are constant throughout).
+
+\begin{itemize}
+\item Construct the budget constraint in this modified version of the consumption-leisure model. Briefly explain economically how this budget constraint differs from that in the standard consumption-leisure model you studied in class.
+
+	\begin{solution}
+		Solution here
+	\end{solution}
+
+\item Suppose that currently the federal wage tax rate is 20 percent $(t_n = 0.20)$ while the federal consumption tax rate is 0 percent $(t_c =0)$, and the Bush economic team is considering proposing lowering the  wage tax rate to 15 percent. However, they wish to leave the representative agent's optimal choice of consumption and leisure unaffected. Can they simultaneously increase the consumption tax rate from its current zero percent to achieve this goal? If so, compute the new associated consumption tax rate, and explain the economic intution. If not, explain mathematically as well as economically why not.
+
+        \begin{solution}
+                Solution here
+        \end{solution}
+
+
+\item A tax policy is defined as a particular combination of tax rates. For example, a labor tax rate of 20 percent combined with a consumption tax rate of zero percent is one particular tax policy. A labor tax rate of 5 percent combined with a consumption tax rate of 10 percent is a different tax policy. Based on what you found in parts a and b above, address the following statement: a government can use many different tax policies to induce the same level of consumption by individuals.
+
+        \begin{solution}
+                Solution here
+        \end{solution}
+
+
+\item Consider again the Bush proposal to lower the wage tax rate from 20 to 15 percent. This time, however, policy discussion is focused on trying to boost overall consumption. Is it possible for this goal to be achieved if the consumnption tax rate is raised from its current zero percent?
+
+        \begin{solution}
+                Solution here
+        \end{solution}
+
+
+\item Using a Lagrangian, derive the consumer's consumption-leisure optimality condition (for an arbitrary utility function) as a function of the real wage and the consumption and labor tax rates.
+
+        \begin{solution}
+                Solution here
+        \end{solution}
+
+
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+	\textbf{Non-backward-bending labor supply curve.} Consider and economy populated by 100 individuals who have identical preferences over conumpstion and leisure. In this economy the aggregate labor supply curve is upward-sloping. For simplicity, suppose that throughout this question that the labor tax rate is zero.
+\begin{itemize}
+	\item For such a labor supply curve, how does the substitution effect compare with the income effect?
+		\begin{solution}
+			Solution here
+		\end{solution}
+	\item Using indifference curves and budget constraints, show how such a labor suppy curve arises. 
+        \begin{solution}
+                Solution here
+        \end{solution}
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Following the discussions in the text
+\begin{itemize}
+\item Prove the sequence of functions
+\begin{eqnarray*}
+x_n(t) &=&
+\left \{
+\begin{array}{ll}
+0, & 0 \leq t \leq (1/2)\\
+n(t - (1/2)), & (1/2) < t < (1/2) + (1/n)\\
+1, & (1/2) + (1/n) \leq t \leq 1
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent
+is a Cauchy sequence in $(C([0,1]), d_1)$.
+\item Prove that
+\begin{eqnarray*}
+x(t) &=&
+\left \{
+\begin{array}{ll}
+0, & 0 \leq t \leq (1/2)\\
+1, & (1/2)  < t \leq 1
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent
+is a representative of the equivalence class the
+sequence $(x_n)$ converges to in the
+metric $\widetilde{d_1}$.  There are lots of
+notational things here so, although this is discussed
+in the text, work hard at writing down {\bf all} the
+details.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Proof 2.12.1 on page 55.
+\end{solution}
+	
+\end{document}
