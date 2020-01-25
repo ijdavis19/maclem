@@ -1,0 +1,147 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 1, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Problem Set 1 }
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{TBD}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\begin{exercise}
+	Read the following stories and explain whether Yujie and Tom are correct or not:
+	\begin{itemize}
+		\item Yujie tries to estimate the variance by sampe variace by she does not apply the sample size correction (i.e. she used $\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2)$. She claims that the estimator is good because it is a consistent estimator. Tom says that her estimator is not good because it is not an unbiased estimator.
+		\begin{solution}
+			Solution here
+		\end{solution}
+		\item Tom estimates the sample mean using $1 + \frac{1}{n}\sum x_i$. He claims that the estimator goes to 0 when $n$ goes to $\infty$. Yujie says that the estimator could not be consistent because the estimator is biased for any given value of $n$.
+		\begin{solution}
+			Solution here
+		\end{solution}
+		\item Consider the model $y = X\beta +  \epsilon$, and the estimator $\hat{\beta}$. $\hat{\beta}$ is the OLS estimator which utilize only half of the sample (say you sort the samples randomly and take only the odd/even rows on $X$ and $y$). Tom claims that $\hat{\beta}$ is unbiased and consistent, Yujie says that it is the best linear unbiased estimator because all the OLS assumptions are satisfied.
+		\begin{solution}
+			Solution here
+		\end{solution}
+		\item Given the true model $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \epsilon$, Yujie runs an OLS regression of $y$ on $x_1$ and $x_2$ to get a consistent estimate of $\beta_1$. Tom says that she can get the same estimate by regressing $y$ on $x_1$.
+		\begin{solution}
+			Solution here
+		\end{solution}
+		\item Yujie says that the OLS estimator is unbiased and consistent only if all four OLS assumptions (mentioned in class) are satisfied. Tom says tht with heteroskadicity the OLS estimator is biased but it is still consistent.
+	\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+	\begin{itemize}
+		\item Given the model $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \epsilon$. Yujie runs an OLS regression of $y, x_1$, and $x_2$ on $x_3$ and $x_4$ and obtains the residuals $\hat{\epsilon}_y, \hat{\epsilon}_1$, and $\hat{\epsilon}_2$ respectively. Then she runs an OLS regression of $\hat{\epsilon}_y$ on $\hat{\epsilon_1}$ and $\hat{\epsilon}_2$. She claims that she can obtain the same estimates for the coefficients of $x_1$ and $x_2$ as the usual OLS estimates. Tom says that he can also obtain the same coefficient estimates by running an OLS regression of $\hat{\epsilon}_y$ on $\hat{\epsilon}_1$ and the another regression of $\hat{\epsilon}_y$ on $\hat{\epsilon}_2$ separately.
+		\begin{solution}
+			Solution here.
+		\end{solution}
+		\item Given the model $y = \beta_0 + \beta_1x_1 + \gamma_1x_1^2 + \epsilon$, Yujie runs an OLS regression of $y$ on $x_1$ and $x_1^2$ to get a consistent estimate of $\beta_1$ and $\gamma_11$. Tom says the $\hat{\gamma}_1$ could not be the best linear unbiased estimator of $\gamma_1$ because it is not a linear estimator.
+		\begin{solution}
+			Solution here.
+		\end{solution}
+		\item Yujie tries to estimate the standard deviation by sample standard deviation and think that the estimator is consistent. Tom says that her estimator is not good because it is not an unbiased estimator. 
+		\begin{solution}
+			Solution here
+		\end{solution}
+	\end{itemize}
+\end{exercise}
+\end{document}
