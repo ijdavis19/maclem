@@ -112,8 +112,8 @@ Explain in full detail what $\sqrt{5}$ means in $\widetilde{\mathbb{Q}}$.
 \end{exercise}
 
 \begin{solution}
-	$\sqrt{5}$ is an equivalence class denoted as $([\sqrt{5}])$ such that, for any representatives $(x_n)$ and  $(y_n)$ where $(x_n) \epsilon ([\sqrt{5}])$ and  $(y_n) \epsilon ([\sqrt{5}])$,\\
-	$\tilde{d}([(x_ny_n)],[(\bar{5})]) = [(|x_ny_n - 5|)] \sim \bar{0}$\\
+	$\sqrt{5}$ is an equivalence class denoted as $([\sqrt{5}])$ such that, for any representatives $(x_n)$ and  $(y_n)$ where $(x_n) \in ([\sqrt{5}])$ and  $(y_n) \in ([\sqrt{5}])$,\\
+	$\tilde{d}([(x_ny_n)],[(\bar{5})]) = [(|x_ny_n - 5|)] \sim [(\bar{0})]$
 \end{solution}
 
 
@@ -122,8 +122,8 @@ Explain in full detail what $\sqrt{5} - \sqrt{3}$ means in $\widetilde{\mathbb{Q
 \end{exercise}
 
 \begin{solution}
-	Similar to above, $\sqrt{5} - \sqrt{3}$ is an equivalence class, $[(\sqrt{5} - \sqrt{3})]$, constructed from arbitrary representative of $x_n \epsilon [(\sqrt{5})]$ and $y_n \epsilon [(\sqrt{3})]$, following the same rules discussed above to create each class, such that\\
-	$\tilde{d}([(x_n - y_n)],[(\sqrt{5} - \sqrt{3})]) = [(|(x_n - y_n) - (\sqrt{5} - \sqrt{3})|)] = [(|(x_n - y_n) - \tilde{d}([(\sqrt{5})],([\sqrt{3}]))|)] \sim \bar{0}$\\
+	Similar to above, $\sqrt{5} - \sqrt{3}$ is an equivalence class, $[(\sqrt{5} - \sqrt{3})]$, constructed from arbitrary representative of $x_n \in [(\sqrt{5})]$ and $y_n \in [(\sqrt{3})]$, following the same rules discussed above to create each class, such that\\
+	$\widetilde{d}([(x_n - y_n)],[(\sqrt{5} - \sqrt{3})]) = [(|(x_n - y_n) - (\sqrt{5} - \sqrt{3})|)] = [(|(x_n - y_n) - \tilde{d}([(\sqrt{5})],([\sqrt{3}]))|)] \sim ([\bar{0}])$
 \end{solution}
 
 \begin{exercise}
@@ -163,7 +163,40 @@ details.
 \end{exercise}
 
 \begin{solution}
-Proof 2.12.1 on page 55.
+	Pick any $t > \frac{1}{2}.$ Then there is $N$ so that $n > N \implies \frac{1}{2} + \frac{1}{n} < t$ \space $ \forall n > N$. Thus, $x_n(t) \rightarrow 1$ when $t > \frac{1}{2}$. Additionally, $x_n(t) = 0$ \space $ \forall t$ when $ 0 \leq t \leq \frac{1}{2}$. Hence, $x_n$ converges pointwise to $x$ where
+\begin{eqnarray*}
+x(t) &=&
+\left \{
+\begin{array}{ll}
+0, & 0 \leq t \leq (1/2)\\
+1, & (1/2)  < t \leq 1
+\end{array}
+\right .
+\end{eqnarray*}
+
+	We can show this sequence is Cauchy in $(C([0,1]),d_1)$ since, for $n > m$,\\
+	\\
+	$d_1(x_n(t),x_m(t)) = \int_0^1|x_n(t) - x_m(t)|dt\\
+	\\
+	= \int_0^{\frac{1}{2}}0dt + \int_{\frac{1}{2}}^{\frac{1}{2} + \frac{1}{n}}(x_m(t) - x_n(t))dt + \int_{\frac{1}{2} + \frac{1}{n}}^10dt\\
+	\\
+	= \frac{n-m}{nm} \leq \frac{1}{m}$
+\\
+\\
+	So, given $\varepsilon > 0, \exists N \ni n,m > N \implies d_1(x_n,x_m) < \varepsilon$ proving $x_n(t)$ is Cauchy in $(C([0,1]), d_1)$.\\
+	Finally, since $x(t)$ converges pointwise to
+\begin{eqnarray*}
+x(t) &=&
+\left \{
+\begin{array}{ll}
+0, & 0 \leq t \leq (1/2)\\
+1, & (1/2)  < t \leq 1
+\end{array}
+\right .
+\end{eqnarray*}
+
+	$x(t)$ is a valid representative of the equivalence class of the Cauchy Sequence $(x_n)$.
+
 \end{solution}
 	
 \end{document}

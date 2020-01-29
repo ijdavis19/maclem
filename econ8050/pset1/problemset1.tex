@@ -114,51 +114,90 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \item Construct the budget constraint in this modified version of the consumption-leisure model. Briefly explain economically how this budget constraint differs from that in the standard consumption-leisure model you studied in class.
 
 	\begin{solution}
-		Solution here
+		Changing our original budget constraint to facilitate a consumption tax as opposed to a wage tax we get
+		\begin{center}
+			$Pc(1 + t_c) + Wl = W$
+		\end{center}
+		The economic intution behind the budget constraint is similar to the original one where the left hand side of the equation represents the cost of consumption and the cost of leisure while the right hand side represents that period's wage. The difference between the original model and this one comes from setting $t_n = 0$ and adding a new tax to consumption raising which, in essence, raises the price of consumption.
 	\end{solution}
 
 \item Suppose that currently the federal wage tax rate is 20 percent $(t_n = 0.20)$ while the federal consumption tax rate is 0 percent $(t_c =0)$, and the Bush economic team is considering proposing lowering the  wage tax rate to 15 percent. However, they wish to leave the representative agent's optimal choice of consumption and leisure unaffected. Can they simultaneously increase the consumption tax rate from its current zero percent to achieve this goal? If so, compute the new associated consumption tax rate, and explain the economic intution. If not, explain mathematically as well as economically why not.
 
         \begin{solution}
-                Solution here
+                set
+		\begin{center}
+			$t_n^0 = .2$\\
+			$t_c^0 = 0$\\
+			$t_n^1 = .15$\\
+			$w_0 = w_1$\\
+			$c_0 = c_1$\\
+		\end{center}
+		and recall, from the model, we get
+		\begin{center}
+			$c = \frac{(1 - t_n)w}{P(1 + t_0} - \frac{(1 - t_n)w}{P(1 + t_0)}l$\\
+			$c_0 = \frac{.8w}{P} - \frac{.8wl}{P} = \frac{.8w}{P}(1 - l)$\\
+			$c_1 = \frac{.85w}{P(1 + t_c^1)}(1 - l)$
+		\end{center}
+		So we want $t_c^1 \ni c_0 = c_1$
+		\begin{center}
+			$\frac{.8w}{P}(1 - l) = \frac{.85w}{P(1 + t_c^1)}(1 - l)$\\
+			$\implies .8 = \frac{.85}{P(1 + t_c^1)}(1 - l)$\\
+			$\implies .8 + .8t_c^1 = .85$\\
+			$\implies .8t_c^1 = .05$\\
+			$\implies t_c^1 = .0625$
+		\end{center}
+		So setting $t_c^1 = .0625 \& t_n^1 = .15$, we get the exact same budget constraint which would give us the exact same utility optimizing bundle. Economically, this works out because we are raising the price of consumption while lowering the price of leisure \textbf{without} changing the relative prices or income.
         \end{solution}
 
 
 \item A tax policy is defined as a particular combination of tax rates. For example, a labor tax rate of 20 percent combined with a consumption tax rate of zero percent is one particular tax policy. A labor tax rate of 5 percent combined with a consumption tax rate of 10 percent is a different tax policy. Based on what you found in parts a and b above, address the following statement: a government can use many different tax policies to induce the same level of consumption by individuals.
 
         \begin{solution}
-                Solution here
+                The statement is true so long as the tax policies keep hold relative prices and incomes. 
         \end{solution}
 
 
 \item Consider again the Bush proposal to lower the wage tax rate from 20 to 15 percent. This time, however, policy discussion is focused on trying to boost overall consumption. Is it possible for this goal to be achieved if the consumnption tax rate is raised from its current zero percent?
 
         \begin{solution}
-                Solution here
-        \end{solution}
+                Yes, mathematically we want\\
+		\begin{center}
+			$c_0 < c_1$\\
+			$\implies \frac{.8w}{P} < \frac{.85w}{P(1 + t_c)}(1 - l)$\\
+			$\implies .8 < \frac{.85}{(1 + t_c)}$\\
+			$.8 + .8t_c < .85$\\
+			$\implies t_c < .0625$\\
+			So, so long as $0 \leq t_c < .0625$, consumption will increase.
+		\end{center}
+	\end{solution}
 
 
 \item Using a Lagrangian, derive the consumer's consumption-leisure optimality condition (for an arbitrary utility function) as a function of the real wage and the consumption and labor tax rates.
 
         \begin{solution}
-                Solution here
+		\begin{center}
+			$\text{max}_{\{c,l\}}(c,l)1 \ni Pc(1 + t_c) + (1 - t_n)wl = (1 - t_n)w$\\
+			$\mathcal{L} = U(c,l) + \lambda(Pc(1 + t_c) + (1 - t_n)wl - (1 - t_n)w)$\\
+			$\frac{\delta \mathcal{L}}{\delta c} = U_c(c, l) + \lambda P(1 - t_c) = 0$\\
+			$\frac{\delta \mathcal{L}}{\delta l} = U_l(c, l) + \lambda w(1 - t_n) = 0$\\
+			$\implies \frac{U_c}{U_l} = \frac{P(1 - t_c)}{w(1 - t_n)}$
+		\end{center}
+		is the utility optimizing condition
         \end{solution}
-
-
 \end{itemize}
 \end{exercise}
 
 \begin{exercise}
-	\textbf{Non-backward-bending labor supply curve.} Consider and economy populated by 100 individuals who have identical preferences over conumpstion and leisure. In this economy the aggregate labor supply curve is upward-sloping. For simplicity, suppose that throughout this question that the labor tax rate is zero.
+	\textbf{Non-backward-bending labor supply curve.} Consider and economy populated by 100 individuals who have identical preferences over consumpstion and leisure. In this economy the aggregate labor supply curve is upward-sloping. For simplicity, suppose that throughout this question that the labor tax rate is zero.
 \begin{itemize}
 	\item For such a labor supply curve, how does the substitution effect compare with the income effect?
 		\begin{solution}
-			Solution here
+			An upward sloping labor supply curve indicates an income effect which is larger than the substitution effect.
 		\end{solution}
 	\item Using indifference curves and budget constraints, show how such a labor suppy curve arises. 
-        \begin{solution}
-                Solution here
-        \end{solution}
+        \begin{figure}
+		\includegraphics{2b.png}
+        \end{figure}
 \end{itemize}
 \end{exercise}
 
@@ -166,18 +205,35 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 	\textbf{A backward-bending aggregate supply curve?} Despite our use of the backwards-bending labor supply curve as arising from the representative aganet's preferences, there is controversy in macroeconomics about whether this is a good representation. Specifically, even though a backward-bending labor supply curve may be a good description if a given individual's decisions, it does not immediately follow that the representative agent's preferences should also feature a backward-bending labor supply curve. In this exercise you will uncover for yourself one part of this proble,. For simplicity, assume that the labor tax rate is $t = 0$ throughout all that follows.
 	\begin{itemize}
 		\item Suppose that the economy is made up of five individuals, person A, person B, person C, person D, and person E, each of whom has the labor supply schedule given below. Using the indicated wage rates, graph each individual's labor supply curve as well as the aggregate labor supply curve.
-		%\addpdf{The fucking graph}
-		\begin{solution}
-			Solution here
-		\end{solution}
+		\begin{figure}
+			\includegraphics{A-1.png}
+		\end{figure}
+		\begin{figure}
+			\includegraphics{B-1.png}
+		\end{figure}
+                \begin{figure}
+			\includegraphics{C-1.png}
+		\end{figure}
+                \begin{figure}
+			\includegraphics{D-1.png}
+		\end{figure}
+                \begin{figure}
+			\includegraphics{E-1.png}
+		\end{figure}
+                \begin{figure}
+			\includegraphics{Agg-1.png}
+		\end{figure}
 \noindent Now suppose that in this economy, the "usual" range of the nominal wage is between \$10 and \$45.
 		\item Restricting attention to this range, is the aggreagate labor supply curve backward-bending?
 		\begin{solution}
-			Solution here
+			No,
 		\end{solution}
+		\begin{figure}
+			\includegraphics{restAgg-1.png}
+		\end{figure}
 		\item At a theoretical level, if we want to use the representative-agent paradigm and restrict attention to this usual range of the wage, does a backward-bending labor supply curve make sense?
 		\begin{solution}
-			Solution here
+			The backwards bend disappears when the range of wages is restriceted and aggregated. But the backwards bend still occurs for four of the five individuals within the restricted range. Hence, a model of a representative agent's behavior should include the backwards bend. 
 		\end{solution}
 	\end{itemize}
 	Explain qualitatively the relationship you find between the individuals' labor supply curves and the aggregate labor supply curve over the range \$10 - \$45. Especially address the "backward-bending" nature of the curves.
@@ -192,23 +248,51 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 	\begin{itemize} 
 		\item Based on the given Lagrangian, compute the representative consumer's first-order conditions with respect to consumption and with respect to labor. Clearly present the important steps and logic of your analysis.
 		\begin{solution}
-			Solution here
+			\begin{center}
+				$\mathcal{L} = \text{ln}(c) - \frac{A}{1 + \phi}n^{1 + \phi} + \lambda[(1 - t)wn - c]$\\
+				$\frac{\delta \mathcal{L}}{\delta c} = \frac{1}{c} - \lambda = 0$\\
+				$\frac{\delta \mathcal{L}}{\delta n} = An^\phi + \lambda(1 - t)w = 0 $\\
+				$\implies \frac{1}{c} = \lambda$\\
+				$\implies An^\phi = \lambda(1 - t)w$\\
+			\end{center}
 		\end{solution}
 		\item Based on only the first-order condition with respect to labor computed in part a, qualitatively sketch two things in a diagram with the real wage on the vertical axis and labor on the horizontal axis. First, the general shape of the relationship between $w$ and $n$ (perfectly vertical, perfectly horizontal, upward sloping, downward sloping, or impossible to tell). Second, how changes in $t$ affect the relationship (shift it outward, shift it inward, or impossible to determine). Briefly describe the economics of how you obtained your conclusions. (Note: In this question you are not to use the first-order condition with respect to consumption nor any other conditions.)
+		\begin{figure}
+			\includegraphics{4a.png}
+		\end{figure}
 		\begin{solution}
-			Solution here
+			\begin{center}
+				$\text{FOC}_l \implies w = \frac{An^\phi}{\lambda(1 - t)}$
+			\end{center}
+		Based on the FOC with respect to labor we get a model similar to the one constructed below which is upward sloping. Additionally, an increase in $t$ would cause the line to shift inward. Economically, this makes sense in that, if we fix consumption, a tax increase would require more hours worked or a higher wage to remain at original consumption levels.\\
 		\end{solution}
 		\item Now based on both of the two first-order conditions computed in part a, construct the consumption-leisure optimality condition. Clearly present the important steps and logic of your analysis.
 		\begin{solution}
-			Solution here
+			\begin{center}
+				$\text{FOC's} \implies \frac{1}{cAn^\phi} = \frac{1}{(1 - t)w}$\\
+				$\implies cAn^\phi = (1 - t)w$\\
+				$c^* = \frac{(1 - t)w}{An^\phi}$
+			\end{center}
+		Substituting into the budget constraint we get
+			\begin{center}
+				$(1 - t)wn = c$\\
+				$\implies(1 - t)wn = \frac{(1 - t)w}{An^\phi}$\\
+				$\implies n = \frac{1}{An^\phi}$\\
+				$\implies n^{\phi + 1} = \frac{1}{A}$\\
+				$\implies n =  A^{-\frac{1}{\phi + 1}}$\\
+				$\implies w = \frac{A^{\frac{1}{1 + \phi}}}{(1 + t)}$
+			\end{center}
 		\end{solution}
 		\item Based on both the consumption-leisure optimality condition obtained in part c and on the budget constraint, qualitatively sketch two things in a diagram with the real wage on the vertical axis and labor on the horizontal axis. First, the general shape of the relationship between $w$ and $n$ (perfectly vertical, perfectly horizontal, upward sloping, downward sloping, or impossible to tell). Second, how changes in $t$ affect the relationship (shift it outward, shift it inward, or impossible to determine). Briefly describe the ceonomics of how you obtained your conclusions.
 		\begin{solution}
-			Solution here
+			\begin{figure}
+				\includegraphics{4b.png}
+			\end{figure}
+			Because neither $w$ nor $t$ are included in the optimal hours worked function, we get a perfectly vertical line that is not affected by changes in taxes.
 		\end{solution}
-		\item How do the conclusions in part d compare with those in part b? Are they broadly similar? Are the very different? Is it impossible to compare them? In no more than 60 words, describe as much as you can about th economics (do not simply restate the mathematics you computed above) when comparing the pair of diagrams.
+		\item How do the conclusions in part d compare with those in part b? Are they broadly similar? Are the very different? Is it impossible to compare them? In no more than 60 words, describe as much as you can about the economics (do not simply restate the mathematics you computed above) when comparing the pair of diagrams.
 		\begin{solution}
-			Solution here
+			Due to the unconvential nature of the indifference curve, the two graphs are vastly different from each other. This is because the utility optimizing bundle is completely dependant on factors outside of the agent's control.
 		\end{solution}
 	\end{itemize}
 \end{exercise}
@@ -216,13 +300,13 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 	\textbf{European and US consumption-leisure choices.} Suppose that one unit of time is 168 hours (per week). Europeans work fewer hours than Americans. There are likely very many possible reasons for this, and indeed in reality this fact arises from a conbination of many reasons. In this question you will consider two reasons using the simple (one-perid) consumption leisure model.
 	\begin{itemize}
 		\item Suppose that both the utility functions and before-tax real wages $W / P$ of American and European individuals are identical. However, the labor income tax rate in Europe is higher than in America. In a single carefully labeled indifference curve/budget constraint diagram (with consumption on the viertical axis and leisure on the horizontal axis), show how it can be the case that Europeans work fewer hours than Americans. Provide any explanation of your diagram that is needed.
-		\begin{solution}
-		Solution here
-		\end{solution}
+		\begin{figure}
+                        \includegraphics{5a.png}
+                \end{figure}
 		\item Suppose that both the before-tax real wages $w / P$ and tha labor tax rates imposed on American and European individuals are identical. However, the utility function $u^{AMER}(c,l)$ of Americans differs from that of Europeans $u^{EUR}(c,l)$. In a \textbf{single} carefully labeled indifference-curve/budget constrained diagram (with consumption on the vertical axis and leisure on the horizontal axis), show how it can be the case tha Europeans work fewer hours than Americans. Provide any explanation of your diagram that is needed. 
-		\begin{solution}
-			Solution here
-		\end{solution}
+		\begin{figure}
+			\includegraphics{5b.png}
+		\end{figure}
 	\end{itemize}
 \end{exercise}
 \begin{exercise}
@@ -234,11 +318,33 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 	\begin{itemize}
 		\item Using the notation developed in this chapter (i.e., $c$ to denote consumption, $n$ to denote hours of work per week, $l$ to denote hours of leisure per week, $P$ to denote the nominal price of consumption, and $W$ to denote the nominal hourly wage), construct the representative agent's (weekly budget constraint in this model with the national service program. Provide brief economic justification for your work.
 		\begin{solution}
-			Solution here
+			Recall the original budget constraint which had a nonzero tax rate and a time period normalized to 1.\\
+			\begin{center}
+				$Pc + (1 - t)wl = (1 - t)w$
+			\end{center}
+			Our new constrain will have a time period of $168$ hours, a tax rate of $0$, and $10$ hours of mandatory service.
+			\begin{center}
+				$168 - l - 10 = 158 - l$\\
+				$\implies Pc = w(158 - l)$\\
+				$\implies Pc + wl = w158$
+			\end{center}
+			The interpretation of the new budget constraint is similar to that of the original budget constraint. The left side of the equation represents the total cost of consumption and leisure while the right side represents the total income of the period. 
 		\end{solution}
 		\item Now recall the baseline consumption-leisure framework with no national service program. Suppose that both the consumption tax rate is zero and the labor tax rate is zero. How does the slope of the budget constraint in this economy compare with the slope of the budget constraint in the economy with the national service program in part a? Provide brief economic explanation.
 		\begin{solution}
-			Solution here
+			No national service: \\
+			\begin{center}
+				$Pc + wl = 168w$\\
+				$\implies c = \frac{w}{p}(168 - l)$
+				$\implies \frac{\delta c^0}{\delta l} = -\frac{w}{p}$
+			\end{center}
+			National service included:
+			\begin{center}
+				$Pc + wl = 158w$\\
+				$\implies c = \frac{w}{p}(158 - l)$\\
+				$\implies \frac{\delta c^1}{\delta l} = -\frac{w}{p} = \frac{\delta c^0}{\delta l}$
+			\end{center}
+			So the slope remains unchanged. Economically, this is due to the fact that relative prices are held constant and the new budget constraint is created through a shift in the old one as opposed to a rotation.
 		\end{solution}
 	\end{itemize}
 \end{exercise}
