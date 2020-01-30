@@ -41,6 +41,7 @@
 \usepackage{listings}
 \usepackage{times}
 \usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 
@@ -129,9 +130,6 @@
 % - If you omit details that are vital to the proof/implementation,
 %   just say so once. Everybody will be happy with that.
 
-\section{Definitions}
-\subsection{General}
-
 \begin{frame}{The Reals}
 
 	\begin{block}{The Completeness Axiom}
@@ -147,116 +145,356 @@
 
 \begin{frame}{The Reals}
 
+	\begin{block}{Describe the Process for constructing $\widetilde{Q}$}
+        \end{block}
+
+\end{frame}
+
+\begin{frame}{The Reals}
+
+        \begin{block}{Describe the Process for constructing $\widetilde{Q}$}
+        	1) Let $s = \{(x_n)|x_n \in Q,(x_n) is a Cauchy Sequence in (Q,|.|)\}$\\
+		2) Define an equivalence relation on S by $(x_n) \sim (y_n) \iff lim_{n \rightarrow \infty}|x_n - y_n| = 0$\\
+		3) Let $\widetilde{Q} = \frac{S}{\sim}$, the set of all equivalence classes in S under $\sim$. Let the elements of $\widetilde{Q}$ is a field be denoted by $[(x_n)]$\\
+		4) Show $\widetilde{Q}$ is a field\\
+		5) Show $\widetilde{Q}$ is a totally ordered set\\
+		6) Show the ordering and operators are compatible\\
+		7) Show the $\widetilde{Q}$ is dense\\
+		8) Show the $\widetilde{Q}$ is complete\\
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Describe the process by which we make $\widetilde{Q}$ a field}
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Describe the process by which we make $\widetilde{Q}$ a field}
+		Define operators $\oplus$ and $\odot$\\
+		F1: Associativity of $\oplus$ and $\odot$\\
+		F2: Communativity of $\oplus$ and $\odot$\\
+		F3: Distributivity of $\odot$ over $\oplus$\\
+		F4: Existence of additive identity\\
+		F5: Existence of multiplicative identity\\
+		F6: Existence of additive inverse\\
+		F7: If $x \neq 0$, then there is $y$ so that $x \odot y = 1$
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Definition of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Definition of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+		$[(x_n)] \oplus [(y_n)] = [(x_n + y_n)]$\\
+		$[(x_n)] \odot [(y_n)] = [(x_ny_n)]$
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{The reals}
+        \begin{block}{Associativity of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Associativity of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+		$([(x_n)] \oplus [(y_n)]) \oplus [(z_n)] = [(x_n)] \oplus ([(y_n)] \oplus [(z_n))]$\\
+		$([(x_n)] \odot [(y_n)]) \odot [(z_n)] = [(x_n)] \odot ([(y_n)] \odot [(z_n))]$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Commutativity of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Commutativity of $\oplus$ and $\odot$ in $\widetilde{Q}$}
+		$[(x_n)] \oplus [(y_n]) = [(y_n]) \oplus [(x_n)]$
+		$[(x_n)] \odot [(y_n]) = [(y_n]) \odot [(x_n)]$
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Distributivity of $\odot$ over $\oplus$ in $\widetilde{Q}$}
+                $[(x_n)] \odot ([(y_n)] \oplus [(z_n)]) = [(x_n)] \odot [(y_n)] \oplus [(x_n)] \odot [(z_n)]$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Existence of additive identity}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of additive identity}
+		$[(x_n)] \oplus [(\bar{0})] = [(x_n)]$
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of multiplicative identity}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of multiplicative identity}
+                $[(x_n)] \odot [(\bar{1})] = [(x_n)]$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of additive inverse}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of additive inverse}
+        	$[(x_n)] \odot [(-x_n)] = [(\bar{0})]$
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Existence of a multiplicative inverse for $[(x_n)] \neq [(\bar{0})]$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Existence of multiplicative inverse for $[(x_n)] \neq [(\bar{0})]$}
+		$\hat{x}_n = x_n + \text{sign}(x_n)\frac{1}{n}$\\
+		$\hat{y}_n = \frac{1}{\hat{x}_n}$\\
+		$[(x_n)] \odot [(\hat{y}_n)] = [(\bar{1})]$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Describe the process by which we add $\prec$ to $\widetilde{Q}$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Describe the process by which we add $\prec$ to $\widetilde{Q}$}
+                $(x_n) \prec (y_n) \iff (x_n) \sim (y_n)$ or $\exists N \ni n > N \implies x_n \le
+q y_n$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Total Ordering Properties}
+		TO1: $[(x_n)] \preceq [(x_n)]$ reflexivity\\
+		TO2: $[(x_n)] \preceq [(y_n)]$ and $[(y_n)] \prec [(x_n)] \implies [(x_n)] = [(y_n)]$ antisymmetry\\
+		TO3: $[(x_n)] \preceq [(y_n)]$ and $[(y_n)] \prec [(z_n)] \implies [(x_n)] \prec [(z_n)]$ transitivity\\
+		TO2: $[(x_n)] \preceq [(y_n)]$ or $[(y_n)] \prec [(x_n)]$ totality
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Proof for Q to be dense in $\widetilde{Q}$}
+		let $[(\hat{\epsilon})]$ for $\epsilon > 0$ be given and let $[(x_n)]$ be chosen. Then for this $\epsilon \exists N \ni |x_n - x_m| < \epsilon$ if $n,m < N$. Choose the constant rational sequence $[(x_{N+1})]$ then $d([(x_{N+1})],[(x_n)[) = [(x_{N+1} - x_n)]$\\
+		But $[(x_{N+1} - x_n)] < \epsilon$ for $n > N$ which implies $[(|x_{N+1} - x_n|)] \prec [(\bar{\epsilon})]$
+        \end{block}
+\end{frame}
+
+\begin{frame}{the reals}
         \begin{block}{A Metric for the Completion of the Rationals}
-        \end{block}
-
-\end{frame}
-
-\begin{frame}
-	\begin{block}{A Metric for the Completion of the Rationals}
-		let $\tilde{d}: \tilde{Q}x\tilde{Q} \rightarrow \tilde{Q} $ be defined by $\tilde{d}([(x_n)],[(y_n)]) = [(|x_n - y_n|)]$ 
-	\end{block}
-\end{frame}
-
-\subsection{Complex Numbers}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-
-
-\section{Theorems/Lemmas}
-
-\subsection{Named}
-
-\begin{frame}{Named}
-	\begin{block}{Completed Reals is A Metric Space}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Named}
-        \begin{block}{Completed Reals is A Metric Space}
-		$\tilde{d}$ is a metric on $\tilde{Q}$ and $(\tilde{Q},\tilde{d})$ is a metric space
-	\end{block}
-\end{frame}
-
-\begin{frame}{Named}
-	\begin{block}{The Constructed Reals are Complete}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Named}
-        \begin{block}{The Construction of Reals are Complete}
-		Let $([x_n^p)])$ be a Cauchy Sequence in $(\tilde{Q},\tilde{d})$. Then there is an $[(x_n)]$ in $(\tilde{Q},\tilde{d})$ so that $\tilde{d}([(x_n^p)],[(x_n)]) \rightarrow [0]$. 
+                let $\widetilde{d}: \widetilde{Q}x\tilde{Q} \rightarrow \widetilde{Q} $ be defined by $\tilde{d}([(x_n)],[(y_n)]) = [(|x_n - y_n|)]$
         \end{block}
 \end{frame}
 
-\begin{frame}{Named}
-	\begin{block}{The Rationals are dense in the completed rationals}
+\begin{frame}{The reals}
+	\begin{block}{Explain the process of completing $(\widetilde{Q},\widetilde{d})$}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Named}
-        \begin{block}{The Rationals are dense in the completed rationals}
-        	Embed $Q$ into $(\tilde{Q},\tilde{d})$ by $q \rightarrow [(\tilde{q})]$. Then this embedding of $\tilde{Q}$ is dense in $(\tilde{Q},\tilde{d})$.
-	\end{block}
-\end{frame}
-
-\subsection{Unnamed}
-
-\begin{frame}{Unnamed}
-	\begin{block}{$(x_n)$ is CS sequence of rationals and $(x_{n_k})$ is one of it's subsequences. What relation is guaranteed?}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Unnamed}
-	\begin{block}{$(x_n)$ is CS sequence of rationals and $(x_{n_k})$ is one of it's subsequences. What relation is guaranteed?}
-		$(x_{n_k}) \sim (x_n)$
+\begin{frame}{The reals}
+	\begin{block}{Explain the process of completing $(\widetilde{Q},\widetilde{d})$}
+		1. Let $S = \{(x_n)|x_n \in Q, (x_n) \text{is a Cauchy Sequence in} (Q,d)\}$\\
+		2. Define an equivalence relation on S by $(x_n) \sim (y_n) \iff lim_{n \rightarrow \infty} d(x_n,y_n) =0$\\
+		3. Let $\widetilde{Q} = \frac{S}{\sim}$, the set of all equivalence classes in $S$ under $\sim$. Let the elements of $\widetilde{Q}$ be denoted by $[(x_n)]$\\
+		4. Extend the metric $d$ on $Q$ to the metric $\widetilde{d}$ on $\widetilde{Q}$ by defining $\widetilde{d}(\widetilde{x},\widetilde{y}) = lim_{n \rightarrow \infty} d(x_n,y_n)$\\
+		5. Define the mapping $T: Q \rightarrow \widetilde{Q}$ by $T(x) = [(\bar{x})]$\\
+		6. Show $T(Q)$ is dense in $(\widetilde{Q},\widetilde{d})$\\
+		7. Show $(\widetilde{Q},\widetilde{d})$ is complete
         \end{block}
 \end{frame}
 
-\begin{frame}{Unnamed}
-	\begin{block}{$[(x_n)] \preceq [(y_n)]$ relation to $(x_n) \space \& \space (y_n)$}
+\begin{frame}{The reals}
+        \begin{block}{Compatibility of $\preceq$ and field elements}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Compatibility of $\preceq$ and field elements}
+		COMP1: $x \preceq y \implies (x \oplus z) \preceq (y \oplus z)$\\
+		COMP2: $0 \preceq x$ and $0 \preceq y \implies 0 \preceq x \odot y$
 	\end{block}
 \end{frame}
 
-\begin{frame}{Unnamed}
-	\begin{block}{$[(x_n)] \preceq [(y_n)]$ relation to $(x_n)$ $\&$ $(y_n)$}
-		$\iff (x_n) \preceq (y_n)$
+\begin{frame}{The reals}
+        \begin{block}{General Metric Requirements}
 	\end{block}
 \end{frame}
 
+\begin{frame}{The reals}
+        \begin{block}{General Metric Requirements}
+		M1: The number $d(x,y)$ is always defined and is nonnegative\\
+		M2: $d(x,y) = 0 \iff x = y$\\
+		M3: $d(x,y) = d(y,x)$
+		M4: $d(x,y) \leq d(x,z) + x(z,y) \Delta$
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Explain the process of completing $(X,d)$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Explain the process of completing $(X,d)$}
+                1. Let $S = \{(x_n)|x_n \in Q, (x_n) \text{is a Cauchy Sequence in} (X,d)\}$\\
+                2. Define an equivalence relation on S by $(x_n) \sim (y_n) \iff lim_{n \rightarrow \infty} d(x_n,y_n) =0$\\
+                3. Let $\widetilde{Q} = \frac{S}{\sim}$, the set of all equivalence classes in $S$ under $\sim$. Let the elements of $\widetilde{X}$ be denoted by $[(x_n)]$\\
+                4. Extend the metric $d$ on $X$ to the metric $\widetilde{d}$ on $\widetilde{X}$ by defining $\widetilde{d}(\widetilde{x},\widetilde{y}) = lim_{n \rightarrow \infty} d(x_n,y_n)$\\
+                5. Define the mapping $T: X \rightarrow \widetilde{X}$ by $T(x) = [(\bar{x})]$\\
+		6. Show $T(X)$ is dense in $(\widetilde{X},\widetilde{d})$\\
+                7. Show $(\widetilde{X},\widetilde{d})$ is complete
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Explain the process of constructing $(\widetilde{C}([a,b]),\widetilde{d}_1)$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Explain the process of constructing $(\widetilde{C}([a,b]),\widetilde{d}_1)$}
+		1. Let $S = \{(x_n)|x_n \in Q, (x_n) \text{is a Cauchy Sequence in} (C([a,b]),d_1)\}$\\
+                2. Define an equivalence relation on S by $(x_n) \sim (y_n) \iff lim_{n \rightarrow \infty} d_1(x_n,y_n) =0$\\
+		3. Let $\widetilde{C}([a,b]) = \frac{S}{\sim}$, the set of all equivalence classes in $S$ under $\sim$. Let the elements of $C([a,b])$ be denoted by $[(x_n)]$\\
+                4. Extend the metric $d_1$ on $C([a,b])$ to the metric $\widetilde{d_1}$ on $\widetilde{C}([a,b])$ by defining $\widetilde{d}_1(\widetilde{x},\widetilde{y}) = lim_{n \rightarrow \infty} d_1(x_n,y_n)$\\
+		5. Define the mapping $T: C([a,b]) \rightarrow \widetilde{C}([a,b])$ by $T(x) = [(\bar{x})]$\\
+		6. Show $T(C([a,b])))$ is dense in $(\widetilde{C}([a,b]),\widetilde{d_1})$\\
+		7. Show $(\widetilde{C}([a,b]),\widetilde{d}_1)$ is complete
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Explain the process of constructing $(\mathbb{L}([a,b]),\widetilde{\mathbb{D}}_1) \equiv (\widetilde{\mathbb{RI}}([a,b]),\widetilde{\mathbb{D}}_1)$}
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Explain the process of constructing $(\mathbb{L}([a,b]),\widetilde{\mathbb{D}}_1) \equiv (\widetilde{\mathbb{RI}}([a,b]),\widetilde{\mathbb{D}}_1) I$}
+		1. Let $S = \{([x_n])|[x_n] \in \mathbb{RI}([a,b]), (x_n) \text{is a Cauchy Sequence in} (\mathbb{RI}([a,b]),\mathbb{D}_1)\}$\\
+		2. Define an equivalence relation on S by $([x_n]) \sim ([y_n]) \iff lim_{n \rightarrow \infty} \mathbb{D}_1([x_n],[y_n]) =0$\\
+		3. Let $\mathbb{L}_1([a,b]) = \frac{S}{\sim}$, the set of all equivalence classes in $S$ under $\sim$. Let the elements of $\mathbb{L}_1([a,b])$ be denoted by $[[x_n]]$. Clean up the notation by using $\mathscr{x}  = [[x_n]]$\\
+	\end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+        \begin{block}{Explain the process of constructing $(\mathbb{L}([a,b]),\widetilde{\mathbb{D}}_1) \equiv (\widetilde{\mathbb{RI}}([a,b]),\widetilde{\mathbb{D}}_1)$ II}
+		4. Extend the metric $\mathbb{D}_1$ on $\mathbb{RI}([a,b])$ to the metric $\widetilde{\mathbb{D}_1}$ on $\widetilde{\mathbb{L}_1}([a,b])$ by defining $\widetilde{\mathbb{D}}_1(\mathscr{x},\mathscr{y}) = lim_{n \rightarrow \infty} \mathbb{D}_1([(x_n)],([y_n])) = lim_{n \rightarrow \infty} d_1|x_n - y_n|$\\
+		5. Define the mapping $T: \mathbb{RI}([a,b]) \rightarrow \mathbb{L}([a,b])$ by $T([x]) = [\bar{x}] = \bar{\mathscr{X}}$\\
+		6. Show $T(\mathbb{RI}([a,b])))$ is dense in $(\mathbb{L}([a,b]),\widetilde{\mathbb{D}_1})$\\
+		7. Show $(\mathbb{L}([a,b]),\widetilde{\mathbb{D}}_1)$ is complete
+        \end{block}
+\end{frame}
+
+\begin{frame}{The reals}
+	\begin{block}{Holder's Inequality}
+        \end{block}
+\end{frame}
 
 
-\section*{Summary}
+\begin{frame}{The reals}
+        \begin{block}{Holder's Inequality}
+		$\sum_{n=1}^\infty |x_ny_n| \leq (\sum_{n=1}^\infty|x_n|^p)^\frac{1}{p}(\sum_{n=1}^\infty|y_n|^q)^\frac{1}{q}$
+        \end{block}
+\end{frame}
 
-\begin{frame}{Summary}
+\begin{frame}{The reals}
+        \begin{block}{Minkowski's Inequality}
+        \end{block}
+\end{frame}
 
-  % Keep the summary *very short*.
-  \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  % The following outlook is optional.
-  \vskip0pt plus.5fill
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-    \item
-      Something you haven't solved.
-    \item
-      Something else you haven't solved.
-    \end{itemize}
-  \end{itemize}
+
+\begin{frame}{The reals}
+        \begin{block}{Minkowski's Inequality}
+                $\sum_{n=1}^\infty |x_n + y_n| \leq (\sum_{n=1}^\infty|x_n|^p)^\frac{1}{p} + (\sum_{n=1}^\infty|y_n|^q)^\frac{1}{q}$
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Open ball of radius r about x}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Open ball of radius r about x}
+		$B(x,r) = \{y \in X | d(x,y) < r\}$
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Closed ball of radius r about x}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Open ball of radius r about x}
+		$\bar{B}(x,r) = \{y \in X | d(x,y) \leq r\}$
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Punctured ball of radius r about x}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Punctured ball of radius r about x}
+		$\hat{B}(x,r) = \{y \in X |0 < d(x,y) < r\}$
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Convergence}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Convergence}
+		A sequence $(x_n)$ is said to converge to $x$ in $X$ if\\
+		$\forall \epsilon > 0, \exists N \ni d(x_n,x) < \epsilon$ if $n < N$ 
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Cauchy Sequence}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Convergence} 
+                A sequence $(x_n)$ is said to a Cauchy Sequence if\\
+                $\forall \epsilon > 0, \exists N \ni d(x_n,x_m) < \epsilon$ if $n, m < N$ 
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Continuity}
+        \end{block}
+\end{frame}
+
+\begin{frame}{General Stuff}
+        \begin{block}{Continuity}
+		If $f: \rightarrow \mathcal{R}$ is a mapping from the metric space $(X,d_x)$ to the real numbers, we say $f$ is continuous at $x_0$ if\\
+		$\forall \epsilon > 0 \exists \delta > 0 \ni d_Y(f(x),f(x_0)) < \epsilon if d_x(x,x_0) < \delta$
+        \end{block}
 \end{frame}
 
 

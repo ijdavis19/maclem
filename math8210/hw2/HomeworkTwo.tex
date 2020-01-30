@@ -1,0 +1,250 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Two, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework Two}
+\Authors{Your Name Here\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
+Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
+\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Some problems metric spaces}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\noindent
+Here are some questions about equivalence class stuff.
+Enjoy!
+
+
+\begin{exercise}
+Let $[a,b]$, with $a < b$, be an interval and let $c$ satisfy
+$a < c < b$.
+Define the metric space
+$(\widetilde{RI}([a,b]), \widetilde{d_1})$
+carefully.  If $f$ is defined by
+\begin{eqnarray*}
+f(x) &=&
+\left \{
+\begin{array}{ll}
+H, & a \leq t < c\\
+L, & c \leq t \leq b
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent
+where both $L$ and $H$ are positive numbers.
+\noindent
+Explain the difference between $f$ and its equivalence
+class $[f]$ in $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+	
+\begin{exercise}
+Let $[a,b]$, with $a < b$, be an interval and let $c$ satisfy
+$a < c < b$.
+Define $f$ by
+\begin{eqnarray*}
+f(x) &=&
+\left \{
+\begin{array}{ll}
+H, & a \leq t < c\\
+L, & c \leq t \leq b
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent
+where both $L$ and $H$ are positive numbers.
+Prove there is a  Cauchy Sequence of continuous functions, $(x_n)$
+under $d_1$ which converges to $f$.  Then explain why the sequence of
+equivalance classes $([x_n])$ converges to $[f]$ in
+$(\widetilde{RI}([a,b]), \widetilde{d_1})$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $[a,b]$, with $a < b$, be an interval and let 
+$P = \{t_0 = a, t_1, \ldots, t_{n-1}, t_n = b\}$
+be a partition of $[a,b]$ and let
+$E = \{s_0,s_1, \ldots, s_{n-1}\}$
+be any evaluation set; i.e. each $s_i$ is a point in the
+interval $[t_i, t_{i+1}]$.  Let $f$ be a Riemann Integrable function on
+$[a,b]$.
+If $f_{PE}$ is defined by
+\begin{eqnarray*}
+f_{PE}(x) &=&
+\left \{
+\begin{array}{ll}
+f(s_i), & t_i \leq t < t_{i+1}, \quad 0 \leq i \leq n-1\\
+f(s_{n-1}), &  t_{n-1} \leq t \leq b = t_n
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent
+\noindent
+Explain the difference between $f_{PE}$ and its equivalence
+class $[f_{PE}]$ in $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+	
+\begin{exercise}
+For the function $f_{PE}$ in the previous exercise, 
+prove there is a  Cauchy Sequence of continuous functions, $(x_n)$
+under $d_1$ which converges to $f_{PE}$.  Then explain why the sequence of
+equivalance classes $([x_n])$ converges to $[f_{PE}]$ in
+$(\widetilde{RI}([a,b]), \widetilde{d_1})$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+For the function $f_{PE}$ above, 
+prove $f_{PE}$ is Riemann Integrable and $\int_a^b f_{PE}(t) dt = S(f,P,E)$
+where $S((f,P,E)$ is the Riemann Sum of $f$ for partition $P$ and evaluation set $E$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $P_n$ and $E_n$ be a sequence of partitions and evaluation sets
+of the interval $[a,b]$ with $a < b$ and let $f$ be a Riemann Integrable function
+on $[a,b]$.  From the previous exercises, there is a Cauchy Sequence of
+continuous functions $(x_n^m)$ for each $n$ which converges in 
+$(\widetilde{RI}([a,b]), \widetilde{d_1})$ to $[f_{P_n,E_n}]$.
+For convenience, let $f_n = f_{P_n,E_n}$.  Then we know
+$f_n$ is Riemann Integrable and $\int_a^b f_n(t) dt = S(f,P_n,E_n)$.
+From the Riemann Approximation Theorem, if $\| P_n\| \rightarrow 0$,
+where $\| P_n\|$ is the norm of the partition $P_n$, it follows that
+$d_1(f_n,f) \rightarrow 0$.  \\
+
+\noindent
+For a given $\epsilon > 0$,
+since $d_1(x_j^m,f_j) \rightarrow 0$, prove we can find an index $n_j$ so that
+$d_1(x_j^{n_j},f_j) < \frac{\epsilon}{2}$ for all $j$.  Then prove there is an $N$ so
+\begin{eqnarray*}
+d_1(x_j^{n_j},f) &<& d_1(x_j^{n_j},f_j) + d_1(f_j,f) < \epsilon
+\end{eqnarray*}
+\noindent
+for all $j > N$.  This shows there is a Cauchy Sequence of
+continuous functions $(x_j^{n_j})$ which satisfies
+$\widetilde{d_1}( [x_j^{n_j}], [f] ) \rightarrow 0$.
+{\bf So we have a way of identifying any Riemann Integrable
+function with an Cauchy Sequence of equivalence classes
+of continuous functions}.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+
+	
+\end{document}

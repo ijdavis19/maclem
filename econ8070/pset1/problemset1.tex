@@ -93,8 +93,8 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
  % Corresponding author
 
 \date{\small{Version ~\today}}
-\Abstract{TBD}
-\Keywords{TBD}
+\Abstract{Some Questions on OLS and FWL}
+\Keywords{OLS, FWL}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -108,39 +108,42 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \begin{exercise}
 	Read the following stories and explain whether Yujie and Tom are correct or not:
 	\begin{itemize}
-		\item Yujie tries to estimate the variance by sampe variace by she does not apply the sample size correction (i.e. she used $\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2)$. She claims that the estimator is good because it is a consistent estimator. Tom says that her estimator is not good because it is not an unbiased estimator.
+		\item Yujie tries to estimate the variance by sample variace but she does not apply the sample size correction (i.e. she used $\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2)$. She claims that the estimator is good because it is a consistent estimator. Tom says that her estimator is not good because it is not an unbiased estimator.
 		\begin{solution}
-			Solution here
+			Neither Tom nor Yujie are correct. Yujie is incorrect due to the fact that, by not applying the sample size correction and using $\frac{1}{n- 1}\sum_{i=1}^{n}(x_i - \bar{x})^2)$, her estimator is not efficient by definition. Specifically, her estimator is not the "best possible" estimator of the quantity in question. Where Tom is wrong is that he claims the estimator is not unbiased which we cannot be certain of because it is an unrelated concept.
 		\end{solution}
 		\item Tom estimates the sample mean using $1 + \frac{1}{n}\sum x_i$. He claims that the estimator goes to 0 when $n$ goes to $\infty$. Yujie says that the estimator could not be consistent because the estimator is biased for any given value of $n$.
 		\begin{solution}
-			Solution here
+			Yujie is correct becuase, for any n, $\bar{x} = \mathbb{E}[1 + \frac{1}{n}\sum x_i] = 1 + \mathbb{E}[x] \neq \mathbb{E}[x]$. Tom is wrong because $\text{lim}_{n \rightarrow \infty} 1 + \frac{1}{n}\sum x_i = 1 \neq 0$
 		\end{solution}
 		\item Consider the model $y = X\beta +  \epsilon$, and the estimator $\hat{\beta}$. $\hat{\beta}$ is the OLS estimator which utilize only half of the sample (say you sort the samples randomly and take only the odd/even rows on $X$ and $y$). Tom claims that $\hat{\beta}$ is unbiased and consistent, Yujie says that it is the best linear unbiased estimator because all the OLS assumptions are satisfied.
 		\begin{solution}
-			Solution here
+			Both are correct so long as $\frac{n}{2}$ is sufficiently large enough to satisfy all of the OLS assumptions. This is because a random sampling of a random sample is still a valid sample. 
 		\end{solution}
 		\item Given the true model $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \epsilon$, Yujie runs an OLS regression of $y$ on $x_1$ and $x_2$ to get a consistent estimate of $\beta_1$. Tom says that she can get the same estimate by regressing $y$ on $x_1$.
 		\begin{solution}
-			Solution here
+			Tom is wrong (in most cases) because, by FWL, we know the multilinear regression does not simply regress $y$ on $x_1$ but actually regresses the variation of $y$ which is not accounted for by the variation of $x_2$ on the variation of $x_1$ which is also not accounted for by variation in $x_2$. Tom would be correct in the case where $x_1$ and $x_2$ are completely independent of each other.
 		\end{solution}
-		\item Yujie says that the OLS estimator is unbiased and consistent only if all four OLS assumptions (mentioned in class) are satisfied. Tom says tht with heteroskadicity the OLS estimator is biased but it is still consistent.
+		\item Yujie says that the OLS estimator is unbiased and consistent only if all four OLS assumptions (mentioned in class) are satisfied. Tom says that with heteroskadicity the OLS estimator is biased but it is still consistent.
 	\end{itemize}
+	\begin{solution}
+		Yujie is wrong because all four OLS assumptions being satisief implies it is the \textbf{best} linear unbiased and consistent estimator. It does not rule out other unbiased and consistent estimators existing in spite of the four OLS assumptions being unsatisfied. Tom is incorrect because heteroskadicity is not guaranteed to cause bias or inconsistency.
+	\end{solution}
 \end{exercise}
-
+\bigskip
 \begin{exercise}
 	\begin{itemize}
 		\item Given the model $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \epsilon$. Yujie runs an OLS regression of $y,\space x_1$, and $x_2$ on $x_3$ and $x_4$ and obtains the residuals $\hat{\epsilon}_y, \space \hat{\epsilon}_1$, and $\hat{\epsilon}_2$ respectively. Then she runs an OLS regression of $\hat{\epsilon}_y$ on $\hat{\epsilon_1}$ and $\hat{\epsilon}_2$. She claims that she can obtain the same estimates for the coefficients of $x_1$ and $x_2$ as the usual OLS estimates. Tom says that he can also obtain the same coefficient estimates by running an OLS regression of $\hat{\epsilon}_y$ on $\hat{\epsilon}_1$ and the another regression of $\hat{\epsilon}_y$ on $\hat{\epsilon}_2$ separately.
 		\begin{solution}
-			Solution here.
+			Similar to what occured in 1.4, Tom is wrong in most cases. Going into her final regression, Yujie has $\hat{\epsilon}_y$, which is the variance of y not caused by $x_3$ or $x_4$, $\hat{\epsilon}_1$, which is the variance of $x_1$ not caused by $x_3$ or $x_4$, and $\hat{\epsilon}_1$, which is the variance of $x_2$ not caused by $x_3$ or $x_4$, but she still needs both $\hat{\epsilon}_1$ and $\hat{\epsilon}_2$ in her final regression to control for the variance of once caused by the other as well as the variance in $\hat{\epsilon}_y$ caused by the other. Tom would be correct if $\hat{\epsilon}_y$ and $\hat{\epsilon}_2$ are wholly independent, however.
 		\end{solution}
 		\item Given the model $y = \beta_0 + \beta_1x_1 + \gamma_1x_1^2 + \epsilon$, Yujie runs an OLS regression of $y$ on $x_1$ and $x_1^2$ to get a consistent estimate of $\beta_1$ and $\gamma_11$. Tom says the $\hat{\gamma}_1$ could not be the best linear unbiased estimator of $\gamma_1$ because it is not a linear estimator.
 		\begin{solution}
-			Solution here.
+			Tom is wrong because $\gamma_1$ is still a linear estimator of $x_1^2$ and $x_1$ and $x_!^2$ are linearly independent.
 		\end{solution}
-		\item Yujie tries to estimate the standard deviation by sample standard deviation and think that the estimator is consistent. Tom says that her estimator is not good because it is not an unbiased estimator. 
+		\item Yujie tries to estimate the standard deviation by sample standard deviation and thinks that the estimator is consistent. Tom says that her estimator is not good because it is not an unbiased estimator. 
 		\begin{solution}
-			Solution here
+			Both are corrent. The sample standard deviation is consistent but it is not unbiased due to its reliance on the concave square root function. 
 		\end{solution}
 	\end{itemize}
 \end{exercise}
