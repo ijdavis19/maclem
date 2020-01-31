@@ -31,6 +31,7 @@ gen scriptprob =.
 gen firstgenyear=.
 gen firstgenmonth=.
 gen interest=.
+gen geneq=.
 qui forval d = 1/69 {
   replace drugnum = `d' if id > (`d' - 1)*143 & id <= `d'*143
   forval y = 1/11 {
@@ -58,11 +59,14 @@ qui forval d = 1/69{
   mat mo`d' = r(mean)
   sum interest
   mat int`d' = r(mean)
+  sum geneq
+  mat geneq`d' = r(mean)
   use $panel, replace
   replace drug = "`dr`d''" if drugnum == `d'
   replace firstgenyear = y`d'[1,1] if drugnum == `d'
   replace firstgenmonth = mo`d'[1,1] if drugnum == `d'
   replace interest = int`d'[1,1] if drugnum == `d'
+  replace geneq = geneq`d'[1,1] if drugnum ==`d'
   ma drop dr`d'
   ma drop y`d'
   ma drop mo`d'
@@ -141,38 +145,6 @@ qui forval year = 2006/2016 {
     replace monthTotalObs = T[1,1] if year == `year' & month == `month'
     save $panel, replace
   }
-}
-
-// Relevant Reasons for Visit (NOT USING ABx RELATIONS)
-//Collect RFV's
-sum drugnum
-local drugNumMax = r(max)
-forval j = 1/`drugNumMax' {
-	forval year = 2006/2016 {
-		use "$dataraw/namcs`year'-stata.dta", replace
-		gen script`j'=.
-		if `year' >= 2006 & `year' < 2012{
-			forval k = 1/8{
-				replace script`j' = 1 if DRUGID`k' == "`v`j''"
-			}
-		}
-		else if `i' == 2012 | `i' == 2013{
-			forval k = 1/9{
-				replace script`j' = 1 if DRUGID`k' == "`v`j''"
-			}
-		}
-		else {
-			forval k = 1/30{
-					replace script`j' = 1 if DRUGID`k' == "`v`j''"
-			}
-		}
-		//sum script`j'
-		//local RFV`year' = r(total)
-		//
-		//
-		//
-		//
-	}
 }
 
 
