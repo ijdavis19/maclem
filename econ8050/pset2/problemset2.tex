@@ -1,0 +1,163 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Problem Set Two, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Problem Set 2}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{TBD}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+1. \textbf{Payroll Taxes and Wages}. A representative houshold has the following preferences over consumption and leisure.
+\begin{equation}
+	u(C,l) = \frac{C^{1-\frac{1}{\theta}}}{1 - \frac{1}{\theta}} - \frac{(1 - l)^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\theta}}
+\end{equation}
+
+and a budget constraint
+\begin{equation}
+	C + (1 - \tau)W = (1 - \tau)W
+\end{equation}
+where the total number of hours available to work has been normalized to 1, $W$ is the \textit{real wage rate}, and $\tau$ is tax rate on labor income\\
+\\
+A representative firm hires workers and produces output according to a production function $Y = An^{1-\alpha}$ where $n$ is labor hours, $A$ is productivity, and $0 < \alpha < 1$. The firm chooseslabor hours it employs $(n)$ as to maximize profits given by
+\begin{equation}
+	\Pi = Y - (1 + \tau_P)Wn
+\end{equation}
+where $\tau_P$ is a payroll tax (a tax the firm has to pay on wages of its worker). Whatever profits the firm makes in equilibrium go to foreign owners of the firm, not the household.\\
+\\
+\indent 1. Solve the household's problem to find the optimal choices of $C$ and $l$ (or $n = 1 - l$) as a function of the wage rate (and model parameters).
+
+\indent 2. Solve the firm's problem to find the optimum choices of $n$ as a function of the wage rate (and model parameters).
+
+\indent 3. Sketch the equilibrium in the labor market. If needed, mention any assumptions about parameter values that you make.
+
+\indent 4. Solve for the equilibrium wage rate.
+
+\indent 5. How do the wage rate and employment depend on the payroll tax? If firms are required to pay a higher payroll tax, who ends up paying the tax? What does it depend on?
+
+\indent 1. Sketch the effect of an increase in payroll tax using a supply and demand in the labor market. What would it look like if $\theta = 1$? Explain.
+
+2. \textbf{Progressive Income Taxation}. Suppose that a representative household faces a single period consumption-leisure choice problem. The household's utility is given by
+\begin{equation}
+	u(c,l) = c^\alpha l{1 - \alpha}
+\end{equation}
+the real wage rate (i.e. wage in units of consumption) is given by $W$ and is taxes at the rate $t$.\\
+\\
+\indent 1. Write down the budget constraint for the household.
+
+\indent 2. Show the solution to the household's problem geographically. Be sure to lable the axes and indicate the intercepts of the budget line.
+
+\indent 3. Find the closed form solutions for $c^*$ and $l^*$.
+
+\indent 4. Suppose the government decides to increase the tax rate $t$. Show graphically the effect this will have on household's behavior. 
+
+\indent 5. Suppose that instead the government decides to introduce progressive taxation: A household will continue to pay tax rate of $t$ on income below the threshold level of $\bar{W}$ but will pay a higher tax rate of $t'$ on any income above $\bar{W}$. 
+
+\indent 6. Show the solution to the household's problem graphically. Be sure to label the axes and indicate the intercepts - and any other significant elements - of the budget line.
+
+\indent 7. Discuss what kind of impacts this new policy may have on the labor supply decisions of the household.
+
+\indent 8. Can you find the closed form solution for $c^*$ and $l^*$? If not, can you at least describe how one could find them analytically?
+
+
+
+\end{document}
