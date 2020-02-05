@@ -93,8 +93,8 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 %\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
 
 \date{\small{Version ~\today}}
-\Abstract{TBD}
-\Keywords{TBD}
+\Abstract{Questions on payroll taxes, wages, and progressive taxation}
+\Keywords{Progressive taxes, wages, payroll taxes, static consumption-leisure choice model}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -109,12 +109,12 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 
 1. \textbf{Payroll Taxes and Wages}. A representative houshold has the following preferences over consumption and leisure.
 \begin{equation}
-	u(C,l) = \frac{C^{1-\frac{1}{\theta}}}{1 - \frac{1}{\theta}} - \frac{(1 - l)^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\theta}}
+	u(C,l) = \frac{C^{1-\frac{1}{\theta}}}{1 - \frac{1}{\theta}} - \frac{(1 - l)^{1 + \frac{1}{\nu}}}{1 + \frac{1}{\nu}}
 \end{equation}
 
 and a budget constraint
 \begin{equation}
-	C + (1 - \tau)W = (1 - \tau)W
+	C + (1 - t)W(1 - l)  = (1 - \tau)W
 \end{equation}
 where the total number of hours available to work has been normalized to 1, $W$ is the \textit{real wage rate}, and $\tau$ is tax rate on labor income\\
 \\
@@ -125,39 +125,145 @@ A representative firm hires workers and produces output according to a productio
 where $\tau_P$ is a payroll tax (a tax the firm has to pay on wages of its worker). Whatever profits the firm makes in equilibrium go to foreign owners of the firm, not the household.\\
 \\
 \indent 1. Solve the household's problem to find the optimal choices of $C$ and $l$ (or $n = 1 - l$) as a function of the wage rate (and model parameters).
+	\begin{solution}
+		In order to make the equation easier to work with, we take logs of the utility funciton giving us\\
+		$v(c,l) = \text{ln}(u(c,l)) = (1 - \frac{1}{\theta})(\text{ln}(c) - \text{ln}(1 - \frac{1}{\theta})) - (1 + \frac{1}{\nu})(\text{ln}(1 - l) - \text{ln}(1 + \frac{1}{\nu}))$\\
+		This gives us $\mathcal{L} = \text{ln}(u(c,l)) = (1 - \frac{1}{\theta})(\text{ln}(c) - \text{ln}(1 - \frac{1}{\theta})) - (1 + \frac{1}{\nu})(\text{ln}(1 - l) - \text{ln}(1 + \frac{1}{\nu})) + \lambda(C + (1 - t)(1 - l)w - (1 - t)w)$\\
+		$\implies \mathcal{L}_c = \frac{1 - \frac{1}{\theta}}{c} + \lambda = 0$\\
+		\&\\
+		$\mathcal{L}_l = \frac{1 + \frac{1}{\nu}(-1)}{1 - l} - \lambda(1 - t)w = 0$\\
+		$\implies \frac{(1 - \frac{1}{\theta})(1 - l)(-1)}{c(1 + \frac{1}{\nu})} = \frac{-1}{(1 - t)w}$\\
+		$\implies \frac{(1 - \frac{1}{\theta})(1 - l)}{c(1 + \frac{1}{\nu})} = \frac{1}{(1 - t)w)}$\\
+		$\implies \frac{(1 - \frac{1}{\theta})(1 - l)(1 - t)w}{1 + \frac{1}{\nu}} = c$\\
+		Substituting into the budget constraint we get\\
+		$(1 - l)(\frac{(1 - \frac{1}{\theta})(1 - t)w}{1 + \nu} + (1-t)w) = (1 - t)w$\\
+		$\implies (1 - l)(\frac{1 - \frac{1}{\theta}}{1 + \frac{1}{\nu}} + 1) = 1$\\
+		$\implies (1 - l)(\frac{1 - \frac{1}{\theta} + 1 + \frac{1}{\nu}}{1 + \nu}) = 1$\\
+		$\implies (1 - l) = \frac{1 + \frac{1}{\nu}}{2 + \frac{1}{\nu} - \frac{1}{\theta}}$\\
+		$\implies l^* = \frac{1- \frac{1}{\theta}}{2 + \frac{1}{\nu} - \frac{1}{\theta}}$\\
+		\\
+		and, returning to our FOC's we see\\
+		$(1 - l) = \frac{c(1 + \frac{1}{\nu})}{(1 - \frac{1}{\theta})w(1 - t))}$\\
+		$\implies \frac{1 - \frac{1}{\theta}}w()1 - t) - c(1 + \frac{1}{\nu}){(1 - \frac{1}{\theta})w(1 - t)} = l$\\
+		$\implies c + w(1 - t)(\frac{(1 - \frac{1}{\theta)}w(1-t) - c(1 + \frac{1}{\nu})}{(1 - \frac{1}{\theta})w(1 - t)})= w(1 - t)$\\
+		$\implies c^* = w(1 - t)(1 - \frac{(1 - \frac{1}{\theta})w(1 - t) - c(1 + \frac{1}{\nu})}{(1 - \frac{1}{\theta})w(1 - t)})$
+	\end{solution}
 
 \indent 2. Solve the firm's problem to find the optimum choices of $n$ as a function of the wage rate (and model parameters).
+	\begin{solution}
+		$\Pi = An^{1 - \alpha} - (1 + t_p)w$\\
+		$\implies \Pi_n = (1 - \alpha)An^{-\alpha} - (1 + t_p)W = 0$\\
+		$\implies (1 - \alpha)An^{-\alpha} = (1 + t_p)w$\\
+		$n ^{- \alpha} = \frac{(1 + t)w}{(1 - \alpha)A}$\\
+		$\implies n = (\frac{(1 - \alpha)A}{(1 + t)w)})^{\frac{1}{\alpha}}$\\
+		\&\\
+		$\implies w = \frac{(1 - \alpha)A}{n^\alpha (1 + t_p)}$\\
+	\end{solution}
 
-\indent 3. Sketch the equilibrium in the labor market. If needed, mention any assumptions about parameter values that you make.
+\indent 3. Sketch the equilibrium in the labor market. If needed, mention any assumptions about parameter values that you make.\\
+	\begin{solution}
+		Recall $l =\frac{1 - \frac{1}{\theta}}{2 + \frac{1}{\nu} - \frac{1}{\theta}}$ which gives us\\
+		\textbf{See Graph 1.3 on back}
+	\end{solution}
 
 \indent 4. Solve for the equilibrium wage rate.
-
+	\begin{solution}
+		$Eq^* \ implies \frac{(1 - \alpha)A}{(1 + t_p)w} = (\frac{1 + \frac{1}{\nu}}{2 + \frac{1}{\nu} - \frac{1}{\theta}})^\alpha$\\
+		$\implies w^* = \frac{(1 - \alpha)A}{(1 + t_p)(\frac{1 + \frac{1}{\nu}}{2 + \frac{1}{\nu} - \frac{1}{\theta}})^\alpha}$
+	\end{solution}
 \indent 5. How do the wage rate and employment depend on the payroll tax? If firms are required to pay a higher payroll tax, who ends up paying the tax? What does it depend on?
-
-\indent 1. Sketch the effect of an increase in payroll tax using a supply and demand in the labor market. What would it look like if $\theta = 1$? Explain.
-
+	\begin{solution}
+		Because the labor supply function is perfectly inelastic, the workers will pay the entirety of the payroll tax.
+	\end{solution}
+\indent 6. Sketch the effect of an increase in payroll tax using a supply and demand in the labor market. What would it look like if $\theta = 1$? Explain.
+	\begin{solution}
+		\textbf{See graph 1.6 on back}
+		$\theta = 1$ would imply $n = \frac{1 - \frac{1}{1}}{2 + \frac{1}{\nu} - \frac{1}{\theta}} = 1$
+	\end{solution}
 2. \textbf{Progressive Income Taxation}. Suppose that a representative household faces a single period consumption-leisure choice problem. The household's utility is given by
 \begin{equation}
-	u(c,l) = c^\alpha l{1 - \alpha}
+	u(c,l) = c^\alpha l^{1 - \alpha}
 \end{equation}
-the real wage rate (i.e. wage in units of consumption) is given by $W$ and is taxes at the rate $t$.\\
+the real wage rate (i.e. wage in units of consumption) is given by $W$ and is taxed at the rate $t$.\\
 \\
 \indent 1. Write down the budget constraint for the household.
+	\begin{solution}
+		$P + (1 - t)lw = w(1 - t)$
+	\end{solution}
 
-\indent 2. Show the solution to the household's problem geographically. Be sure to lable the axes and indicate the intercepts of the budget line.
+\indent 2. Show the solution to the household's problem graphically. Be sure to lable the axes and indicate the intercepts of the budget line.
+	\begin{solution}
+		\textbf{See graph 2.2 on back}
+	\end{solution}
 
 \indent 3. Find the closed form solutions for $c^*$ and $l^*$.
+	\begin{solution}
+		$V(,l) = ln(U(c,l)) = \alpha ln(c) + (1 - \alpha)ln(l)$\\
+		$\mathcal{L} = \alpha ln(c) + (1 - \alpha)ln(l) + \lambda(Pc + (1 - t)wl - w(1 - t))$\\
+		$\mathcal{L}_c = \frac{\alpha}{n} + \lambda P = 0$\\
+		$\mathcal{L}_l = \frac{1 - \alpha}{l} + \lambda (1 - t)w = 0$\\
+		$\implies \frac{\alpha l}{c(1 - \alpha)} = \frac{P}{(1 - t)w}$\\
+		$\implies c = \frac{\alpha l(1 - t)w}{P(1 - \alpha)}$\\
+		$\implies P(\frac{\alpha l(1 - t)w}{P(1 - \alpha)} + wl(1 - t)) = w(1 - t)$\\
+		$\implies l(\frac{\alpha}{1 - \alpha} + 1) = 1$\\
+		$\implies l(\frac{1}{1 - \alpha} = 1$\\
+		$l^* = \frac{1 - \alpha}{\alpha}$\\
+		and, from the FOC's
+		$l = \frac{Pc(1 - \alpha}{\alpha (1 - t)w}$\\
+		$\implies Pc + \frac{Pc(1 - \alpha)}{\alpha (1 - t)w}(1 - t)w = (1 - t)w$\\
+		$\implies Pc(1 + \frac{1 - \alpha}{\alpha} = (1 - t)w)$\\
+		$Pc(\frac{1}{\alpha}) = (1 - t)w$\\
+		$\implies c^* = \frac{\alpha (1 - t)w}{P}$
+	\end{solution}
 
 \indent 4. Suppose the government decides to increase the tax rate $t$. Show graphically the effect this will have on household's behavior. 
-
+	\begin{solution}
+		Because $l^*$ is not dependent on $t$, only $c^*$ will change.\\
+		\textbf{See Graph 4.4 on back}
+	\end{solution}
 \indent 5. Suppose that instead the government decides to introduce progressive taxation: A household will continue to pay tax rate of $t$ on income below the threshold level of $\bar{W}$ but will pay a higher tax rate of $t'$ on any income above $\bar{W}$. 
 
 \indent 6. Show the solution to the household's problem graphically. Be sure to label the axes and indicate the intercepts - and any other significant elements - of the budget line.
-
+	\begin{solution}
+		\textbf{See graph 4.6 on the back}
+	\end{solution}
 \indent 7. Discuss what kind of impacts this new policy may have on the labor supply decisions of the household.
+	\begin{solution}
+		Becuase we know the l is not dependent on the tax rate or wage, we can say that the household will only change quantity consumed. Additionally, if the household's wage is less than $\bar{w}$, then the household will not change consumption either.
+	\end{solution}
 
 \indent 8. Can you find the closed form solution for $c^*$ and $l^*$? If not, can you at least describe how one could find them analytically?
-
-
+	\begin{solution}
+		To find an answer analytically, even though a closed form solution is not possible, one would perform the same constrained optimization problem done above but, for families with $w > \bar{w}$, replace their budget constraint with\\
+		$Pc + l\bar{w}(1 - t^0) + l(w - \bar{w})(1 - t^1) = \bar{w}(1 - t^0) + (w - \bar{w})(1 - t^1)$
+	\end{solution}
+\newpage
+\clearpage
+\noindent \textbf{Graph 1.3}
+\begin{figure}[h]
+        \includegraphics{13.png}
+\end{figure}
+\clearpage
+\noindent \textbf{Graph 1.6}
+\begin{figure}[h]
+        \includegraphics{16.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.2}
+\begin{figure}[h]
+        \includegraphics{42.png}
+\end{figure}
+\clearpage
+\noindent \textbf{Graph 2.4}
+\begin{figure}[h]
+        \includegraphics{44.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.6}
+\begin{figure}[h]
+        \includegraphics{46.png}
+\end{figure}
 
 \end{document}

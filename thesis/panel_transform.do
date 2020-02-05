@@ -31,7 +31,7 @@ gen scriptprob =.
 gen firstgenyear=.
 gen firstgenmonth=.
 gen interest=.
-gen geneq=.
+gen geneq=""
 qui forval d = 1/69 {
   replace drugnum = `d' if id > (`d' - 1)*143 & id <= `d'*143
   forval y = 1/11 {
@@ -49,7 +49,7 @@ global panel = "$output/script_panel.dta"
 
 
 // Drug names
-qui forval d = 1/69{
+qui forval d = 1/69 {
   use $rates, replace
   drop if abxnum != `d'
   local dr`d' = drug
@@ -59,18 +59,18 @@ qui forval d = 1/69{
   mat mo`d' = r(mean)
   sum interest
   mat int`d' = r(mean)
-  sum geneq
-  mat geneq`d' = r(mean)
+  local geneq`d' = geneq
   use $panel, replace
   replace drug = "`dr`d''" if drugnum == `d'
   replace firstgenyear = y`d'[1,1] if drugnum == `d'
   replace firstgenmonth = mo`d'[1,1] if drugnum == `d'
   replace interest = int`d'[1,1] if drugnum == `d'
-  replace geneq = geneq`d'[1,1] if drugnum ==`d'
+  replace geneq = "`geneq`d''" if drugnum == `d'
   ma drop dr`d'
-  ma drop y`d'
-  ma drop mo`d'
-  ma drop int`d'
+  mat drop y`d'
+  mat drop mo`d'
+  mat drop int`d'
+  ma drop `geneq`d''
   save $panel, replace
 }
 
@@ -130,7 +130,7 @@ gen monthTotalObs =.
 gen yearTotalObs =.
 save $panel, replace
 qui forval year = 2006/2016 {
-  forval month = 0/12{
+  forval month = 0/12 {
     use "$dataraw/namcs`year'-stata.dta", replace
     if `month' != 0 {
 	     drop if VMONTH != `month'

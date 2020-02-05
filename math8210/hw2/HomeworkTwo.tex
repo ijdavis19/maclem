@@ -87,10 +87,9 @@ pdfauthor={Peterson}}
 \Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{MATH 8210 Homework Two}
-\Authors{Your Name Here\textsuperscript{1}}
-\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
-Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
-\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 
 \date{\small{Version ~\today}}
 \Abstract{Some problems metric spaces}
@@ -135,7 +134,19 @@ class $[f]$ in $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	Let $RI([a,b])$ be the set of all Riemann Integrable functions on $[a,b]$. Define $\sim$ as $x \sim y$ if $d_1(x,y) = \int_a^b|x(t) - y(t)|dt = 0$. We construct $(\widetilde{RI}([a,b])) = RI([a,b])/\sim$ and denote an equivalence class by $[x]$ for any RI function $x$ on $[a,b]$. Finally, we extend $d_1(x,y)$ to $\widetilde{RI}$ by  $d_1([x],[y]) = d_1(x,y)$\\
+	So
+\begin{eqnarray*}
+	f(x) &=&
+	\left \{
+		\begin{array}{ll}
+			H, & a \leq t < c\\
+			L, & c \leq t \leq b
+		\end{array}
+	\right .
+\end{eqnarray*}
+	and $[f]$ is any function $g$ such that $\int_a^b|f(t) - g(t)|dt = 0$\\
+	\textbf{Note:} This does not require $f = g$
 \end{solution}
 	
 \begin{exercise}
@@ -160,7 +171,22 @@ $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	Consider the sequence of continuous functions $(x_n)$ such that
+	\begin{eqnarray*}
+		f(x) &=&
+		\left \{
+			\begin{array}{ll}
+				H, & a \leq t < c\\
+				H - n(t -c), & c \leq t < c + \frac{H - L}{n}\\
+				L, & c +\frac{H - L}{n} \leq t \leq b
+			\end{array}
+		\right .
+	\end{eqnarray*}
+\noindent Now, pick any $t > c$, then $\exists \; N$ so that $n > N \implies c + \frac{H - L}{n} < t$ so that $x_n(t) = L \; \forall \; n > N$. Thus $x_n(t) \rightarrow L$ if $t > c$. It is easy to see $x_n(t) = H$ when $a \leq t < c$. Hence, $x_n(t)$ converges pointwise to $f$.\\
+\\We can say that $([x_n])$ converges to $[f]$ in $(\widetilde{RI}([a,b]),\widetilde{d})$ because $\lim_{n \rightarrow \infty}\int_a^b|f(t) - x_n(t)|dt$\\
+$= \lim_{n \rightarrow \infty}(\int_a^c|f(t) - x_n(t)|dt + \int_c^{c + \frac{H - L}{n}}|f(t) - x_n(t)|dt + \int_{c + \frac{H - L}{n}}^b|f(t) - x_n(t)|dt)$\\
+$= \int_a^c|f(t) - x(t)|dt \int_c^b|f(t) - x(t)|dt = 0$\\
+	so $\widetilde{d_1}([lim_{n \rightarrow \infty}(x_n)], [f]) = 0$ and $lim_{n \rightarrow \infty}(x_n) \in [f]$
 \end{solution}
 
 \begin{exercise}
@@ -188,7 +214,7 @@ class $[f_{PE}]$ in $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	$f_{PE}$ is a Reimann integrable function which converges to $f$ as $n \rightarrow \infty$. $[f_{PE}]$ are all functions $(g)$ such that $\widetilde{d_1}(f_{PE},g) = \int_a^b|f(t) - g(t)|dt =0$ for a given $n$.
 \end{solution}
 	
 \begin{exercise}
@@ -200,7 +226,20 @@ $(\widetilde{RI}([a,b]), \widetilde{d_1})$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	Define the series of functions $(x_{n_k})$ as
+\begin{eqnarray*}
+(x_{n_k}) &=&
+\left \{
+\begin{array}{ll}
+	f(s_i), & t \in [t_i,t_{i + 1}), \quad i \in [0, n-2]\\
+	f(s_i) + k(t - t_{i+1}), &  \in [t_{i + 1}, t_{i + 1} + \frac{|f(s_{i + 1}) - f(s_i)|}{k}), \quad i \in [0, n-2], \quad f(s_i) < f(s_{i + 1})\\
+	f(s_{i- 1}) - k(t - t_{i+1}), &  \in [t_{i + 1} + \frac{|f(s_{i + 1}) - f(s_i)|}{k}, t_{i + 2}], \quad i \in [0, n-2], \quad f(s_{i + 1}) < f(s_i)\\
+	f(s_{n - 1}), &  t_{n-1} \leq t \leq b = t_n
+\end{array}
+\right .
+\end{eqnarray*}
+\noindent Truthfully, $(x_{n_k})$ is nothing more than an expansion of the Cauchy Sequence built in the earlier exercise but leveraged to converge to the steps between evaluations. We can prove $(x_{n_k})$ converges by the following\\
+	Pick any $t > t_{i + 1}$, then $\exists K \ni k > K \implies t_{i + 1} + \frac{|f(s_{i + 1}) - f(s_i)|}{k} < t$ so $(x_{n_k}) = f(s_{i + 1}) \; \forall k > K$. Thus $(x_{n_k}) \rightarrow f(s_{i + 1})$ if $t > t_{i + 1}$. It is easy to see that $(x_{n_k}) = f(s_i)$ when $t \in [t_i,t_{i + 1})$. Hence, $(x_{n_k})$ converges pointwise to $f_{PE}$ and $([x_{n_k}]) \rightarrow [f_{PE}]$ in $(\widetilde{RI}([a,b]),\widetilde{d}_1)$ because $d_1(f_{PE}, lim_{k \rightarrow \infty}(x_{n_k})) = 0$
 \end{solution}
 
 \begin{exercise}
@@ -210,7 +249,8 @@ where $S((f,P,E)$ is the Riemann Sum of $f$ for partition $P$ and evaluation set
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	$f_{PE}$ being Riemann Integrable implies that $\exists RI(f,P,E) \ni S(f,P,E) \rightarrow RI(f,P,E)$ with $||P_n|| \rightarrow 0$ Because $f$ is Riemann Integrable and $f_{PE} \rightarrow f$ as $n \rightarrow \infty$, we can say $\exists N \ni n>N \implies f_{PE}$ follows all the rules of RI functions (continuity and monotonicity) over its intervals. Additonally,\\
+	$\int_a^b f_{PE}(t) dt = \sum_{i = 0}^{n -1} \int_{t_i}^{t_{i+ 1}}f_{PE}(t)dt = S(f,P,E)$
 \end{solution}
 
 \begin{exercise}
@@ -242,7 +282,9 @@ of continuous functions}.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+	$d_1(x_j^m,f) \rightarrow 0 \implies \forall \epsilon > 0 \; \exists \; n_{j_i} \ni m > n_{j_i} \implies d_1(x_j^m,f_j) < \frac{\epsilon}{2}$ where each $i$ maps to a specific $j$ value. If we set $n_j = \text{Max}(...,n_{j_i},...)$, then we get $d_1(x_j^{n_j},f_j) < \frac{\epsilon}{2}$ for all $j$.\\
+	Next, by Riemann Approximation Theorem we can say $\exists N  \ni n > N \implies d_1(f_n,f) < \frac{\epsilon}{2}$ and, using the triange inequality, we can conclude\\
+	$n > max(N,n_j) \implies d_1(x_j^{n_j},f) \leq d_1(x_j^{n_j},f_j) + d_1(f_j,f) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$
 \end{solution}
 
 
