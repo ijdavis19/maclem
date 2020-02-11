@@ -1,0 +1,320 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Four, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework Four}
+\Authors{Your Name Here\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
+Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
+\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Some problems metric spaces}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\noindent
+Here are some questions about the LCT.
+
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^2$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\int_0^1 \: | \alpha t + \beta t^2| dt &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is a lot harder than it looks. It is enough to look at
+the cases where both $\alpha$ and $\beta$ are non zero.
+\begin{itemize}
+\item If both $\alpha$ and $\beta$ are positive or the case
+where they are both negative are easy.  Show we have
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t + |\beta| t^2| dt 
+&=&
+\frac{|\alpha|}{2} + \frac{|\beta|}{3} \geq \frac{1}{6} ( |\alpha| + |\beta|)
+\end{eqnarray*}
+\item Show the only other case is when $\alpha$ and $\beta$ have opposite
+sign in which case it is enough to study
+$\int_0^1 | |\alpha|t - |\beta| t^2 | dt$.    Show there are two cases to consider:
+\begin{enumerate}
+\item $\frac{|\alpha|}{|\beta|} \geq 1$ which implies the integrand is
+always positive and we find
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t - |\beta| t^2| dt &=& \frac{|\alpha|}{2} - \frac{|\beta|}{3}
+\geq \frac{1}{12}( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+because $|\alpha| > |\beta|$ here.
+\item $\frac{|\alpha|}{|\beta|} < 1$ so that we write
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t - |\beta| t^2| dt &=& 
+\int_0^{\frac{|\alpha|}{|\beta|}} (|\alpha| t - |\beta| t^2) dt
++ \int_{\frac{|\alpha|}{|\beta|}}^1 (|\beta| t^2-|\alpha| t)  dt\\
+&=&
+\frac{|\alpha|}{3} \: \left( \frac{|\alpha|}{|\beta|} \right)^2
++ \frac{1}{3}|\beta| - \frac{1}{2} |\alpha|
+\end{eqnarray*}
+\item Show if $u = \frac{|\alpha|}{|\beta|}$ we have
+\begin{eqnarray*}
+\frac{\frac{|\alpha|}{3} \: \left( \frac{|\alpha|}{|\beta|} \right)^2
++ \frac{1}{3}|\beta| - \frac{1}{2} |\alpha|}{|\alpha| + |\beta|}
+&=& f(u) =
+\frac{\frac{1}{3} - \frac{1}{2} u + \frac{1}{3}u^3}{1+u}
+\end{eqnarray*}
+\noindent
+We only need to consider this function on $(0,1)$.  Show using
+standard calculus that $f$ has a positive absolute minimum on $(0,1)$
+which furnishes another value of $c$.
+\end{enumerate}
+\item The smallest of all these $c$ values is the one we seek.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^2$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\sqrt{\int_0^1 \: | \alpha t + \beta t^2|^2 dt} &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is a again a lot harder than it looks. It is enough to look at
+the cases where both $\alpha$ and $\beta$ are non zero.
+\begin{itemize}
+\item If both $\alpha$ and $\beta$ are positive or the case
+where they are both negative is not so bad.  Show we have
+\begin{eqnarray*}
+\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt 
+&=&
+\int_0^1 ( |\alpha|^2 t^2 + 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+&=&
+\frac{|\alpha|^2}{3} + 2\frac{|\alpha| |\beta|}{4} + \frac{|\beta|^2}{5}
+\geq
+\frac{|\alpha|^2}{5} + 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{5}\\
+&=&
+\frac{\left( |\alpha| + |\beta| \right)^2}{5}
+\Longrightarrow
+\sqrt{\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt}
+\geq \frac{1}{\sqrt{5}} ( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+\item 
+If $\alpha$ and $\beta$ are different signs, then the work is more difficult.
+We only need to consider
+\begin{eqnarray*}
+\int_0^1 \: ( |\alpha| t - |\beta| t^2|)^2 dt 
+&=&
+\int_0^1 ( |\alpha|^2 t^2 - 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+&=&
+\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}
+\end{eqnarray*}
+\noindent
+We want
+\begin{eqnarray*}
+\sqrt{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}
+&\geq& c (|\alpha| + |\beta|)
+\Longrightarrow
+\frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2}
+\geq c^2
+\end{eqnarray*}
+\noindent
+Let $u = \frac{|\alpha|}{|\beta}$ and show
+\begin{eqnarray*}
+\frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2}
+&=& f(u)
+= \frac{\frac{1}{3}u^2 - \frac{1}{2}u + \frac{1}{5}}{(1+u)^2}
+\end{eqnarray*}
+\noindent
+We need to consider this function on $(0,\infty)$.  Show using
+standard calculus that $f$ has a positive absolute minimum on $(0,1)$
+which furnishes another value of $c$.
+\item The smallest of all these $c$ values is the one we seek.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+  \noindent As disussed above, there are two cases which we must consider.
+  \begin{enumerate}
+    \item $\frac{\alpha}{\beta} > 0$ (both have same sign)
+    \item $\frac{\alpha}{\beta} < 0$ (differing signs)
+  \end{enumerate}
+  \textbf{Case 1:}\\
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t + |\beta| t^2)^2 dt
+    &=&
+    \int_0^1 ( |\alpha|^2 t^2 + 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+    &=&
+    \frac{|\alpha|^2}{3} + 2\frac{|\alpha| |\beta|}{4} + \frac{|\beta|^2}{5}
+    \geq
+    \frac{|\alpha|^2}{5} + 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{5}\\
+    &=&
+    \frac{\left( |\alpha| + |\beta| \right)^2}{5}
+    \Longrightarrow
+    \sqrt{\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt}
+    \geq \frac{1}{\sqrt{5}} ( |\alpha| + |\beta|)
+  \end{eqnarray*}
+  Which implies, in this case, $c = \frac{1}{\sqrt{5}}$\\
+  \\
+  \textbf{Case 2: }
+  Going off the discussion above, we get
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t - |\beta| t^2|)^2 dt 
+    &=&
+    \int_0^1 ( |\alpha|^2 t^2 - 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+    &=&
+    \frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}
+  \end{eqnarray*}
+  And we want\\
+  \begin{eqnarray*}
+  \sqrt{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}
+  &\geq& c (|\alpha| + |\beta|)
+  \Longrightarrow
+  \frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2}
+  \geq c^2
+  \end{eqnarray*}
+  Let $u = \frac{|\alpha|}{|\beta}$ and we get 
+  \begin{eqnarray*}
+  \frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2} \cdot \frac{\frac{1}{|\beta|^2}}{\frac{1}{|\beta|^2}}
+  &=&
+  \frac{\frac{|\alpha|^2}{3|\beta|^2} - \frac{|\alpha||\beta|}{2|\beta|^2} + \frac{|\beta|^2}{5|\beta|^2}}{\frac{|\alpha|^2}{|\beta|^2} + 2\frac{|\alpha|}{|\beta|} + \frac{|\beta|^2}{|\beta|^2}}\\
+  \\
+  &=& \frac{\frac{1}{3}u^2 - \frac{1}{2}u + \frac{1}{5}}{(1+u)^2} = f(u)
+  \end{eqnarray*}
+  If we take the first derivative of this function, $f$, we get
+  \begin{eqnarray*}
+    f'(u) &=& \frac{(1 + u)^2(\frac{2}{3}u - \frac{1}{2}) - (\frac{1}{3}u^2 +\frac{1}{2}u + \frac{1}{5})2(1 + u)}{(1 + u)^4}
+  \end{eqnarray*}
+  \textbf{Blah Blah Blah Blah Blah} $u_{min} = .77145$
+\end{solution}
+
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^3$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\int_0^1 \: | \alpha t + \beta t^3| dt &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+Oh boy, this is ugly!
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+	
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^3$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\sqrt{\int_0^1 \: | \alpha t + \beta t^3|^2 dt} &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is even uglier but look at it this way: you always wanted to
+show the world you know your calculus right?
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\end{document}

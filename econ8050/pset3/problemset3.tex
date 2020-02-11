@@ -1,0 +1,307 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Problem Set Three, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Problem Set Three}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{TBD}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+1. \textbf{1) Optimal choice in the consumption-savings model with credit constraints: a numerical analysis}. Consider our usual consumptoin-savings model. Let preferences of the representative consumer be describes by the utility function\\
+\\
+$u(c_1,c_2) = \sqrt{c_1} + \beta\sqrt{c_2}$\\
+\\
+where $c_1$ denotes the consumption in period on and $c_2$ denotes consumption in period 2. The parameter $\beta$ is known as the subjective discount factor and measures theconsumer's degree of impatience in the sense that the smaller $\beta$ is, the higher the weight the consumer assigns to present consumptoin relative to futre consumptoin. Assume that $\beta = \frac{1}{1.1}$. For this particular utility specification, the marginal utility functions are given by\\
+\\
+$u_1(c_1,c_2) = \frac{1}{2\sqrt{c_1}}$\\
+\\
+and\\
+\\
+$u_2(c_1,c_2) = \frac{\beta}{2\sqrt{c_1}}$\\
+\\
+The representative household has initial real financial wealth (including interest) of $a_0 = 1$. The household earns  $y_1 = 5$ units of goods in period 1 and $y_2 = 10$ units in period 2. The real interest rate, paid on assets held from period 1 to period 2, equals 10 percent $(r_1 = 0.1)$\\
+\\
+\indent \textbf{a.} Calculate the equilibrium levels of consumption in periods one and two (Hint: Set up the lagrangian and solve.)\\
+\\
+\begin{solution}
+  \begin{center}
+    $\mathcal{L} = \sqrt{c_1} + \frac{1}{1.1}\sqrt{c_2} + \lambda[c_1 + \frac{c_2}{1.1} - 5 - \frac{10}{1.1} - 1.1]$\\
+    $= \sqrt{c_1} + \frac{1}{1.1}\sqrt{c_2} + \lambda[c_1 \frac{c_2}{1.1} - 15.19]$\\
+  \end{center}
+    FOCs:\\
+  \begin{center}
+    $\mathcal{L}_1 = \frac{1}{2\sqrt{c_1}} + \lambda = 0$\\
+    $\mathcal{L}_2 = \frac{1}{2.2\sqrt{_2}} + \frac{\lambda}{1.1} = 0$\\
+    $\mathcal{L}_\lambda = c_1 +\frac{c_2}{1.1} = 15.19$\\
+    $\frac{\mathcal{L}_2}{\mathcal{L}_2} \implies \frac{1.1\sqrt{c_2}}{\sqrt{c_1}}$\\
+    $\implies \frac{\sqrt{c_2}}{\sqrt{c_1}} = 1$\\
+    $\implies c_2 = c_1$
+  \end{center}
+  and, plugging into the third FOC\\
+  \begin{center}  
+    $c_1(1 + \frac{1}{1.1}) = 15.19$\\
+    $\implies c_1 = 7.957 = c_2$
+  \end{center}
+\end{solution}
+
+\indent \textbf{b. }Suppose now that lenders to this consumer impose credit constraints on the consumer. Specifically, they impose the tightest possible credit constraint, the consumer is not allowed to be in debt at the end of period 1, which implies that the consumer's real wealth at the end of period one must be nonnegative ($a_1 \geq 0$). (Note, $a_1$ is defined here as being exlusive of interest, in contrast to the definition of $a_0$ above.) What is the consumer's choice  of period-1 and period-2 consumption under this credit constraint? Briefly explain either logically or graphically or both.\\
+\\
+\begin{solution}
+  \noindent Recall\\
+  \begin{center}
+    $a_1 = y_1 - c_1 + (1 + r)a_0 \geq 0$\\
+    $\implies y_1 + (1 + r)a_0 \geq c_1$\\
+    $\implies 6.1 \geq c_1$
+  \end{center}
+  but
+  \begin{center}
+    $c_1 = 7.957 > 6.1$,
+  \end{center}\
+  So now, $c_1 = 6.1$ and, by $\mathcal{L}_\lambda$
+  \begin{center}
+    $6.1 + \frac{c_2}{1.1} = 15.19$\\
+    $\implies \frac{c_2}{1.1} = 9.09$\\
+    $\implies c_2 = 10$
+  \end{center}
+\end{solution}
+\indent \textbf{c.} Does the credit constraint described in part b enhance or diminish welfare (i.e does it increase or decrese lifetime utility)? Specifically, find the level of lifetime utility under the credit constraint and compare it to the level of lifetime utility under no credit constraint.\\
+\\
+\begin{solution}
+  \begin{center}
+    $u(c_1,c_2) = \sqrt{c_1} + \beta\sqrt{c_2}$\\
+    $u_{no constraint}(c_1,c_2) = \sqrt{7.957}(1 + \frac{1}{1.1}$\\
+    $= (2.821)(1.909) = 5.38$\\
+  \end{center}
+  and
+  \begin{center}
+    $u_{constraint} \sqrt{6.1} + \frac{1}{1.1}\sqrt{10}$\\
+    $= 2.47 + \frac{3.162}{1.1}$\\
+    $= 5.34 < 5.38$\\
+    $\implies u_{no constraint} > u_{constraint}$
+  \end{center}
+  So, utility has been lowered due to the credit constraint.
+\end{solution}
+\noindent Suppose now that the consumer experiences a temporary increase in real income in period 1 to $y_1 = 9$, with real income in period 2 unchanged.\\
+\\
+\indent \textbf{d.} Calculate the effect of this positive surprise in income on $c_1$ and $c_2$, supposing that there is no credit constraint on the consumer.\\
+\\
+\begin{solution}
+  \begin{center}
+    $\mathcal{L} = \sqrt{c_1} + \frac{1}{1.1}\sqrt{c_2} + \lambda[c_1 + \frac{c_2}{1.1} - 9 - \frac{10}{1.1} - 1.1]$\\
+    $\mathcal{L} = \sqrt{c_1} + \frac{1}{1.1}\sqrt{c_2} + \lambda[c_1 + \frac{c_2}{1.1} - 19.19]$\\
+  \end{center}
+  FOCs:
+  \begin{center}
+    $\mathcal{L}_1 = \frac{1}{2\sqrt{c_1}} + \lambda = 0$\\
+    $\mathcal{L}_2 = \frac{1}{2.2\sqrt{c_2}} + \frac{\lambda}{1.1}$\\
+    $\mathcal{L}_\lambda = c_1 + \frac{c_2} - 19.19 = 0$
+    $\frac{\mathcal{L}_1}{\mathcal{L}_2} \implies c_2 = c_1$\\
+    $\implies c_1(1 \frac{1}{1.1}) = 19.19$\\
+    $c_1 = 10.42 = c_2$
+  \end{center}
+\end{solution}
+\indent \textbf{e.} Finally, suppose that the credit consttraint described in part b is back in place. Will it be binding? That is, will it affect the consumer's choices?\\
+\\
+\begin{solution}
+  \begin{center}
+    $a_1 = y_1 - c_1 + (1 + r)a_0 \geq 0$\\
+    $\implies y_1 + (1 + r)a_0 \geq c_1$\\
+    $\implies 9 + 1.1 \geq 10.42$\\
+    $\implies 9.1 \geq 10.42$
+  \end{center}
+  \noindent Which is not true so the credit constraint will still be binding. 
+\end{solution}
+\textbf{4) Two-period economy.} Consider a two-period economy (with no government and hence no taxes at all) in which the representative consumer has no control over his income $y_1$ $y_2$. The lifetime utility function of the representative consumer is $u(c_1,c_2) = ln(c_1) + c_2$, where $ln(.)$ stands for the natural logarithm (note that only $c_1$ is inside the function)\\
+There is only a single asset the consumer trades; and the consumer begins period one with zero assets.\\
+On the asset that consumers trade, the real interest rate is initially $r > 0$. As a mathematical propisition, this is fine, but think of this $r$ as very much larger than zero. In particular, think about the "credit crises" in the fall of 2008, when certain values of $r$ went to historically large values (and some of them are still very large).\\
+For concreteness, let's think "period 1" as the fall of 2008 to 2013, and "period 2" to be 2014 through the end of time.\\
+\\
+\noindent \textbf{a.} Does the lifetime utility function display diminishing marginal utility in $c_1$? And, does it display diminishing marginal utility in $c_2$? Briefly explain, in no more than three sentences. (Note the two separate questions)\\
+\begin{solution}
+  \begin{center}
+    $u_1' = \frac{1}{c_1}$\\
+    $\implies u_1'' = -\frac{1}{c_1^2}$
+    $u_2' = 1$\\
+    $\implies u_2'' = 0$
+  \end{center}
+  The second derivative of u with respect to good one being negative implies that there is diminishing marginal utility in $c_1$. The second derivative of u with respect to good two being equal to zero, however, implies that the returns to marginal utility of $c_2$ is constant for all values of $c_2$.
+\end{solution}
+\noindent \textbf{b.} The "credit crises" of the fall of 2008 to 2013 begins, and $r$ shoots way up. From a marginal utility perspective (note this phrase), does the optimal choice of $c_1$ rise or fall? And, related, does the individual care about this rise or fall from a pure (i.e. per unit) marginal utility perspective? (Note: Your analysis is to be conducted from the perspective of the very beginning of period 1.)\\
+\begin{solution}
+  \begin{center}
+    $\mathcal{L} = ln(c_1) + c_2 + \lambda[c_1 + \frac{c_2}{1 + r} - y_1 - \frac{y_2}{1 + r} - (1 +r)a_0]$\\
+    $\mathcal{L}_1 = \frac{1}{c_1} + \lambda = 0 \ implies \frac{1}{c_1} = -\lambda$\\
+    $\mathcal{L} = 1 + \frac{\lambda}{1 + r} = 0 \implies 1 = -\frac{\lambda}{1 +r}$\\
+    $\mathcal{L}_\lambda = c_1 + \frac{c_1}{1 + r} - y_1 - \frac{y_2}{1 + r} - (1 + r)a_0 = 0$\\
+    $\frac{\mathcal{L}_1}{\mathcal{L}_2} \implies \frac{1}{c_1} = 1 + r$\\
+    $\implies _1 = \frac{1}{1 + r}$\\
+    $\frac{dc_1}{dr} = -\frac{1}{(1 + r)^2} < 0$
+  \end{center}
+  \noindent So, as r inreases, $c_1$ decreases and, from a MU perspective, the consumer does care because an additional unit of $c_1$ is worht more tho the consumer under the new r than the previous one. 
+\end{solution}
+\noindent \textbf{c.} The "credit crisis" of the fall of 2008 to 2013 begins and $r$ shoots way up. From a marginal utility perspective (note this phrase), does the optimal choice of $c_2$ rise or fall. And, related, does the individual care about this rise or fall from a pure (i.e. per unit) marginal utility perspective? (Note: Your analysis is to be conducted from the perspective of the very beginning of period 1.)\\
+\begin{solution}
+  by $\mathcal{L}_\lambda,$
+  \begin{center}
+    $\frac{1}{1 + r} + \frac{c_2}{1 + r} - y_1 - \frac{y_2}{1 + r} + (1 + r)a_0 = 0$\\
+    $\implies c_2\frac{2}{1 + r} = y_1 + \frac{y_2}{1 + r} + (1 + r)a_0$\\
+    $\implies c_2 = \frac{1 + r}{2}(y_1 \frac{y_2}{1 + r} + (1 + r)a_0)$
+  \end{center}
+  \noindent and
+  \begin{center}
+    $r_0 < r_1 \implies c_2^0 < c_2^1$
+  \end{center}
+  \noindent So $c_2$ increases as r increases but the consumer is indifferent from a marginal utility perspective because of the constant marginal utility of $c_2$.
+\end{solution}
+\noindent \textbf{d.} The Federal Reserve notices what's happening. Supposeing that the Fed can control both real interest rates and nominal interest rates, it dramatically reduces $r$. Do the Fed's actions do anything to offset the impact on the pure (i.e. per-unit) marginal utility of $c_1$? And, do the Fed's actions do anything to offset the impact on the pure (i.e. per-unit) marginal utility of $c_2$? Explain your answers carefully (whether in mathematical terms, graphical terms, qualitative terms, or some combination of all three). (Note: Your analysis is to be conducted from the perspective of the very beginning of period)\\
+\begin{solution}
+  Because the Federal Reserve has the power to meaningfully alter interest rates, and because we have establishedconsumers are sensitive to changes in r regarding the MU of $c_1$, but insensitive to changes of $c_2$, we can say the Federal reserves actions can offset the impact on the pure marginal utility of $c_1$ but not $c_2$. 
+\end{solution}
+2. \textbf{Consumption Tax Policy}. Suppose that the government had a desire to increase current consumption spending (perhaps in order to stimulate the economy) and decided to accomplish this through tax policy. Importantly, the government - for reasons of fiscal austerity - was unwilling to lower taxes. Use the two period, consumption-saving model (in real terms, i.e., assume zero inflation and normalize prices to 1) to analyze some of the government options. Assume that household has the following lifetime preferences
+\begin{center}
+	$U(c_1,c_2) = u(c_1) + u(c_2)$
+\end{center}
+starts its life with zero assets and faces the following budget constraints
+\begin{center}
+	$(1 + \tau_1^C)c_1 + a_1 = (1 - \tau_1^Y)y_1$\\
+	$(1 + \tau_2^C)c_2 + a_2 = (1 - \tau_2^Y)y_2 + a_1$
+\end{center}
+where $\tau^C$ and $\tau^Y$ denote consumption and income taxes respectively. Notice that these tax rates can be different in each period. Income levels are given exogenously and do not respond to taxes or household behavior.\\
+\\
+\indent 1. Write down the lifetime budget constraint (LBC) for the household.\\
+\begin{solution}
+The family's LBC is
+  \begin{center}
+    $(1 + \tau_1^c)c_1 + \frac{(1 + \tau_2^t)c_2}{1 + r} = (1 - \tau_1^y)y_1 + \frac{(1 + \tau_2^y)y_2}{1 + r}$
+  \end{center}
+\end{solution}
+\indent 2. Show the solution to the household's problem graphically. Be sure to label the axes, indicate the intercepts of the budget line and the endowment point.\\
+\begin{solution}
+  \textbf{See Graph 2.2 Attached}
+\end{solution}
+\indent 3. Find the Euler equation.\\
+\begin{solution}
+  We can find the Euler equation after solving the Lagrangian
+  \begin{center}
+    $\mathcal{L} = u(c_1) + u(c_2) + \lambda[(1 + \tau_1^c)c_1 + \frac{(1 + \tau_2^t)c_2}{1 + r} - (1 - \tau_1^y)y_1 - \frac{(1 + \tau_2^y)y_2}{1 + r}]$
+  \end{center}
+  With FOCs:
+  \begin{center}
+    $\mathcal{L}_1 = u'(c_1) + \lambda(1 + t_1^c) = 0$\\
+    $\mathcal{L}_2 = u'(c_2) + \lambda\frac{(1 + t_1^c)}{(1 + r)} = 0$\\
+    $\mathcal{L}_\lambda (1 + \tau_1^c)c_1 + \frac{(1 + \tau_2^t)c_2}{1 + r} - (1 - \tau_1^y)y_1 - \frac{(1 + \tau_2^y)y_2}{1 + r}$\\
+    $\frac{\mathcal{L}_1}{\mathcal{L}_2} \implies \frac{u'(c_1)}{u'(c_2)} = \frac{(1 + \tau_1^)(1 + r)}{(1 + \tau_2^c)}$\\
+    $\implies u'(c_1) = \frac{(1 + \tau_1^c)}{(1 + \tau_2^c)}(1 + r)u'(c_2)$
+  \end{center}
+  Which is exactly the Euler equation with
+  \begin{center}
+    $\beta = \frac{(1 + \tau_1^c)}{(1 + \tau_2^c)}$
+  \end{center}
+\end{solution}
+\indent 4. Is there a way the government could increase $c_1$ by raising income taxes? If so, show graphically how such a policy would work.\\
+\\
+\indent 5. Is there a way the government could increase $c_1$ by raising consumption taxes? If so, show graphically how such a policy would work. (HINT: think of starting from a situation with $\tau_1^C = \tau_2^C$ and then changing taxes differently in the two periods.)\\
+\\
+\indent 6. Assume the period utility function is $u(c) = \frac{c^{1 - \frac{1}{\sigma}}}{1 - \frac{1}{\sigma}}$. Find a closed form solution for $c_1$. If your answers to the previous two points inclue any proposals you think might achieve the government's objective, discuss the conditions under which they would work.\\
+
+\end{document}

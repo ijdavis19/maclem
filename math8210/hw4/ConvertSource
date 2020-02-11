@@ -1,0 +1,29 @@
+#!/bin/tcsh
+unalias rm
+set BASE_PATH = ../..
+set CODE2HTML = /usr/local/src/latex/bin
+set SOURCE = RootsOpt
+#
+echo $SOURCE
+#
+echo Converting Source to html in $SOURCE
+#
+foreach file(*.m)
+	echo Converting $file into html source
+	if ( -e $file.html) then
+ 		rm -f $file.html
+  	endif
+	$CODE2HTML/code2html -l c -n -t2 $file $file.html2
+	cat $BASE_PATH/prefix.txt $file.html2 $BASE_PATH/postfix.txt > $file.html
+	rm -f $file.html2
+	end
+foreach file(*.prompts)
+	echo Converting $file into html source
+	if ( -e $file.html) then
+ 		rm -f $file.html
+  	endif
+	$CODE2HTML/code2html -l c -n -t2 $file $file.html2
+	cat $BASE_PATH/prefix.txt $file.html2 $BASE_PATH/postfix.txt > $file.html
+	rm -f $file.html2
+	end
+
