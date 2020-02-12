@@ -277,7 +277,9 @@ The family's LBC is
 \end{solution}
 \indent 2. Show the solution to the household's problem graphically. Be sure to label the axes, indicate the intercepts of the budget line and the endowment point.\\
 \begin{solution}
-  \textbf{See Graph 2.2 Attached}
+  \begin{center}
+    \textbf{See Graph 2.2 Attached}
+  \end{center}
 \end{solution}
 \indent 3. Find the Euler equation.\\
 \begin{solution}
@@ -299,9 +301,43 @@ The family's LBC is
   \end{center}
 \end{solution}
 \indent 4. Is there a way the government could increase $c_1$ by raising income taxes? If so, show graphically how such a policy would work.\\
-\\
+\begin{solution}
+  Recall that the the equation for our budget constraint is
+  \begin{center}
+    $c_2 = [y_1\frac{(1 - \tau_1^y)(1 + r)}{(1 + \tau_2^c)} + y_2\frac{(1 - \tau_2^y)}{(1 + \tau_2^c)}] - \frac{(1 + \tau_1^c)(1 + r)}{(1 +t_2^c)}c_1$
+  \end{center}
+  where the bracketed terms represent the interecept and the term $\frac{(1 + \tau_1^c)(1 + r)}{(1 +t_2^c)}$ is the slope. Hence, increasing $\tau^y$ shifts the intercepts down giving us the \textbf{graph 2.4 attached}
+\end{solution}
 \indent 5. Is there a way the government could increase $c_1$ by raising consumption taxes? If so, show graphically how such a policy would work. (HINT: think of starting from a situation with $\tau_1^C = \tau_2^C$ and then changing taxes differently in the two periods.)\\
-\\
+\begin{solution}
+  Again, considering the equation for $c_2$, raising $\tau_2^c > \tau_1^c$ lowers the slope of the line and shifts the line inward as well giving us \textbf{graph 2.5 attached}.
+\end{solution}
 \indent 6. Assume the period utility function is $u(c) = \frac{c^{1 - \frac{1}{\sigma}}}{1 - \frac{1}{\sigma}}$. Find a closed form solution for $c_1$. If your answers to the previous two points inclue any proposals you think might achieve the government's objective, discuss the conditions under which they would work.\\
+\begin{solution}
+  Based on the form of the utility function we know a closed form solution of $c_1$ exists and is
+  \begin{center}
+    $c_1 = \frac{1}{1 + (1 + r)^{\sigma - 1}\beta}(y_1(1 - \tau_1^y) + \frac{y_2(1 - \tau_2^y)}{(1 + r)})$\\
+    $= \frac{1}{1 + (1 + r)^{\sigma - 1}(\frac{1 + \tau_1^c}{1 + \tau_2^c})}(y_1(1 - \tau_1^y) + \frac{y_2(1 - \tau_2^y)}{(1 + r)})$
+  \end{center}
+  Relating the new solution of $c_1$ back to the policy proposals made earlier, raising $\tau_2^c > \tau_1^c$ will raise $c_1$ (as discussed in 2.5) but the proposal discussed in 2.4 of raising either $\tau^y$ will lower $c_1$ under all circumstances.
+\end{solution}
+
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.2}
+\begin{figure}[h]
+        \includegraphics{graph22.png}
+\end{figure}
+\clearpage
+\noindent \textbf{Graph 2.4}
+\begin{figure}[h]
+        \includegraphics{graph24.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.5}
+\begin{figure}[h]
+        \includegraphics{graph25.png}
+\end{figure}
 
 \end{document}
