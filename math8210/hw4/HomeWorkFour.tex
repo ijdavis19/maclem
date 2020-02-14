@@ -87,14 +87,14 @@ pdfauthor={Peterson}}
 \Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{MATH 8210 Homework Four}
-\Authors{Your Name Here\textsuperscript{1}}
-\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
-Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
-\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+% Corresponding author \affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} 
 
 \date{\small{Version ~\today}}
 \Abstract{Some problems metric spaces}
-\Keywords{}
+\Keywords{Linear Approximation Theorem}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -166,7 +166,88 @@ which furnishes another value of $c$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  \noindent As disussed above, there are two cases which we must consider.
+  \begin{enumerate}
+    \item $\frac{\alpha}{\beta} > 0$ (both have same sign)
+    \item $\frac{\alpha}{\beta} < 0$ (differing signs)
+  \end{enumerate}
+  \textbf{Case 1:}
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t + |\beta| t^2) dt
+    = |\alpha|\int_0^1 tdt + |\beta|\int_0^1t^2dt\\
+   = \frac{|\alpha|}{2} + \frac{|\beta|}{3}
+    \geq \frac{1}{6}(|\alpha| + |\beta|)
+  \end{eqnarray*}
+  Which implies, in this case, $c = \frac{1}{6}$\\
+  \\
+  \textbf{Case 2: }
+  For the second case, we consider $\int_0^1 ||\alpha|t - |\beta|t^2 |dt$ and this gives us two additional possibilites
+  \begin{enumerate}
+    \item $\frac{|\alpha|}{|\beta|} \geq 1$ tells us the integrand will always be positive and we only need to consider the following integral
+    \begin{eqnarray*}
+      \int_0^1 \:||\alpha|t - |\beta|t^2 dt &=& |\alpha|\int_0^1 tdt - |\beta|\int_0^1 t^2 dt\\
+      &=&
+      \frac{|\alpha|}{2} - \frac{|\beta|}{3}
+    \end{eqnarray*}
+    and, because $|\alpha| > |\beta|$, we get
+    \begin{eqnarray*}
+      \frac{|\alpha|}{2} - \frac{|\beta|}{3} \geq \frac{1}{12}(|\alpha| - |\beta|)
+    \end{eqnarray*}
+    so $c = \frac{1}{12}$
+    
+    \item $\frac{|\alpha|}{|\beta|} < 1$ has larger implications
+    \begin{eqnarray*}
+      \int_0^1 \:  ||\alpha| t - |\beta| t^2| dt 
+      &=&
+      \int_0^\frac{|\alpha|}{|\beta|} (|\alpha|t - |\beta|t^2) dt + \int_{\frac{|\alpha|}{|\beta|}}^1 (|\beta| t^2 - |\alpha|t) dt\\
+      &=& |\alpha|\int_0^{\frac{|\alpha|}{|\beta|}}t dt - |\beta|\int_0^{\frac{|\alpha|}{|\beta|}}t^2 dt + |\beta|\int_{\frac{|\alpha|}{|\beta|}}^1 t^2 dt - |\alpha|\int_{\frac{|\alpha|}{|\beta|}}^1 t dt\\
+      &=&\frac{|\alpha|}{2}(\frac{|\alpha|}{|\beta|})^2 - \frac{|\beta|}{3}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{3} - \frac{|\beta|}{3}(\frac{|\alpha|}{|\beta|})^3 - \frac{|\alpha|}{2} + \frac{\alpha}{2}(\frac{|\alpha|}{|\beta|})^2\\
+      &=& |\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{2|\beta|}{3}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{3} - \frac{|\alpha|}{2}\\
+      &=& |\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{2|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 + \frac{|\beta|}{3} - \frac{|\alpha|}{2}\\
+      &=& \frac{|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 +\frac{|\beta|}{3} - \frac{|\alpha|}{2}
+    \end{eqnarray*}
+    So now we want c so that
+    \begin{eqnarray*}
+      \frac{|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 +\frac{|\beta|}{3} - \frac{|\alpha|}{2} \geq c(|\alpha| + |\beta|)
+      \implies c \leq \frac{\frac{|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 +\frac{|\beta|}{3} - \frac{|\alpha|}{2}}{|\alpha| + |\beta|}
+    \end{eqnarray*}
+    To minimize this fraction, we set $u  = \frac{|\alpha|}{|\beta|}$ and define $f(u)$ as
+    \begin{eqnarray*}
+      \frac{\frac{1}{|\beta|}}{\frac{1}{|\beta|}} \cdot \frac{\frac{|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 +\frac{|\beta|}{3} - \frac{|\alpha|}{2}}{|\alpha| + |\beta|}\\
+      &=& \frac{\frac{|\alpha|}{3|\beta|}(\frac{|\alpha|}{|\beta|})^2 +\frac{1}{3} - \frac{|\alpha|}{2|\beta|}}{\frac{|\alpha|}{|\beta|} + 1}\\
+      &=& \frac{\frac{1}{3} - \frac{1}{2}u + \frac{1}{3}u^3}{1 + u} = f(u)
+    \end{eqnarray*}
+    Now we need to find $c \ni c \leq f(u) \: \forall \: u \in [0,1]$. 
+    \begin{eqnarray*}
+      f'(u) = \frac{(1 + u)(-\frac{1}{2} + u^2) - (\frac{1}{3} - \frac{1}{2}u + \frac{1}{3}u^3)}{(1 + u)^2} = 0\\
+      \implies (1 + u)(-\frac{1}{2} + u^2) - (\frac{1}{3} - \frac{1}{2}u + \frac{1}{3}u^3) = 0
+    \end{eqnarray*}
+    We use the code, Bisection.m, on the function above to find the root of the numerator of $f'(u)$ coded in exfunc1.m. We then find the value of $c$ by evaulauting $f(u)$ at said root.\\
+    %\textbf{Bisection.m Picture}\\
+    \newpage
+    \mylistcode{matlab}{Bisection Code}{rootoptcode1}
+    \singlespacing
+    \lstinputlisting{Bisection.m}
+    \onehalfspacing
+
+    %\textbf{exfunc1.m Picture}\\
+    \mylistcode{matlab}{$f'(u)\: Numerator$}{rootoptcode2}
+    \singlespacing
+    \lstinputlisting{ex1func.m}
+    \onehalfspacing
+
+    After running said code, we see the minimizing value of u is $0.74602$. We then plug this value of u into the following function  
+    %\textbf{exfullfunc1.m Picture}\\
+    \mylistcode{matlab}{$f(u)$}{rootoptcode3}
+    \singlespacing
+    \lstinputlisting{ex1fullfunc.m}
+    \onehalfspacing
+
+    Which tells us $f(.74602) = 0.056541$ and, because this is the lowest value of all of the c's, we can conclude
+    \begin{eqnarray*}
+      \int_0^1 \: | \alpha t + \beta t^2| dt \geq 0.56541( |\alpha| + |\beta|)
+    \end{eqnarray*}
+  \end{enumerate}
 \end{solution}
 
 \begin{exercise}
@@ -232,7 +313,7 @@ which furnishes another value of $c$.
 \end{exercise}
 
 \begin{solution}
-  \noindent As disussed above, there are two cases which we must consider.
+  \noindent Again, there are two cases which we must consider.
   \begin{enumerate}
     \item $\frac{\alpha}{\beta} > 0$ (both have same sign)
     \item $\frac{\alpha}{\beta} < 0$ (differing signs)
@@ -283,7 +364,35 @@ which furnishes another value of $c$.
   \begin{eqnarray*}
     f'(u) &=& \frac{(1 + u)^2(\frac{2}{3}u - \frac{1}{2}) - (\frac{1}{3}u^2 +\frac{1}{2}u + \frac{1}{5})2(1 + u)}{(1 + u)^4}
   \end{eqnarray*}
-  \textbf{Blah Blah Blah Blah Blah} $u_{min} = .77145$
+  Now we need to find $c \ni c \leq f(u) \: \forall \: u \in [0,1]$. 
+  \begin{eqnarray*}
+    f'(u) = \frac{(1 + u)(-\frac{1}{2} + u^2) - (\frac{1}{3} - \frac{1}{2}u + \frac{1}{3}u^3)}{(1 + u)^2} = 0\\
+    \implies (1 + u)(-\frac{1}{2} + u^2) - (\frac{1}{3} - \frac{1}{2}u + \frac{1}{3}u^3) = 0
+  \end{eqnarray*}
+  We use the same Bisection.m code on the function above to find the root of the numerator of $f'(u)$ coded in exfunc2.m. We then find the value of $c$ by evaulauting $f(u)$ at said root.
+
+ %\textbf{exfunc2.m Picture}\\
+  \mylistcode{matlab}{$f'(u)\: Numerator$}{rootoptcode2}
+  \singlespacing
+  \lstinputlisting{ex2func.m}
+  \onehalfspacing
+
+  After running said code, we see the minimizing value of u is $0.77143$. We then plug this value of u into the following function  
+  %\textbf{exfullfunc1.m Picture}\\
+  \mylistcode{matlab}{$f(u)$}{rootoptcode3}
+  \singlespacing
+  \lstinputlisting{ex2fullfunc.m}
+  \onehalfspacing
+
+  Which tells us $f(.77143) = 0.004032$, hence,
+  \begin{eqnarray*}
+  \sqrt{f(.77143)} = \sqrt{0.004032} = .0635 < \frac{1}{\sqrt{5}}
+  \end{eqnarray*}
+  and we can conclude
+
+  \begin{eqnarray*}
+  \sqrt{\int_0^1 \: | \alpha t + \beta t^2|^2 dt} &\geq .0635( |\alpha| + |\beta|)
+  \end{eqnarray*}
 \end{solution}
 
 \begin{exercise}
@@ -298,8 +407,84 @@ Oh boy, this is ugly!
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  \noindent There are two cases which we must consider.
+  \begin{enumerate}
+    \item $\frac{\alpha}{\beta} > 0$ (both have same sign)
+    \item $\frac{\alpha}{\beta} < 0$ (differing signs)
+  \end{enumerate}
+  \textbf{Case 1:}
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t + |\beta| t^3) dt
+    = |\alpha|\int_0^1 tdt + |\beta|\int_0^1t^3dt\\
+   = \frac{|\alpha|}{2} + \frac{|\beta|}{4}
+    \geq \frac{1}{8}(|\alpha| + |\beta|)
+  \end{eqnarray*}
+  Which implies, in this case, $c = \frac{1}{8}$\\
+  \\
+  \textbf{Case 2: }
+  For the second case, we consider $\int_0^1 ||\alpha|t - |\beta|t^2 |dt$ and this gives us two additional possibilites
+  \begin{enumerate}
+    \item $\frac{|\alpha|}{|\beta|} \geq 1$ tells us the integrand will always be positive and we only need to consider the following integral
+    \begin{eqnarray*}
+      \int_0^1 \:||\alpha|t - |\beta|t^3 dt &=& |\alpha|\int_0^1 tdt - |\beta|\int_0^1 t^3 dt\\
+      &=&
+      \frac{|\alpha|}{2} - \frac{|\beta|}{4}
+    \end{eqnarray*}
+    and, because $|\alpha| > |\beta|$, we get
+    \begin{eqnarray*}
+      \frac{|\alpha|}{2} - \frac{|\beta|}{4} \geq \frac{1}{16}(|\alpha| - |\beta|)
+    \end{eqnarray*}
+    so $c = \frac{1}{16}$
+    
+    \item $\frac{|\alpha|}{|\beta|} < 1$ has larger implications
+    \begin{eqnarray*}
+      \int_0^1 \:  ||\alpha| t - |\beta| t^3| dt 
+      &=&
+      \int_0^\frac{|\alpha|}{|\beta|} (|\alpha|t - |\beta|t^3) dt + \int_{\frac{|\alpha|}{|\beta|}}^1 (|\beta| t^3 - |\alpha|t) dt\\
+      &=& |\alpha|\int_0^{\frac{|\alpha|}{|\beta|}}t dt - |\beta|\int_0^{\frac{|\alpha|}{|\beta|}}t^3 dt + |\beta|\int_{\frac{|\alpha|}{|\beta|}}^1 t^3 dt - |\alpha|\int_{\frac{|\alpha|}{|\beta|}}^1 t dt\\
+      &=&\frac{|\alpha|}{2}(\frac{|\alpha|}{|\beta|})^2 - \frac{|\beta|}{4}(\frac{|\alpha|}{|\beta|})^4 + \frac{|\beta|}{4} - \frac{|\beta|}{4}(\frac{|\alpha|}{|\beta|})^4 - \frac{|\alpha|}{2} + \frac{\alpha}{2}(\frac{|\alpha|}{|\beta|})^2\\
+      &=& |\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{|\beta|}{2}(\frac{|\alpha|}{|\beta|})^4 + \frac{|\beta|}{4} - \frac{|\alpha|}{2}\\
+      &=& |\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{|\alpha|}{2}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{4} - \frac{|\alpha|}{2}
+    \end{eqnarray*}
+    So now we want c so that
+    \begin{eqnarray*}
+      |\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{\alpha}{2}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{4} - \frac{|\alpha|}{2} \geq c(|\alpha| + |\beta|)
+      \implies c \leq \frac{\frac{|\alpha|}{3}(\frac{|\alpha|}{|\beta|})^2 +\frac{|\beta|}{3}}{|\alpha| + |\beta|}
+    \end{eqnarray*}
+    To minimize this fraction, we set $u  = \frac{|\alpha|}{|\beta|}$ and define $f(u)$ as
+    \begin{eqnarray*}
+      \frac{\frac{1}{|\beta|}}{\frac{1}{|\beta|}} \cdot \frac{|\alpha|(\frac{|\alpha|}{|\beta|})^2 - \frac{\alpha}{2}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{4} - \frac{|\alpha|}{2}}{|\alpha| + |\beta|}\\
+      &=& \frac{\frac{|\alpha|}{|\beta|}(\frac{|\alpha|}{|\beta|})^2 - \frac{|\alpha|}{2|\beta|}(\frac{|\alpha|}{|\beta|})^3 + \frac{|\beta|}{4|\beta|} - \frac{|\alpha|}{2|\beta|}}{\frac{|\alpha|}{|\beta|} + 1}\\
+      &=& \frac{u^3 - \frac{1}{2}u^4 + \frac{1}{4} - \frac{1}{2}u}{1 + u}\\
+      &=& f(u) 
+    \end{eqnarray*}
+    Now we need to find $c \ni c \leq f(u) \: \forall \: u \in [0,1]$. 
+    \begin{eqnarray*}
+      f'(u) = \frac{(1 + u)(3u^2 - 2u^3 - \frac{1}{2}) - (u^3 - \frac{1}{2}u^4 + \frac{1}{4} - \frac{1}{2}u)}{(1 + u)^2} = 0\\
+      \implies (1 + u)(3u^2 - 2U^3 - \frac{1}{2}) - (u^3 - \frac{1}{2}u^4 + \frac{1}{4} - \frac{1}{2}u) = 0
+    \end{eqnarray*}
+    We use the same Bisection.m code on the function above to find the root of the numerator of $f'(u)$ coded in exfunc3.m. We then find the value of $c$ by evaulauting $f(u)$ at said root.
+
+  %\textbf{exfunc2.m Picture}\\
+   \mylistcode{matlab}{$f'(u)\: Numerator$}{rootoptcode2}
+   \singlespacing
+   \lstinputlisting{ex3func.m}
+   \onehalfspacing
+
+   After running said code, we see the minimizing value of u is $0.54120$. We then plug this value of u into the following function  
+   %\textbf{exfullfunc1.m Picture}\\
+   \mylistcode{matlab}{$f(u)$}{rootoptcode3}
+   \singlespacing
+    \lstinputlisting{ex3fullfunc.m}
+    \onehalfspacing
+
+   Which tells us $f(.5412) = 0.061654 < \frac{1}{16}$, hence,
+    \begin{eqnarray*}
+      \int_0^1 \: | \alpha t + \beta t^3 dt &\geq .061654( |\alpha| + |\beta|)
+    \end{eqnarray*}
+  \end{enumerate}
 \end{solution}
+
 	
 \begin{exercise}
 Let $f(t) = t$ and $g(t) = t^3$ on $[0,1]$.
@@ -314,7 +499,86 @@ show the world you know your calculus right?
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  \noindent There are two cases which we must consider.
+  \begin{enumerate}
+    \item $\frac{\alpha}{\beta} > 0$ (both have same sign)
+    \item $\frac{\alpha}{\beta} < 0$ (differing signs)
+  \end{enumerate}
+  \textbf{Case 1:}\\
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t + |\beta| t^3)^2 dt
+    &=&
+    \int_0^1 ( |\alpha|^2 t^2 + 2 |\alpha| |\beta| t^3 + |\beta|^2 t^6 ) dt\\
+    &=&
+    \frac{|\alpha|^2}{3} + 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{7}
+    \geq
+    \frac{|\alpha|^2}{7} + 2\frac{|\alpha| |\beta|}{7} + \frac{|\beta|^2}{7}\\
+    &=&
+    \frac{\left( |\alpha| + |\beta| \right)^2}{7}
+    \Longrightarrow
+    \sqrt{\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt}
+    \geq \frac{1}{\sqrt{7}} ( |\alpha| + |\beta|)
+  \end{eqnarray*}
+  Which implies, in this case, $c = \frac{1}{\sqrt{7}}$\\
+  \\
+  \textbf{Case 2: }
+  Going off the discussion above, we get
+  \begin{eqnarray*}
+    \int_0^1 \: ( |\alpha| t - |\beta| t^3|)^2 dt 
+    &=&
+    \int_0^1 ( |\alpha|^2 t^2 - 2 |\alpha| |\beta| t^4 + |\beta|^2 t^6 ) dt\\
+    &=&
+    \frac{|\alpha|^2}{3} - 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{7}
+  \end{eqnarray*}
+  And we want\\
+  \begin{eqnarray*}
+  \sqrt{\frac{|\alpha|^2}{3} - 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{7}}
+  &\geq& c (|\alpha| + |\beta|)
+  \Longrightarrow
+  \frac{\frac{|\alpha|^2}{3} - 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{7}}{(|\alpha| + |\beta|)^2}
+  \geq c^2
+  \end{eqnarray*}
+  Let $u = \frac{|\alpha|}{|\beta}$ and we get 
+  \begin{eqnarray*}
+  \frac{\frac{|\alpha|^2}{3} - 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{7}}{(|\alpha| + |\beta|)^2} \cdot \frac{\frac{1}{|\beta|^2}}{\frac{1}{|\beta|^2}}
+  &=&
+  \frac{\frac{|\alpha|^2}{3|\beta|^2} - \frac{2}{5}(\frac{|\alpha|}{|\beta|}) + \frac{1}{7}}{\frac{|\alpha|^2}{|\beta|^2} + 2\frac{|\alpha|}{|\beta|} + \frac{|\beta|^2}{|\beta|^2}}\\
+  \\
+  &=& \frac{\frac{1}{3}u^2 - \frac{2}{5}u + \frac{1}{7}}{(1+u)^2} = f(u)
+  \end{eqnarray*}
+  If we take the first derivative of this function, $f$, we get
+  \begin{eqnarray*}
+    f'(u) &=& \frac{(1 + u)^2(\frac{2}{3}u - \frac{2}{5}) - (\frac{1}{3}u^2 +\frac{2}{5}u + \frac{1}{7})2(1 + u)}{(1 + u)^4}
+  \end{eqnarray*}
+  Now we need to find $c \ni c \leq f(u) \: \forall \: u \in [0,1]$. 
+  \begin{eqnarray*}
+    f'(u) = \frac{(1 + u)^2(\frac{2}{3}u - \frac{2}{5}) - (\frac{1}{3}u^2 +\frac{2}{5}u + \frac{1}{7})2(1 + u)}{(1 + u)^4} = 0\\
+    \implies (1 + u)^2(\frac{2}{3}u - \frac{2}{5}) - (\frac{1}{3}u^2 +\frac{2}{5}u + \frac{1}{7})2(1 + u) = 0
+  \end{eqnarray*}
+  We use the same Bisection.m code on the function above to find the root of the numerator of $f'(u)$ coded in exfunc4.m. We then find the value of $c$ by evaulauting $f(u)$ at said root.
+
+ %\textbf{exfunc4.m Picture}\\
+  \mylistcode{matlab}{$f'(u)\: Numerator$}{rootoptcode2}
+  \singlespacing
+  \lstinputlisting{ex4func.m}
+  \onehalfspacing
+
+  After running said code, we see the minimizing value of u is $0.67406$. We then plug this value of u into the following function  
+  %\textbf{exfullfunc4.m Picture}\\
+  \mylistcode{matlab}{$f(u)$}{rootoptcode3}
+  \singlespacing 
+  \lstinputlisting{ex4fullfunc.m}
+  \onehalfspacing
+
+  Which tells us $f(.67406) = 0.0088084$ hence,
+  \begin{eqnarray*}
+  \sqrt{f(.77143)} = \sqrt{0.004032} = .093853 < \frac{1}{\sqrt{7}}
+  \end{eqnarray*}
+  and we can conclude
+
+  \begin{eqnarray*}
+  \sqrt{\int_0^1 \: | \alpha t + \beta t^3|^2 dt} &\geq .093853( |\alpha| + |\beta|)
+  \end{eqnarray*}
 \end{solution}
 
 \end{document}

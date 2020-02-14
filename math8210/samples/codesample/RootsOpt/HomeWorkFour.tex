@@ -1,0 +1,631 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Four, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework Four}
+\Authors{Your Name Here\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
+Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
+\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Some problems metric spaces}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\noindent
+Here are some questions about the LCT.
+
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^2$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\int_0^1 \: | \alpha t + \beta t^2| dt &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is a lot harder than it looks. It is enough to look at
+the cases where both $\alpha$ and $\beta$ are non zero.
+\begin{itemize}
+\item If both $\alpha$ and $\beta$ are positive or the case
+where they are both negative are easy.  Show we have
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t + |\beta| t^2| dt 
+&=&
+\frac{|\alpha|}{2} + \frac{|\beta|}{3} \geq \frac{1}{6} ( |\alpha| + |\beta|)
+\end{eqnarray*}
+\item Show the only other case is when $\alpha$ and $\beta$ have opposite
+sign in which case it is enough to study
+$\int_0^1 | |\alpha|t - |\beta| t^2 | dt$.    Show there are two cases to consider:
+\begin{enumerate}
+\item $\frac{|\alpha|}{|\beta|} \geq 1$ which implies the integrand is
+always positive and we find
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t - |\beta| t^2| dt &=& \frac{|\alpha|}{2} - \frac{|\beta|}{3}
+\geq \frac{1}{12}( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+because $|\alpha| > |\beta|$ here.
+\item $\frac{|\alpha|}{|\beta|} < 1$ so that we write
+\begin{eqnarray*}
+\int_0^1 \: | |\alpha| t - |\beta| t^2| dt &=& 
+\int_0^{\frac{|\alpha|}{|\beta|}} (|\alpha| t - |\beta| t^2) dt
++ \int_{\frac{|\alpha|}{|\beta|}}^1 (|\beta| t^2-|\alpha| t)  dt\\
+&=&
+\frac{|\alpha|}{3} \: \left( \frac{|\alpha|}{|\beta|} \right)^2
++ \frac{1}{3}|\beta| - \frac{1}{2} |\alpha|
+\end{eqnarray*}
+\item Show if $u = \frac{|\alpha|}{|\beta|}$ we have
+\begin{eqnarray*}
+\frac{\frac{|\alpha|}{3} \: \left( \frac{|\alpha|}{|\beta|} \right)^2
++ \frac{1}{3}|\beta| - \frac{1}{2} |\alpha|}{|\alpha| + |\beta|}
+&=& f(u) =
+\frac{\frac{1}{3} - \frac{1}{2} u + \frac{1}{3}u^3}{1+u}
+\end{eqnarray*}
+\noindent
+We only need to consider this function on $(0,1)$.  Show using
+standard calculus that $f$ has a positive absolute minimum on $(0,1)$
+which furnishes another value of $c$.
+\end{enumerate}
+\item The smallest of all these $c$ values is the one we seek.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+	
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^2$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\sqrt{\int_0^1 \: | \alpha t + \beta t^2|^2 dt} &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is a again a lot harder than it looks. It is enough to look at
+the cases where both $\alpha$ and $\beta$ are non zero.
+\begin{itemize}
+\item If both $\alpha$ and $\beta$ are positive or the case
+where they are both negative is not so bad.  Show we have
+\begin{eqnarray*}
+\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt 
+&=&
+\int_0^1 ( |\alpha|^2 t^2 + 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+&=&
+\frac{|\alpha|^2}{3} + 2\frac{|\alpha| |\beta|}{4} + \frac{|\beta|^2}{5}
+\geq
+\frac{|\alpha|^2}{5} + 2\frac{|\alpha| |\beta|}{5} + \frac{|\beta|^2}{5}\\
+&=&
+\frac{\left( |\alpha| + |\beta| \right)^2}{5}
+\Longrightarrow
+\sqrt{\int_0^1 \: ( |\alpha| t + |\beta| t^2|)^2 dt}
+\geq \frac{1}{\sqrt{5}} ( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+\item 
+If $\alpha$ and $\beta$ are different signs, then the work is more difficult.
+We only need to consider
+\begin{eqnarray*}
+\int_0^1 \: ( |\alpha| t - |\beta| t^2|)^2 dt 
+&=&
+\int_0^1 ( |\alpha|^2 t^2 - 2 |\alpha| |\beta| t^3 + |\beta|^2 t^4 ) dt\\
+&=&
+\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}
+\end{eqnarray*}
+\noindent
+We want
+\begin{eqnarray*}
+\sqrt{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}
+&\geq& c (|\alpha| + |\beta|)
+\Longrightarrow
+\frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2}
+\geq c^2
+\end{eqnarray*}
+\noindent
+Let $u = \frac{|\alpha|}{|\beta}$ and show
+\begin{eqnarray*}
+\frac{\frac{|\alpha|^2}{3} - \frac{|\alpha| |\beta|}{2 } + \frac{|\beta|^2}{5}}{(|\alpha| + |\beta|)^2}
+&=& f(u)
+= \frac{\frac{1}{3}u^2 - \frac{1}{2}u + \frac{1}{5}}{(1+u)^2}
+\end{eqnarray*}
+\noindent
+We need to consider this function on $(0,\infty)$.  Show using
+standard calculus that $f$ has a positive absolute minimum on $(0,1)$
+which furnishes another value of $c$.
+\item The smallest of all these $c$ values is the one we seek.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^3$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\int_0^1 \: | \alpha t + \beta t^3| dt &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+Oh boy, this is ugly!
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+	
+\begin{exercise}
+Let $f(t) = t$ and $g(t) = t^3$ on $[0,1]$.
+We want to find a constant $c>0$ so that for all $\alpha$ and
+$\beta$ the following inequality hold.
+\begin{eqnarray*}
+\sqrt{\int_0^1 \: | \alpha t + \beta t^3|^2 dt} &\geq c( |\alpha| + |\beta|)
+\end{eqnarray*}
+\noindent
+This is even uglier but look at it this way: you always wanted to
+show the world you know your calculus right?
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\section{Finding Roots}
+
+You probably noticed that the problems above lead to root finding
+problems.  You might find these notes on root finding in MatLab helpful.
+There are plenty of exercises here which you don't have to do
+to turn in but you might find them useful.  Now if you use these methods
+in your exercises make sure you document how you do the code solutions.\\
+
+\noindent
+Let's discuss root finding using both the {\bf bisection} and
+{Newton} method.
+
+\subsection{The Bisection Method:}
+
+We need a simple function to find the root of a 
+{\em nice} function $f$ of the real variable
+$x$ using what is called bisection.  The method is actually
+quite simple.  We know that if $f$ is a continuous function on
+the finite interval $[a,b]$ then $f$ must have a zero inside the
+interval $[a,b]$ if $f$ has a different algebraic sign at the endpoints
+$a$ and $b$.  This means the product $f(a) \: f(b)$ is not zero.
+So we assume we can find an interval $[a,b]$ on which this change in
+sign satisfies $f(a) \: f(b) \: \leq \: 0$ (which we can do
+by switching to $-f$ if we have to!) and then if we
+divide the interval $[a,b]$ into two equal pieces
+$[a,m]$ and $[m,b]$, $f(m)$ can't have the same sign as
+both $f(a)$ and $f(b)$ because of the assumed sign difference.
+So at least one of the two halves has a sign change.\\
+
+\noindent
+Note that if $f(a)$ and $f(b)$ was zero then we still have
+$f(a) \: f(b) \: \leq \: 0$ and either $a$ or 
+$b$ could be our chosen root and either half interval
+works fine.  If only one of the endpoint
+function values is zero, then the bisection of $[a,b]$ into the
+two halves still finds the one half interval that has the root.\\
+
+\noindent
+So our prototyping Matlab code should use tests like
+$f(x) \: f(y) \: \leq \: 0$ rather than
+$f(x) \: f(y) \: < \: 0$ to make sure we catch the root.
+
+\subsubsection{The Bisection Matlab Code:}
+
+Here is a simple Matlab function to perform the Bisection routine.
+
+\mylistcode{matlab}{Bisection Code}{rootoptcode1}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/Bisection.m}
+\onehalfspacing
+
+\noindent
+We should look at some of these lines more closely.
+First, to use this routine, we need to write a function definition
+for the function we want to apply bisection to.  We will do this
+in a file called {\tt func.m} (Inspired Name, eh?)
+An example would be the one we wrote for the function
+\begin{eqnarray*}
+f(x) &=& \tan(\frac{x}{4}) \: - \: 1;
+\end{eqnarray*}
+\noindent
+which is coded in Matlab by
+
+\mylistcode{matlab}{Function Definition In MatLab}{rootoptcode2}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/func.m}
+\onehalfspacing
+
+\noindent
+So to apply bisection to this function on the
+interval $[2,4]$ with a stopping tolerance of say
+$10^{-4}$, in Matlab, we would type the command
+
+\singlespacing
+\myfancyverbatim{Using the code}
+\begin{lstlisting}
+ root = Bisection('func',2,4,10^-4)}
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing
+
+\noindent
+Note that the name of our supplied function, the uninspired
+choice {\em func} is passed in as the first argument in single
+quotes as it is a string.\\
+
+\noindent
+Also, in the Bisection routine, we have added the code to
+print out what is happening at each iteration of the while loop.
+Matlab handles prints to the screen a little funny, so do set up
+a table of printed values we use this syntax:
+
+\singlespacing
+\myfancyverbatim{Printing out diagnostics}
+\begin{lstlisting}
+  % this prints a blank line and then a table heading.
+  % note disp prints a string only
+  disp(' ')
+  disp('      k  |       a(k)    |      b(k)     |       b(k) - a(k) ')
+  % now to print the k, a, b and b-a, we must first
+  % put their values into a string using the c like function
+  % sprintf and then use disp to disply that string.
+  % so we do this 
+  % disp( sprintf(' output specifications here ',variables here))
+  % so inside the while loop we use
+  disp(sprintf(' %6d  | %12.7f  | %12.7f  | %12.7f',k,a,b,b-a));
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing
+
+\subsubsection{Running the Code:}
+
+As mentioned above, we will test this code on the function
+\begin{eqnarray*}
+f(x) &=& \tan(\frac{x}{4}) \: - \: 1;
+\end{eqnarray*}
+\noindent
+on the interval $[2,4]$ with a stopping tolerance of
+$\delta \: = \: 10^{-6}$.  Our function has been
+written as the Matlab function {\tt func} supplied in
+the file {\tt func.m}.\\
+
+\noindent
+The Matlab run time looks like this:
+
+\mylistcode{matlab}{Bisection MatLab Session}{rootoptcode3}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/Bisection.prompts}
+\onehalfspacing
+
+\subsubsection{Exercises:}
+
+Well, you have to practice this stuff to see what is going on.
+So here are two problems to sink your teeth into!
+
+\begin{enumerate}
+\item Use bisection to find the first five positive solutions of the
+      equation $x \: = \: \tan(x)$.  You can see where this is
+      roughly by graphing $\tan(x)$ and $x$ simultaneously.
+      Do this for tolerances 
+      $$\{10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}, 10^{-6}, 10^{-7}\}$$
+      For each root, choose a reasonable bracketing interval $[a,b]$,
+      explain why you chose it,
+      provide a table of the number of iterations to achieve the
+      accuracy and a graph of this number vs. accuracy.
+\item Use the Bisection Method to find the largest real root of the function
+      $f(x) \: = \: x^6 \: - \: x \: - \: 1$. 
+      Do this for tolerances \\
+      $\{10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}, 10^{-6}, 10^{-7}\}$.
+      Choose a reasonable bracketing interval $[a,b]$,
+      explain why you chose it,
+      provide a table of the number of iterations to achieve the
+      accuracy and a graph of this number vs. accuracy.     
+\end{enumerate}
+
+\subsection{Newton's Method:}
+
+\subsubsection{When Do We Do A Newton Step?}
+
+The following code uses a simple test to see
+if we should use a bisection or a newton method
+step in our zero finding routine.
+
+\mylistcode{matlab}{Should We Do A Newton Step?}{rootoptcode4}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/StepIsIn.m}
+\onehalfspacing
+
+\subsubsection{A Global Newton Method:}
+
+\mylistcode{matlab}{Global Newton Method}{rootoptcode5}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/GlobalNewton.m}
+\onehalfspacing
+
+\subsubsection{A Run Time Example:}
+
+We will apply our global newton method root finding code to
+a simple example: find a root for $f(x) \: = \: \sin(x)$ in the
+interval $[\frac{-7 \pi}{2}, 15 \pi + 0.1]$.  We code the
+function and its derivative in two simple Matlab files;
+{\tt f1.m} and {\tt f1p.m}.  These are
+
+\mylistcode{matlab}{Global Newton Function}{rootoptcode6}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/f1.m}
+\onehalfspacing
+
+\noindent
+and
+
+\mylistcode{matlab}{Global Newton Function Derivatived}{rootoptcode7}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/f1p.m}
+\onehalfspacing
+
+\noindent
+To run this code on this example, we would then type
+a phrase like the one below:
+
+\singlespacing
+\myfancyverbatim{Using the Global Newton Code}
+\begin{lstlisting}
+[x,fx,nEvals,aLast,bLast] = GlobalNewton('f1','f1p',-7*pi/2,15*pi+.1,...
+                                         10^-6,10^-8,200)
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing	
+
+\noindent
+Here is the runtime output:				 
+
+\mylistcode{matlab}{Global Newton MatLab Session}{rootoptcode8}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/GlobalMethod.prompts}
+\onehalfspacing
+
+\subsubsection{Some Exercises:}
+
+\begin{enumerate}
+\item Use the Global Newton Method to find the first five 
+      positive solutions of the
+      equation $x \: = \: \tan(x)$.  You can see where this is
+      roughly by graphing $\tan(x)$ and $x$ simultaneously.
+      Do this for tolerances \\
+      $$\{10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}, 10^{-6}, 10^{-7}\}$$
+      For each root, choose a reasonable bracketing interval $[a,b]$,
+      explain why you chose it,
+      provide a table of the number of iterations to achieve the
+      accuracy and a graph of this number vs. accuracy.
+\item Use the Global Newton Method to find the largest real root of the function
+      $f(x) \: = \: x^6 \: - \: x \: - \: 1$. 
+      Do this for tolerances \\
+      $$\{10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}, 10^{-6}, 10^{-7}\}$$
+      Choose a reasonable bracketing interval $[a,b]$,
+      explain why you chose it,
+      provide a table of the number of iterations to achieve the
+      accuracy and a graph of this number vs. accuracy.     
+\end{enumerate}
+
+\subsection{Adding Finite Difference Approximations to the Derivative:}
+
+We can also choose to replace the derivative function for
+$f$ with a finite difference approximation.  We will use
+\begin{eqnarray*}
+f^\prime(x) &\approx& \frac{f(x_c \: + \: \delta_c) \: - \: f(x_c)}{\delta_c}
+\end{eqnarray*}
+\noindent
+to approximate the value of the derivative at the point $x_c$.
+As we have discussed earlier, some care is required to pick a 
+size for $\delta_c$ so that round-off errors do not destroy the accuracy of
+our finite difference approximation to $f^\prime$.\\
+
+\noindent
+The simple Matlab code to implement this is given below:
+
+\singlespacing
+\myfancyverbatim{Simple Finite Difference Approximation}
+\begin{lstlisting}
+fval = feval(fname,x);
+fpval = (feval(fname,x+delta) - fval)/delta;
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing
+
+\noindent
+We can also use a secant approximation as follows:
+\begin{eqnarray*}
+f^\prime(x) &\approx& \frac{f(x_c) \: - \: f(x_{-}}{x_c \: - \: x_{-}}
+\end{eqnarray*}
+\noindent
+where $x_{-}$ is the previous iterate from our routine.
+The Matlab fragment we need is then:
+
+\singlespacing
+\myfancyverbatim{Secant Approximation}
+\begin{lstlisting}
+fpc = (fc - f_)/(xc - x_);
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing
+
+\subsubsection{A Finite Difference Global Newton Method:}
+
+We add the finite difference routines into our Global Newton's
+Method as follows:
+
+\mylistcode{matlab}{Finite Difference Global Newton Method}{rootoptcode9}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/GlobalNewtonFD.m}
+\onehalfspacing
+
+\noindent
+Note, we use for our finite difference stepsize 
+$\sqrt{\epsilon_{machine}} |x|$.
+
+\subsubsection{A Run Time Example:}
+
+We will apply our finite difference global newton method root finding code to
+the same simple example: find a root for $f(x) \: = \: \sin(x)$ in the
+interval $[\frac{-7 \pi}{2}, 15 \pi + 0.1]$.  We only need the code 
+for the function now which is as usual in the file
+{\tt f1.m}.
+
+\noindent
+To run this code on this example, we would then type
+a phrase like the one below:
+
+\singlespacing
+\myfancyverbatim{Using the Finite Difference Code}
+\begin{lstlisting}
+[x,fx,nEvals,aLast,bLast] = GlobalNewtonFD('f1',-7*pi/2,15*pi+.1,...
+                                         10^-6,10^-8,200)
+\end{lstlisting}
+\lstset{fancyvrb=false}
+\onehalfspacing	
+
+\noindent
+Here is the runtime output:				 
+
+\mylistcode{matlab}{Finite Difference Netwon Method MatLab Session}%
+{rootoptcode10}
+\singlespacing
+\lstinputlisting{Source/RootsOpt/GlobalNewtonFD.prompts}
+\onehalfspacing
+
+\subsubsection{Some Exercises:}
+
+\begin{enumerate}
+\item Use the Finite Difference Global Newton Method to find the second
+      positive solution of the equation $x \: = \: \tan(x)$.  
+      Do this for tolerances 
+      $10^{-8}$.  This time alter the GlobalNewtonFD code to
+      allow the finite difference step size {\tt delta}
+      to be a parameter and do a parametric study on the
+      effects of {\tt delta}.  Note that the code now uses
+      the reasonable choice of $\sqrt{\epsilon_{machine}} |x|$ but you
+      need to use the additional $\delta$ choices
+      $\{10^{-4}, 10^{-6}, 10^{-8}, 10^{-10}\}$.  This will give you
+      five $\delta$ choices. 
+      Provide a table
+      and a graph of $\delta$ vs. accuracy of the root approximation.
+\item Use the Finite Difference Global Newton Method to 
+      find the largest real root of the function
+      $f(x) \: = \: x^6 \: - \: x \: - \: 1$.
+      Do this for tolerances 
+      $10^{-8}$.  Again use altered GlobalNewtonFD code
+      with the finite difference step size {\tt delta}
+      as a parameter and do a parametric study on the
+      effects of {\tt delta}.  Note that the code now uses
+      the reasonable choice of $\sqrt{\epsilon_{machine}} |x|$ but you
+      need to use the additional $\delta$ choices
+      $\{10^{-4}, 10^{-6}, 10^{-8}, 10^{-10}\}$.  This will give you
+      five $\delta$ choices. 
+      Provide a table
+      and a graph of $\delta$ vs. accuracy of the root approximation. 
+\item Do the same thing for the problems above, but replace the
+      Finite Difference Global Newton Code with a Secant Global
+      Newton Code.  This will only require a few lines of code to
+      change really, so don't freak out!          
+\end{enumerate}
+
+\end{document}
