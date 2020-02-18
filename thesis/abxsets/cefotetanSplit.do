@@ -43,7 +43,7 @@ qui forval year = 2006/2016 {
 			replace script = 1 if DRUGID`k' == "`geneq'"
 			}
 	}
-	save "$output/cefotetan/scripted`dataset'", replace
+	save "$output/cefotetan/scripted`year'", replace
 	sum script
 	local rel`year' = r(sum)
 	local relMax = `rel`year'' + `relMax'
@@ -71,7 +71,7 @@ qui forval year = 2006/2016 {
 		restore
 	}
 }
-ma list
+
 
 qui forval dataset = 2006/2016 {
 	use "$output/cefotetan/scripted`dataset'", replace
@@ -121,11 +121,10 @@ qui forval dataset = 2006/2016 {
 			}
 		}
 	}
-	save "$output/cefotetan/temp`dataset'", replace
+	save "$output/cefotetan/scripted`dataset'", replace
 	drop if relRFV != 1
 	save "$output/cefotetan/rfv/`dataset'", replace
-	use "$output/cefotetan/temp`dataset'", replace
+	use "$output/cefotetan/scripted`dataset'", replace
 	drop if relDIAG != 1
-  save "$output/cefotetan/diag/`dataset'", replace
-	erase "$output/cefotetan/temp`dataset'.dta"
+	save "$output/cefotetan/diag/`dataset'", replace
 }

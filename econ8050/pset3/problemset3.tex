@@ -31,7 +31,7 @@ urlcolor=color2,%
 citecolor=color1,%
 linkcolor=color1,%
 bookmarksopen=false%
-,pdftitle={SampleProject},%
+,pdftitle={ProblemSet3},%
 pdfauthor={Peterson}}
 %\usepackage[round,numbers]{natbib}
 \usepackage[numbers]{natbib}
@@ -93,8 +93,8 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 %\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
 
 \date{\small{Version ~\today}}
-\Abstract{TBD}
-\Keywords{TBD}
+\Abstract{Questions 1 and 4 from Chugh, Chapter 4, and Question 2 from Problem Set.}
+\Keywords{Multi-Period Consumption-Savings Model}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -107,11 +107,11 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 
 \renewcommand{\theexercise}{\arabic{exercise}}%
 
-1. \textbf{1) Optimal choice in the consumption-savings model with credit constraints: a numerical analysis}. Consider our usual consumptoin-savings model. Let preferences of the representative consumer be describes by the utility function\\
+1. \textbf{1) Optimal choice in the consumption-savings model with credit constraints: a numerical analysis}. Consider our usual consumption-savings model. Let preferences of the representative consumer be describes by the utility function\\
 \\
 $u(c_1,c_2) = \sqrt{c_1} + \beta\sqrt{c_2}$\\
 \\
-where $c_1$ denotes the consumption in period on and $c_2$ denotes consumption in period 2. The parameter $\beta$ is known as the subjective discount factor and measures theconsumer's degree of impatience in the sense that the smaller $\beta$ is, the higher the weight the consumer assigns to present consumptoin relative to futre consumptoin. Assume that $\beta = \frac{1}{1.1}$. For this particular utility specification, the marginal utility functions are given by\\
+where $c_1$ denotes the consumption in period on and $c_2$ denotes consumption in period 2. The parameter $\beta$ is known as the subjective discount factor and measures the consumer's degree of impatience in the sense that the smaller $\beta$ is, the higher the weight the consumer assigns to present consumptoin relative to futre consumptoin. Assume that $\beta = \frac{1}{1.1}$. For this particular utility specification, the marginal utility functions are given by\\
 \\
 $u_1(c_1,c_2) = \frac{1}{2\sqrt{c_1}}$\\
 \\
@@ -167,9 +167,10 @@ The representative household has initial real financial wealth (including intere
 \indent \textbf{c.} Does the credit constraint described in part b enhance or diminish welfare (i.e does it increase or decrese lifetime utility)? Specifically, find the level of lifetime utility under the credit constraint and compare it to the level of lifetime utility under no credit constraint.\\
 \\
 \begin{solution}
+Considering, first, utility in both cases
   \begin{center}
     $u(c_1,c_2) = \sqrt{c_1} + \beta\sqrt{c_2}$\\
-    $u_{no constraint}(c_1,c_2) = \sqrt{7.957}(1 + \frac{1}{1.1}$\\
+    $u_{unconstrained}(c_1,c_2) = \sqrt{7.957}(1 + \frac{1}{1.1}$\\
     $= (2.821)(1.909) = 5.38$\\
   \end{center}
   and
@@ -177,7 +178,7 @@ The representative household has initial real financial wealth (including intere
     $u_{constraint} \sqrt{6.1} + \frac{1}{1.1}\sqrt{10}$\\
     $= 2.47 + \frac{3.162}{1.1}$\\
     $= 5.34 < 5.38$\\
-    $\implies u_{no constraint} > u_{constraint}$
+    $\implies u_{unconstrained}> u_{constraint}$
   \end{center}
   So, utility has been lowered due to the credit constraint.
 \end{solution}
@@ -212,15 +213,18 @@ The representative household has initial real financial wealth (including intere
   \noindent Which is not true so the credit constraint will still be binding. 
 \end{solution}
 \textbf{4) Two-period economy.} Consider a two-period economy (with no government and hence no taxes at all) in which the representative consumer has no control over his income $y_1$ $y_2$. The lifetime utility function of the representative consumer is $u(c_1,c_2) = ln(c_1) + c_2$, where $ln(.)$ stands for the natural logarithm (note that only $c_1$ is inside the function)\\
+\\
 There is only a single asset the consumer trades; and the consumer begins period one with zero assets.\\
+\\
 On the asset that consumers trade, the real interest rate is initially $r > 0$. As a mathematical propisition, this is fine, but think of this $r$ as very much larger than zero. In particular, think about the "credit crises" in the fall of 2008, when certain values of $r$ went to historically large values (and some of them are still very large).\\
+\\
 For concreteness, let's think "period 1" as the fall of 2008 to 2013, and "period 2" to be 2014 through the end of time.\\
 \\
 \noindent \textbf{a.} Does the lifetime utility function display diminishing marginal utility in $c_1$? And, does it display diminishing marginal utility in $c_2$? Briefly explain, in no more than three sentences. (Note the two separate questions)\\
 \begin{solution}
   \begin{center}
     $u_1' = \frac{1}{c_1}$\\
-    $\implies u_1'' = -\frac{1}{c_1^2}$
+    $\implies u_1'' = -\frac{1}{c_1^2}$\\
     $u_2' = 1$\\
     $\implies u_2'' = 0$
   \end{center}
@@ -230,8 +234,8 @@ For concreteness, let's think "period 1" as the fall of 2008 to 2013, and "perio
 \begin{solution}
   \begin{center}
     $\mathcal{L} = ln(c_1) + c_2 + \lambda[c_1 + \frac{c_2}{1 + r} - y_1 - \frac{y_2}{1 + r} - (1 +r)a_0]$\\
-    $\mathcal{L}_1 = \frac{1}{c_1} + \lambda = 0 \ implies \frac{1}{c_1} = -\lambda$\\
-    $\mathcal{L} = 1 + \frac{\lambda}{1 + r} = 0 \implies 1 = -\frac{\lambda}{1 +r}$\\
+    $\mathcal{L}_1 = \frac{1}{c_1} + \lambda = 0 \ \implies \frac{1}{c_1} = -\lambda$\\
+    $\mathcal{L}_2 = 1 + \frac{\lambda}{1 + r} = 0 \implies 1 = -\frac{\lambda}{1 +r}$\\
     $\mathcal{L}_\lambda = c_1 + \frac{c_1}{1 + r} - y_1 - \frac{y_2}{1 + r} - (1 + r)a_0 = 0$\\
     $\frac{\mathcal{L}_1}{\mathcal{L}_2} \implies \frac{1}{c_1} = 1 + r$\\
     $\implies _1 = \frac{1}{1 + r}$\\
@@ -257,7 +261,8 @@ For concreteness, let's think "period 1" as the fall of 2008 to 2013, and "perio
 \begin{solution}
   Because the Federal Reserve has the power to meaningfully alter interest rates, and because we have establishedconsumers are sensitive to changes in r regarding the MU of $c_1$, but insensitive to changes of $c_2$, we can say the Federal reserves actions can offset the impact on the pure marginal utility of $c_1$ but not $c_2$. 
 \end{solution}
-2. \textbf{Consumption Tax Policy}. Suppose that the government had a desire to increase current consumption spending (perhaps in order to stimulate the economy) and decided to accomplish this through tax policy. Importantly, the government - for reasons of fiscal austerity - was unwilling to lower taxes. Use the two period, consumption-saving model (in real terms, i.e., assume zero inflation and normalize prices to 1) to analyze some of the government options. Assume that household has the following lifetime preferences
+\bigskip
+\noindent \textbf{2. Consumption Tax Policy}. Suppose that the government had a desire to increase current consumption spending (perhaps in order to stimulate the economy) and decided to accomplish this through tax policy. Importantly, the government - for reasons of fiscal austerity - was unwilling to lower taxes. Use the two period, consumption-saving model (in real terms, i.e., assume zero inflation and normalize prices to 1) to analyze some of the government options. Assume that household has the following lifetime preferences
 \begin{center}
 	$U(c_1,c_2) = u(c_1) + u(c_2)$
 \end{center}

@@ -1,0 +1,460 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Five, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework Five}
+\Authors{Your Name Here\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
+Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
+\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Compactness and Bounded Operators}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\section{Compactness}
+
+Here are some problems about compactness.
+
+\begin{exercise}
+Let $X = C([0,1])$ with the supremum norm.
+Define the set $S$ by 
+\begin{eqnarray*}
+S &=& \{ \bs{y} \in X \: | \: y(t) = \int_0^t \: f(x(s)) \: ds, \: \text{ for some } \bs{x} \in X \text{ with } \|\bs{x}\|_\infty \leq 1 \}
+\end{eqnarray*}
+\noindent
+where $f(u) = u^2$.
+\begin{itemize}
+\item Note if $\bs{y} \in S$, then $\|\bs{y}\|_\infty \leq 2$ so that $S$ is a uniformly bounded subset of $X$.
+\item Note if $\bs{y} \in S$, then for any $\bs{y_1}$ and $\bs{y_2}$ in $S$
+\begin{eqnarray*}
+|y_1(t)-y_2(t)| &\leq& 2 \|\bs{x_1} - \bs{x_2}\|_\infty 
+\end{eqnarray*}
+\item Note if $\bs{y} \in S$, then
+\begin{eqnarray*}
+|y(t_1)-y_(t_2)| &\leq&   \|\bs{x}\|^2_\infty \: |t_1 - t_2| < |t_1 - t_2|
+\end{eqnarray*}
+\noindent
+Show this says $S$ is a uniformly equicontinuous family in $C([0,1])$.
+\item Use the Arzela - Ascoli Theorem to prove $S$ is compact.
+\item Prove $S$ is therefore nowhere dense in $C([0,1])$.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $X = C([0,1])$ with the supremum norm.
+Define the set $S$ by 
+\begin{eqnarray*}
+S &=& \{ \bs{y} \in X \: | \: y(t) = \int_0^t \: f(x(s)) \: ds, \: \text{ for some } \bs{x} \in X \text{ with } \|\bs{x}\|_\infty \leq 1 \}
+\end{eqnarray*}
+\noindent
+where $f$ is continuous and globally Lipschitz on $\Re$; i.e. there is a $K > 0$ so that
+$|f(u) - f(v)| < K |u - v|$ for all $u$ and $v$ is $\Re$.  Note this says
+$|f(x_1(t)) - f(x_2(t))| < K|x_1(t) - x_2(t)|$.
+\begin{itemize}
+\item Note if $\bs{y} \in S$, then there is a $B > 0$ so that $\|\bs{y}\|_\infty \leq B $. Hence, $S$ is a uniformly bounded subset of $X$.
+\item Note if $\bs{y} \in S$, then for any $\bs{y_1}$ and $\bs{y_2}$ in $S$
+\begin{eqnarray*}
+|y_1(t)-y_2(t)| &\leq& K \|\bs{x_1} - \bs{x_2}\|_\infty 
+\end{eqnarray*}
+\item Note if $\bs{y} \in S$, then
+\begin{eqnarray*}
+|y(t_1)-y_(t_2)| &\leq&   \max_{0 \leq u \leq 1} |f(u)| \: |t_1 - t_2|
+\end{eqnarray*}
+\noindent
+Show this says $S$ is a uniformly equicontinuous family in $C([0,1])$.
+\item Use the Arzela - Ascoli Theorem to prove $S$ is compact.
+\item Prove $S$ is therefore nowhere dense in $C([0,1])$.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\section{Bounded Operators}
+
+\begin{exercise}
+Let $T : \ell^2 \rightarrow \ell^2$ be the right shift operator; i.e. if $\bs{x} = \{x_1, x_2, \ldots \}$
+then $T(\bs{x}) = \{x_2, x_3, \ldots \}$.  Show $\sup_{\|\bs{x}\|_2 = 1} \|T(\bs{x})\|_2 \leq 1$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Let $A$ be an $n \times n$ matrix with $n$ linearly independent eigenvectors $\bs{E_i}$ with real eigenvalues
+$\lambda_i$.  Let $\| \cdot \|$ denote any norm used on $\Re^n$ for both the domain and the range.
+\begin{eqnarray*}
+\sup_{\|\bs{x}\| = 1} \|A(\bs{x})\| &\leq& \frac{E}{c} \frac{\sum_{i=1}^n |\lambda_i| |x_i|}{\sum_{i=1}^n |x_i|}
+\end{eqnarray*}
+\noindent 
+where the components of any $\bs{x}$ are denoted by $x_i$ as usual and
+$E = \max_{1 \leq i \leq n} \|\bs{E_i}\|$ and $c$ is the constant we obtain by invoking the Linear Combination Theorem.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\section{Rotating Surfaces}
+
+We are going to do some problems with Hessians in the context
+of graduate analysis, but let's review a bit to set the stage.
+We go through  these ideas both by
+hand and using MatLab so you can see how both approaches work.
+\index{Symmetric Matrices!Rotating Surfaces}
+Consider the surface $z = 3x^2 + 2xy + 4y^2$ which is a rotated
+paraboloid with elliptical cross sections.  Let's fine the angle $\theta$ so that
+the change of variable $\bs{R_{\theta}} \begin{bmatrix} x \\y \end{bmatrix}$
+to the new coordinates $\overline{x}$ and $\overline{y}$ leads to a surface
+equation with no cross terms $\overline{x} \overline{y}$.  First note
+\begin{eqnarray*}
+3x^2 + 2xy + 4y^2 &=&
+\begin{bmatrix} x\\y\end{bmatrix}^T 
+\: \begin{bmatrix} 3 & 1 \\ 1 & 4 \end{bmatrix}
+\: \begin{bmatrix} x\\y\end{bmatrix}
+\end{eqnarray*}
+\noindent
+where we let
+\begin{eqnarray*}
+\bs{H} &=& \begin{bmatrix} 3 & 1 \\ 1 & 4 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+The matrix $\bs{H}$ here is symmetric so using the eigenvectors and eigenvalues 
+of $\bs{H}$,
+we can write
+\begin{eqnarray*}
+\begin{bmatrix} \bs{E_1} & \bs{E_2}\end{bmatrix}^T
+\: \begin{bmatrix} 3 & 1 \\ 1 & 4 \end{bmatrix}
+\: \begin{bmatrix} \bs{E_1} & \bs{E_2}\end{bmatrix}
+&=&
+\begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+The orthonormal basis $\{ \bs{E_1}, \bs{E_2}\}$ can be identified
+with either a rotation $\bs{R_\theta}$ or a reflection $\bs{R_\theta^r}$.
+We will choose the rotation.  Then using
+the change of variables
+\begin{eqnarray*}
+\begin{bmatrix} \overline{x}\\\overline{y}\end{bmatrix}
+&=& \bs{R_\theta} \: \begin{bmatrix} x\\y\end{bmatrix}
+\end{eqnarray*}
+\noindent
+we find
+\begin{eqnarray*}
+z &=&
+\begin{bmatrix} x\\y\end{bmatrix}^T  \bs{R_\theta}^T
+\: 
+\begin{bmatrix} 3 & 1 \\ 1 & 4 \end{bmatrix}
+\: \bs{R_\theta} \begin{bmatrix} x\\y\end{bmatrix}
+\: = \:
+\lambda_1 \overline{x}^2 + \lambda_2 \overline{y}^2.
+\end{eqnarray*}
+\noindent
+The characteristic equation for $\bs{H}$ is
+\begin{eqnarray*}
+det(\lambda \bs{I} - \bs{H}) &=& \lambda^2 -7 \lambda +11 = 0
+\end{eqnarray*}
+\noindent
+with roots
+\begin{eqnarray*}
+\lambda_1 &=& \frac{7 + \sqrt{5}}{2} = 4.618, \quad
+\lambda_2 = \frac{7 - \sqrt{5}}{2} = 2.382
+\end{eqnarray*}
+\noindent
+It is straightforward to find the corresponding eigenvectors
+\begin{eqnarray*}
+\bs{W_1} = \begin{bmatrix} 1 \\ \frac{1+\sqrt{5}}{2} \end{bmatrix}, \quad
+\bs{W_1} = \begin{bmatrix} 1 \\ \frac{1-\sqrt{5}}{2} \end{bmatrix},
+\end{eqnarray*}
+\noindent
+Then 
+\begin{eqnarray*}
+\| \bs{W_1}\|_2^2 &=& \sqrt{ 1 + \left(\frac{1+\sqrt{5}}{2}\right)^2}
+\Longrightarrow 
+\| \bs{W_1}\|_2 = \sqrt{3.618} = 1.902\\
+\| \bs{W_2}\|_2^2 &=& \sqrt{ 1 + \left(\frac{1-\sqrt{5}}{2}\right)^2}
+\Longrightarrow 
+\| \bs{W_2}\|_2 = \sqrt{1.382} = 1.176
+\end{eqnarray*}
+\noindent
+Then the orthonormal basis we need is
+\begin{eqnarray*}
+\bs{E_1} &=& \frac{\bs{W_1}}{\| \bs{W_1}\|_2} 
+= \begin{bmatrix} .526\\ .8505 \end{bmatrix}\\
+\bs{E_2} &=& \pm \frac{\bs{W_2}}{\| \bs{W_2}\|_2} 
+= \pm \begin{bmatrix} .8505 \\ -.526 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+If we choose the minus choice, we get
+\begin{eqnarray*}
+\bs{E_2} &=& \begin{bmatrix} -.8505 \\ .526 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+and $\begin{bmatrix} \bs{E_1}, \bs{E_2} \end{bmatrix}$
+is the rotation matrix $\bs{R_\theta}$.  If we choose the plus choice, we get
+\begin{eqnarray*}
+\bs{E_2} &=& \begin{bmatrix} .8505 \\ -.526 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+and $\begin{bmatrix} \bs{E_1}, \bs{E_2} \end{bmatrix}$
+is the reflected rotation matrix $\bs{R_\theta^r}$.  Our rotation matrix is then
+\begin{eqnarray*}
+\bs{R_\theta} &=& \begin{bmatrix} .526 & -.8505\\ .8505 & .526 \end{bmatrix}
+ \: = \:
+  \begin{bmatrix} \cos(1.017) & -\sin(1.017)\\ \sin(1.017)& \cos(1.017) \end{bmatrix}
+\end{eqnarray*}
+\noindent
+where $\theta = 1.017$ radians.
+As a check, 
+\begin{eqnarray*}
+\begin{bmatrix} .526 & .8505\\ -.8505 & .526 \end{bmatrix}
+\: \begin{bmatrix} 3 & 1 \\ 1 & 4 \end{bmatrix}
+\: \begin{bmatrix} .526 & -.8505\\ .8505 & .526 \end{bmatrix}
+&=&
+\begin{bmatrix} .526 & .8505\\ -.8505 & .526 \end{bmatrix}
+\: \begin{bmatrix} 2.4285 & -2.0255 \\ 3.928 & 1.2535 \end{bmatrix}\\
+&= &
+\begin{bmatrix} 4.618& 0\\ 0 & 2.382 \end{bmatrix}
+\: = \:
+\begin{bmatrix} \lambda_1& 0\\ 0 & \lambda_2 \end{bmatrix}
+\end{eqnarray*}
+\noindent
+The change of variables is
+\begin{eqnarray*}
+\begin{bmatrix} \overline{x}\\\overline{y}\end{bmatrix}
+&=& \bs{R_\theta} \: \begin{bmatrix} x\\y\end{bmatrix}
+\: = \:
+\begin{bmatrix} .526 & -.8505\\ .8505 & .526 \end{bmatrix}
+\: \begin{bmatrix} x\\y\end{bmatrix}
+\: = \:
+\begin{bmatrix} .526 \:x  - .8505 \:y\\.8505 \:x + .526\: y\end{bmatrix}
+\end{eqnarray*}
+\noindent
+Now let's do the same computations in MatLab.
+
+\myfancyverbatim{Surface Rotation: Eigenvalues and Eigenvectors}
+\begin{lstlisting}
+>> H = [3,1;1,4]
+H =
+
+   3   1
+   1   4
+
+>> [W,D] = eig(H)
+W =
+
+  -0.85065   0.52573
+   0.52573   0.85065
+
+D =
+
+Diagonal Matrix
+
+   2.3820        0
+        0   4.6180
+\end{lstlisting}
+\lstset{fancyvrb=false}
+
+\noindent
+The command \mylstinline{eig} returns the unit eigenvectors as columns of
+$\bs{V}$ and the corresponding eigenvalues as the diagonal entries of $\bs{D}$.
+You can see by looking at the matrix $\bs{V}$ the columns are not set up
+correctly to be a rotation matrix.
+We pick our orthonormal basis from $\bs{V}$ and hence
+our rotation matrix $\bs{R}$ as follows:
+
+\myfancyverbatim{Surface Rotation: Setting the Rotation Matrix}
+\begin{lstlisting}
+>> E1 = W(:,2)
+E1 =
+
+   0.52573
+   0.85065
+
+>> E2 = W(:,1)
+E2 =
+
+  -0.85065
+   0.52573
+
+>> R = [E1,E2]
+R =
+
+   0.52573  -0.85065
+   0.85065   0.52573
+\end{lstlisting}
+\lstset{fancyvrb=false}
+
+\noindent
+We then check the decomposition.
+
+\myfancyverbatim{Surface Rotation: Checking the decomposition}
+\begin{lstlisting}
+>> R'*H*R
+ans =
+
+   4.61803   0.00000
+  -0.00000   2.38197
+\end{lstlisting}
+\lstset{fancyvrb=false}
+
+\noindent
+You can practice on these problems if you want:\\
+
+\begin{itemize}
+\item Analyze $4x^2 + 6xy + 7y^2$.
+\item Analyze $-7x^2 + 2xy + 8y^2$.
+\item Analyze $2x^2 -8xy + 6y^2$.
+\item Analyze $5x^2 + 12xy + 2y^2$.
+\end{itemize}
+
+\noindent
+Now on to the real problems.
+
+\begin{exercise}
+Let's study the Hessian of a nice two dimensional map.
+Let $f(x,y) = 2x^2 + 5xy + 6y^2 + 7x + 9y + 10$.
+\begin{itemize}
+\item Find the Hessian for this map and its eigenvalues and eigenvectors.
+Note we can choose the eigenvectors to be an orthonormal basis for $\Re^2$.
+\item Use the $\| \cdot\|_2$ norm on $\Re^2$ here and prove
+\begin{eqnarray*}
+\|H\| = \sup_{\|\bs{x} = 1} \|H(\bs{x})\| & \leq & \sqrt{|\lambda_1|^2 |x_1|^2 + |\lambda_2|^2 |x_2|^2}
+\leq \max\{ |\lambda_1|,|\lambda_2|\}
+\end{eqnarray*}
+\item Prove $\|H\|  \geq \max\{ |\lambda_1|,|\lambda_2|\}$
+\item Combining, this proves $\|H\|  = \max\{ |\lambda_1|,|\lambda_2|\}$.
+\end{itemize}
+\noindent
+Note make sure you fill in the numerical values here also.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\begin{exercise}
+Using the approach of the last exercise, now consider
+Let $f(x,y) = 5x^2 + 15xy + 8y^2 + 70x + 90y + 30$.
+\begin{itemize}
+\item Find the Hessian for this map and its eigenvalues and eigenvectors.
+Note we can choose the eigenvectors to be an orthonormal basis for $\Re^2$.
+\item Use the $\| \cdot\|_2$ norm on $\Re^2$ here and prove
+\begin{eqnarray*}
+\|H\| = \sup_{\|\bs{x} = 1} \|H(\bs{x})\| & \leq & \sqrt{|\lambda_1|^2 |x_1|^2 + |\lambda_2|^2 |x_2|^2}
+\leq \max\{ |\lambda_1|,|\lambda_2|\}
+\end{eqnarray*}
+\item Prove $\|H\|  \geq \max\{ |\lambda_1|,|\lambda_2|\}$
+\item Combining, this proves $\|H\|  = \max\{ |\lambda_1|,|\lambda_2|\}$.
+\end{itemize}
+\noindent
+Note make sure you fill in the numerical values here also.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\end{document}
