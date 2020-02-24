@@ -1,0 +1,184 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet3},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip o text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Problem Set Four, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Problem Set Six}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set.}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\textbf{Problem One:}
+Suppose we are analyzing an economy that satisfies the following assumptions:
+\begin{itemize}
+  \item The economy is a small open economy. There is a free flow of capital goods across border but labor is immobile
+  \item There exists a single representative firm which lives for two periods
+  \item The firm owns its capital, it starts period with $k_1$ units of capital and operates for two periods
+  \item There is a fixed amount of labor in each period and it is supplied inelastically.
+  \begin{eqnarray*}
+    \text{Labor Supply in Period 1} = \bar{L_1}\\
+    \text{Labor Supply in Period 2} = \bar{L_2}
+  \end{eqnarray*}
+  \item The firm is competitive, it takes output and input prices as given:
+  \begin{itemize}
+    \item It hires labor $(L)$ in period 1 and 2 at market real wage rates $w_1$ and $w_2$
+    \item it buys capital $(K)$ at exogenously given world prices of capital $P_1I$ and $P_2^I$
+  \end{itemize}
+  \item It produces final output using labor and capital according to a production function
+  \begin{eqnarray*}
+    Y_t = A_t K_t^\alpha L_t^{1 - \alpha}, 0 < \alpha < 1
+  \end{eqnarray*}
+  \item The firm accumulates/decumulates capital through investment, which takes the form of purchasing capital goods in the world market. Capital depreciates at the rate $0 < \delta < 1$.
+  \item The firm chooses the quantities of inputs to maximize the present discounted value of profits, which is given by
+  \begin{eqnarray*}
+    V_1 = \pi_1 &+& \frac{\pi_2}{1 + r_2} = A_1F(K_1,L_1) - w_1L_1 + P_1^1(1 - \delta)K_1 - P_1^1K_2\\
+     &+& \frac{1}{1 + r_2}[A_2f(K_2,L_2) - w_2L_2 + P_2^I(1 - \delta)K_2 - P_2^IK_3]
+  \end{eqnarray*}
+\end{itemize}
+
+\begin{enumerate}
+  \item Find the first order conditions for the firm's maximization problem.
+  \item Solve for the market clearing wages $w_1$ and $w_2$, and the firm's optimal choice of capital $K_2$ (That is, find the closed-formed solutions expressing each of these variables as functions of the model's parameters).
+  \item Does the wage rate in period 1, $w_1$, depend on the labor supply in period 1, $\bar{L}_1$?
+  \item Does the wage rate in period 2, $w_2$, depend on the labor supply in period 2, $\bar{L}_2$?
+  \item If your answers to (3) and (4) differ, explain why.
+  \item Suppose that the government imposes a tariff on capital goods in both periods, so that new prices faced by the firm become $(1 + t)P_1^I$ and $(1 + t)P_2^I$, where $t$ is the tarrif rate. What will be the effect on $w_1$, $w_2$, and $K_2$?
+  \item Suppose that $A_1 = A_2 = 1, L_1 = L_2 = 5, r_2 = 0,1, \delta = 0.05, \alpha = \frac{1}{3}, P_1^I = 1,$ and $P_2^I = 1.05$. Wolve for the numerical value of $w_1, w_2$, and $K_2$.
+  \item Assume $t = 0.1$. Solve for the numerical values of $w_1, w_2$, and $K_2$.
+\end{enumerate}
+\bigskip
+\textbf{Question Two:}
+Consider a 2 period closed economy model of consumption and saving with investment and government taxation that we have studied in class. The representation household solves the following problem
+\begin{eqnarray*}
+  \text{max}_{C_1,C_2}\: u(C_1) + \beta u(C_2) st\\
+  C_2 = A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 + (A_1F(K_1) - T_1) - C_1
+\end{eqnarray*}
+\begin{enumerate}
+  \item Draw and give and interpretation of the budget constraint
+  \item Show the solution to the household's problem graphically
+  \item Suppose that initiall $T_1 = T_2 = 0$. Analyze graphically what would happen if the government did the following:
+  \begin{itemize}
+    \item Increased $T_1$ while leaving $T_2$ unchanged
+    \item Increased $T_2$ while leaving $T_1$ unchanged
+    \item Increased both $T_1$ and $T_2$ by the same amount
+  \end{itemize}
+  \indent For each case, explain what happens (or may happen, if there are multiple possibilities) to consumption, investment and output in periods 1 and 2. 
+\end{enumerate}
+%\newpage
+%\clearpage
+%\noindent \textbf{Graph 1.2}
+%\begin{figure}[h]
+%  \includegraphics{graph12.png}
+%\end{figure}
+%\clearpage
+%\noindent \textbf{Graph 2.4}
+%begin{figure}[h]
+%        \includegraphics{graph24.png}
+%\end{figure}
+%\newpage
+%\clearpage
+%\noindent \textbf{Graph 2.5}
+%\begin{figure}[h]
+%        \includegraphics{graph25.png}
+%\end{figure}
+\end{document}
+

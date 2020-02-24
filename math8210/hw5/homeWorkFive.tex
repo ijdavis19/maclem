@@ -87,9 +87,9 @@ pdfauthor={Peterson}}
 \Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{MATH 8210 Homework Five}
-\Authors{Your Name Here\textsuperscript{1}}
-\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
-Clemson University,Clemson, SC: email yournamehere@clemson.edu}}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
 
 \date{\small{Version ~\today}}
@@ -137,7 +137,35 @@ Show this says $S$ is a uniformly equicontinuous family in $C([0,1])$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  First, we want to show why
+  \begin{eqnarray*}
+    |y(t_1)-y_(t_2)| &\leq&   \|\bs{x}\|^2_\infty \: |t_1 - t_2| < |t_1 - t_2|
+  \end{eqnarray*}
+  says S is a uniformly equicontinuous family in C([0,1]). To do this, pick some $\varepsilon > 0$ and set $\delta = \frac{\varepsilon}{\|\bs{x}\|^2_\infty }$, then we get $|t_1-t_2| < \delta \implies$
+  \begin{eqnarray*}
+    |y(t_1)-y_(t_2)| &\leq&   \|\bs{x}\|^2_\infty \: |t_1 - t_2| < \|\bs{x}\|^2_\infty \: \delta = \|\bs{x}\|^2_\infty \: \frac{\varepsilon}{\|\bs{x}\|^2_\infty } = \varepsilon
+  \end{eqnarray*}
+  and, because $\varepsilon$ was arbitrarily chosen, we know it holds for all $\varepsilon > 0$. Hence, S is a uniformly continuous family on C([0,1])\\
+  \\
+  Next, we want to use Arzela - Ascoli to prove S is compact. To do so, recall that Arzela - Ascoli tells us that there exists a sequence $(y_n) \subset S$ that converges uniformily to a continuous function y on [0,1] and we know that the theorem holds because S is uniformly bounded and equicontinuous. We identify Q with the enumeration $(r_n)$. Since S is UB by 2, the set of points $\{(y(r_1))|y \in S\}$ is bounded by 2 also. By Bolzano - Weierstrass, there is a sequence of distinct functions $(y_n^1)$ from S so that $(y_n^1(r_1))$ converges to a real number $\alpha_1$. Continuing this process for $\{(y(r_2))|y \in S\}$, there is a sequence of disctinct functions $(y_n^2) \subset (y_n^1)$ from S so that $(y_n^2(r_2)$ converges to a real number $\alpha_2$. Note, since $(y_n^2) \subset (y_n^1)$, we know $(y_n^2(r_2))$ also converges to $\alpha_1$. We continue this process on to get the chain of sequences
+  \begin{eqnarray*}
+    ... \subset (y_n^p) ... \subset (y_n^3) \subset (y_n^2) \subset (y_n^1)
+  \end{eqnarray*}
+  so that for each k, $(y_n^k)$ converges at $r_1,...,r_k$ to $\alpha_1,...,\alpha_k$. The sequence looks like
+  \begin{eqnarray*}
+    (y_n^k) = ((y_n^k)_1),(y_n^k)_2),(y_n^k)_3),...,(y_n^k)_k),...)
+  \end{eqnarray*}
+  where the $(y_n^k)_j)$ is the $j^{th}$ element of the sequence. If we fix the rational number $r_p$ and consider the sequence $((y_n^k)_k)(r_p)$. This is a subsequence of $(y_n^p)(r_p)$ when $k > p$ and so converges to $\alpha_p$. So this sequence converges on Q. For a given $\epsilon > 0$, there is a $N(r_k)$ so that $p,q > N(r_k)$ implies
+  \begin{eqnarray*}
+    |(y_n^p)_p(r_k) - (y_n^q)q(r_k)| < \frac{\epsilon}{3}
+  \end{eqnarray*}
+  Since the familiy is equicontinuous, for each $x \in [0,1]$, there is a $\delta_x > 0$ so that $|y(x) - y(t)| < \frac{\epsilon}{3}$ for all y in S and $|x - t| < \delta_x$ and we are also able to get $p,q > N(r_l)$ implies
+  \begin{eqnarray*}
+    |(y_n^p)_p(r_l) - (y_n^q)_q(r_l)| < \frac{\epsilon}{3}
+  \end{eqnarray*}
+  Thus, if $p,q > N(r_l), |(y_n^p)_p(x) - (y_n^q)_q(x)| < \epsilon$. We can do this for any x in [0,1] with only picking a new $r_l$. So if we let $N = max\{N_{r_{l_1}},....,N_{r_{l_P}}\}$we see $p,q > N$ implies $|(y_n^p)_p(x) - (y_n^q)_q(x)| < \epsilon$ which satisfies the Cauchy Criterion for uniform convergence on [0,1]. Hence, there is a continuous function x on [0,1] so that $(f_n^k)_k \rightarrow x$ uniformly on [0,1]. Hence, S is compact.\\
+  \\
+  Lastly, we want to prove S is nowhere dense in C([0,1]). To do so, start with the fact that we have proven S is compact in C([0,1]) which tells us that S is closed and bounded. We then assume that S has an interior point \textbf{p} and there is an $r > 0$ so that $B(\bs{p};r) \subset S$ which also implies $\overline{B(\bs{p};\frac{r}{2})} \subset S$. This implies the translation $-\bs{p} + \overline{B(\bs{p};\frac{r}{2})} = \overline{B(0;\frac{r}{2})}$ is compact and the scaled set $\frac{2}{r}(-\bs{p} + \overline{B(\bs{p};\frac{r}{2})}) = \overline{B(0;1)}$ is compact. But C([a,b]) is infinitely dimensionalso our assumption of S having an interior point must not hold. Hence, we can conlude S is nowhere dense. 
 \end{solution}
 
 \begin{exercise}
@@ -168,7 +196,18 @@ Show this says $S$ is a uniformly equicontinuous family in $C([0,1])$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  First, we want to show why
+  \begin{eqnarray*}
+    |y(t_1)-y_(t_2)| &\leq&   \max_{0 \leq u \leq 1} |f(u)| \: |t_1 - t_2|
+  \end{eqnarray*}
+  tells us that S is a uniformly equicontinuous family on in C([0,1]). To do so, we pick $\varepsilon > 0$ and set $\delta = \frac{\varepsilon}{\max_{0 \leq u \leq 1} |f(u)|}$. This gives us $|t_1-t_2| < \delta \implies$
+  \begin{eqnarray*}
+    |y(t_1)-y_(t_2)| &\leq&   \max_{0 \leq u \leq 1} |f(u)| \: |t_1 - t_2| < \max_{0 \leq u \leq 1} |f(u)| \: \delta = \max_{0 \leq u \leq 1} |f(u)| \: \frac{\varepsilon}{\max_{0 \leq u \leq 1} |f(u)|} = \varepsilon
+  \end{eqnarray*}
+  \begin{center}
+    \textbf Next, we want to use Azrela Ascoli to prove S is compact. Because S is uniformly bounded by K, the exact argument from 1 holds to show S is compact. 
+  \end{center}
+  Becauase we have now shown that S is continuous by Azrela - Ascoli, we know by theorem 5.4.5 (the proof of which is above in the final part of exercise 1), that compact subsets of an indfinite dimensional normed linear space are nowhere dense.
 \end{solution}
 
 \section{Bounded Operators}
@@ -179,18 +218,36 @@ then $T(\bs{x}) = \{x_2, x_3, \ldots \}$.  Show $\sup_{\|\bs{x}\|_2 = 1} \|T(\bs
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  Note that $||x||_2 = 1 \implies \sum_{n+1}^\infty(x_n^2)^{1/2} = 1$. This gives us two important cases to consider.\\
+  1. $x_1 \neq 0$\\
+  \begin{eqnarray*}
+    ||T(x)||_2 = ||x||_2 - x_1 = 1 - x < 1\\
+    \implies sup||T(x)||_2 < 1
+  \end{eqnarray*} 
+  2. $x_1 = 0$
+  \begin{eqnarray*}
+    ||T(x)||_2 = ||x||_2 - x_1 = 1 - 0 = 1
+    \implies \implies sup||T(x)||_2 = 1
+  \end{eqnarray*}
+  Hence, $\implies \implies sup||T(x)||_2 \leq 1$
 \end{solution}
 
 \begin{exercise}
-Let $A$ be an $n \times n$ matrix with $n$ linearly independent eigenvectors $\bs{E_i}$ with real eigenvalues
-$\lambda_i$.  Let $\| \cdot \|$ denote any norm used on $\Re^n$ for both the domain and the range.
-\begin{eqnarray*}
-\sup_{\|\bs{x}\| = 1} \|A(\bs{x})\| &\leq& \frac{E}{c} \frac{\sum_{i=1}^n |\lambda_i| |x_i|}{\sum_{i=1}^n |x_i|}
+Let $A$ be an $n \times n$ matrix with $n$ linearly independent
+eigenvectors $\bs{E_i}$ with real eigenvalues $\lambda_i$.  Let
+$\| \cdot \|$ denote any norm used on $\Re^n$ for both the domain and
+the range. Prove
+
+\begin{eqnarray*} \sup_{\|\bs{x}\| = 1} \|A(\bs{x})\|
+&\leq& \frac{EL}{c} \frac{\sum_{i=1}^n |x_i|}{\sum_{i=1}^n |x_i|} =
+\frac{EL}{c}
 \end{eqnarray*}
-\noindent 
-where the components of any $\bs{x}$ are denoted by $x_i$ as usual and
-$E = \max_{1 \leq i \leq n} \|\bs{E_i}\|$ and $c$ is the constant we obtain by invoking the Linear Combination Theorem.
+
+\noindent
+where the components of any $\bs{x}$ are denoted by $x_i$ as usual, $L
+= \max_{1 \leq i \;eq n} |\lambda_i|$, $E = \max_{1 \leq i \leq n}
+\|\bs{E_i}\|$ and $c$ is the constant we obtain by invoking the Linear
+Combination Theorem.
 \end{exercise}
 
 \begin{solution}
@@ -432,7 +489,29 @@ Note make sure you fill in the numerical values here also.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  The hession for this map is
+  \begin{eqnarray*}
+    \begin{bmatrix}
+      4 & 5\\
+      5 & 12
+    \end{bmatrix}
+  \end{eqnarray*}
+  and, using the coding provided, we get
+  \begin{eqnarray*}
+    \lambda_1 &=& 1.5969\\
+    \lambda_2 &=& 14.14031\\
+    E_1 &=&
+    \begin{vmatrix}
+      -0.9013\\
+      0.43319
+    \end{vmatrix}
+    \\
+    E_2 &=&
+    \begin{vmatrix}
+      0.43319\\
+      -0.9013
+    \end{vmatrix} 
+  \end{eqnarray*}
 \end{solution}
 
 \begin{exercise}
@@ -454,7 +533,29 @@ Note make sure you fill in the numerical values here also.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+  The hession for this map is
+  \begin{eqnarray*}
+    \begin{bmatrix}
+      10 & 15\\
+      15 & 16
+    \end{bmatrix}
+  \end{eqnarray*}
+  and, using the coding provided, we get
+  \begin{eqnarray*}
+    \lambda_1 &=& -2.2971\\
+    \lambda_2 &=& 28.2971\\
+    E_1 &=&
+    \begin{vmatrix}
+      -0.77334\\
+      0.63399
+    \end{vmatrix}
+    \\
+    E_2 &=&
+    \begin{vmatrix}
+      0.63399\\
+      -0.7733
+    \end{vmatrix} 
+  \end{eqnarray*}
 \end{solution}
 
 \end{document}

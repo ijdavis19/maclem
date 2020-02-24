@@ -1,0 +1,236 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Four, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework 4}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+
+\date{\small{Version ~\today}}
+\Abstract{TBD}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\textbf{Part One: Definitions}
+\begin{enumerate}
+  \item Define what a metric on the set $X$ is carefully.
+  \item Define what a norm on the set $X$ is carefully.
+  \item Define the conjugate exponents p and q for all cases.
+  \begin{solution}
+    We say the positive number p and q are \textbf{conjugate exponents} if $p > 1$ and $\frac{1}{p} + \frac{1}{q} = 1$, In the case of $p = 1, q = \infty$
+  \end{solution}
+  \item Define the sequence spaces $l^p$ and define $||\cdot||_p$ in all cases.
+  \begin{solution}
+    Let $p \geq 1$. The collection of all sequences, $(a_n)^{\infty}_{n=1}$, for which $\sum_{n=1}^{\infty}|\alpha_n|^p$ converges is denoted by the symbol $l^p$.
+    \begin{enumerate}
+      \item $l^1 = \{(a_n)_{n=1}^{\infty} : \sum_{n=1}^{\infty}|\alpha_n| converges\}$
+      \item $l^2 = \{(a_n)_{n=1}^{\infty} : \sum_{n=1}^{\infty}|\alpha_n|^2 converges\}$
+      \item $l^p = \{(a_n)_{n=1}^{\infty} : \sum_{n=1}^{\infty}|\alpha_n|^p converges\}$
+      \item $l^\infty = \{(a_n)_{n=1}^{\infty} : \sup_{n\geq1}|\alpha_n|^n < \infty\}$
+    \end{enumerate} 
+  \end{solution}
+  \item Define topological compactness for a set S in a metric space $(X,d)$
+  \item Define sequenctial compactness for a set S in a normed linear space $(X,||\cdot||).$
+  \begin{solution}
+    We say $S \subset X$ is sequentially compact if any sequence $(x_n) \subset X$ contains at least one subsequence $(x_n^1)$ which converges to $x \in S$
+  \end{solution}
+  \item Define a bounded linear operator between the normed linear space $(X,||\cdot||_X)$ and $(Y,||\cdot||_Y)$.
+  \begin{solution}
+    Let $T: dom(T) \subset (X,||\cdot||_X) \rightarrow (Y,||\cdot||_X)$ be a linear operator (i.e.) mapping on the subspace $dom(T)$. We say $T$ is a bounded linear operator if
+    \begin{eqnarray*}
+      B(T) = sup_{x\in dom(T), x\neq0} \frac{||T(x)||_Y}{||x||_X} < \infty
+    \end{eqnarray*}
+    Since $T$ is linear
+    \begin{eqnarray*}
+      \frac{||T(x)||_Y}{||x||_X} = T(\frac{x}{||x||_X})
+    \end{eqnarray*}
+    and so an equivalent way to define $B(T)$ is
+    \begin{eqnarray*}
+      B(T) = sup_{z\in dom(T),||x||_X = 1}||T(x)||_Y
+    \end{eqnarray*}
+  \end{solution}
+  \item Define what it means for a family of functions to be equicontinuous
+  \begin{solution}
+    Let $F$ be a family of functions in the space $C([a,b])$ for a finite interval $[a,b]$. The family is equicontinuous at $t_0$ in $[a,b]$ if for all $\epsilon > 0$, there is a $\delta > 0$ so that for all $f \in F$,
+    \begin{eqnarray*}
+      |t - t_0| < \delta \implies \\
+      |f(t_0) - f(t)| < \epsilon
+    \end{eqnarray*}
+    The family is uniformly equicontinuous if for all $\epsilon > 0$, there is a $\delta > 0$ so that for all $f \in F$,
+    \begin{eqnarray*}
+      |s - t_0| < \delta \implies\\
+      |f(s) - f(t)| < \epsilon
+    \end{eqnarray*}
+  \end{solution}
+  \item Define what it means for S to be a nowhere dense set for the normed linear space $(X,||\cdot||_X)$
+  \begin{solution}
+    We say $p$ is an interior point of $S$ if there is a radius $r > 0$ so that $B(p;r) \subset S$ and S is open if all of its points are interior points. We say a set S is nowhere dense if the closure of the set has not interior points.
+  \end{solution}
+  \begin{solution}
+
+  \end{solution}
+\end{enumerate}
+
+\textbf{Part Two: Theorems and Lemmas}
+\begin{enumerate}
+  \item State Holder's Inequality for the sequence spaces
+  \begin{solution}
+    With $||x||_p < \infty$ and $||y||_q < \infty$,
+    \begin{eqnarray*}
+      \sum_0^{\infty}\:|x_ny_n| \leq (\sum_0^{\infty}\:|x_n|^p)^\frac{1}{p}(\sum_0^{\infty}\:|y_n|^q)^{\frac{1}{q}}
+    \end{eqnarray*}
+    With $||x||_1 < \infty$ and $||y||_{\infty} < \infty$,
+    \begin{eqnarray*}
+      \sum_0^{\infty}\:|x_ny_n| \leq (\sum_0^{\infty}\:|x_n|)sup_{n \geq 1}|y_n|
+    \end{eqnarray*}
+  \end{solution}
+  \item State Minkowski's Inequality for the sequence spaces
+  \begin{solution}
+    With $||x||_p < \infty$ and $||y||_p < \infty$,
+    \begin{eqnarray*}
+      \sum_0^{\infty}\:|x_n + y_n| \leq (\sum_0^{\infty}\:|x_n|^p)^\frac{1}{p} + (\sum_0^{\infty}\:|y_n|^p)^{\frac{1}{p}}
+    \end{eqnarray*}
+    With $||x||_{\infty} < \infty$ and $||y||_{\infty} < \infty$,
+    \begin{eqnarray*}
+      sup_{n \geq 1}|x_n + y_n| \leq sup_{n \geq 1}|x_n| + sup_{n \geq 1}|y_n|
+    \end{eqnarray*}
+  \end{solution}
+  \item State Zorn's Lemma
+  \begin{solution}
+    Let M be a non-empty poset. Assume every chain $C \subset M$ has an upper bound. Then M has at least one maximal object.
+  \end{solution}
+  \item State the Linear Combination Theorem
+  \begin{solution}
+    Let $(X,||\cdot||)$ be a normed linear space and let $\{x_1,...,x_n\}$ be a finite linear independent subset of $X$. Then there is a positive ${c}$ constant so that 
+    \begin{eqnarray*}
+      ||\sum_{i=1}^N\: \alpha_i {x_i}|| \geq c\sum_{i=1}^N\:|\alpha_i|
+    \end{eqnarray*}
+    for all choices of scalars $\{\alpha_1,...,\alpha_n\}$. This result holds where the underlying field is real or the
+  \end{solution}
+  \item State Riesz's Lemma
+  \begin{solution}
+    Let $(X,||\cdot||)$ be a normed linear space and let Y and Z be subspaces of X with Y closed and $Y \subset Z$ a proper subset. Then given $\lambda \in (0,1)$, there is $z_\lambda \in Z, ||z_\lambda|| = 1$ so that $inf_{y \in Y}||z_\lambda - y|| \geq \lambda$
+  \end{solution}
+  \item State the Azrela - Ascoli Theorem
+  \begin{solution}
+    Let $F \subset C([a,b])$ for a finite $[a,b]$ be an infinite family of functions. Assume $F$ is uniformly bounded and equicontinuous. Then there exists a sequence $(x_n) \subset F$ that converges uniformly to a continuous function $x$ on $[a,b]$
+  \end{solution}
+\end{enumerate}
+
+\textbf{Part Three: Is it Possible and Short Answer}
+\begin{enumerate}
+  \item Is it possible for $B(0;2)$ to be sequentioally compact in $C([1,4],||\cdot||)$ (where $||\cdot||$ is the norm we chose to use on this space of functions)?
+  \item State the standard Schauder basis for $l^p, 1 \leq p < \infty$.
+  \item State the standard Schauder basis for the set of sequences that converge.
+  \item If $S$ is a sequentially compact subset of $l^p$ is it true we can find a element in $S$, say $x_0$ and a positive number $r$ so that $B(x_0;r) \subset S$?
+  \item If a sequence $(x_n)$ in the finite dimensional normed linear space $(X,||\cdot||_a)$ converges, is it possible for it to converge to a different limit point if the norm was changed to $||\cdot||_b$?
+\end{enumerate}
+
+\textbf{Part Four: Proofs}
+Provide careful proofs of the following propositions.
+\begin{enumerate}
+  \item Let $f$ be a continuous a real valued function on [0,1] which satisfies the growth condition $f(u) \leq e^{-\alpha}|u|$ for some positive $\alpha$. Define $T$ on $c([0,1)]$ as the function whose value at $t$ is given by $(T(x))(t) = \int_0^t\:f(x(s))ds$.
+  \begin{itemize}
+    \item Prove that, in general, $T$ is not a linear mapping.
+    \item Prove $T$ is well defined as a mapping from $C([0,1])$ to $C([0,1])$ by showing $T(x)$ is continuous on [0,1].
+    \item Prove $||T||_{op}$ is bounded using $||\cdot||_{\infty}$ on both the domain and the range
+    \item Prove $||T||_{op}$ is bounded using $||\cdot||_1$ on both the domain and the range
+  \end{itemize}
+  \item If $p$ is a $n^{th}$ degree polynomial on [0,1], with $p(t) = \sum_{i=0}^n\: a_y t^i$, prove there is a positive constant $B$ so that $\text{max}_{0 \leq i \leq n}|\alpha_i| \leq B||p||_{\infty}$
+\end{enumerate}
+\end{document}

@@ -1,0 +1,549 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  E-Learning Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 E-Learning Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Variation of Parameters and Boundry Value Problems}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\noindent Use VoP to solve
+
+\begin{exercise}
+  Consider
+  \begin{eqnarray*}
+    u''(t) - 4u(t) &=& f(t)\\
+    u(0) &=& 1\\
+    u(8) &=& -1\\
+  \end{eqnarray*}
+  where f is a continuous function
+  \begin{solution}
+    In this case, we want to note that we can follow the usual VoP steps with $\beta^2 = 1$. So this means that
+    \begin{eqnarray*}
+      4x_p(t) &=& v_1(t)e^{-t} + v_2(t)e^{t}\\
+      4x_p'(t) &=& v_1'(t)e^{-t} - v_1(t)e^{-t} + v_2(t)e^{t} + v_2(t)e^{-t}\\
+      &=& (v_1'(t)e^{-t} + v_2'(t)e^{t}) + (-v_1(t)e^{-t} + v_2(t)e^{-t})
+    \end{eqnarray*}
+    Now, we consider the related system
+    \begin{eqnarray*}
+      \frac{1}{4}
+      \begin{bmatrix}
+        e^{-t} & e^t \\
+        -e^{-t} & e^t
+      \end{bmatrix}
+      \begin{bmatrix}
+        \phi(t) \\
+        \psi(t)
+      \end{bmatrix}
+      &=&
+      \begin{bmatrix}
+        0 \\
+        f(t)
+      \end{bmatrix}
+      \\
+      \implies \frac{1}{4}(v_1'(t)e^{-t} + v_2'(t)e^t) &=& 0\\
+    \end{eqnarray*}
+    as well as
+    \begin{eqnarray*}
+      x'p(t) = \frac{1}{4}(-v_1(t)e^{-t} + v_2(t)e^t) = 0\\
+      \implies x_p''(t) = \frac{1}{4}(-v_1'(t)e^{-t} + v_2'(t)e^t + v_1(t)e^{-t} + v_2(t)e^t)
+    \end{eqnarray*}
+    Plugging this in to the nonhomogenous equation we get
+    \begin{eqnarray*}
+      f(t) &=& \frac{1}{4}(v_2'(t)e^t - v_1'(t)e^{-t} + v_2(t)e^t + v_1(t)e^{-t} - (v_2(t)e^t + v_1(t)e^{-t}))\\
+      \implies f(t) &=& \frac{1}{4}(v_2'(t)e^t - v_1'(t)e^t)
+    \end{eqnarray*}
+    Then, by Cramer's rule, we get
+    \begin{eqnarray*}
+      v_1'(t) &=& -2f(t)e^t = -2f(t)e^t\\
+      v_2'(t) &=& 2f(t)e^{-t} = 2f(t)e^{-t}\\
+    \end{eqnarray*}
+    which imply
+    \begin{eqnarray*}
+      v_1(t) &=& -2\int_0^t\:f(u)e^udu\\
+      v_2(t) &=& 2\int_0^t\:f(u)e^{-u}du\\
+      \implies x_p(t) &=& v_1(t)e^{-t} + v_2(t)e^t\\
+      &=& (-2\int_0^t\:f(u)e^udu)e^{-t} + (2\int_0^t\:f(u)e^{-u}du)e^t
+    \end{eqnarray*}
+    And our general solution is
+    \begin{eqnarray*}
+      x(t) &=& x_h(t) + x_p(t)\\
+      &=& A_1e^{-t} + A_2e^t - 2e^{-t}\int_0^t\:f(u)e^udu + 2e^t\int_0^t\:f(u)e^{-u}du\\
+      &=& A_1e^{-t} + A_2e^t - 2\int_0^t\:f(u)e^{u -t}du + 2\int_0^t\:f(u)e^{-(u -t)}du\\
+      &=& A_1e^{-t} + A_2e^t + 2\int_0^t\:f(u)(e^{u - t} - e^{-(u - t)})\\
+      &=& A_1cosh(t) + A_2sinh(t) + 2\int_0^1\:f(u)sinh(t - u)
+    \end{eqnarray*}
+    Now, we consider the two initial conditions
+    \begin{eqnarray*}
+      u(0) &=& 1\\
+      \implies A_1 &=& 1
+    \end{eqnarray*}
+    and
+    \begin{eqnarray*}
+      U(8) &=& - 1\\
+      \implies -1 &=& cosh(8) + A_2sinh(8) + 2\int_0^8\:f(u)sinh(8 - u)du\\
+      \implies A_2 &=& -\frac{1}{sinh(8)}(cosh(8) + 2\int_0^8\:f(u)sinh(8 - u)du + 1)
+    \end{eqnarray*}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}
+ Consider
+  \begin{eqnarray*}
+    u''(t) + 4u(t) &=& f(t)\\
+    u(0) &=& 1\\
+    u(6) &=& -1\\
+  \end{eqnarray*}
+  where f is a continuous function
+  \begin{solution}
+    The characterstic equation in this case is $r^2 + 4 = 0$ which has complex roots of $\pm 2i$. Hence $u_1(t) = cos(3t)$ and $u_2(t) = sin(3t)$ so we set the solution to be
+    \begin{eqnarray*}
+      u_p(t) = A(t)cos(2t) + B(t)sin(2t)
+    \end{eqnarray*}
+    and the nonhomogenous solution to be of the form
+    \begin{eqnarray*}
+      u_p(t) = \phi(t)cos(2t) + \psi(t)sin(2t)
+    \end{eqnarray*}
+    satisfying
+    \begin{eqnarray*}
+      \begin{bmatrix}
+        cos(2t) & sin(2t) \\
+        -2sin(2t) & 2cos(2t)
+      \end{bmatrix}
+      \begin{bmatrix}
+        \phi'(t) \\
+        \psi'(t)
+      \end{bmatrix}
+      &=&
+      \begin{bmatrix}
+        0 \\
+        f(t)
+      \end{bmatrix}
+      \\
+    \end{eqnarray*}
+    Applying Cramer's rule we get
+    \begin{eqnarray*}
+      \phi'(t) = \frac{1}{2}
+      \begin{vmatrix}
+        0 & sin(2t) \\
+        f(t) & 2cos(2t)
+      \end{vmatrix}
+      = -\frac{1}{2}f(t)sin(2t)
+    \end{eqnarray*}
+    and
+    \begin{eqnarray*}
+      \psi'(t) = \frac{1}{2}
+      \begin{vmatrix}
+        cos(2t) & 0 \\
+        -2sin(2t) & f(t)
+      \end{vmatrix}
+      = \frac{1}{2}f(t)cos(2t)
+    \end{eqnarray*}
+    integrating gives us
+    \begin{eqnarray*}
+      \phi(t) &=& -\frac{1}{2}\int_0^t\: f(u)sin(2u)du\\
+      \psi(t) &=& \frac{1}{2}\int_0^t\: f(u)cos(2u)du
+    \end{eqnarray*}
+    and the general solution is
+    \begin{eqnarray*}
+      u(t) &=& Acos(2t) + Bsin(2t) - \frac{1}{2}\int_0^t\: f(u)sin(2u)ducos(2t) + \frac{1}{2}\int_0^t\: cos(2u)dusin(2t)\\
+      &=& Acos(2t) + Bsin(2t) + \frac{1}{2}\int_0^t\: f(u)sin(2t - 2u)du
+    \end{eqnarray*}
+    Now, considering the initial conditions we get
+    \begin{eqnarray*}
+      u(0) &=& 1\\
+      \implies A &=& 1
+    \end{eqnarray*}
+    and
+    \begin{eqnarray*}
+      u(4) &=& -1\\
+      \implies B &=& -\frac{1}{sin(8)}(cos(8) + \frac{1}{2}\int_0^4\: f(u)sin(8 - 2u)du + 1)
+    \end{eqnarray*}
+  \end{solution}
+\end{exercise}
+
+\noindent Do BVP analysis for
+\begin{exercise}
+ Consider
+  \begin{eqnarray*}
+    u'' + 9\omega^2u &=& f, \: 0 \leq x \leq 3,\\
+    u'(0) &=& 0\\
+    u'(3) &=& 0\\
+  \end{eqnarray*}
+\end{exercise}
+
+\begin{solution}
+  The general solution to the homogenous equaiton is given by
+  \begin{eqnarray*}
+    u_h(x) = Acos(3\omega x) + Bsin(3\omega x)
+  \end{eqnarray*}
+  Applying VoP gives
+  \begin{eqnarray*}
+    u_p(x) = \phi(x)cos(3\omega x) + \psi(x)sin(3\omega x)
+  \end{eqnarray*}
+  we want $\phi(x)$ and $\psi(x)$ which simplify
+  \begin{eqnarray*}
+    \begin{vmatrix}
+      cos(3\omega x) & sin(3\omega x)\\
+      -3\omega sin(3\omega x) & 3\omega cos(3\omega x)
+    \end{vmatrix}
+    \begin{vmatrix}
+      \phi'(x)\\
+      \psi'(x)
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+      0\\
+      f(x)
+    \end{vmatrix}
+  \end{eqnarray*}
+  The det of the 2x2 matrix above is $3\omega$ so we can use Cramer's rule to get
+  \begin{eqnarray*}
+    \phi'(x) = -\frac{f(x)sin(3\omega x)}{3\omega}\\
+    \psi'(x) = \frac{f(x)cos(3\omega x)}{3\omega}
+  \end{eqnarray*}
+  Hence
+  \begin{eqnarray*}
+    \phi(x) = -\frac{1}{3\omega}\int_0^x\: f(s)sin(3\omega s)ds\\
+    \psi(x) = \frac{1}{3\omega}\int_0^x\: f(s)cos(3\omega s)ds\\
+  \end{eqnarray*}
+  Because the general solution is
+  \begin{eqnarray*}
+    u(x) = u_n(x) + u_p(x)
+  \end{eqnarray*}
+  we get
+  \begin{eqnarray*}
+    u(x) = Acos(3\omega x) + Bsin(3\omega x) + \frac{1}{w}\int_0^x\: f(s)sin(3\omega(x - s))ds
+  \end{eqnarray*}
+  Next, we apply the boundary conditions. First, consider leibniez rule for derivatives which gives us
+  \begin{eqnarray*}
+    u'(x) = -3\omega Asin(3\omega x) + 3\omega cos(3\omega x) + \int_0^3\: f(s)cos(3\omega(3 - s))ds
+  \end{eqnarray*}
+  Hence, $u'(0) = 0 = 3\omega B$ and 
+  \begin{eqnarray*}
+    u'(3) &=& -3\omega Asin(9\omega) + 3\omega cos(9\omega) + \int_0^3\: f(s)cos(\omega(3 - s))\\
+    \implies B &=& 0 
+  \end{eqnarray*}
+  But we cannot find A from 
+  \begin{eqnarray*}
+    0 = -3\omega Asin(9\omega) + 3\omega cos(9\omega) + \int_0^3\: f(s)cos(\omega(3 - s))\\
+  \end{eqnarray*}
+  So consider the cases.\\
+  Case 1:
+  \begin{eqnarray*}
+    3\omega = n\pi \implies \int_0^3\: f(s)cos(n\pi(3 - s))ds = 0
+  \end{eqnarray*}
+  Case 2:
+  \begin{eqnarray*}
+    3\omega \neq n\pi\\
+    \implies \frac{1}{3\omega sin(9\omega)}\int_0^3 \:f(s)cos(3\omega(3- s))ds = A
+  \end{eqnarray*}
+  giving us
+  \begin{eqnarray*}
+    u(x) = \frac{cos(3\omega x)}{3\omega sin(9\omega)}\int_0^3\: f(s)cos(3\omega(3 - s))ds + \frac{1}{3\omega}\int_0^x\: f(s)sin(3\omega(x - s))ds
+  \end{eqnarray*}
+  which can be manipulated to give us
+  \begin{eqnarray*}
+    u(x) = \int_0^3\: f(s)k_w(x,s)ds
+  \end{eqnarray*}
+  with
+  \begin{eqnarray*}
+    k_w(x,s) &=& \frac{1}{3\omega sin(9\omega)}
+    \left \{
+    \begin{array}{ll}
+      cos(3\omega s)cos(3\omega(3 - x)), & 0 \leq s \leq x\\
+      cos(3\omega x)cos(3\omega(3 - s)), & x < s \leq 3
+    \end{array}
+    \right
+  \end{eqnarray*}
+\end{solution}
+
+\noindent Do the cable problem analysis for
+\begin{exercise}
+  \begin{eqnarray*}
+    4\frac{\delta^2 \Phi}{\delta x^2} - \Phi - 0.7\frac{\delta\Phi}{\delta t} &=& 0, \: 0 \leq x \leq 6, \: t \geq 0,\\
+    \frac{\delta\Phi}{\delta t}(0,t) &=& 0,\\
+    \frac{\delta\Phi}{\delta t}(6,t) &=& 0,\\
+    \Phi(x,0) &=& f(x)
+  \end{eqnarray*}
+  for $f(x) = 5x(6 - x)$. Find the first four terms of the solution $\Phi$.
+
+  \begin{solution}
+    Seperating the variables we get
+    \begin{eqnarray*}
+      \Phi(x,t) = u(x)w(t)
+    \end{eqnarray*}
+    giving us
+    \begin{eqnarray*}
+      4\frac{d^2u}{dx^2}w(t) - u(x)w(t) - .7u(x)\frac{dw}{dt} = 0 
+    \end{eqnarray*}
+    Rewriting we find, for all x,t we need
+    \begin{eqnarray*}
+      w(t)(4\frac{d^2u}{dx^2} - u(x)) = .7u(x)\frac{dw}{dt}
+    \end{eqnarray*}
+    Rewriting again, we have
+    \begin{eqnarray*}
+      \frac{4\frac{d^2u}{dx^2} - u(x)}{u(x)} = \frac{.7\frac{dw}{dt}}{w(t)}, 0 \leq x \leq 6, t > 0
+    \end{eqnarray*}
+    And get the following two conditions
+    \begin{eqnarray*}
+      .7\frac{dw}{dt} = \Theta w(t), t > 0\\
+      4\frac{d^2u}{dx^2} = (1 + \Theta)u(x), 0 \leq x \leq 6
+    \end{eqnarray*}
+    We also get boundry conditions
+    \begin{eqnarray*}
+      \frac{du}{dx}(0)w(t) = 0, t > 0\\
+      \frac{du}{dx}(6)w(t) = 0, t > 0
+    \end{eqnarray*}
+    Since these questions must hold for all t, it forces
+    \begin{eqnarray*}
+      \frac{du}{dx}(0) = 0\\
+      \frac{du}{dx}(6) = 0
+    \end{eqnarray*}
+    The model now becomes
+    \begin{eqnarray*}
+      u'' - \frac{1 + \Theta}{4}u = 0\\
+      \frac{du}{dx}(0) = 0\\
+      \frac{du}{dx}(6) = 0
+    \end{eqnarray*}
+    We are only looking for nonzero solutions so any $\Theta$ leading to a zero gets rejected\\
+    Case 1: $1 + \Theta = \omega^2, \omega \neq 0$
+    \begin{eqnarray*}
+      u'' - \frac{\omega^2}{4}u = 0\\
+      u'(0) = 0\\
+      u'(6) = 0
+    \end{eqnarray*}
+    with characteristic equation $r^2 - \frac{\omega^2}{4}$ with real roots $\pm \frac{\omega}{4}$. The general solution is given by $u(x) = Acosh(\frac{\omega}{2}x) + Bsinh(\frac{\omega}{2}x)$ which implies
+    \begin{eqnarray*}
+     u'(x) = A\frac{\omega}{2}sinh(\frac{\omega}{2}x) +  b\frac{\omega}{2}cosh(\frac{\omega}{2}x)
+    \end{eqnarray*}
+    Then apply the boundry conditions and get
+    \begin{eqnarray*}
+      u'(0) = B = 0\\
+      u'(6) = 0 = Asinh(3\omega)
+    \end{eqnarray*}
+    But since $sinh(3\omega)$ is never 0 when $\omega \neq 0$, we see A = 0 also. So the only solution if u is trivial and thats boring so we throw it out.\\
+    Case 2: $1 + \Theta = 0$\\
+    The model to solve now is
+    \begin{eqnarray*}
+      u'' = 0\\
+      u'(0) = 0\\
+      u'(6) = 0
+    \end{eqnarray*}
+    with characteristic equation $r = 0$ with double root $r = 0$. So the general solution is
+    \begin{eqnarray*}
+      u(x) = A + Bx
+    \end{eqnarray*}
+    Applying boundry conditions gives us
+    \begin{eqnarray*}
+      u(0) = 0\\
+      u(6) = 0
+    \end{eqnarray*}
+    Hence, since $u'(x) = B$, we have
+    \begin{eqnarray*}
+      u'(0) = 0 = B\\
+      u'(6) = 0 = B6
+    \end{eqnarray*}
+    Hence, B = 0. But the value of A can't be determined. Hence any non zero A gives a nonzero solution.\\
+    Choosing A = 1, let $u_0(x) = 1$ be our chosen nonzero. We now need to solve for w in this case. Becuase $\Theta = -1$, the model to solve is\\
+    \begin{eqnarray*}
+      \frac{dw}{dt} = -\frac{1}{.7}w(t), 0 \leq t
+   \end{eqnarray*}
+   An the general solution is $w(t) = Ce^{-\frac{1}{.7}t} \; \forall C$. Choosing C = 1 we get 
+   \begin{eqnarray*}
+    w_0(t) = e^{-\frac{1}{.7}t}
+   \end{eqnarray*}
+   Hence, the product $\phi_0(x,t) = u_0(x)w_0(t)$ solves the boundary conditions. That is
+   \begin{eqnarray*}
+    \phi_0(x,t) = e^{-\frac{1}{.7}t}
+   \end{eqnarray*}
+   is a solution\\
+   Case 3: $1 + \Theta = -\omega^2, \omega \neq 0$
+   \begin{eqnarray*}
+    u(x) = Acos(\frac{\omega}{2}x) +Bsin(\frac{\omega}{2}x)
+   \end{eqnarray*}
+   and hence
+   \begin{eqnarray*}
+    u'(x) = -A\frac{\omega}{2}sin(\frac{\omega}{2}x) +B\frac{\omega}{2}cos(\frac{\omega}{2}x)
+   \end{eqnarray*}
+   Next, apply boundary conditions to find
+   \begin{eqnarray*}
+    u'(0) = 0 = B\\
+    u'(6) = 0 = Asin(3\omega)
+   \end{eqnarray*}
+   Hence, B = 0 and $Asin(3\omega) = 0$. Thus, we can determine a unieq value for A only if $sin(3\omega) \neq 0$. If $\omega = \frac{n\pi}{3}$ we can solve for A and find A = 0 but other A's cannot be determined. So the only solutions are the trivial or zero solutions unless $\omega 6 = \pi n^2$\\
+   \\
+   Letting $\omega_n = \frac{n\pi}{3}$, we find a non-zero solution for each nonzero value of A of the form
+   \begin{eqnarray*}
+    u_n(x) = Acos(\frac{\omega_n}{4}x) = Acos(\frac{n\pi}{6}x)
+   \end{eqnarray*}
+   For convenience, let's choose all the constants A = 1. Then we have an infinite family of nonzero solutions $u_n(x) = cos(\frac{n\pi}{6}x)$ and an infinite family of separation constants $\Theta_n = -1 - \omega^2_n = -1 0 \frac{n^2\pi^2 4}{36}$\\
+   We can solve the w equation. We must solve
+   \begin{eqnarray*}
+    \frac{dw}{dt} = - \frac{1 + \omega_n^2}{.7}w(t), t \geq 0
+   \end{eqnarray*}
+   The general solution is
+   \begin{eqnarray*}
+    w(t) = B_ne^{-\frac{1 + \omega^2_n}{.7}} = B_ne^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t}
+   \end{eqnarray*}
+   Choosing the constants $B_n = 1$, we obtain the w function\\
+   \begin{eqnarray*}
+    w_n(t) = e^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t}
+   \end{eqnarray*}
+   Hence, any product
+   \begin{eqnarray*}
+    \phi_n(x,t) = u_n(x)w_n(t)
+   \end{eqnarray*}
+   Will solve the model with the x boundry conditions.\\
+   Further, any infinite sum of the form for arbitrary constants $A_n$
+   \begin{eqnarray*}
+    \Psi_n(x,t) = \sum_{n=1}^N\: A_n\phi_n(x,t) = \sum_{n=1}^N\: A_nu_n(x)w_n(t) = sum_{n=1}^N\: A_ncos(\frac{n\pi}{6})e^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t}
+   \end{eqnarray*}
+   Adding the $1 + \Theta = 0$ case, we find the most general finite term solution has the form
+   \begin{eqnarray*}
+    \phi_n(x,t) &=& A_0\Phi_0(x,t) + \sum_{n=1}^\infty\: A_n\phi_n(x,t)\\
+    &=& A_0u_0w_0 + \sum_{n=1}^\infty\: A_nu_n(x)w_n(t)\\
+    &=& A_0e^{-\frac{1}{.7}} + \sum_{n=1}^\infty\: A_ncos(\frac{n\pi}{6})e^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t} 
+   \end{eqnarray*}
+   The finite solutions solve the boundry conditions $\frac{\delta \Phi}{\delta x}(0,t) = 0$ and $\frac{\delta \Phi}{\delta x}(6,t) = 0$\\
+   For $\Phi(x,0) = f(x)$, we let $n \rightarrow \infty$ and set
+   \begin{eqnarray*}
+    \Phi(x,t) &=& A_0\Phi_0(x,t) + \sum_{n=1}^\infty\: A_n\phi_n(x,t)\\
+    &=& A_0e^{-\frac{1}{.7}t} + \sum_{n=1}^\infty\: A_ncos(\frac{n\pi}{6})e^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t} 
+   \end{eqnarray*}
+   We take the partial derivative with respect to x of the infinite term and get
+   \begin{eqnarray*}
+     \sum_{n=1}^\infty\: A_n\frac{n\pi}{6}sin(\frac{n\pi}{6})e^{-(\frac{1}{.7} + \frac{n^2 \pi^2 4}{(.7)36})t} 
+   \end{eqnarray*}
+   Which satisfies the derivative boundary conditions. So $\Phi(x,t)$ is given by
+   \begin{eqnarray*}
+    \Phi(x,t) = A_0e^{-\frac{1}{.7}t} + \sum_{n=1}^\infty\: A_ncos(\frac{n\pi}{6}x)e^{-\frac{36 + n^2\pi^2 4}{(.7)36}t}
+   \end{eqnarray*}
+   For appropriate constants $(A_n)$. We find the right choice of $(A_n)$ comes from
+   \begin{eqnarray*}
+    \Phi(x,t) = f(x) for 0 \leq x \leq 6
+   \end{eqnarray*}
+   We know
+   \begin{eqnarray*}
+    \Phi(x,0) = A_0 + \sum_{n=1}^\infty\: A_ncos(\frac{n\pi}{6}x)
+   \end{eqnarray*}
+   and so rewriting these in terms of the series solution for $0 \leq x \leq 6$ we find
+   \begin{eqnarray*}
+    A_0 + \sum_{n=1}^\infty\: A_ncos(\frac{n\pi}{6}x) = f(x)
+   \end{eqnarray*}
+   The fourier series for the appropriate f is given by
+   \begin{eqnarray*}
+    f(x) = B + \sum_{n=1}^\infty\: B_ncos(\frac{n\pi}{6}x)
+   \end{eqnarray*}
+   with
+   \begin{eqnarray*}
+    B_0 &=& \frac{1}{6}\int_0^6 \: f(x)dx\\
+    B_n &=& \frac{1}{3}\int_0^6f(x)cos(\frac{n\pi}{6}x)dx
+   \end{eqnarray*}
+   Thus setting these series equal, we find a solution given by $A_n = B_n$ for all $n \geq 0$. Thus, we know
+   \begin{eqnarray*}
+    \Phi(x,t) = B_0 + \sum_{n = 1}^\infty \: B_ncos(\frac{n\pi}{6}x)e^{-\frac{36 + n^2\pi^2 4}{.7(36)}t}
+   \end{eqnarray*}
+  \end{solution}
+\end{exercise}
+
+\end{document}

@@ -1,3 +1,4 @@
+
 set more off
 clear all
 set matsize 1100
@@ -55,7 +56,7 @@ qui forval year = 2006/2016 {
 				//replace RFV`k' = 0000 if RFV`k' ==.
 				replace DIAG`k' = "null" if DIAG`k' ==""
 				//local `year'reason`runner'k`k' = RFV`k'
-				local `year'diag`runner'k`k' = DIAG`counter'
+				local DIAG`counter' = DIAG`k'
 				local counter = `counter' + 1
 			}
 		}
@@ -64,7 +65,7 @@ qui forval year = 2006/2016 {
 				//replace RFV`k' = 0000 if RFV`k' ==.
 				replace DIAG`k' = "null" if DIAG`k' ==""
 				//local `year'reason`runner'k`k' = RFV`k'
-				local `year'diag`runner'k`k' = DIAG`counter'
+				local DIAG`counter' = DIAG`k'
 				local counter = `counter'
 			}
 		}
@@ -74,53 +75,49 @@ qui forval year = 2006/2016 {
 
 //For review: diagnoses are now set as diag`x', x in [0,counter]
 //We need to clean up the duplicates
-
+//Probably should do some kind of unit testing with the continue command in the loops
+		//Does the below usage break me out of the `if' or the `for'
+local count2 = `counter'
+local counter = 0
+local 2DIAG0 = "`DIAG0'"
+forval s = 1/`count2' {	//Skipping over the 0 case because it cannot be a repeat
+	local ceiling = `s' - 1
+	forval t = 0/`ceiling' {
+		if `t' < `ceiling' & `DIAG`s'' == "`DIAG`t''" {
+				ma drop `DIAG`s''
+				continue
+		}
+		/*if `t' == `ceiling'  {	//Theoretically, this should only happen if we never had to "continue" out of the loop
+			if `DIAG`s'' != "`DIAG`t''" {
+				local 2DIAG`counter' = "`DIAG`s''"
+				local counter = `counter' + 1
+			}
+			if `DIAG`s'' == "`DIAG`t''"{
+				ma drop `DIAG`s'' */
+			}
+		}
+	}
+}
+ma list
+/*
+//This entire loop can be simplified no but iterating from 0 to `count'
 qui forval dataset = 2006/2016 {
 	use "$output/cefotetan/scripted`dataset'", replace
 	gen relRFV=0
 	gen relDIAG=0
-	forval year = 2006/2016 {
-		forval runner = 1/`rel`year'' {
-			if `year' < 2014 {
-				forval k = 1/3 {
-					if `dataset' < 2014 {
-						forval i = 1/3 {
-							drop if RFV`i' == . & relRFV != 1
-							drop if DIAG`i' == "" & relDIAG != 1
-							replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
-							replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
-						}
-					}
-					else {
-						forval i = 1/5 {
-							drop if RFV`i' == . & relRFV != 1
-              drop if DIAG`i' == "" & relDIAG != 1
-							replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
-              replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
-						}
-					}
-				}
+	if `dataset' < 2014 {
+			forval i = 1/3 {
+				//drop if RFV`i' == . & relRFV != 1
+				drop if DIAG`i' == "" & relDIAG != 1
+				//replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
+				replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
 			}
-			else {
-				forval k = 1/5 {
-					if `dataset' < 2014 {
-						forval i = 1/3 {
-							drop if RFV`i' == . & relRFV != 1
-							drop if DIAG`i' == "" & relDIAG != 1
-							replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
-              replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
-						}
-					}
-					else {
-						forval i = 1/5 {
-							drop if RFV`i' == . & relRFV != 1
-							drop if DIAG`i' == "" & relDIAG != 1
-							replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
-              replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
-						}
-					}
-				}
-			}
+	else {
+		forval i = 1/5 {
+			//drop if RFV`i' == . & relRFV != 1
+			drop if DIAG`i' == "" & relDIAG != 1
+			//replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
+			replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
 		}
 	}
 	save "$output/cefotetan/scripted`dataset'", replace
@@ -156,3 +153,4 @@ replace genon = 0 if genon != 1
 gen genon1year = 1 if monthsAfterGen >= 12
 replace genon1year = 0 if genon1year != 1
 save "$output/cefotetan/diag/panel.dta",replace
+*/
