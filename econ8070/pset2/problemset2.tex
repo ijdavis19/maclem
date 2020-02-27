@@ -1,0 +1,140 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet 2},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 2, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Problem Set 2 }
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set}
+\Keywords{Omitted Variable Bias, Instrumental Variables, 2SLS}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\textbf{Problem 1:}\\
+\\
+\indent While each model presented has it's flaws, Model 7 (shown below) is the model that provides the best chance to illustrate the effect of education on earnings.\\
+\indent \indent For female $= 1$
+\begin{eqnarray*}
+  log(\text{earning}) = \beta_0 &+& \beta_1\text{education}\\
+  &+& \beta_{31}\text{occ1} + \beta_{32}\text{occ2} + \beta_{33}\text{occ3} + \beta_{34}\text{occ4}\\ 
+  &+& \beta_{41}\text{northeast} + \beta_{42}\text{south} + \beta_{43}\text{midwest}\\
+  &+& \beta_{5}\text{age} + \beta_{6}\text{ability}\\
+  &+& \beta_{71}\text{exp} + \beta_{72}\text{exp}^2 + \varepsilon
+\end{eqnarray*}
+
+\indent \indent For female $= 0$
+\begin{eqnarray*}
+  log(\text{earning}) = \gamma_0 &+& \gamma_1\text{education}\\
+  &+& \gamma_{31}\text{occ1} + \gamma_{32}\text{occ2} + \gamma_{33}\text{occ3} + \gamma_{34}\text{occ4}\\ 
+  &+& \gamma_{41}\text{northeast} + \gamma_{42}\text{south} + \gamma_{43}\text{midwest}\\
+  &+& \gamma_{5}\text{age} + \gamma_{6}\text{ability}\\
+  &+& \gamma_{71}\text{exp} + \gamma_{72}\text{exp}^2 + \varepsilon
+\end{eqnarray*}
+\noindent What makes this model superior to the others is it's use of covariates to control for factors beyond and individual's education level which is lacking in Model 1. While model 2 attempts to bring in said covariates, it fails to treat the values of the indicator variables (region and occupation) as indicators. Instead, it multiplies their numerical values by a calculated $\beta$ which is detrimental because it fails to give us an accurate difference in earnings between regions and occupations. Model 3 partially corrects for this issue by calculating a new $\beta$ for each option within the categorical variables but it does not leave a category as the null option. This mistake leads to multicollinearity which is a violation of the OLS assumptions. Model 4 correctly includes the categorical variables along with Model 5 but 5 is the best of the level-level models in that it includes a squared experience term which allows for increasing returns to experience as the amount of experience increases. Model 7 beats it out, however, because the log-level form allows for percentage change of earnings which may better explain the relationship between the coviariates and earnings, especially if there are large differences between the magnitude of earnings in each occuption. Model 6 uses a log-level form which I believe is more accurate than the level-level form as previously explained but it does not allow for differences in gender to affect the value of each $\beta$. For instance, the return to an additional year of experience or level of ability may be different for men than women and this possibility is assumed away in the previous models. Models 9 and 10 are similar to 7 but fail to include variables regarding occupation which is critical to control for. Model 9 includes an interaction variable between education and ability which I believe is a novel way to tease out the interplay between the two variables but not including occupation variables is too large a sin to overcome. Model 10 makes the same mistake but includes a variable for the cube of experience which I cannot even begin to think of a story where that variable would have a meaningful and explanetory effect.\\
+\\
+\indent To improve the model, I would take model 7 as it is and include the interaction between education and ability as shown in models 9 and 10. I believe the model would benefit from this addition because it is unlikely that additional schooling has similar effects for individuals of all ability levels.\\
+\\
+\textbf{Problem 2:}\\
+(\textbf{a}) Yujie is corect because she does need exact indentification (equal dimensions of endogenous and instrumental variable matrices) in order to us the IV estimator. Tom is incorrect because, while 2SLS is a useful method to get around unequal amounts of endogenous regressors, it only works when the econometrician has more instrumental variables than explanetory. Yujie has more explanetory variables than instrumental so 2SLS is not a suitable solution in this case.\\
+\\
+(\textbf{b}) Yujie is correct because Z's corrolation with the error term harms it's viability as an instrument in that it has it's own endogeneity issues present. Tom is incorrect, however, because Z should have a significant effect on Y by design. This is because, if Z is a good instrument, it affects Y through X.\\
+\\
+(\textbf{c}) Both Yujie and Tom are incorrect because the IV assumptions only ensure a consistent estimator. The estimator still may be biased but that bias may be better than OLS so the estimator still can be "good".\\
+\\
+(\textbf{d}) Yujie is correct because, most likely, Tom's model violates the OLS assumption that the sample is representative of the population. While it is possible for 99\% of a sample to be female, it is too unlikely to interpolate information from.
+\end{document}

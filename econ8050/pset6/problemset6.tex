@@ -94,7 +94,7 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 
 \date{\small{Version ~\today}}
 \Abstract{Questions from Problem Set.}
-\Keywords{TBD}
+\Keywords{Dynamic Profit and Utility Maximization }
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -115,8 +115,8 @@ Suppose we are analyzing an economy that satisfies the following assumptions:
   \item The firm owns its capital, it starts period with $k_1$ units of capital and operates for two periods
   \item There is a fixed amount of labor in each period and it is supplied inelastically.
   \begin{eqnarray*}
-    \text{Labor Supply in Period 1} = \bar{L_1}\\
-    \text{Labor Supply in Period 2} = \bar{L_2}
+    \text{Labor Supply in Period 1} = \bar{L}_1\\
+    \text{Labor Supply in Period 2} = \bar{L}_2
   \end{eqnarray*}
   \item The firm is competitive, it takes output and input prices as given:
   \begin{itemize}
@@ -137,13 +137,65 @@ Suppose we are analyzing an economy that satisfies the following assumptions:
 
 \begin{enumerate}
   \item Find the first order conditions for the firm's maximization problem.
+  \begin{solution}
+    FOC's:
+    \begin{eqnarray*}
+      \frac{\delta V_1}{\delta L_1} &=& (1 - \alpha)A_1K_1^\alpha \bar{L}_1^{1 - \alpha} - w_1 = 0\\
+      \frac{\delta V_1}{\delta L_2} &=& ((1 - \alpha)A_2K_2^\alpha \bar{L}_2^{1 - \alpha} - w_2)\frac{1}{1 + r_2} = 0\\
+      \frac{\delta V_1}{\delta K_2} &=& -P_1^I + \frac{1}{1 + r_2}(\alpha A_2k^{1 - \alpha}\bar{L}_2^{\alpha - 1} + P_2^I(1 - \delta)) = 0
+    \end{eqnarray*}
+  \end{solution}
   \item Solve for the market clearing wages $w_1$ and $w_2$, and the firm's optimal choice of capital $K_2$ (That is, find the closed-formed solutions expressing each of these variables as functions of the model's parameters).
+  \begin{solution}
+    From the FOC's we get
+    \begin{eqnarray*}
+      w_1^* &=& (1 - \alpha)A_1K_1^{\alpha}\bar{L}_1^{- \alpha}\\
+      w_2^* &=& (1 - \alpha)A_2K_2^{\alpha}\bar{L}_2^{- \alpha}\\
+      K_2^* &=& (\frac{(1 + r_2)P_1^I - P_2^I(1 - \delta)}{\alpha A_2\bar{L}_2^{1 - \alpha}})^\frac{1}{\alpha - 1}
+    \end{eqnarray*}
+  \end{solution}
   \item Does the wage rate in period 1, $w_1$, depend on the labor supply in period 1, $\bar{L}_1$?
+  \begin{solution}
+    Yes, because
+    \begin{eqnarray*}
+      \frac{\delta w_1^*}{\delta L_1} = -\frac{\alpha(1 - \alpha)A_2K_2^\alpha}{\bar{L}_1^{\alpha + 1}} \neq 0
+    \end{eqnarray*}
+  \end{solution}
   \item Does the wage rate in period 2, $w_2$, depend on the labor supply in period 2, $\bar{L}_2$?
+  \begin{solution}
+    Yes, because
+    \begin{eqnarray*}
+      \frac{\delta w_1^*}{\delta L_1} = -\frac{\alpha(1 - \alpha)A_2K_2^\alpha}{\bar{L}_1^{\alpha + 1}} \neq 0
+    \end{eqnarray*}
+  \end{solution}
   \item If your answers to (3) and (4) differ, explain why.
+  \begin{solution}
+    My answers do not differ becuase the FOC's relating to $w_1^*$ and $w_2^*$ are functionally the same.
+  \end{solution}
   \item Suppose that the government imposes a tariff on capital goods in both periods, so that new prices faced by the firm become $(1 + t)P_1^I$ and $(1 + t)P_2^I$, where $t$ is the tarrif rate. What will be the effect on $w_1$, $w_2$, and $K_2$?
-  \item Suppose that $A_1 = A_2 = 1, L_1 = L_2 = 5, r_2 = 0,1, \delta = 0.05, \alpha = \frac{1}{3}, P_1^I = 1,$ and $P_2^I = 1.05$. Wolve for the numerical value of $w_1, w_2$, and $K_2$.
+  \begin{solution}
+    $w_1^*$ will not be affected primarily because of the inelastic nature of both period's labor supply. $w_2^*$ will be affected because Period 2 capital is one of it's inputs. Period two capital becomes
+    \begin{eqnarray*}
+      K_{2_t}^* &=& (\frac{(1 + t)(1 + r_2)P_1^I - P_2^I(1 - \delta)(1 + t)}{\alpha A_2\bar{L}_2^{1 - \alpha}})^\frac{1}{\alpha - 1} < K_2^*
+    \end{eqnarray*}
+  \end{solution}
+  \item Suppose that $A_1 = A_2 = 1, L_1 = L_2 = 5, r_2 = 0.1, \delta = 0.05, \alpha = \frac{1}{3}, P_1^I = 1, K_1 = 10$ and $P_2^I = 1.05$. solve for the numerical value of $w_1, w_2$, and $K_2$.
+  \begin{solution}
+    \begin{eqnarray*}
+      w_1^* &=& (\frac{2}{3})(1)10^{\frac{1}{3}}5^{-\frac{1}{3}} = (\frac{2}{3})2^{\frac{1}{3}}\\
+      w_2^* &=& (\frac{2}{3})(1)K_2^{\frac{1}{3}}5^{-\frac{1}{3}} = (\frac{2}{3})(\frac{K_2}{5})^\frac{1}{3}\\
+    \end{eqnarray*}
+    With
+    \begin{eqnarray*}
+      K_2^* &=& (\frac{(1.1)(1) - (1.05)(.995)}{\frac{1}{3} 5^{\frac{2}{3}}})^{-\frac{3}{2}} = 75
+    \end{eqnarray*}
+  \end{solution}
   \item Assume $t = 0.1$. Solve for the numerical values of $w_1, w_2$, and $K_2$.
+  \begin{solution}
+   \begin{eqnarray*}
+      K_{2_t}^* &=& (\frac{(1.1)^2(1) - (1.05)(.995)}{\frac{1}{3} 5^{\frac{2}{3}}})^{-\frac{3}{2}} = 14
+   \end{eqnarray*} 
+  \end{solution}
 \end{enumerate}
 \bigskip
 \textbf{Question Two:}
@@ -154,31 +206,69 @@ Consider a 2 period closed economy model of consumption and saving with investme
 \end{eqnarray*}
 \begin{enumerate}
   \item Draw and give and interpretation of the budget constraint
+  \begin{solution} 
+    The budget constraint is of the form
+    \begin{eqnarray*}
+      C_2 = A_2F(K_1 + A_1F(K) - T_1 - C_1) - T_2 + K_1 + (A_1F(K_1) - T_1 - C_1)
+    \end{eqnarray*}
+    which tells us that second period consumption is the disposable income plus the capital accumulated coming in to period 2. For the illustration of this equation, see \textbf{Graph 2.1} attached.
+  \end{solution}
   \item Show the solution to the household's problem graphically
+  \begin{solution}
+    The solution to the budget problem is 
+    \begin{eqnarray*}
+      \frac{u'(c_1)}{\beta u'(c_2)} = 1 + A_2 F'(K_2)
+    \end{eqnarray*}
+    and is illustrated in \textbf{Graph 2.2} attached
+  \end{solution}
   \item Suppose that initiall $T_1 = T_2 = 0$. Analyze graphically what would happen if the government did the following:
   \begin{itemize}
     \item Increased $T_1$ while leaving $T_2$ unchanged
+    \begin{solution}
+      \textbf{Graph 2.3.1} attached
+    \end{solution}
     \item Increased $T_2$ while leaving $T_1$ unchanged
+    \begin{solution}
+      \textbf{Graph 2.3.2} attached
+    \end{solution}
     \item Increased both $T_1$ and $T_2$ by the same amount
+    \begin{solution}
+      \textbf{Graph 2.3.3} attached
+    \end{solution}
   \end{itemize}
-  \indent For each case, explain what happens (or may happen, if there are multiple possibilities) to consumption, investment and output in periods 1 and 2. 
+  \indent For each case, explain what happens (or may happen, if there are multiple possibilities) to consumption, investment and output in periods 1 and 2.
+  \begin{solution}
+    For the first case, we can deduce that there will be less consumption in period one and more in period two with the opposite occuring in the second case. The third case has multiple solutions which could occur. Although $T_1 = T_2$, we do not know how what the marginal utiltities of consumption in each period are. Hence, we do not know if each periods consumption will fall equally or if what the difference will be.
+  \end{solution}
 \end{enumerate}
-%\newpage
-%\clearpage
-%\noindent \textbf{Graph 1.2}
-%\begin{figure}[h]
-%  \includegraphics{graph12.png}
-%\end{figure}
-%\clearpage
-%\noindent \textbf{Graph 2.4}
-%begin{figure}[h]
-%        \includegraphics{graph24.png}
-%\end{figure}
-%\newpage
-%\clearpage
-%\noindent \textbf{Graph 2.5}
-%\begin{figure}[h]
-%        \includegraphics{graph25.png}
-%\end{figure}
-\end{document}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.1}
+\begin{figure}[h]
+  \includegraphics{graph21.png}
+  \end{figure}
+\clearpage
+\noindent \textbf{Graph 2.2}
+\begin{figure}[h]
+        \includegraphics{graph22.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.3.1}
+\begin{figure}[h]
+        \includegraphics{graph231.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.3.2}
+\begin{figure}[h]
+        \includegraphics{graph232.png}
+\end{figure}
+\newpage
+\clearpage
+\noindent \textbf{Graph 2.3.3}
+\begin{figure}[h]
+        \includegraphics{graph233.png}
+\end{figure}
 
+\end{document}

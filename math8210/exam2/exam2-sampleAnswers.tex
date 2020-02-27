@@ -109,7 +109,27 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \textbf{Part One: Definitions}
 \begin{enumerate}
   \item Define what a metric on the set $X$ is carefully.
+    \begin{solution}
+      Consider the mapping $d:XxX \rightarrow \mathcal{R}$ so that
+      \begin{enumerate}
+        \item $d(x,y) \geq 0$ for all objects $x$ and $y$ in $X$
+        \item $d(x,y) = 0$ if and only if $x = y$
+        \item $d(x,y) = d(y,x)$ for all objects $x$ and $y$ in $X$
+        \item $d(x,y) \leq d(x,z) + d(z,y)$ or all objects $x$, $y$, and $z$ in $X$. 
+      \end{enumerate}
+      The mappding d is called a metric and the pair $(X,d)$ is called a metric space
+    \end{solution}
   \item Define what a norm on the set $X$ is carefully.
+    \begin{solution}
+      Let $X$ be a vector space over the reals and let $\rho: X \rightarrow R$ satisfy 
+      \begin{eqnarray*}
+        N1: \rho(x) &\geq& 0 \: \forall \: x \in X\\
+        N2: \rho(x) &=& 0 \iff x = 0\\
+        N3: \rho(\alpha x) &=& |\alpha|\rho(x) \: \forall \: x \in X\\
+        N4: \rho(x + y) &\leq& \rho(x) + \rho(y) \: \forall \: x,y \in X
+      \end{eqnarray*}
+      Note: given a norm, we can use it to define a metric: define $d(x,y) = \rho(x - y)$
+    \end{solution}
   \item Define the conjugate exponents p and q for all cases.
   \begin{solution}
     We say the positive number p and q are \textbf{conjugate exponents} if $p > 1$ and $\frac{1}{p} + \frac{1}{q} = 1$, In the case of $p = 1, q = \infty$
@@ -122,12 +142,22 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
       \item $l^2 = \{(a_n)_{n=1}^{\infty} : \sum_{n=1}^{\infty}|\alpha_n|^2 converges\}$
       \item $l^p = \{(a_n)_{n=1}^{\infty} : \sum_{n=1}^{\infty}|\alpha_n|^p converges\}$
       \item $l^\infty = \{(a_n)_{n=1}^{\infty} : \sup_{n\geq1}|\alpha_n|^n < \infty\}$
-    \end{enumerate} 
+    \end{enumerate}
   \end{solution}
   \item Define topological compactness for a set S in a metric space $(X,d)$
+  \begin{solution}
+    We say a set S is topologically compact if every open cover of S has a finite subcover
+  \end{solution}
   \item Define sequenctial compactness for a set S in a normed linear space $(X,||\cdot||).$
   \begin{solution}
-    We say $S \subset X$ is sequentially compact if any sequence $(x_n) \subset X$ contains at least one subsequence $(x_n^1)$ which converges to $x \in S$
+    We say $S \subset X$ is sequentially compact if any sequence $(x_n) \subset S$ contains at least one subsequence $(x_n^1)$ which converges to $x \in S$
+  \end{solution}
+  \item Linear transformation between two vectors X and Y
+  \begin{solution}
+    We say $T\: : \: X \rightarrow Y$ is a linaer transformation if
+    \begin{eqnarray*}
+      T(\alpha x + \beta y) = \alpha T(X) + \beta T(y)
+    \end{eqnarray*}
   \end{solution}
   \item Define a bounded linear operator between the normed linear space $(X,||\cdot||_X)$ and $(Y,||\cdot||_Y)$.
   \begin{solution}
@@ -141,7 +171,7 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
     \end{eqnarray*}
     and so an equivalent way to define $B(T)$ is
     \begin{eqnarray*}
-      B(T) = sup_{z\in dom(T),||x||_X = 1}||T(x)||_Y
+      B(T) = sup_{x\in dom(T),||x||_X = 1}||T(x)||_Y
     \end{eqnarray*}
   \end{solution}
   \item Define what it means for a family of functions to be equicontinuous
@@ -159,10 +189,7 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
   \end{solution}
   \item Define what it means for S to be a nowhere dense set for the normed linear space $(X,||\cdot||_X)$
   \begin{solution}
-    We say $p$ is an interior point of $S$ if there is a radius $r > 0$ so that $B(p;r) \subset S$ and S is open if all of its points are interior points. We say a set S is nowhere dense if the closure of the set has not interior points.
-  \end{solution}
-  \begin{solution}
-
+    We say $p$ is an interior point of $S$ if there is a radius $r > 0$ so that $B(p;r) \subset S$ and S is open if all of its points are interior points. We say a set S is nowhere dense if the closure of the set has no interior points.
   \end{solution}
 \end{enumerate}
 
@@ -196,7 +223,7 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
   \end{solution}
   \item State the Linear Combination Theorem
   \begin{solution}
-    Let $(X,||\cdot||)$ be a normed linear space and let $\{x_1,...,x_n\}$ be a finite linear independent subset of $X$. Then there is a positive ${c}$ constant so that 
+    Let $(X,||\cdot||)$ be a normed linear space and let $\{x_1,...,x_n\}$ be a finite linear independent subset of $X$. Then there is a positive ${c}$ constant so that
     \begin{eqnarray*}
       ||\sum_{i=1}^N\: \alpha_i {x_i}|| \geq c\sum_{i=1}^N\:|\alpha_i|
     \end{eqnarray*}
@@ -215,8 +242,22 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \textbf{Part Three: Is it Possible and Short Answer}
 \begin{enumerate}
   \item Is it possible for $B(0;2)$ to be sequentioally compact in $C([1,4],||\cdot||)$ (where $||\cdot||$ is the norm we chose to use on this space of functions)?
+  \begin{solution}
+    \textbf{Range of B($\cdot$) is not contained in C[$\cdot$] so my heart says no but I need to check or refine my reasoning}
+  \end{solution}
   \item State the standard Schauder basis for $l^p, 1 \leq p < \infty$.
+  \begin{solution}
+    \begin{eqnarray*}
+      E &=& (e_n)^\infty_{n=1}\\
+      e_n = (0, 0,...,1_{\text{slot n}},...)
+    \end{eqnarray*}
+  \end{solution}
   \item State the standard Schauder basis for the set of sequences that converge.
+  \begin{eqnarray*}
+     E &=& (e_n)^\infty_{n=1}\\
+     e_0 &=& (1,1,1,...) \text{ all ones}\\
+     e_n &=& (0, 0,...,1_{\text{slot n}},...)
+  \end{eqnarray*}
   \item If $S$ is a sequentially compact subset of $l^p$ is it true we can find a element in $S$, say $x_0$ and a positive number $r$ so that $B(x_0;r) \subset S$?
   \item If a sequence $(x_n)$ in the finite dimensional normed linear space $(X,||\cdot||_a)$ converges, is it possible for it to converge to a different limit point if the norm was changed to $||\cdot||_b$?
 \end{enumerate}

@@ -1,0 +1,159 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework Four, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework 4}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+
+\date{\small{Version ~\today}}
+\Abstract{TBD}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\textbf{Part One: Definitions}
+\begin{enumerate}
+  \item Define what a metric on the set $X$ is carefully.
+  \item Define what a norm on the set $X$ is carefully.
+  \item Define the conjugate exponents p and q for all cases.
+  \item Define the sequence spaces $l^p$ and define $||\cdot||_p$ in all cases.
+  \item Define topological compactness for a set S in a metric space $(X,d)$
+  \item Define sequenctial compactness for a set S in a normed linear space $(X,||\cdot||).$
+  \item Linear transformation between two vectors X and Y
+  \item Define a bounded linear operator between the normed linear space $(X,||\cdot||_X)$ and $(Y,||\cdot||_Y)$.
+  \item Define what it means for a family of functions to be equicontinuous
+  \item Define what it means for S to be a nowhere dense set for the normed linear space $(X,||\cdot||_X)$
+\end{enumerate}
+
+\textbf{Part Two: Theorems and Lemmas}
+\begin{enumerate}
+  \item State Holder's Inequality for the sequence spaces
+  \item State Minkowski's Inequality for the sequence spaces
+  \item State Zorn's Lemma
+  \item State the Linear Combination Theorem
+  \item State Riesz's Lemma
+  \item State the Azrela - Ascoli Theorem
+\end{enumerate}
+
+\textbf{Part Three: Is it Possible and Short Answer}
+\begin{enumerate}
+  \item Is it possible for $B(0;2)$ to be sequentioally compact in $C([1,4],||\cdot||)$ (where $||\cdot||$ is the norm we chose to use on this space of functions)?
+  \item State the standard Schauder basis for $l^p, 1 \leq p < \infty$.
+  \item State the standard Schauder basis for the set of sequences that converge.
+  \begin{eqnarray*}
+     E &=& (e_n)^\infty_{n=1}\\
+     e_0 &=& (1,1,1,...) \text{ all ones}\\
+     e_n &=& (0, 0,...,1_{\text{slot n}},...)
+  \end{eqnarray*}
+  \item If $S$ is a sequentially compact subset of $l^p$ is it true we can find a element in $S$, say $x_0$ and a positive number $r$ so that $B(x_0;r) \subset S$?
+  \item If a sequence $(x_n)$ in the finite dimensional normed linear space $(X,||\cdot||_a)$ converges, is it possible for it to converge to a different limit point if the norm was changed to $||\cdot||_b$?
+\end{enumerate}
+
+\textbf{Part Four: Proofs}
+Provide careful proofs of the following propositions.
+\begin{enumerate}
+  \item Let $f$ be a continuous a real valued function on [0,1] which satisfies the growth condition $f(u) \leq e^{-\alpha}|u|$ for some positive $\alpha$. Define $T$ on $c([0,1)]$ as the function whose value at $t$ is given by $(T(x))(t) = \int_0^t\:f(x(s))ds$.
+  \begin{itemize}
+    \item Prove that, in general, $T$ is not a linear mapping.
+    \item Prove $T$ is well defined as a mapping from $C([0,1])$ to $C([0,1])$ by showing $T(x)$ is continuous on [0,1].
+    \item Prove $||T||_{op}$ is bounded using $||\cdot||_{\infty}$ on both the domain and the range
+    \item Prove $||T||_{op}$ is bounded using $||\cdot||_1$ on both the domain and the range
+  \end{itemize}
+  \item If $p$ is a $n^{th}$ degree polynomial on [0,1], with $p(t) = \sum_{i=0}^n\: a_y t^i$, prove there is a positive constant $B$ so that $\text{max}_{0 \leq i \leq n}|\alpha_i| \leq B||p||_{\infty}$
+\end{enumerate}
+\end{document}
