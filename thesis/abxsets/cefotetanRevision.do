@@ -76,16 +76,25 @@ qui forval year = 2006/2016 {
 //For review: diagnoses are now set as diag`x', x in [0,counter]
 //We need to clean up the duplicates
 //Probably should do some kind of unit testing with the continue command in the loops
-		//Does the below usage break me out of the `if' or the `for'
+//Does the below usage break me out of the `if' or the `for'
 local count2 = `counter'
 local counter = 0
 local 2DIAG0 = "`DIAG0'"
+ma list
 forval s = 1/`count2' {	//Skipping over the 0 case because it cannot be a repeat
 	local ceiling = `s' - 1
 	forval t = 0/`ceiling' {
-		if `t' < `ceiling' & `DIAG`s'' == "`DIAG`t''" {
+		if `t' < `ceiling' {
+			gen interVarS = "`DIAG`s''"
+			gen intervarT = "`DIAG`t''"
+			gen comp = 0
+			replace comp = 1 if interVarS == intervarT
+			if comp == 1 {
 				ma drop `DIAG`s''
-				continue
+			}
+			drop interVarS
+			drop intervarT
+			drop comp
 		}
 		/*if `t' == `ceiling'  {	//Theoretically, this should only happen if we never had to "continue" out of the loop
 			if `DIAG`s'' != "`DIAG`t''" {
@@ -93,12 +102,14 @@ forval s = 1/`count2' {	//Skipping over the 0 case because it cannot be a repeat
 				local counter = `counter' + 1
 			}
 			if `DIAG`s'' == "`DIAG`t''"{
-				ma drop `DIAG`s'' */
+				ma drop `DIAG`s'' 
 			}
 		}
+				*/
 	}
 }
-ma list
+
+//ma list
 /*
 //This entire loop can be simplified no but iterating from 0 to `count'
 qui forval dataset = 2006/2016 {
