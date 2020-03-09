@@ -108,167 +108,77 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \renewcommand{\theexercise}{\arabic{exercise}}%
 
 \textbf{Problem One:}
-Suppose we are analyzing an economy that satisfies the following assumptions:
-\begin{itemize}
-  \item The economy is a small open economy. There is a free flow of capital goods across border but labor is immobile
-  \item There exists a single representative firm which lives for two periods
-  \item The firm owns its capital, it starts period with $k_1$ units of capital and operates for two periods
-  \item There is a fixed amount of labor in each period and it is supplied inelastically.
-  \begin{eqnarray*}
-    \text{Labor Supply in Period 1} = \bar{L}_1\\
-    \text{Labor Supply in Period 2} = \bar{L}_2
-  \end{eqnarray*}
-  \item The firm is competitive, it takes output and input prices as given:
-  \begin{itemize}
-    \item It hires labor $(L)$ in period 1 and 2 at market real wage rates $w_1$ and $w_2$
-    \item it buys capital $(K)$ at exogenously given world prices of capital $P_1I$ and $P_2^I$
-  \end{itemize}
-  \item It produces final output using labor and capital according to a production function
-  \begin{eqnarray*}
-    Y_t = A_t K_t^\alpha L_t^{1 - \alpha}, 0 < \alpha < 1
-  \end{eqnarray*}
-  \item The firm accumulates/decumulates capital through investment, which takes the form of purchasing capital goods in the world market. Capital depreciates at the rate $0 < \delta < 1$.
-  \item The firm chooses the quantities of inputs to maximize the present discounted value of profits, which is given by
-  \begin{eqnarray*}
-    V_1 = \pi_1 &+& \frac{\pi_2}{1 + r_2} = A_1F(K_1,L_1) - w_1L_1 + P_1^1(1 - \delta)K_1 - P_1^1K_2\\
-     &+& \frac{1}{1 + r_2}[A_2f(K_2,L_2) - w_2L_2 + P_2^I(1 - \delta)K_2 - P_2^IK_3]
-  \end{eqnarray*}
-\end{itemize}
-
-\begin{enumerate}
-  \item Find the first order conditions for the firm's maximization problem.
-  \begin{solution}
-    FOC's:
-    \begin{eqnarray*}
-      \frac{\delta V_1}{\delta L_1} &=& (1 - \alpha)A_1K_1^\alpha \bar{L}_1^{1 - \alpha} - w_1 = 0\\
-      \frac{\delta V_1}{\delta L_2} &=& ((1 - \alpha)A_2K_2^\alpha \bar{L}_2^{1 - \alpha} - w_2)\frac{1}{1 + r_2} = 0\\
-      \frac{\delta V_1}{\delta K_2} &=& -P_1^I + \frac{1}{1 + r_2}(\alpha A_2k^{1 - \alpha}\bar{L}_2^{\alpha - 1} + P_2^I(1 - \delta)) = 0
-    \end{eqnarray*}
-  \end{solution}
-  \item Solve for the market clearing wages $w_1$ and $w_2$, and the firm's optimal choice of capital $K_2$ (That is, find the closed-formed solutions expressing each of these variables as functions of the model's parameters).
-  \begin{solution}
-    From the FOC's we get
-    \begin{eqnarray*}
-      w_1^* &=& (1 - \alpha)A_1K_1^{\alpha}\bar{L}_1^{- \alpha}\\
-      w_2^* &=& (1 - \alpha)A_2K_2^{\alpha}\bar{L}_2^{- \alpha}\\
-      K_2^* &=& (\frac{(1 + r_2)P_1^I - P_2^I(1 - \delta)}{\alpha A_2\bar{L}_2^{1 - \alpha}})^\frac{1}{\alpha - 1}
-    \end{eqnarray*}
-  \end{solution}
-  \item Does the wage rate in period 1, $w_1$, depend on the labor supply in period 1, $\bar{L}_1$?
-  \begin{solution}
-    Yes, because
-    \begin{eqnarray*}
-      \frac{\delta w_1^*}{\delta L_1} = -\frac{\alpha(1 - \alpha)A_2K_2^\alpha}{\bar{L}_1^{\alpha + 1}} \neq 0
-    \end{eqnarray*}
-  \end{solution}
-  \item Does the wage rate in period 2, $w_2$, depend on the labor supply in period 2, $\bar{L}_2$?
-  \begin{solution}
-    Yes, because
-    \begin{eqnarray*}
-      \frac{\delta w_1^*}{\delta L_1} = -\frac{\alpha(1 - \alpha)A_2K_2^\alpha}{\bar{L}_1^{\alpha + 1}} \neq 0
-    \end{eqnarray*}
-  \end{solution}
-  \item If your answers to (3) and (4) differ, explain why.
-  \begin{solution}
-    My answers do not differ becuase the FOC's relating to $w_1^*$ and $w_2^*$ are functionally the same.
-  \end{solution}
-  \item Suppose that the government imposes a tariff on capital goods in both periods, so that new prices faced by the firm become $(1 + t)P_1^I$ and $(1 + t)P_2^I$, where $t$ is the tarrif rate. What will be the effect on $w_1$, $w_2$, and $K_2$?
-  \begin{solution}
-    $w_1^*$ will not be affected primarily because of the inelastic nature of both period's labor supply. $w_2^*$ will be affected because Period 2 capital is one of it's inputs. Period two capital becomes
-    \begin{eqnarray*}
-      K_{2_t}^* &=& (\frac{(1 + t)(1 + r_2)P_1^I - P_2^I(1 - \delta)(1 + t)}{\alpha A_2\bar{L}_2^{1 - \alpha}})^\frac{1}{\alpha - 1} < K_2^*
-    \end{eqnarray*}
-  \end{solution}
-  \item Suppose that $A_1 = A_2 = 1, L_1 = L_2 = 5, r_2 = 0.1, \delta = 0.05, \alpha = \frac{1}{3}, P_1^I = 1, K_1 = 10$ and $P_2^I = 1.05$. solve for the numerical value of $w_1, w_2$, and $K_2$.
-  \begin{solution}
-    \begin{eqnarray*}
-      w_1^* &=& (\frac{2}{3})(1)10^{\frac{1}{3}}5^{-\frac{1}{3}} = (\frac{2}{3})2^{\frac{1}{3}}\\
-      w_2^* &=& (\frac{2}{3})(1)K_2^{\frac{1}{3}}5^{-\frac{1}{3}} = (\frac{2}{3})(\frac{K_2}{5})^\frac{1}{3}\\
-    \end{eqnarray*}
-    With
-    \begin{eqnarray*}
-      K_2^* &=& (\frac{(1.1)(1) - (1.05)(.995)}{\frac{1}{3} 5^{\frac{2}{3}}})^{-\frac{3}{2}} = 75
-    \end{eqnarray*}
-  \end{solution}
-  \item Assume $t = 0.1$. Solve for the numerical values of $w_1, w_2$, and $K_2$.
-  \begin{solution}
-   \begin{eqnarray*}
-      K_{2_t}^* &=& (\frac{(1.1)^2(1) - (1.05)(.995)}{\frac{1}{3} 5^{\frac{2}{3}}})^{-\frac{3}{2}} = 14
-   \end{eqnarray*} 
-  \end{solution}
-\end{enumerate}
-\bigskip
-\textbf{Question Two:}
-Consider a 2 period closed economy model of consumption and saving with investment and government taxation that we have studied in class. The representation household solves the following problem
+Consider a two-period model of consumption, saving, and investment in a closed economy. We'll also add a government which taxes (T) and spends (G). Let the taxes be lump sum. And net borrowing/lending had to be zero $B = 0$.\\
+Here, we'll still have $B = 0$ (still no one to borrow form/lend to in a closed economy). But we'll also see that things are somewhat different here.\\
+\\
+Let's start by thinking about the budget constraints.\\
+\\
+Each period the household has a disposable income to spend on consumption and investment. Disposable income is equal to GDP (produced using physical capital) minus taxes collected by the government.\\
+\\
 \begin{eqnarray*}
-  \text{max}_{C_1,C_2}\: u(C_1) + \beta u(C_2) st\\
-  C_2 = A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 + (A_1F(K_1) - T_1) - C_1
+    A_1F(K_1) - T_1 &=& C_1 + I_1\\
+    A_2F(K_2) - T_2 &=& C_2 + I_2
 \end{eqnarray*}
-\begin{enumerate}
-  \item Draw and give and interpretation of the budget constraint
-  \begin{solution} 
-    The budget constraint is of the form
+Capital evlolves according to (recall that $K_1$ is given.)
+\begin{eqnarray*}
+    K_2 &=& K_1 - I_1\\
+    I_2 &=& K_2
+\end{eqnarray*}
+Together this gives us the Production Possibilities Frontier (PPF):
+\begin{eqnarray*}
+    C_2 = A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 + (A_1F(K_1) - T_1 - C_1)
+\end{eqnarray*}
+The representative household solves the following problem
+\begin{eqnarray*}
+    \max_{[C_1,C_2]} u(C_1) + \beta u(C_2)
+\end{eqnarray*}
+\begin{center}
+    subject to
+\end{center}
+\begin{eqnarray*}
+    C_2 = A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 +(A_1F(K_1) - T_1) - C_1
+\end{eqnarray*}
+Assume the following
+\begin{eqnarray*}
+    u(C_t) = \frac{C_t^{1 - \frac{1}{\sigma}}}{1 - \frac{1}{\sigma}}, \; Y_t = A_tK_t^\alpha, \; \alpha = \frac{1}{4}, \; \beta = 0.98, \; A_1 =1, \; A_2 = 2, \; T_1 = 0, \; T_2 = 0, \; K_1 = 1, \; \sigma = 0.5
+\end{eqnarray*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Solve for the optimal values of consumption and investment in each period.
+    \item What is the capital stock in period 2? What is the value of output?
+    \item Skethc the solution graphically\\
+    Assume that future productivity decreases, so that
     \begin{eqnarray*}
-      C_2 = A_2F(K_1 + A_1F(K) - T_1 - C_1) - T_2 + K_1 + (A_1F(K_1) - T_1 - C_1)
+        A_2 = 1.2
     \end{eqnarray*}
-    which tells us that second period consumption is the disposable income plus the capital accumulated coming in to period 2. For the illustration of this equation, see \textbf{Graph 2.1} attached.
-  \end{solution}
-  \item Show the solution to the household's problem graphically
-  \begin{solution}
-    The solution to the budget problem is 
-    \begin{eqnarray*}
-      \frac{u'(c_1)}{\beta u'(c_2)} = 1 + A_2 F'(K_2)
-    \end{eqnarray*}
-    and is illustrated in \textbf{Graph 2.2} attached
-  \end{solution}
-  \item Suppose that initiall $T_1 = T_2 = 0$. Analyze graphically what would happen if the government did the following:
-  \begin{itemize}
-    \item Increased $T_1$ while leaving $T_2$ unchanged
-    \begin{solution}
-      \textbf{Graph 2.3.1} attached
-    \end{solution}
-    \item Increased $T_2$ while leaving $T_1$ unchanged
-    \begin{solution}
-      \textbf{Graph 2.3.2} attached
-    \end{solution}
-    \item Increased both $T_1$ and $T_2$ by the same amount
-    \begin{solution}
-      \textbf{Graph 2.3.3} attached
-    \end{solution}
-  \end{itemize}
-  \indent For each case, explain what happens (or may happen, if there are multiple possibilities) to consumption, investment and output in periods 1 and 2.
-  \begin{solution}
-    For the first case, we can deduce that there will be less consumption in period one and more in period two with the opposite occuring in the second case. The third case has multiple solutions which could occur. Although $T_1 = T_2$, we do not know how what the marginal utiltities of consumption in each period are. Hence, we do not know if each periods consumption will fall equally or if what the difference will be.
-  \end{solution}
+    \item Solve for the optimal values of consumption and investment in each period
+    \item What is the capital stock in period 2? What is the value of output?
+    \item Sketch the solution graphically
+    \item Compare your answers with those found in parts (1) - (c)
 \end{enumerate}
-\newpage
-\clearpage
-\noindent \textbf{Graph 2.1}
-\begin{figure}[h]
-  \includegraphics{graph21.png}
-  \end{figure}
-\clearpage
-\noindent \textbf{Graph 2.2}
-\begin{figure}[h]
-        \includegraphics{graph22.png}
-\end{figure}
-\newpage
-\clearpage
-\noindent \textbf{Graph 2.3.1}
-\begin{figure}[h]
-        \includegraphics{graph231.png}
-\end{figure}
-\newpage
-\clearpage
-\noindent \textbf{Graph 2.3.2}
-\begin{figure}[h]
-        \includegraphics{graph232.png}
-\end{figure}
-\newpage
-\clearpage
-\noindent \textbf{Graph 2.3.3}
-\begin{figure}[h]
-        \includegraphics{graph233.png}
-\end{figure}
+
+\textbf{Problem 2: }Assume $\sigma = 3$ and re-do (a) - (g). Comment on the difference\\
+\begin{enumerate}[label=(\alph*)]
+    \item Solve for the optimal values of consumption and investment in each period.
+    \item What is the capital stock in period 2? What is the value of output?
+    \item Skethc the solution graphically\\
+    Assume that future productivity decreases, so that
+    \begin{eqnarray*}
+        A_2 = 1.2
+    \end{eqnarray*}
+    \item Solve for the optimal values of consumption and investment in each period
+    \item What is the capital stock in period 2? What is the value of output?
+    \item Sketch the solution graphically
+    \item Compare your answers with those found in parts (2) - (c)
+\end{enumerate}
+
+\textbf{Problem 3: }Assume the same set-up as above, except now the economy is open (i.2. the household can lend or borrow internationally). The world interest rate is $r = 1.6 \; (160\%)$ and $\sigma = 1.4$. Answer questions (a) - (g) for this economy. In addition, for parts (a) - (d), solve for the value of borrowing and lending. 
+
+%\newpage
+%\clearpage
+%\noindent \textbf{Graph 2.1}
+%\begin{figure}[h]
+%  \includegraphics{graph21.png}
+%  \end{figure}
 
 \end{document}

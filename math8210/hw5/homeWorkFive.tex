@@ -251,7 +251,22 @@ Combination Theorem.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+Recall that $\text{sup}_{||x|| \neq 1}||A(x)|| = \frac{\text{sup}_{||x|| \neq 1}||A(x)||}{\text{inf}||x||}$. For the denominator, we know that, by LCT, that $\exists c > 0 \ni \text{sup}||\alpha x|| \geq c\sum_{i=1}^N\:|\alpha_i|$. Because this works for all values of the scalar $\alpha = \{\alpha_1,\alpha_2,...,\alpha_N\}$, we pick $\alpha = \sum_{i=1}^N\:|\alpha_i| = 1$ and this gives us
+\begin{eqnarray*}
+  ||x|| &\geq& c\\
+  \implies \frac{1}{||x||} &\leq& \frac{1}{c}
+\end{eqnarray*}
+For the numerator, we get 
+\begin{eqnarray*}
+  \text{sup}||A(x)|| &=& \text{sup}(\lambda_i x)\\
+  &\leq& \text{EL}
+\end{eqnarray*}
+With E and L as defined.\\
+This gives us
+\begin{eqnarray*} \sup_{\|\bs{x}\| = 1} \|A(\bs{x})\|
+  &\leq& 
+  \frac{EL}{c}
+\end{eqnarray*}
 \end{solution}
 
 \section{Rotating Surfaces}
@@ -512,6 +527,23 @@ Note make sure you fill in the numerical values here also.
       -0.9013
     \end{vmatrix} 
   \end{eqnarray*}
+  Now, we consider $\lambda_m = \max\{ |\lambda_1|,|\lambda_2|\}$ and
+  \begin{eqnarray*}
+    \|H\| = \sup_{\|\bs{x}\| = 1} \|H(\bs{x})\| &\leq& \sqrt{|\lambda_1|^2 |x_1|^2 + |\lambda_2|^2 |x_2|^2}\\
+    &=& \sqrt{|\lambda_m|^2(|x_1|^2 + |x_2|^2)}\\
+    &=& \lambda_m \sqrt{(|x_1|^2 + |x_2|^2)}\\
+    &=& \lambda_m\\
+    &=& \max\{ |\lambda_1|,|\lambda_2|\}
+  \end{eqnarray*}
+  Because $H(x) = \lambda x$ for either eigenvalue, it must be that
+  \begin{eqnarray*}
+    sup\|H(x)\| &\geq& \lambda \|x\|\\
+    &=& \max\{\lambda\}
+  \end{eqnarray*}
+  Putting the above inequalities together we get
+  \begin{eqnarray*}
+    \|H\|  = \max\{ |\lambda_1|,|\lambda_2|\} = 14.14031
+  \end{eqnarray*}
 \end{solution}
 
 \begin{exercise}
@@ -555,6 +587,10 @@ Note make sure you fill in the numerical values here also.
       0.63399\\
       -0.7733
     \end{vmatrix} 
+  \end{eqnarray*}
+  The same equality proven above holds and we get
+  \begin{eqnarray*}
+    \|H\|  = \max\{ |\lambda_1|,|\lambda_2|\} = 28.2971
   \end{eqnarray*}
 \end{solution}
 

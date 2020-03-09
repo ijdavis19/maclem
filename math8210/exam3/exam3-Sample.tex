@@ -1,0 +1,158 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Exam 3 Sample},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Exam 3 Sample, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Exam 3 Sample}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+
+\date{\small{Version ~\today}}
+\Abstract{Exam 3 Sample}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\textbf{Part One: Definitions}
+\begin{enumerate}
+  \item Define what an inner product on the set X is carefully. Do this for both the real and complex field.
+  \item Describe how to complete $(C([a,b]),d_2)$ in reasonable detail.
+  \item Define a bounded lienar operator $T$ between the normed linear spaces $(X,\|\cdot\|_X)$ and $(Y,\|\cdot\|_Y)$.
+  \item Define what it means for a family of functions to be equicontinuous.
+  \item Define what a Schauder Basis means for a normed linear space.
+  \item Define what it means for a set $D$ in a metric space to be dense.
+  \item Define what it means for a metric space $D$ to be separable.
+  \item Define the duel space of the normed linear space $(X,\|\cdot\|_X)$.
+  \item Define the double dual space of the normed linear space $(X,\|\cdot\|_X)$.
+\end{enumerate}
+
+\textbf{Part Two: Theorems and Lemmas}
+\begin{enumerate}
+  \item State the Parallelogram Equality.
+  \item State the Cauchy - Schwartz Ineqaulity
+\end{enumerate}
+
+\textbf{Part Three: Is it Possible and Short Answer}
+\begin{enumerate}
+  \item Give an example of a norm that cannot be induced by an inner product.
+  \item If $T$ is an operator from $dom(T) \subset (X,\|\cdot\|_X)$ into $(Y,\|\cdot\|_Y)$, not necessarily linear, is it posible for $T$ to be bounded? Give an example.
+  \item Is it true the dual space of the normed linear space $(X,\|\cdot\|_X)$ must be complete?
+  \item Is it true that Riemann integration on $[a,b]$ defines an element of the duel space of $(C([a,b]),\|\cdot\|)$?
+  \item Is it that given $\mathbf{x} \in \mathcal{R}^n$, the function $f$ defined by $f(\mathbf{y}) = <\mathbf{x},\mathbf{y}>$ is an element of $\mathcal{R}^n$?
+  \item If A is an $n \times n$ symmetric matrix, is it true that $\|A\| < \max_{\|x\| = 1}|<A(x),x)>$?
+\end{enumerate}
+
+\textbf{Part Four: Proofs}
+Provide careful proofs of the following propositions.
+\begin{enumerate}
+  \item Let $A =
+  \begin{bmatrix}
+    2 & 4\\
+    4 & 3\\
+  \end{bmatrix}
+  $
+  \begin{enumerate}[label=\alph*)]
+    \item Compute $\max_{\|x\|=1}|<A(x),x>$. Here are some hints:
+    \begin{itemize}
+      \item Convert the quadratic form $<A(x),x>$ into an equation in $cos(2\theta)$ and $sin(2\theta)$ as to satisfy the constraint $x^2 + y^2 = 1$
+      \item This is optimization in on variable $\theta$ and it is ok to ignore optimize over the quadratic form instead of the absolute value of it.
+      \item Find the solution in terms of $tan(2\theta)$ and use standard reference triangles to find the largest value of this quadratic form.
+    \end{itemize}
+    \item Prove the value above is the same as the largest absolute value of the eigenvalues of $A$: you find these eigenvalue by hand of course.
+  \end{enumerate}
+  \item Prove $T(x) = |<A(x),x>|$ is a continuous function of $x$ for $x \in (C([a,b]),\|\cdot\|_\infty)$ using the standard inner product on $C([a,b])$ and $(A(x))(t) = \int_a^b\:k(s,t)x(s)ds$ with $k$ a symmetric continuous function on $[a,b]\times[a,b]$
+\end{enumerate}
+\end{document}

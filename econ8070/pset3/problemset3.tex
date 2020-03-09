@@ -1,0 +1,172 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet 3},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 3, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Problem Set 3}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\textbf{Problem 1:} Read the following stories and explain whether Tom and Yujie are correct or not.
+\begin{enumerate}
+  \item Yujie tries to use $z_i$ (scalar, not a matrix) as an instrument because she thinks $x_i$ is endogenous. However, she also finds that the correlation between $x$ and $z$ is weak and so she includes also $z_i^2$.Tom says that this is not correct because now you have more instruments than endogenous variables so $\beta_{IV} = (Z'X)^{-1}Z'Y$ does not work.
+  
+  \begin{solution}
+    Yujie is correct in using $z_i^2$ to find a better relationship between $x_i$ and $z_i$ if she can argue why the squared term makes intuitive sense to be related to $x_i$ but she would also need to drop $z_i$ in oder. Tom is partially correct in that it is true that you have to have an equal number of regressors and instruments for $\beta_{IV} = (Z'X)^{-1}Z'Y$ to work but Yujie can still use 2SLS and get an estimate of $\beta_{2SLS}$
+  \end{solution}
+  
+  \item Given the model $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \varepsilon$, assume that $x_2$ is exogenous and $x_1$ is endogenous. Yujie runs a IV regression of $y_1$ on $x_1$ and $x_2$ using $z$ as an instrument to get an estimate of $\beta_1$. Tom says that she can get the same estimate by regressing $y$ on $x_1$ and using $z$ as an instrument. However, Yuie opts to regressing $y$ on $x_2$ and regressing $x_1$ on $x_2$ getting residuals $e_1$ and $e_2$ respectively. She says that she can get the same estimate of $\beta_1$ by regressing $e_1$ on $e_2$ using $z$ as an instrument.
+  
+  \begin{solution}
+    Yujie is incorrect because, while FWL still holds even when using instrumental variables, Yujie still has to get a residual related to the instrument. Tom is incorrect becuase his strategy does not contril for variation of $x_1$ and $y$ not caused by $x_2$
+  \end{solution}
+  
+  \item Suppose the true model is $y = \beta_0 + \beta_1x_1 + \beta_2x_1^2 + \varepsilon$ and we try to get an estimate of $\beta_1$ by regressing $y$ on $x_1$ and $x_2$. Tom thinks that the estimate is not good because we need to add $x_1^2$ into the regression. Yujie thinks that the estimate is not good because we should take away $x_2$.
+
+  \begin{solution}
+    Tom and Yujie are both correct in the sense that the estimate is bad because the model does not reflect the data generating process. However, Tom is correct in saying that we need to add the $x_1^2$ term into the regression because we would then most likely lose signifance of the $\beta$ attached to $x_2$ and have a model more reflective of the true model. Yujie is incorrect becuase taking out $x_2$ does not immediately help us identify the fact  we need the $x_1^2$ term.
+  \end{solution}
+
+  \item Tom says that the Local Average Treatment Effect estimator does not work if the data consists of only alway-takers and never-takers. Yujie says that it's true but if the data consist of only always-takers and never-takers, the treatment would have no effect on the variable of interest. Therefore, we can check the condition by looking at the data.
+
+  \begin{solution}
+    Recall the equation for the Local Average Treatment Identification
+    \begin{eqnarray*}
+      \mathcal{E}[Y(1) - Y(0)\;|\;C]\\
+      = \frac{\mathcal{E}[Y_{z = 1}] - \mathcal{E}[Y_{z = 0}]}{\mathcal{E}[x_{z = 1}] - \mathcal{E}[x_{z = 0}]}
+    \end{eqnarray*}
+    So LATE is the effect of the treatment on the complies but that numerator will always be zero if everyone is an always-taker so Tom and Yujie are correct and we have to check the data. 
+  \end{solution}
+\end{enumerate}
+
+\textbf{Problem 2:} Read the following stories and explain whether Tom and Yujie are correct or not.
+\begin{enumerate}
+  \item Yujie runs a regression with clustered standard errors because she is concerned about heteroskadasticity. Tom agrees with her and says that models with clustered standard errors are always better than one which assumes homoskadasticity.
+
+  \begin{solution}
+    Yujie is correct to use clustered standard errors if she does believe there may be a heteroskadasticity problem but Tom is incorrect because we cannot say as a rule that clustered standard errors are always better. Especially in a case where there are not apparent clusters within the structure of the data, inaccurate clustering for the sake of clustering will give us a misrepresentation of the standard errors of our $\beta$s
+  \end{solution}
+
+  \item Yujie has a dataset with 1000 students from 5 schools and 30 classes. She clusters standard errors at a class level. She thinks that it requires weaker assumptions than using White robust standard errors. Tom sas that it is better to cluster at the school level because it requires even weaker assumptions.
+
+  \begin{solution}
+    Both Yujie and Tom are correct. Yujie is right because clustered standard errors allow for more nonzero values in your varaince-covariance matrix which means we do not have to assume as many values to be zero. Tom is right because, as we allow for bigger clusters, even less values are forced to be assumed 0. However, we cannot be sure that the estimate is "better" becuase larger clusters lead to less efficient estimates with less statistical significance. 
+  \end{solution}
+
+  \item Tom tries to estimate how $x$ affects $y$ and he regresses $y$ on $\hat{x}$ where $\hat{x} = x + \mu$ and $\mu$ is a normal random variable. Yujie says that this is incorrect because $\hat{x}$ is just a measure of $x$ instead of $x$ itself. Tom says that the magnitude of $\beta$ may be incorrect, but at least the sign is correct.
+  \begin{solution}
+    Yujie and Tom are both mostly correct. Yujie is mostly right in the fact that $\hat{x} \neq x$ but, because we do not know the distribution of $\mu$, we cannot make a judgment call regarding the quality of an estimate using $\hat{x}$. Tom is correct because classical measurement error does not change the sign of $\beta$ but it does move $|\beta|$ closer to 0.
+  \end{solution}
+
+
+  \item Yujie is trying to estimate the effect of her class on student's exam scores. She runs a randomized experiment by randomly picking some students and treating them with cookies if the choose to go to her class. Let's assume that everyone likes Yujie's cookies. She claims that she can estimate the treatment effects correctly by using the Wald estimator. Tom says that the estimator is not correct because people can still choose to go to the class or not and therefore this is not exactly a random assignment.
+
+  \begin{solution}
+    Yujie is correct because she uses random assignment to determent who gets the cookies and that controls for the endogeneity of going to class which additionally makes Tom wrong. 
+  \end{solution}
+  
+  \item Turns out everyone who attended the class takes the cookies. Yujie says that this is an evidence that there is no defiers. Tom says that it shows everyone is a complier. 
+  \begin{solution}
+    Both are incorrect. We do not know for sure that everyone who was offered a cookie accepted. Hence we can only say that, of the people who went, all are either compliers or always takers. Of the people who didn't, all are either compliers, never-takers, or defiers. 
+  \end{solution}
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,851 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={SampleProject},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210: Boop Boop Beep, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210: Sample Project}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{School of Mathematical and Statistical Sciences,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version 01142020 : Compiled ~\today}}
+
+\Abstract{
+Here you write a paragraph or so that is your abstract.
+Below that you supply some keywords.
+}
+\Keywords{
+{\bf Key Phrase One} --
+{\bf Key Phrase Two} --
+{\bf KeyPhrase Three} -- 
+{\bf Key Phrase Four} }
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+\addcontentsline{toc}{section}{Table Of Contents}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+	
+\section{Introduction}
+\label{sec:introduction}
+
+\noindent
+{\bf Here you introduce the problem.  What you are doing for
+    the project. }
+    
+\section{Background}
+\label{sec:background}
+
+\noindent
+{\bf Here you talk about your problem, introduce whatever
+     science and math are necessary to understand what is going on.
+     Sort of like a tutorial or a lecture to bright, yet
+     untrained in this area, colleagues.  This can be split over several
+     sections if required.}
+     
+\section{YOUR SPECIFIC TASK }
+\label{sec:task}
+
+For the title of this section, use something better
+than {\bf YOUR SPECIFIC TASK}.  Pick a title relevant to the project.
+
+\noindent
+{\bf What your task was and how you accomplished it.
+    This can include theoretical development, algorithm development
+    and software issues.  This can be spread over several sections
+    if necessary.}
+    
+\section {Results}
+\label{sec:results}
+
+\noindent
+{\bf Discuss your accomplishments.}
+
+\section{Acknowledgements}
+
+This is where you acknowledge people, grants and so forth
+that helped you do the work.  For example,
+my recent work is funded by an Army grant and so I would write
+this line.\\
+
+\noindent
+This research has been supported by support of the Army grant {\bf W911NF-17-1-0455}
+from the Army Research Office.
+
+\noindent
+Here you put the bibliography.  The \mylstinline{\phantomsection}
+is there to make sure it appears in the table of contents in the pdf
+we generate.
+
+\phantomsection
+\section*{Bibliography}
+\bibliographystyle{unsrtnat}
+\addcontentsline{toc}{section}{Bibliography}
+%\renewcommand{\refname}{References}
+\bibliography{HomologyInBio} 
+
+\noindent
+We can also add a list of figures and code listings as follows:
+
+\singlespacing 
+\myfancyverbatim{List of Figures and Code}
+\begin{lstlisting}
+\listoffigures                                                                   % sets up a list of figures
+\addcontentsline{toc}{part}{List Of Figures}              % adds figures list to pdf hyperrefs
+\lstlistoflistings                                                               % sets of a list of code listings
+\addcontentsline{toc}{part}{List Of Code Examples} % add code list to pdf hyperrefs
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+%
+\listoffigures                                 % sets up a list of figures
+\addcontentsline{toc}{part}{List Of Figures}   % adds figures list to pdf hyperrefs
+%
+\lstlistoflistings                                 % sets of a list of code listings
+\addcontentsline{toc}{part}{List Of Code Examples} % add code list to pdf hyperrefs
+
+\section{Some ~\LaTeX Pointers}
+\label{sec:'latexstuff}
+
+Now here are some pointers on ~\LaTeX.
+
+\subsection{Setting up a subsection}
+
+\noindent
+Here is how you do a subsection: note we can move heading around using the
+\verb+\hspace+ command.
+
+\singlespacing 
+\myfancyverbatim{Setting Up a subsection}
+\begin{lstlisting}
+\subsection{Your Title Goes Here}
+\label{basic}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\subsection{Referencing A Paper:}
+
+Here is ~\LaTeX~ code for referencing a paper:
+
+\singlespacing 
+\myfancyverbatim{Referencing a work you want to cite}
+\begin{lstlisting}
+A good way to learn immunology is to read \mycite{abbas2010}!
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+A good way to learn immunology is to read \mycite{abbas2010}!\\
+
+\noindent
+In the \mylstinline{HomologyInBio.bib} file you'll see the lines
+
+\singlespacing 
+\myfancyverbatim{A book .bib entry}
+\begin{lstlisting}
+@book{abbas2010,
+author= {A. K. Abbas and A. H. Lichtman and S. Pillai},
+title={Cellular and Molecular Immunology.},
+publisher={Saunders Elsevier}, 
+year={2010}}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+and to get the references right you do this
+
+\singlespacing 
+\myfancyverbatim{Generating the Bibliography}
+\begin{lstlisting}
+pdflatex SampleProject
+bibtex SampleProject
+pdflatex SampleProject
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+either manually in a terminal like I do in Linux or using an integrated development
+for ~\LaTeX~ in Windows or MacOS.
+
+\subsection{Some Math Equations:}
+
+Here are some mathematical equations.  Here is the ~\LaTeX~ 
+code:
+
+\singlespacing 
+\myfancyverbatim{Math Equations}
+\begin{lstlisting}
+\begin{eqnarray}
+\begin{array}{cc}
+\min         & \hat{J}(x,u,t)\\
+u \in \cal U & \\
+             & \\
+\end{array}
+\label{con11}
+\end{eqnarray}
+
+\noindent
+where
+
+\begin{eqnarray}
+\hat{J}(x,u,t)     &=& dist(y(t_f),\Gamma) 
+                  +  \int_t^{t_f} \: {\cal L}( y(s),u(s),s) \: ds 
+\label{con11b}
+\end{eqnarray}
+
+\noindent
+Subject to:
+\begin{eqnarray}
+\label{con12}
+y^{\prime}(s) &=& f(y(s),u(s),s), \: \:  t \leq \: s \: \leq t_f \\ 
+\label{con13}
+y(t)          &=& x\\
+\label{con14}
+y(s)        &\in& {\cal Y}(s) \subseteq R^N,  \: \:  t \leq \: s \: \leq t_f\\
+\label{con15}
+u(s)   &\in & U(s) \subseteq R^M, \: \:  t \leq \: s \: \leq t_f 
+\end{eqnarray}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+Here is the ~\LaTeX~ output:
+
+\begin{eqnarray}
+\begin{array}{cc}
+\min         & \hat{J}(x,u,t)\\
+u \in \cal U & \\
+             & \\
+\end{array}
+\label{con11}
+\end{eqnarray}
+
+\noindent
+where
+
+\begin{eqnarray}
+\hat{J}(x,u,t)     &=& dist(y(t_f),\Gamma) 
+                  +  \int_t^{t_f} \: {\cal L}( y(s),u(s),s) \: ds 
+\label{con11b}
+\end{eqnarray}
+
+\noindent
+Subject to:
+\begin{eqnarray}
+\label{con12}
+y^{\prime}(s) &=& f(y(s),u(s),s), \: \:  t \leq \: s \: \leq t_f \\ 
+\label{con13}
+y(t)          &=& x\\
+\label{con14}
+y(s)        &\in& {\cal Y}(s) \subseteq R^N,  \: \:  t \leq \: s \: \leq t_f\\
+\label{con15}
+u(s)   &\in & U(s) \subseteq R^M, \: \:  t \leq \: s \: \leq t_f 
+\end{eqnarray}
+
+subsection{Embedding Mathematics and Referencing Equations:}
+
+Here is ~\LaTeX~ code to handle embedded mathematics
+and referencing equations:
+
+\singlespacing 
+\myfancyverbatim{Embedding Mathematics}
+\begin{lstlisting}
+Here $y$ and $u$ are the {\em state vector} and
+{\em control vector} of the system, respectively;
+$\cal U$ is the space of functions that the control must be chosen from
+during the minimization process and (~\ref{con13}) --
+(~\ref{con15}) give the initialization and constraint conditions that
+the state and control must satisfy. 
+The set $\Gamma$ represents a target constraint set
+and $dist(y(t_f),\Gamma)$ indicates the distance from
+the final state $y(t_f)$ to the constraint set $\Gamma$.
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+Here is the ~\LaTeX~ output:
+
+\noindent
+Here $y$ and $u$ are the {\em state vector} and
+{\em control vector} of the system, respectively;
+$\cal U$ is the space of functions that the control must be chosen from
+during the minimization process and (~\ref{con13}) --
+(~\ref{con15}) give the initialization and constraint conditions that
+the state and control must satisfy. 
+The set $\Gamma$ represents a target constraint set
+and $dist(y(t_f),\Gamma)$ indicates the distance from
+the final state $y(t_f)$ to the constraint set $\Gamma$.
+
+\subsection{Setting Up a Table:}
+
+Here is a ~\LaTeX~ code for a table and how it is referenced in the text:
+
+\singlespacing 
+\myfancyverbatim{Setting up a table}
+\begin{lstlisting}
+A schematic of the learning algorithm for the network is given 
+in Table ~\ref{criticlearn}; note that this training method is
+essentially a Gauss-Seidel procedure. 
+
+\begin{table}[hhh]
+\caption{Learning Algorithm}
+\begin{center}
+\begin{tabular}{cl} \\
+1 & $W_0 = 0$\\
+2 & $j=0$\\
+3 & $i=1$\\
+4 &  Increment $j$\\
+5 &  Set $W_j = W{j-1}$ \\
+6 & Input $y_i$, $\theta_i$ \\
+7 & Using the previous weights, $W_{j-1}$\\
+  & Calculate the desired target\\ 
+  & $D_i = \zeta {\phi}(W_{j-1},y_{i+1},\theta_{i+1})
+          +{\cal T}_{i}$\\
+8 &  Update the CMAC weights using gradient descent\\
+  &  to set ${\phi}(W_{j},y_i,\theta_i) = D_i$\\
+9 & Increment $i$\\
+10 & If $i< \eta$ Go To (6)\\
+   &   Else Continue\\
+11 & If $W_j \neq W_{j-1}$ Go To (3)\\
+   &  Else Continue\\
+12 & Convergence\\
+\end{tabular}
+\end{center}
+\label{criticlearn}
+\end{table}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+The ~\LaTeX~ output:
+
+\noindent
+A schematic of the learning algorithm for the network is given 
+in Table ~\ref{criticlearn}; note that this training method is
+essentially a Gauss-Seidel procedure. 
+
+\begin{table}[hhh]
+\caption{Learning Algorithm}
+\begin{center}
+\begin{tabular}{cl} \\
+1 & $W_0 = 0$\\
+2 & $j=0$\\
+3 & $i=1$\\
+4 &  Increment $j$\\
+5 &  Set $W_j = W{j-1}$ \\
+6 & Input $y_i$, $\theta_i$ \\
+7 & Using the previous weights, $W_{j-1}$\\
+  & Calculate the desired target\\ 
+  & $D_i = \zeta {\phi}(W_{j-1},y_{i+1},\theta_{i+1})
+          +{\cal T}_{i}$\\
+8 &  Update the CMAC weights using gradient descent\\
+  &  to set ${\phi}(W_{j},y_i,\theta_i) = D_i$\\
+9 & Increment $i$\\
+10 & If $i< \eta$ Go To (6)\\
+   &   Else Continue\\
+11 & If $W_j \neq W_{j-1}$ Go To (3)\\
+   &  Else Continue\\
+12 & Convergence\\
+\end{tabular}
+\end{center}
+\label{criticlearn}
+\end{table}
+
+\subsection{Mathematics in a Enumerated Environment:}
+
+Here, ~\LaTeX~ code to put math stuff in an enumerated envoronment:
+
+\singlespacing 
+\myfancyverbatim{Math in an enumerate list}
+\begin{lstlisting}
+The CMAC architectures are used to 
+construct predictions for each state variable using the temporal difference
+approach already outlined. 
+We used the following $6$ temporal differences:
+
+\begin{enumerate}
+\item $\sin(\alpha_c(t_i))-\sin(\alpha_c(t_{i-1}))$
+\item $\cos(\alpha_c(t_i))-\cos(\alpha_c(t_{i-1}))$
+\item $\sin(\alpha_t(t_i))-\sin(\alpha_t(t_{i-1}))$
+\item $\sin(\alpha_t(t_i))-\sin(\alpha_t(t_{i-1}))$
+\item $x_c(t_i)-x_c(t_{i-1})/XSCALE$
+\item $y_c(t_i)-y_c(t_{i-1})/YSCALE$
+\end{enumerate}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+~\LaTeX~ output:
+
+\noindent
+The CMAC architectures are used to 
+construct predictions for each state variable using the temporal difference
+approach already outlined in earlier sections. 
+We used the following $6$ temporal differences:
+
+\begin{enumerate}
+\item $\sin(\alpha_c(t_i))-\sin(\alpha_c(t_{i-1}))$
+\item $\cos(\alpha_c(t_i))-\cos(\alpha_c(t_{i-1}))$
+\item $\sin(\alpha_t(t_i))-\sin(\alpha_t(t_{i-1}))$
+\item $\sin(\alpha_t(t_i))-\sin(\alpha_t(t_{i-1}))$
+\item $x_c(t_i)-x_c(t_{i-1})/XSCALE$
+\item $y_c(t_i)-y_c(t_{i-1})/YSCALE$
+\end{enumerate}
+
+\subsection{Another Table and How to Reference It:}
+
+Here is ~\LaTeX~ code for another table with how to reference it:
+
+\singlespacing 
+\myfancyverbatim{Table Referencing}
+\begin{lstlisting}
+We will attempt to discuss generic software design issues, but
+we will use the truck backer-upper control problem as our
+framework so we can refer to concrete details when we need to 
+do so.  First, we look at a basic sketch of program flow as presented in
+Table ~\ref{neurocontrolflow}.  
+ 
+\begin{table}[hhh]
+\caption{Neurocontrol Flow}
+\begin{center}
+\begin{tabular}{ll} \\
+1 & Set simulation parameters  \\
+2 & Set up CMAC architectures  \\
+3 & Choose random truck start and control as state \\
+4 & i = 0 \\
+5 & Save state as sample i \\
+6 & Wait DATA\_FREQ time steps and store state\\
+7 &    \hspace{.2in}If state lies in a new CMAC sensor, \\
+  &   \hspace{.4in}  increment i\\
+  &    \hspace{.4in} save state as sample i of training set\\
+  &   \hspace{.4in}  Compute next predicted optimal\\
+  &   \hspace{.6in} control using CMAC model\\
+  &   \hspace{.4in} If i $<$ num\_samples GoTo 6 \\
+  &    \hspace{.2in}Else, If i $<$ num\_samples GoTo 6 \\
+  & Now have eta = num\_samples training samples  \\
+8 & For each output component d  \\
+  &    \hspace{.2in}For each input i, compute desired \\
+  &   \hspace{.4in} D = FUTURE\_WEIGHT*CMAC OUTPUT for input i \\
+  &   \hspace{.4in} + T for input i\\
+9& Train CMAC to match I/O set \\
+10& Compute next predicted optimal control \\
+  & \hspace{.2in} using CMAC model  \\
+11& Save sample eta as state and GoTo 4
+\end{tabular}
+\end{center}
+\label{neurocontrolflow}
+\end{table}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+\LaTeX~ output:
+
+\noindent
+We will attempt to discuss generic software design issues, but
+we will use the truck backer-upper control problem as our
+framework so we can refer to concrete details when we need to 
+do so.  First, we look at a basic sketch of program flow as presented in
+Table ~\ref{neurocontrolflow}.  
+ 
+\begin{table}[hhh]
+\caption{Neurocontrol Flow}
+\begin{center}
+\begin{tabular}{ll} \\
+1 & Set simulation parameters  \\
+2 & Set up CMAC architectures  \\
+3 & Choose random truck start and control as state \\
+4 & i = 0 \\
+5 & Save state as sample i \\
+6 & Wait DATA\_FREQ time steps and store state\\
+7 &    \hspace{.2in}If state lies in a new CMAC sensor, \\
+  &   \hspace{.4in}  increment i\\
+  &    \hspace{.4in} save state as sample i of training set\\
+  &   \hspace{.4in}  Compute next predicted optimal\\
+  &   \hspace{.6in} control using CMAC model\\
+  &   \hspace{.4in} If i $<$ num\_samples GoTo 6 \\
+  &    \hspace{.2in}Else, If i $<$ num\_samples GoTo 6 \\
+  & Now have eta = num\_samples training samples  \\
+8 & For each output component d  \\
+  &    \hspace{.2in}For each input i, compute desired \\
+  &   \hspace{.4in} D = FUTURE\_WEIGHT*CMAC OUTPUT for input i \\
+  &   \hspace{.4in} + T for input i\\
+9& Train CMAC to match I/O set \\
+10& Compute next predicted optimal control \\
+  & \hspace{.2in} using CMAC model  \\
+11& Save sample eta as state and GoTo 4
+\end{tabular}
+\end{center}
+\label{neurocontrolflow}
+\end{table}
+
+\subsection{Inserting C Source Into The Document:}
+
+Here is simple ~\LaTeX~ code I have used to
+insert C code into a paper:
+
+\singlespacing 
+\begin{Verbatim}
+Each output component of the CMAC structure has the identical input
+architecture specified by the {\em "C" structures} {\bf cmacinput}
+and {\bf cmac}.  For expositional cleanness, these structures have been
+stripped down to bare essentials: in a working simulation, there will
+of course be additional diagnostic and useful items included, such as
+the name and location of configuration files where all the
+important setup information is stored.  We allocate space for
+one cmac structure and $M$ blocks of working memory.  We will
+use a fixed offset strategy of offset $O = \frac{1}{L}$, where
+$L$ is the number of levels.
+
+\mylistcode{C}{The cmacinput structure}{code:cmacone}
+\begin{lstlisting}
+struct cmacinput{ 
+  int training_set_size;   //the number of training samples 
+  int in_dimensions;       //the dimension of the input space 
+  int out_dimensions;      //the dimension of the output space 
+  float learning_rate;     //the learning rate used in training 
+  float *min_x;            //lower bound for input components  
+  float *max_x;            //upper bound for input components 
+  }; 
+struct cmac{ 
+  int levels;              //the number of levels  
+  int hash_value;          //hash value 
+  float offset_value;      //offset = 1/levels 
+  float *width_value;      //sensor width 
+  float **offset;          //store size of all offsets 
+  float **receptive_field_width; 
+                           //store size of all widths 
+  fhash hash;              //hash function 
+  }; 
+struct working_memory{      
+  float **mem;             //working memory levels by hash_size 
+  };   
+\end{lstlisting}
+\end{Verbatim}
+\onehalfspacing
+
+\noindent
+\LaTeX~ output:
+
+Each output component of the CMAC structure has the identical input
+architecture specified by the {\em "C" structures} {\bf cmacinput}
+and {\bf cmac}.  For expositional cleanness, these structures have been
+stripped down to bare essentials: in a working simulation, there will
+of course be additional diagnostic and useful items included, such as
+the name and location of configuration files where all the
+important setup information is stored.  We allocate space for
+one cmac structure and $M$ blocks of working memory.  We will
+use a fixed offset strategy of offset $O = \frac{1}{L}$, where
+$L$ is the number of levels.
+
+\mylistcode{C}{The cmacinput structure}{codeL:cmacone}
+\singlespacing
+\begin{lstlisting}
+struct cmacinput{ 
+  int training_set_size;   //the number of training samples 
+  int in_dimensions;       //the dimension of the input space 
+  int out_dimensions;      //the dimension of the output space 
+  float learning_rate;     //the learning rate used in training 
+  float *min_x;            //lower bound for input components  
+  float *max_x;            //upper bound for input components 
+  }; 
+struct cmac{ 
+  int levels;              //the number of levels  
+  int hash_value;          //hash value 
+  float offset_value;      //offset = 1/levels 
+  float *width_value;      //sensor width 
+  float **offset;          //store size of all offsets 
+  float **receptive_field_width; 
+                           //store size of all widths 
+  fhash hash;              //hash function 
+  }; 
+struct working_memory{      
+  float **mem;             //working memory levels by hash_size 
+  };  
+\end{lstlisting}
+\onehalfspacing
+
+\subsection{Using subfigures}
+
+\noindent
+Here's how you use the \mylstinline{subfigure} environment.
+
+\singlespacing
+\myfancyverbatim{Subfigures}
+\begin{lstlisting}
+Consider the average sodium and potassium time constant values given in Figure \ref{figure:averagenat} and
+Figure \ref{figure:averagek1t} respectively.
+
+\begin{figure}[h]
+\begin{center}
+\mysubfigurethree{Average Sodium Time constant}{fig:averagenat}%
+                            {.4}{BookFigures/average_t_m_NA.png}
+\goodgap
+\mysubfigurethree{Average Potassium Time constant}{fig:averagek1t}%
+                            {.4}{BookFigures/average_t_m_K1.png}
+\caption{Time Constants}
+\label{fig:iontimeconstants}
+\end{center}
+\end{figure}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+\LaTeX~ output:
+
+Consider the average sodium and potassium time constant values given in Figure \ref{fig:averagenat} and
+Figure \ref{fig:averagek1t} respectively.
+
+\begin{figure}[h]
+\begin{center}
+\mysubfigurethree{Average Sodium Time constant}{fig:averagenat}%
+                            {.4}{BookFigures/average_t_m_NA.png}
+\goodgap
+\mysubfigurethree{Average Potassium Time constant}{fig:averagek1t}%
+                            {.4}{BookFigures/average_t_m_K1.png}
+\caption{Time Constants}
+\label{fig:iontimeconstants}
+\end{center}
+\end{figure}
+
+\subsection{Including a .png file}
+
+\noindent
+Here's how you embed a .png file: note the full path name must be entered as one line--do not 
+carriage return because the line is too long.  That will screw things
+up!
+
+\singlespacing
+\myfancyverbatim{Including a .png file}
+\begin{lstlisting}
+Consider the outline for cognitive processing given in Figure \ref{fig:metaone}.
+
+\begin{figure}
+\myputimagetwo{A Model of Cognition}{fig:metaone}{.5}{BookFigures/meta.png}
+\end{figure}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+\LaTeX~ output:
+
+Consider the outline for cognitive processing given in Figure \ref{figure:metaone}.
+
+\begin{figure}
+\myputimagetwo{A Model of Cognition}{figure:metaone}{.5}{BookFigures/meta.png}
+\end{figure}
+
+\subsection{A Sample with citations, quotes etc}
+
+Here is another nice sample.
+
+\myfancyverbatim{Sample with references}
+\begin{lstlisting}
+Here we use \verb+\mycite+ as defined at the top of this document
+to call \verb+natbib+ to setup the references.
+
+In \mycite{peterson2015a} and \mycite{peterson2015b}, we explore a micro
+level simulation model of a single host's response to varying levels of
+West Nile Virus (WNV) infection.  In that infection, there is a substantial
+self damage component and in those papers, we show that
+this is probably due to the way that the virus infects two
+cell populations differently.  This difference, which involves
+an larger upregulation of MHC-1 sites on the surface
+of non-dividing infected cells over dividing infected cells,
+is critical in establishing a self damage or collateral damage response.
+In \mycite{peterson2015c}, we develop a macro level model
+of the nonlinear interactions between two critical \emph{signaling}
+agents that mediate the interaction between these two sets of cell populations.
+In the case of WNV infection, the two signals are the MHC-1 upregulation level
+of the cell and the free WNV antigen level.  This macro model allowed
+us to predict a host's health response to varying levels of initial virus dose.
+Hence, we could begin to understand the oscillations in collateral damage
+and host health that lead to the survival data we see in WNV infections.
+The more general musings of \mycite{peterson2015c} were then 
+extended to the setting of auto immune interactions in general
+in \mycite{peterson2015d}.  In this work, we explore how viral infections
+in the Central Nervous System (CNS) can generate an auto immune
+response.
+
+For background, we will follow the presentation of \mycite{kasahara2010}
+in what follows.
+The adaptive immune system (AIS) arose about $450$ million years ago
+from a common ancestor of jawed vertebrates.  The emergence of this system
+is probably two rounds of whole-genome duplication.  This event gave the jawed
+vertebrate ancestor many paralogous genes which play essential roles
+in T cell and B cell immunity.  These genes are known as \emph{ohnologs}
+and are very important as they encode key components of the antigen
+presentation machinery and also the signal transduction pathway for
+lymphocyte activation.  When and how T cell immunity arose is important
+because it sheds light on how T cell problems with self versus non self may have arisen
+and continue to be an issue in modern vertebrates.  We know that
+T cell receptors (TCRs) and major histocompatibility complex (MHC) molecules
+are present in all classes of jawed vertebrates but not there in jawless vertebrates.
+
+Now we quote from the source \mycite{kasahara2010} using \verb+\jimquote+
+
+\jimquote{
+Jawless vertebrates are equipped with rearranging antigen receptors that are
+clonally expressed on lymphocyte-like-cells.  However, their receptors,...,
+generate diversity through somatic recombination of leucine-rich repeat
+molecules, and, ... are hence structurally unrelated to TCRs and B cell receptors
+(BCRs)}
+\end{lstlisting}
+\onehalfspacing
+\lstset{fancyvrb=false}
+
+\noindent
+Here we use \verb+\mycite+ as defined at the top of this document
+to call \verb+natbib+ to setup the references.
+
+In \mycite{peterson2015a} and \mycite{peterson2016c}, we explore a micro
+level simulation model of a single host's response to varying levels of
+West Nile Virus (WNV) infection.  In that infection, there is a substantial
+self damage component and in those papers, we show that
+this is probably due to the way that the virus infects two
+cell populations differently.  This difference, which involves
+an larger upregulation of MHC-1 sites on the surface
+of non-dividing infected cells over dividing infected cells,
+is critical in establishing a self damage or collateral damage response.
+In \mycite{peterson2017a}, we develop a macro level model
+of the nonlinear interactions between two critical \emph{signaling}
+agents that mediate the interaction between these two sets of cell populations.
+In the case of WNV infection, the two signals are the MHC-1 upregulation level
+of the cell and the free WNV antigen level.  This macro model allowed
+us to predict a host's health response to varying levels of initial virus dose.
+Hence, we could begin to understand the oscillations in collateral damage
+and host health that lead to the survival data we see in WNV infections.
+The more general musings of \mycite{peterson2017a} were then 
+extended to the setting of auto immune interactions in general
+in \mycite{peterson2017b}.  In this work, we explore how viral infections
+in the Central Nervous System (CNS) can generate an auto immune
+response.
+
+For background, we will follow the presentation of \mycite{kasahara2010}
+in what follows.
+The adaptive immune system (AIS) arose about $450$ million years ago
+from a common ancestor of jawed vertebrates.  The emergence of this system
+is probably two rounds of whole-genome duplication.  This event gave the jawed
+vertebrate ancestor many paralogous genes which play essential roles
+in T cell and B cell immunity.  These genes are known as \emph{ohnologs}
+and are very important as they encode key components of the antigen
+presentation machinery and also the signal transduction pathway for
+lymphocyte activation.  When and how T cell immunity arose is important
+because it sheds light on how T cell problems with self versus non self may have arisen
+and continue to be an issue in modern vertebrates.  We know that
+T cell receptors (TCRs) and major histocompatibility complex (MHC) molecules
+are present in all classes of jawed vertebrates but not there in jawless vertebrates.
+
+Now we quote from the source \mycite{kasahara2010} using \verb+\jimquote+
+
+\jimquote{
+Jawless vertebrates are equipped with rearranging antigen receptors that are
+clonally expressed on lymphocyte-like-cells.  However, their receptors,...,
+generate diversity through somatic recombination of leucine-rich repeat
+molecules, and, ... are hence structurally unrelated to TCRs and B cell receptors
+(BCRs)}
+
+		
+\end{document}

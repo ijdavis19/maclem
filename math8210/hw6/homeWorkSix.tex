@@ -1,0 +1,545 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={HomeWorkSix},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Homework six, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Homework Six}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Operators, Completeness and ODEs}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\section{The Existence of a Solution to a Nonlinear IVP ODE}
+
+Let $f: [t_0,t_1] \times [a,b] \rightarrow \Re$ be locally Lipschitz on its
+domain.  This means at each
+$(t_0,x_0) \in [0,1] \times [a,b]$, there is a positve $\delta$ and a positive constant $L$
+so that $|f(t,x) - f(t_0,x_0)| \leq L|s-t_0| + L|x - x_0|$ if $(t,x) \in B(t_0,x_0); \delta)$.
+Note $L$ and $\delta$ depending on $(t_0,x_0$ means they
+could be written $L^{t_0,x_0}$ and $\delta^{t_0,x_0}$ but we won't
+do that as it is too messy notationally.  Just remember they depend on
+the location in the domain.  Consider the IVP
+\begin{eqnarray*}
+x^\prime(t) &=& f(t,x(t)), \quad x(t_0) = x_0
+\end{eqnarray*}
+\noindent
+This is clearly equivalent to the integral equation
+\begin{eqnarray*}
+x(t) &=& x_0 + \int_{t_0}^t f(s,x(s))ds
+\end{eqnarray*}
+\noindent
+
+\subsection{Preliminaries}
+
+\begin{exercise}
+Prove such a locally Lipschitz function is also continuous.\
+\end{exercise}
+
+\begin{solution}
+consider $\delta  = \frac{\varepsilon}{2L}$, then $(t,x) \in B((t_0,x_0);\delta) \implies |t - t_0| < \frac{\varepsilon}{2L}$ and $|x - x_0| < \frac{\varepsilon}{2L}$. Hence,
+\begin{eqnarray*}
+  (t,x) &\in& B((t_0,x_0);\delta)\\
+  &\implies& |f(t,x) - f(t_0,x_0)| \leq L|t - t_0| + L|x - x_0|\\
+  &<& L(\frac{\varepsilon}{2L}) + L(\frac{\varepsilon}{2L}) = \varepsilon
+\end{eqnarray*}
+
+\end{solution}
+
+\begin{exercise}
+Prove any such function which has continuous partial derivatives
+is locally Lipschitz.
+\end{exercise}
+
+\begin{solution}
+Consider first the partial derivative occuring when $x$ is held constant. Based on the continuity proven above and implied from the continuous partial derivate, we know the assumptions required for the Mean Value Theorem hold and $\exists s \in (t,t_0) \ni$
+\begin{eqnarray*}
+  \frac{|f(t,x) - f(t_0,x)|}{|t - t_0|} &=& f'(s)\\
+  |f(t,x) - f(t_0,x)| = f'(s)|t - t_0|
+\end{eqnarray*}
+Now, if we set $L_t = \{\max\{f'(s)\} \:|\: s \in (t,t_0) \}$ we get
+\begin{eqnarray*}
+  |f(t,x) - f(t_0,x)| \leq L_t|t - t_0|
+\end{eqnarray*}
+We use the same process with $t$ being held constant to retrieve $L_x$ such that
+\begin{eqnarray*}
+  |f(t,x) - f(t,x_0)| \leq L_t|x - x_0|
+\end{eqnarray*}
+We then set $M = \max\{L_t,L_x\}$ then $(t,x) \in B((t_0,x_0);\delta) \implies$
+\begin{eqnarray*}
+  |f(t,x) - f(t_0,x_0)| \leq L|t - t_0| + L|x - x_0|
+\end{eqnarray*}
+Satisfying the Lipschitz condition
+\end{solution}
+
+\begin{exercise}
+\item Define $T$ acting on $C([t_0,t_1])$ by 
+$(T(x))(t) = x_0 + \int_{t_0}^t  f(s,x(s))ds$
+for all $t \in [t_0,t_1]$.  Prove $T(x)$ is continuous on $[t_0,t_1]$
+and hence $T : C([t_0,t_1]) \rightarrow C([t_0,t_1])$ is well defined.
+\end{exercise}
+
+\begin{solution}
+We want to show that $\forall \varepsilon > 0 \exists \delta > 0 \ni |t - t'| < \delta \implies$
+\begin{eqnarray*}
+  |(T(x))(t) - (T(x))(t')| < \varepsilon
+\end{eqnarray*}
+So now lets look futher into $|(T(x))(t) - (T(x))(t')|$ where we assuming $t' > t$
+\begin{eqnarray*}
+  |(T(x))(t) - (T(x))(t')| &=& |x_0 + \int_{t_0}^{t}f(s,x(s))ds - x_0 - \int_{t_0}^{t'}f(s,x(s))ds|\\
+  &=& |\int_{t_0}^{t}f(s,x(s))ds - \int_{t_0}^{t'}f(s,x(s))ds| 
+  \\
+  &=& |\int_{t}^{t'}f(s,x(s))ds|
+\end{eqnarray*}
+Becuase f is integrable, we know it must be bounded. Hence, $\exists M \geq |f(s,x(s))| \forall s \in [t,t']$ which means
+\begin{eqnarray*}
+  \int_t^{t'}f(s,x(s))ds \leq \int_t^{t'}Mds = M|t' - t|
+\end{eqnarray*}
+So, if we set $\delta = \frac{\varepsilon}{M}$ then 
+\begin{eqnarray*}
+  \int_t^{t'}f(s,x(s))ds \leq \int_t^{t'}Mds = M|t' - t| < M(\frac{\varepsilon}{M}) = \varepsilon
+\end{eqnarray*}
+The arguement is almost identical if $t' < t$ and we can conclude $(T(x))(t)$ is continuous.
+\end{solution}
+
+
+\begin{exercise}
+Define $F$ on $[t_0,t_1]$ by $F(t) = f(t,x(t))$.  Prove
+$F$ is continuous on $C([t_0,t_1])$.
+\end{exercise}
+
+\begin{solution}
+We want to show that $\forall \varepsilon > 0 \exists \delta > 0 \ni |t - t_0| \implies$
+\begin{eqnarray*}
+  |F(t) - F(t_0)| < \varepsilon
+\end{eqnarray*}
+Consider now what $|F(t) - F(t_0)|$ is and recall the Lipschitzity of $f$
+\begin{eqnarray*}
+  |F(t) - F(t_0)| &=& |f(t,x(t) - f(t_0,x(t_0)|\\
+  \leq L|t - t_0| + L|x(t) - x(t_0)|
+\end{eqnarray*}
+Because we are only looking at the ball $B(t_0,x(t_0);\delta)$, we are still able to preserve $|t - t_0| < \delta$ and $|x(t) - x(t_0)| < \delta$. We define a new $d_t \ni |t - t_0| < \delta_t \implies |x(t) - x(t_0)| < \delta$. We then set $\frac{\varepsilon}{2L} = max\{\delta,\delta_t\}$ and we can use a similar proof to that used in exercise 1 to get $|t - t'| < \delta_t \implies |x(t) - x(t)_0| < \delta_f$ and 
+\begin{eqnarray*}
+  |F(t) - F(t_0)| &\leq& L|t - t_0| + L|x(t) - x(t_0)|\\
+  &<& L(\frac{\varepsilon}{2L}) + L(\frac{\varepsilon}{2L}) = \varepsilon
+\end{eqnarray*}
+so $F(t)$ is continuous.
+\end{solution}
+
+\begin{exercise}
+Let $y = T(x)$.  Use the Fundamental Theorem of Calculus
+to prove $y^\prime = f(t,x(t))$ on $[t_0,t_1]$.
+\end{exercise}
+
+\begin{solution}
+First, we recall the implications of the Fundamental Theorem of Calculus. Specifically, with $f \in RI[a,b]$ and $f:[a,b] \rightarrow R$ by $F(x) = \int_a^x\:f(t)dt$ then
+ \begin{enumerate}
+   \item $F \in C[a,b]$
+   \item $F'(c) = f(c)$
+ \end{enumerate}
+Contextualizing this theorem within our problem, we get, becuase we have already established the continuity of $(T(x))(t)$ on $[t_0,t_1]$ so the assumptions needed for the theorem are satisfied. Hence,
+\begin{eqnarray*}
+  y &=& (T(x))(t) = x_0 + \int_{t_0}^t\:f(s,x(s))ds\\
+  y' &=& (T(x))'(t) = 0 + f(t,x(t)) = f(t,x(t))
+\end{eqnarray*}
+by FTOC.
+\end{solution}
+
+\begin{exercise}
+Prove T is a compact operator. T is compact if it maps a closed bounded subset of its domain into a sequentially compact set in the range. This is a problem involving equicontinuity.
+\end{exercise}
+
+\begin{solution}
+Becuase we have proven $(T(x))(t)$ is well definined and continuous on $C([t_0,t_1])$, fo a general $x(t)$, we can conlude $(T(x))(t)$ is bounded and equicontinuous on the finite $[a,b]$. Hence, we can use Azrela - Ascoli to say $\exists (x_n) \subset T$ that converges uniformly to a continuous function $x$ on $[t_0,t_1]$. In other words, it maps a closed and bounded subset of its domain into a sequentially compact set in the range, and T is a compact operator
+.
+\end{solution}
+
+\subsection{Proving Local Existence for a IVP}
+
+To prove the IVP has a local solution on some interval
+$[t_0,t_0+\Delta] \subset [t_0,t_1]$, it is enough to show
+the operator $I-T$ has a fixed point on the space $C([t_0,t_0+\Delta])$.
+Take some time to process this.  We need a solution $x$ whose 
+ordered pairs $(t,x(t)) \in [t_0,t_1] \times [a,b]$ always.  This means
+$x(t)$ lies in $[a,b]$ always.  We need this fact to be able to use the
+local Lipschitzity of $f$.\\
+
+\noindent
+Choose $x_0(t) = x_0$ on $[t_0,t_1]$.
+Assume $x_0$ is an interior point of $[a,b]$
+although it is easy enough to alter our arguments to be one
+sided.  Then there is a positive $r$ so that $B(x_0;r) \subset (a,b)$.
+Define $x_1 = T(x_0)$, $x_2 = T(x_1)$
+and in general, $x_{n+1} = T(x_n)$.  Note at each
+iteration, we must make sure the function we put in $f$
+has a range that fits.   So this means we must be careful
+how much of the interval $[t_0,t_1]$ we use at each step.
+We will control this using the local Lipschitz property of $f$.
+So let's focus on the interval $[t_0, t_0 + \Delta]$ and figure out
+how to choose $\Delta$.  Now let $\|f\|^{x_0}_\infty = \max_{t_0 \leq s \leq t_1} |f(s,x_0)|$.
+
+\begin{exercise}
+Prove
+\begin{itemize}
+\item 
+\begin{eqnarray*}
+|x_1(t) - x_0(t)| &\leq& \|f\|^{x_0}_\infty \Delta
+\Longrightarrow
+\|x_1 - x_0\|_\infty \leq \|f\|^{x_0}_\infty \Delta
+\end{eqnarray*}
+\noindent
+This implies we must have $\|f\|^{x_0}_\infty \Delta < r$.
+\item
+\begin{eqnarray*}
+|x_2(t) - x_1(t)| &\leq& (L \Delta) \|x_1 - x_0\|_\infty
+\Longrightarrow
+\|x_2 - x_1\|_\infty \leq  ( L \Delta)  \|x_1 - x_0\|_\infty \leq  ( L \Delta) (\|f\|^{x_0}_\infty \Delta)
+\end{eqnarray*}
+\noindent
+We need to have $x_2$ in the ball where $f$ is locally Lipschitz about $x_0$.
+By the triangle inequality,
+\begin{eqnarray*}
+|x_2(t) - x_0(t)| &\leq& |x_2(t) - x_1(t)| + |x_1(t) - x_0(t)| 
+                           \leq ( L \Delta) (\|f\|^{x_0}_\infty \Delta) (1 + (L \Delta) )
+\end{eqnarray*}
+\noindent
+Now if we assume $L \Delta < 1$, we know $1 + L \Delta < \frac{1}{1 - (L \Delta)}$
+because we know how to sum a geometric series.  Hence,
+\begin{eqnarray*}
+\|x_2 - x_0\|_\infty & \leq & ( L \Delta) (\|f\|^{x_0}_\infty \Delta) \frac{1}{1 - (L \Delta)}
+ =L  \|f\|^{x_0}_\infty \frac{ \Delta}{1 - (L \Delta)}
+\end{eqnarray*}
+\noindent
+Since $\frac{ \Delta}{1 - (L \Delta)} \rightarrow 0$ as $\Delta \rightarrow 0$,
+we see we can choose $\Delta$ so that $\|x_2 - x_0\|_\infty < \delta$.
+Hence, $x_2$ is in the ball about $x_0$ where the local Lipschitz property holds.
+\item Since $x_2$ is in the ball about $x_0$, it follows
+\begin{eqnarray*}
+|x_3(t) - x_2(t)| &\leq& (L \Delta) \|x_2 - x_1\|_\infty
+\Longrightarrow
+\|x_3 - x_2\|_\infty \leq (L \Delta)^2  \Delta  \|x_1 - x_0\|_\infty
+\end{eqnarray*}
+\noindent
+and we can show
+\begin{eqnarray*}
+\|x_2 - x_0\|_\infty & \leq & (L  \|f\|^{x_0}_\infty) \frac{ \Delta}{1 - (L \Delta)} < \delta
+\end{eqnarray*}
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+Assuming $|x_1(t) - x_0(t)| \leq \|f\|_\infty^{x_0}$, consider the implications
+\begin{eqnarray*}
+  |x_1(t) - x_0(t)| &=& |T(x_0) - x_0|\\
+  &=& |x_0 + \int_{t_0}^t\:f(s,x_0)ds - x_0|\\
+  &=& \int_{t_0}^t\:|f(s,x_0)|ds\\
+  &\leq& \int_{t_0}^t\:\|f(s,x_0)\|_{\infty}ds\\
+  &=& \|f(s,x_0)\|_{\infty}\\
+  &\leq& \|f\|_{\infty}^{x_0} \Delta
+\end{eqnarray*}
+So now, we consider
+\begin{eqnarray*}
+  \|x_1 - x_0\|_{\infty} &=& \|T(x_0) - x_0\|_{\infty}\\
+  &=& \|x_0 + \int_{t_0}^t\:f(s,x_0)ds - x_0\|_{\infty}\\
+  &=& \|\int_{t_0}^t\:f(s,x_0)ds\|_{\infty}\\
+  &\leq& \|f\|_{\infty}^{x_0} \Delta
+\end{eqnarray*}
+For the second bullter, we start from
+\begin{eqnarray*}
+  |x_2(t) - x_1(t)| \leq \|x_1 - x_0\|_\infty(l\Delta)
+\end{eqnarray*}
+and get
+\begin{eqnarray*}
+  |x_2(t) - x_1(t)| = |t(x_1(t)) - T(x_0)|\\
+  &=& |x_0 + \int_{t_0}^t\:f(s,x_1(s))ds - x_0 - \int_{t_0}^t\;f(s,x_0(s)ds)|\\
+  &=& |\int_{t_0}^t\:f(s,x_1(s))ds - \int_{t_0}^t\:f(s,x_0(s))ds |\\
+  &\leq& \|x_2 - x_1\|_\infty(t - t_0) \leq \|x_1 - x_0\|_\infty(L\Delta)\\
+  &\leq& (L\Delta)(\|f\|_\infty^{x_0}\Delta) \; \text{By the first argument}
+\end{eqnarray*}
+Finally, we consider starting from
+\begin{eqnarray*}
+  |x_3(t) - x_2(t)| &\leq& (L\Delta)\|x_2 - x_1\|_\infty
+\end{eqnarray*}
+We get
+\begin{eqnarray*}
+  |x_3(t) - x_2(t)| &\leq& \|x_3 - x_2\|_\infty\\
+  &\leq& (L\Delta)\|x_2 - x_1\|_\infty\\
+  &\leq& (L\Delta)(L\Delta)\|x_1 - x_0\|_\infty\\
+  &\leq& (L\Delta)^2 \Delta \|f\|_\infty^{x_0}
+\end{eqnarray*}
+\end{solution}
+
+\begin{exercise}
+Now prove
+\begin{eqnarray*}
+\|x_{n+1} - x_n\|_\infty \leq (L \Delta)^n  \Delta  \|x_1 - x_0\|_\infty
+\end{eqnarray*}
+\noindent
+and $x_{n+1}$ is in the ball about $x_0$ where local Lipschitzity holds.
+\end{exercise}
+
+\begin{solution}
+We want to use induction for this proof.
+\begin{enumerate}
+  \item We have proven the base case in the above exercise.
+  \item Assume
+  \begin{eqnarray*}
+    \|x_{k+1} - x_{k} \|_\infty \leq (L\Delta)^k\Delta\|x_1 - x_0\|_\infty
+  \end{eqnarray*}
+  When the Lipschitzity conditions hold
+  \item Now, we want to prove
+  \begin{eqnarray*}
+    \|x_{k+2} - x_{k+1} \|_\infty \leq (L\Delta)^{k+1}\Delta\|x_1 - x_0\|_\infty
+  \end{eqnarray*}
+  So consider
+  \begin{eqnarray*}
+    \|x_{k+2}(t) - x_{k+1}(t) \| &\leq& (L\Delta)\|x_{k+1} - x_k\|_\infty \; \text{by Lipschitz requirements}\\
+    &\leq& (L\Delta)(L\Delta)^k\|x_1 - x_0\|_\infty\\
+    &=& (L\Delta)^{k+1}\|x_1 - x_0\|_\infty
+  \end{eqnarray*}
+\end{enumerate}
+And we have proven $\|x_{n+1} - x_n\|_\infty \leq (L \Delta)^n  \Delta  \|x_1 - x_0\|_\infty$ by induction.
+\end{solution}
+
+\begin{exercise}
+Now prove for any positive $p$
+\begin{eqnarray*}
+\|x_{n+p} - x_n\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+\end{eqnarray*}
+\end{exercise}
+
+\begin{solution}
+Again, we want to use induction.
+\begin{enumerate}
+  \item The base case
+  \begin{eqnarray*}
+    \|x_{2} - x_0\|_\infty \leq (L \Delta)^2  \biggl ( \frac{1}{1 - (L \Delta)} \biggr) 
+  \end{eqnarray*}
+  By the logic of exercise 7.
+  \item assume
+  \begin{eqnarray*}
+    \|x_{k+p} - x_k\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+  \end{eqnarray*}
+  \item No we consider the $k + 1$ case
+  \begin{eqnarray*}
+    \|x_{k+p + 1} - x_{k + 1}\|_\infty &\leq& (L \Delta)  \biggl \|x_{k + p} - x_k\|_\infty\\
+    &\leq& (L \Delta) (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)\\
+    &\leq& (L \Delta)^{p+1}  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+  \end{eqnarray*}
+\end{enumerate}
+and we have proven $\|x_{n+p} - x_n\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)$ by induction.
+\end{solution}
+
+\begin{exercise}
+Prove the sequence $(x_n)$ is a Cauchy Sequence in $(C([t_0,t_0+\Delta]), \| \cdot \|_\infty)$
+and so there is a function $x \in C([t_0,t_0+\Delta])$ so that $x_n$ converges
+uniformly to $x$.
+\end{exercise}
+
+\begin{solution}
+If we pick a $\Delta$ such that, given $\varepsilon$ and $L$,
+\begin{eqnarray*}
+  \frac{L\Delta}{1 - L\Delta} < \varepsilon
+\end{eqnarray*}
+and we get
+\begin{eqnarray*}
+  \|x_n - x_m\|_\infty &\leq& (L\Delta)^{|n - m|}(\frac{1}{1 - L\Delta})\\
+  &\leq& \frac{L\Delta}{1 - L\Delta}\\
+  &<& \varepsilon
+\end{eqnarray*}
+and $x_n$ is Cauchy in $(C([t_0,t_0+\Delta])$ and then there is a function $x \in C([t_0,t_0+\Delta])$ so that $x_n$ converges
+uniformly to $x$.
+\end{solution}
+
+\begin{exercise}
+Using standard add and subtract tricks show that
+$\|x - T(x)\|_\infty < \epsilon$ for all $\epsilon > 0$.
+Hence $\|x - T(x)\|_\infty = 0$ and so $x = T(x)$.
+Of course, this $x$ solves the IVP as well.
+So we have found there is a solution to the IVP
+that exists locally at $t_0$.
+\end{exercise}
+
+\begin{solution}
+Your solution here.
+\end{solution}
+
+\noindent
+Here is a thought exercise.  Would it be hard to extend
+this result to $x^\prime(t) = f(t,x(t))$ with $x(t_0) = x_0$ to the
+$n$ - dimensional case?
+Of course, once you have this local solution, you can go to its
+endpoint and extend again.  Essentially, you can extend
+until you reach a boundary point where the behavior of $f$
+becomes bad; i.e. $f$ {\em blows} up.  This solution
+would then be called the maximal interval of existence.
+If $f$ is nice always, then we would be able to extend
+to $[t_0, \infty)$.
+
+\section{Normed Spaces}
+
+\begin{exercise}
+Prove if the normed linear space $(X, \| \cdot\|)$ has a
+Schauder Basis it is separable.
+\end{exercise}
+
+\begin{solution}
+Let $(X,\|\cdot\|)$ be a NLS with Schauder Basis $E = (e_n)_{n=1}^\infty$ so, given $x \in X \; \exists \; N \ni n > N \implies$
+\begin{eqnarray*}
+  \|\sum_{i = 1}^\infty\alpha_ie_i - x \| < \frac{\varepsilon}{2}
+\end{eqnarray*}
+Next, we define the countable set
+\begin{eqnarray*}
+  Q = \{\sum_{i = 1}^nq_ie_i \; | \; q_i \in \mathbb{Q}\}
+\end{eqnarray*}
+Now, we know, due to $\mathbb{Q}$'s density in $\mathbb{R}$, $\exists \; q \in \mathbb{Q} \ni |q_i - \alpha_i| < \frac{\varepsilon}{2}$.\\
+\\
+Finally, setting $y = \sum_{i = 1}^\infty q_ie_i \in Q$ we get
+\begin{eqnarray*}
+  \|x - y\| &\leq& \|x - \sum_{i = 1}^\infty \alpha_i e_i \| + \|\sum_{i = 1}^\infty \alpha_i e_i  - \sum_{i = 1}^\infty q_i e_i \|\\
+  &<& \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+\end{eqnarray*}
+Hence, X is countable and dense meaning X is separable.
+\end{solution}
+
+\begin{exercise}
+Explain why $\ell^1$ is not reflexive.
+\end{exercise}
+
+\begin{solution}
+Recall the implication of reflexivitiy being $x \cong X'$ or, more specifically, $\exists \; \alpha_i: X \rightarrow X''$ that is linear, 1 - 1, onto, and norm preserving. Also remember that we know
+\begin{enumerate}
+  \item $\ell^1$ is separable
+  \item $(\ell^1)1 \cong \ell^infty$
+  \item $\ell^\infty$ is not separable
+\end{enumerate}
+and $\ell^1$ being reflexive would imply $\ell^1 \cong (\ell^1)'' = ((\ell^1)')'$. But because we know $X'$ being separable implies $X$ is separablethis would mean $(\ell^1)'$ is also separable which we know to be not true. 
+\end{solution}
+
+\section{The Completion of $C([0,1])$ Using $d_2$}
+
+\begin{exercise}
+Find a Cauchy Sequence of Riemann Integrable functions which gives a representative for $f(t) = t^{-\frac{3}{4}}$
+\end{exercise}
+
+\begin{solution}
+Conider the function 
+\begin{eqnarray*}
+x_n(t) &=&
+\left \{
+\begin{array}{ll}
+0, & 0 \leq t \leq \frac{1}{n}\\
+t^{-\frac{3}{4}}, & \frac{1}{n} < t \leq 1
+\end{array}
+\right .
+\end{eqnarray*}
+which is clearly Riemann Integrable. Now we consider, for $n > m$
+\begin{eqnarray*}
+  \int_0^1\:|x_n(t) - x_m(t)|^2dt\\
+  &=& \int_\frac{1}{n}^\frac{1}{m}\:|t^{-\frac{2}{3}} - 0|^2dt\\
+  &=& |-3(\frac{1}{t^\frac{1}{3}})||_\frac{1}{n}^\frac{1}{m}\\
+  &=& 3|m^\frac{1}{3} - n^\frac{1}{3}|\\
+  &=& C_{nm}|\frac{1}{m^\frac{1}{3}} - \frac{1}{n^\frac{1}{3}}| \;\; \text{(By MVT)}\\
+  &<& \frac{1}{m}|\frac{n^\frac{4}{3} - m^\frac{4}{3}}{(mn)^\frac{4}{3}}|\\
+  &<& \frac{1}{m^\frac{8}{3}}
+\end{eqnarray*}
+\end{solution}
+
+\end{document}
