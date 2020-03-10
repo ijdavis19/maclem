@@ -401,7 +401,7 @@ And we have proven $\|x_{n+1} - x_n\|_\infty \leq (L \Delta)^n  \Delta  \|x_1 - 
 \begin{exercise}
 Now prove for any positive $p$
 \begin{eqnarray*}
-\|x_{n+p} - x_n\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+\|x_{n+p} - x_n\|_\infty \leq (L \Delta)^n  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)\leq(L\Delta)^n(\Delta\|f\|_\infty^{x_0})(\frac{1}{1 - (L\Delta)})
 \end{eqnarray*}
 \end{exercise}
 
@@ -412,16 +412,16 @@ Again, we want to use induction.
   \begin{eqnarray*}
     \|x_{2} - x_0\|_\infty \leq (L \Delta)^2  \biggl ( \frac{1}{1 - (L \Delta)} \biggr) 
   \end{eqnarray*}
-  By the logic of exercise 7.
+  which has already been proven by the logic of exercise 7.
   \item assume
   \begin{eqnarray*}
-    \|x_{k+p} - x_k\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+    \|x_{k+p} - x_k\|_\infty \leq (L \Delta)^k  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
   \end{eqnarray*}
   \item No we consider the $k + 1$ case
   \begin{eqnarray*}
     \|x_{k+p + 1} - x_{k + 1}\|_\infty &\leq& (L \Delta)  \biggl \|x_{k + p} - x_k\|_\infty\\
-    &\leq& (L \Delta) (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)\\
-    &\leq& (L \Delta)^{p+1}  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
+    &\leq& (L \Delta) (L \Delta)^k  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)\\
+    &\leq& (L \Delta)^{k+1}  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)
   \end{eqnarray*}
 \end{enumerate}
 and we have proven $\|x_{n+p} - x_n\|_\infty \leq (L \Delta)^p  \biggl ( \frac{1}{1 - (L \Delta)} \biggr)$ by induction.
@@ -458,7 +458,23 @@ that exists locally at $t_0$.
 \end{exercise}
 
 \begin{solution}
-Your solution here.
+Consider first
+\begin{eqnarray*}
+  |x - T(x)| \leq |x - x_n| + |x_n - T(x)|
+\end{eqnarray*}
+From the Cauchiness we have proven, we know $\exists \; N_1 \ni n > N_1 \implies$
+\begin{eqnarray*}
+  |x - x_n| < \frac{\varepsilon}{2}
+\end{eqnarray*}
+and $\exists \; N_2 \ni n > N_2 \implies$
+\begin{eqnarray*}
+  |x_n - T(x)| = |T(x_{n-1}) - T(x)| < \frac{\varepsilon}{2}
+\end{eqnarray*}
+Hence, $n > \max\{N_1,N_2\} \implies$
+\begin{eqnarray*}
+  |x - T(x)| &\leq& |x - x_n| + |x_n - T(x)|\\
+  &<& \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+\end{eqnarray*}
 \end{solution}
 
 \noindent

@@ -13,10 +13,12 @@
 \usepackage{etoolbox}
 \usepackage{marginfix}
 \usepackage{xparse}
+\usepackage{pdfpages}
 \setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
 % standard graphics support
 \usepackage{graphicx,xcolor}
 \usepackage{wrapfig}
+\usepackage{bm}
 %
 \definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
 \definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
@@ -95,13 +97,11 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \date{\small{Version 01142020 : Compiled ~\today}}
 
 \Abstract{
-Here are some things about where I am at with my model and my data and problems that I am running into or something like that.
+Purpose of this meeting?
 }
 \Keywords{
-{\bf TBD} --
-{\bf TBD} --
-{\bf TBD} -- 
-{\bf TBD} }
+  None
+}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -111,30 +111,47 @@ Here are some things about where I am at with my model and my data and problems 
 
 \addcontentsline{toc}{section}{Title}
 \maketitle
-\addcontentsline{toc}{section}{Table Of Contents}
-\tableofcontents
-\thispagestyle{empty}
+%\addcontentsline{toc}{section}{Table Of Contents}
+%\tableofcontents
+%\thispagestyle{empty}
 \newpage
 	
 \section{Introduction}
 \label{sec:introduction}
 
 \noindent
-Here, I will give some context regarding things the thoughts that have lead to where we are today and where \textit{some} of the literature is currently at. References to Laxminarayan will probably go here and there will be a lead in to what we consider to be the economic model
+TBD
+%Talking about efficacy complcates things. Really its prescriptions and not usage. 
+%Modify the model for the data that we have at hand (which is not efficacy)
+%Model should really be perscriptions in t with price and stuff
+%Don't say "Best Way"
+%It's the patient's demand and the physician serves his/her own role.
+%Bring in proposal language and the WORDING of the models currently written under economic model
+%Use the economic model section to talk about the actual model
 
+%Throw the questions from the proposal in at the end of the introduction
+
+%Try to answer the question of "How am I going to estimate this model?"
+
+%Intro
+%Data on original question
+%Data on explanetory variables
+%Individual Probability Model
+  %These covariates might matter and here are some groups
+  %Discuss which ones we "know" for sure that we want to include
+  %Just include the first and last column in the variable list
+
+So this is a little more purposeful than anticipated.
 \section{Economic Model}
 \label{sec:economic model}
 
 \noindent
-In order to more clearly draw the connection between change of patent status and change of antibiotic effectiveness, we first want to illustrate, at a theoretical level, our assumption of how they interact. All visits to a physician can be considered to have a corresponding probability that a given antbiotic will be prescribed inclusive of zero. The doctor is faced with two sequential decisions. First, should a prescription be made at all, and second, which antbiotic should be prescribed. In an ideal world, these decisions would be based entirely on how effective a drug may be at curing the affliction of the patient. However, a necessary condition of our model is that htis is not the case. We believe that a physician considers a great deal of characters of both the drug of interest and other close substitutes while making their decision. It is believed a relationship exists between the probability a drug is prescribed and the effectiveness of said drug, the price of said drug, the effectiveness of close substitutes, and the price of said substitutes. All of which are evaluated at a specific time period $t$
+The model we posit is that the effectiveness of a given antibiotic $i$ in time $t$ is a function of its effectiveness in time period $t-1$, its usage in $t-1$, the effectiveness of close substitutes $\bm{j}$ in time period $t-1$, and the usage of substitutes $\bm{j}$ in time period $t -1$. Additionally, this usage in a given time period $t$ is also a funciton of the prices and effectiveness of the antibiotic $i$ and close substitutes $\bm{j}$ in said time period.
 \begin{eqnarray}
-  usage_t = f(\text{efficacy}_{i,t},\text{price}_{i,t},\text{efficacy}_{j,t},\text{price}_{j,t})
+  \text{efficacy}_t &=& g(\text{usage}_{i,t-1},\text{usage}_{\bm{j},t-1},)\\
+  \text{usage}_t &=& f(\text{efficacy}_{i,t},\text{price}_{i,t},\text{efficacy}_{\bm{j},t},\text{price}_{\bm{j},t})
 \end{eqnarray}
-But an additional wrinkle is created when we consider 
-\begin{eqnarray}
-  \text{efficacy_t} = g(usage_{t-1})
-\end{eqnarray}
-
+From supply and demand we are led to the hyposthesis that the market entry caused by the expiration of an antibiotic's patent will lead to a significant decrease in price. This change will increase usage and, in turn, decrease effectiveness. The best way to tease out this interaction involves considering the probability of being perscribed a given antibiotic conditional on having an appropriate condition. An increase in this probability is a necessary condition for the patent status to have any effect on antibiotic usage and effectiveness.
 %Sit on this
   % \text{Pr}(\text{prescription of drug}\; i\; |\;\text{symption set} \: x \: \text{at time} \: t)
 
@@ -150,34 +167,107 @@ But an additional wrinkle is created when we consider
 \label{sec:data}
 
 \noindent
-First we need to talk about our antibiotics and which one's we are sticking with and why. Throw out the pictures of cefotetan and maybe sulfamethazole. I guess I can bang out one or two new datasets pretty quickly so it would only be a difficulty regarding naming everything and playing around in my terminal.\\
-\\
-I might've jumped the gun. First, talk about all of the antibiotics we fist got data on from the critically important for human health list. Next, we narrowed down the list to ones that came off patently recentlyish. Then we looked for which ones would be the best to use.
-\\
-Next, we are really going to get in to the National Ambulatory Healthcare Survey. We are going to talk a little about how it \textit{was} formatted and a lot about how it \textit{is} formatted. The current format is crucial because it has to lay the groundwork for a discussion on what statistical models can be leveraged later on. From here we can talk about how we found specific drugs that were interesting and fit the model of how we thought it should look.\\
-\\
-It would be really nice to be able to speak briefly and in English about the one or two drugs I want to look at. Just to give context for what these things do and stuff.
-\\
-\noindent
-Now, we can go into the question of tying it to resistance rates. I guess talk about (or rule out) the possibilities of using MIB's, MIC's, or aggregated antibiograms for a possible connection with resistance. 
+We began by considering the 70 antibiotics categorized by the United Nations World Health Organization as "Critically Important Antimicrobials for Human Medicine." We added the date of the first generic appearance for each of the antibiotics using data from \textit{drugs.com}.\\
 
-\section{More Stuff}
-\label{sec:more stuff}
+We then used the Prescriber's Digital Reference to pull out the possible indications (reasons for use) of each antibiotic with the intention of possibly charting similarities to determine which drugs can be considered close substitutes.\\
 
-\noindent
-I definitely need some more stuff but I don't really know what it would be. I'll figure it out.\\
-\\
-Just wasting space\\
-\\
-More space\\
-\\
-Space\\
-\\
-Space
+In order to get idea of antibiotic usage, we use the National Ambulatory Medical Care Survey. This nationally representative dataset from years 2006-2016 describes physician, facility, and patient characteristics as well as which drugs were presecribed and for what diagnoses. One drawback of the data is it's use of unlabled numerical codes for diagnoses. While these codes are consistent through the years, it does not allow for analysis of specific diagnosis. Additionally, because the data are only available for 2006-2016, we are restricted to antibiotics who came off patent well within that range.\\
 
-\section{One More Thing}
-\label{sec:one more thing}
-Here's another thing just so I can get some more pages.
+Of the 70 antibiotics we began with, this restriction limits our analysis to the 8 which came off patent within 2006-2016. In order to allow for a reasonable amount of observations before and after the expiration, we are left with 5 drugs that provide us with at least 2 years before and after expiration. The monthly probabiltiies of perscription for each of these antibiotics are shown in the figure below.\\
+\begin{figure}[h]
+\caption{Prescription Probabilities of Antibiotics of Interest}
+\centering
+\includegraphics{aztreonam-1.png}
+\includegraphics{cefotetan-1.png}\\
+\includegraphics{linezolid-1.png}
+\includegraphics{sulfamethoxazole-1.png}\\
+\includegraphics{tinidazole-1.png}\\
+\end{figure}
+\\Sulfamethoxazole and Tinidazole became the combination drug Sulfamethoxazole-Tinidazole which is not coded in the data and there is uncertainty whether some prescriptions of Sulfamethoxazole are not the combination.\\
+\\
+Because the probabiltiy of an observation presenting symptoms appropriate for being prescribed a given antibiotic may vary over time, we use the datasets to determine what can be considered relevant diagnoses by throwing out all observations which do not have a diagnosis that leads to at least one prescription of a given antibiotic between 2006 and 2016. These data are then appended to create one dataset for a given antibiotic spanning 10 years with every observation containing a relevant diagnonsis. The full list of variables in these sets is shown below. \textbf{Need to add actual prescription indicator}
+%First we need to talk about our antibiotics and which one's we are sticking with and why. Throw out the pictures of cefotetan and maybe sulfamethazole. I guess I can bang out one or two new datasets pretty quickly so it would only be a difficulty regarding naming everything and playing around in my terminal.\\I might've jumped the gun. First, talk about all of the antibiotics we fist got data on from the critically important for human health list. Next, we narrowed down the list to ones that came off patently recentlyish. Then we looked for which ones would be the best to use.\\Next, we are really going to get in to the National Ambulatory Healthcare Survey. We are going to talk a little about how it \textit{was} formatted and a lot about how it \textit{is} formatted. The current format is crucial because it has to lay the groundwork for a discussion on what statistical models can be leveraged later on. From here we can talk about how we found specific drugs that were interesting and fit the model of how we thought it should look.\\\\It would be really nice to be able to speak briefly and in English about the one or two drugs I want to look at. Just to give context for what these things do and stuff.\\\noindentNow, we can go into the question of tying it to resistance rates. I guess talk about (or rule out) the possibilities of using MIB's, MIC's, or aggregated antibiograms for a possible connection with resistance. 
 
+\begin{table*}[t]
+  \centering
+  \caption{Blabla} %Comment out variables and find the right place to split
+  \begin{tabular}{|c|c|c|}
+  \hline
+  Variable & Description & Category\\
+  \hline
+    VDAYR & Day of week of visit & Visit characteristic \\
+    AGE & Patient age in years & Patient characteristic\\
+    SEX & Patient sex & Patient characteristic\\
+    ETHNIC & Patient ethnicity & Patient characteristic\\
+    PAYPRIV & Expected source of payment - Private insurance & Patient characteristics\\
+    PAYMCARE & Expected source of payment - Medicare & Patient characteristic\\
+    PAYMCAID & Expected source of payment - Medicaid & Patient characteristic\\
+    PAYSELF & Expected source of payment - Self pay & Patient characteristic\\
+    PAYNOCHG & Expected source of payment - No charge & Patient characteristic\\
+    PAYOTH & Expected source of payment - Other & Patient characteristic\\
+    PAYDK & Expected source of payment - Unknown & Patient characteristic\\
+    PAYTYPE & Expected source of payment - hierarchy & Patient characteristic\\
+    INJURY & Is injury visit related? & Visit characteristic\\
+    DIAG1 & Diagnosis \#1 - specific & Visit characteristic\\
+    DIAG2 & Diagnosis \#4 - specific & Visit characteristic\\
+    DIAG3 & Diagnosis \#3 - specific & Visit characteristic\\
+    DIAG4 & Diagnosis \#4 - specific & Visit characteristic\\
+    DIAG5 & Diagnosis \#5 - specific & Visit characteristic\\
+    CANCER & Does patient have - Cancer & Patient characteristic\\
+    CEBVD & Does patient have - Cerebrovascular disease & Patient characteristic\\
+    CHF & Does patient have - Congestive Heart Failure & Patient characteristic\\
+    COPD & Does patient have - COPD & Patient characteristic\\
+    NOCHRON & Does patient have - None of the listed chronic conditions & Patient characteristic\\
+    TOTCHRON & Total number of chronic conditions & Patient characteristic\\
+    TEMPF & Vital signs - Temperature (Fahrenheit) & Patient characteristic\\
+    BPSYS & Vital signs - ystolic blood pressure & Patient characteristic\\
+    BPDIAS & Vital signs - Diastolic blood pressure & Patient characteristic\\
+    PELVIC & Pelvic exam & Visit characteristic\\
+    SKIN & Skin exam & Visit characteristic\\
+    ANYIMAGE & Any imaging & Visit characteristic\\
+    MRI & MRI/CT/PET & Visit characteristic\\
+    XRAY & X - ray & Visit characteristic\\
+    OTHIMAGE & Other imaging & Visit characteristic\\
+    CBC & Complete Blood County & Visit characteristic\\
+    GLUCOSE & Glucose & Visit characteristic\\
+    EKG & EKG/ECG (electrocardiogram) & Visit characteristic\\
+    URINE & Urinalysis & Visit characteristic\\
+    WOUND & Wound care & Visit characteristic\\
+    NOPROVID & No answer to provided item & Visit characteristic\\
+    PHYSASST & Physician assistant seen & Visit characteristic\\
+    RNLPN & RN/LPN seen & Visit characteristic\\
+    OTHPROV & Other provider seen & Visit characteristic\\
+    NODISP & No answer to disposition item & Visit characteristic\\
+    OTHDISP & Other disposition & Visit characteristic\\
+    PATWT & Patient visit weight & Patient characteristic\\
+    REGION & Geographic region & Visit characteristic\\
+    PATCODE & Patient code & Visit characteristic\\
+    BDATEFL & Birth date imputed? & Patient characteristic\\
+    SEXFL & Sex imputed? & Patient characteristic\\
+    ETHNICFL & Ethnicity imputed? & Patient characteristic\\
+    RACER & Race recode & Patient characteristic\\
+    AGEDAYS & Age in days for patients less than one year & Patient characteristic\\
+    AGER & Age recode & Patient characteristic\\
+    SETTYPE & Setting type & Visit characteristic\\
+    CSTRATM & Clustered CSTRATM -- masked & Visit characteristic\\
+    CPSUM & Clustered CPSUM -- masked & Visit characteristic\\
+    PAYTYPER & Recoded expected source of payment - based on hierarchy & Patient characteristic\\
+    WOUNDCX & Wound culture & Visit characteristic\\
+    SKINADH & Skin adhesives & Visit characteristic\\
+    REGIONOFF & Region where majority of physician's sampled visits occured & Visit characteristic\\
+    month & Month of visit & Visit characteristic\\
+    year & Year of visit & Visit characteristic\\
+    script & Was the given antibiotic prescribed & Dependent ariable\\
+    firstGenYear & Year of first generic appearance & Antibiotic characteristic \\
+    %firstgenmonth & 
+    obsMonth & Months after December 1999 visit took place & Visit characteristic\\
+    genericMonth & Months Since first generic entry & Antibiotic characteristic\\
+    monthsAfterGen & Month of first generic appearance & Antibiotic characteristic\\
+    genericInMarket & Generic in market at time of visit & Antibiotic characteristic\\
+    genericInMarket1Year & Generic in market for a year at time of visit & Antibiotic characteristic\\
+  \hline
+  \end{tabular}
+  \label{tab:1}
+\end{table*}
 
 \end{document}

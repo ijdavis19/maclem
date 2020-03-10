@@ -109,14 +109,105 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \textbf{Part One: Definitions}
 \begin{enumerate}
   \item Define what an inner product on the set X is carefully. Do this for both the real and complex field.
+  \begin{solution}
+    \begin{itemize}
+      \item Real Inner Product\\
+      Let V be a vector space with the reals as the scalar field. Then a mapping $\omega$ which assigns a pair of objects to a real number is called an inner product on V if
+      \begin{enumerate}
+        \item $\omega(\mathbf{u,v}) = \omega(\mathbf{u,v})$; that is, the order is not important for any two objects.
+        \item $\omega(c\odot\mathbf{u,v}) = c\omega(\mathbf{u,v}$); that is, scalars in the first slot can be pulled out.
+        \item $\omega(\mathbf{u} \oplus \mathbf{w,v}) = \omega(\mathbf{u,v}) + \omega(\mathbf{w,v})$; for any three objects
+        \item $\omega(\mathbf{u,u}) \geq 0$ and $\omega(\mathbf{u,u}) = 0 \iff u = 0$
+      \end{enumerate}
+      These properties imply that $\omega(\mathbf{u},c\odot\mathbf{v} = c\omega(\mathbf{u,v})$ as well. A vector space V with an inner product is called a real inner product space.
+      \item Complex Inner Product space\\
+      Let V be a vector space with the complex numbers as the scalar field. Then a mapping $\omega$ which assigns a pair of objects to a complex number is called and inner product on V if
+      \begin{enumerate}
+        \item $\omega(\mathbf{u,v}) = \overline{\omega(\mathbf{u,v})}$; that is, the order is important. Switching the order conjugates the result.
+        \item $\omega(c\odot\mathbf{u,v}) = c\omega(\mathbf{u,v}$); that is, scalars in the first slot can be pulled out. Using IPC1, this implies
+        \begin{eqnarray*}
+          \omega(\mathbf{u},c\odot\mathbf{v}) = \overline{\omega(c\odot\mathbf{v},\mathbf{u})} = \overline{c\omega(\mathbf{u,v})} = \overline{c}\omega(\mathbf{u,v})
+        \end{eqnarray*}
+        \item $\omega(\mathbf{u} \oplus \mathbf{w,v}) = \omega(\mathbf{u,v}) + \omega(\mathbf{w,v})$; for any three objects
+        \item $\omega(\mathbf{u,u}) \geq 0$ and $\omega(\mathbf{u,u}) = 0 \iff u = 0$
+      \end{enumerate}
+      A vector space V with a complex inner product is  called a \textbf{Complex Inner Product Space}.
+    \end{itemize}
+  \end{solution}
   \item Describe how to complete $(C([a,b]),d_2)$ in reasonable detail.
-  \item Define a bounded lienar operator $T$ between the normed linear spaces $(X,\|\cdot\|_X)$ and $(Y,\|\cdot\|_Y)$.
+  \begin{solution}
+    1. Define
+    \begin{eqnarray*}
+      S = \{(x_n)\;|\;x_n \in C([a,b]),\;(x_n)\text{ is a Cauchy Sequence in }(C([a,b]),d_2)\}
+    \end{eqnarray*}
+    2. Define an equivalence relation on S by
+    \begin{eqnarray*}
+      (x_n) \sim (y_n) \iff lim_{n\rightarrow\infty}d_2(x_n,y_n) = 0
+    \end{eqnarray*}
+    3. Let $\widetilde{C}([a,b]) = S/\sim$, the set of all equivalence classes in S under $\sim$. Let the elements of $\widetilde{C}([a,b])$ be denoted by $[(x_n)]$.\\
+    4. Extend the metric $d_2$ on X to the metric $\widetilde{d}_2$ by defining 
+    \begin{eqnarray*}
+      \widetilde{d}_2(\widetilde{x},\widetilde{y}) = lim_{n\rightarrow\infty}d_2(x_n,y_n)
+    \end{eqnarray*}
+    for any equivalence class $\widetilde{x}$ and $\widetilde{y}$ in $\widetilde{X}$ and any choice of representatives $(x_n) \in \widetilde{x}$ and $(y_n) \in \widetilde{y}$.\\
+    5. Define the mapping $T: C([a,b])rightarrow \widetilde{C}([a,b])$ by $T(x) = [(\widetilde{x}])$ where $\bar{x} = (x,x,x,...)$ is the constant sequence. Note each entry $x$ is actually a continuous function on $[a,b]$. Then $T$ is $1 -1$, onto, and isometric.\\
+    6. $T(C([a,b]))$ is dense in $(\widetilde{C}([a,b]),\widetilde{d}_2)$\\
+    7. $(\widetilde{C}([a,b]),\widetilde{d}_2)$ is complete.
+  \end{solution}
+  \item Define a bounded linear operator $T$ between the normed linear spaces $(X,\|\cdot\|_X)$ and $(Y,\|\cdot\|_Y)$.
+  \begin{solution}
+    Let $T: dom(T) \subset (X,||\cdot||_X) \rightarrow (Y,||\cdot||_X)$ be a linear operator (i.e.) mapping on the subspace $dom(T)$. We say $T$ is a bounded linear ($T(\alpha x + \beta y) = \alpha T(X) + \beta T(y)$) operator if
+    \begin{eqnarray*}
+      B(T) = sup_{x\in dom(T), x\neq0} \frac{||T(x)||_Y}{||x||_X} < \infty
+    \end{eqnarray*}
+    Since $T$ is linear
+    \begin{eqnarray*}
+      \frac{||T(x)||_Y}{||x||_X} = T(\frac{x}{||x||_X})
+    \end{eqnarray*}
+    and so an equivalent way to define $B(T)$ is
+    \begin{eqnarray*}
+      B(T) = sup_{x\in dom(T),||x||_X = 1}||T(x)||_Y
+    \end{eqnarray*}
+  \end{solution}
   \item Define what it means for a family of functions to be equicontinuous.
+  \begin{solution}
+    Let $F$ be a family of functions in the space $C([a,b])$ for a finite interval $[a,b]$. The family is equicontinuous at $t_0$ in $[a,b]$ if for all $\epsilon > 0$, there is a $\delta > 0$ so that for all $f \in F$,
+    \begin{eqnarray*}
+      |t - t_0| < \delta \implies \\
+      |f(t_0) - f(t)| < \epsilon
+    \end{eqnarray*}
+    The family is uniformly equicontinuous if for all $\epsilon > 0$, there is a $\delta > 0$ so that for all $f \in F$,
+    \begin{eqnarray*}
+      |s - t_0| < \delta \implies\\
+      |f(s) - f(t)| < \epsilon
+    \end{eqnarray*}
+  \end{solution}
   \item Define what a Schauder Basis means for a normed linear space.
+  \begin{solution}
+    Let $(X,\|\cdot\|)$ be a non empty normed linear space. Let $M = (m_n)_{n=1}^\infty$ be a countable subset of X so that given $x \in X$n there is a unique sequence of scalars $(\alpha_n)_{n=1}^\infty$ so that $x = lim_{n\rightarrow\infty}\sum_{j=1}^N\:\alpha_jm_j$. This says $x = \sum_{j=1}^N\:\alpha_jm_j$ is an infinite series in $X$, whose partial sums converge in norm to $x$. This set $M$ is called a Schauder Basis for $X$. 
+  \end{solution}
   \item Define what it means for a set $D$ in a metric space to be dense.
+  \begin{solution}
+    Let $(X,d)$ be a metric space and let $D \subset X$. We say D is dense in $X$ if for all $\varepsilon > 0$, if given $x \in X$, there is a $y \in D$ so that $d(x,y) < \varepsilon$. This implies given $x \in X$, there is a sequence $y_n$ so that $y_n \rightarrow x$ in the $d$ metric. 
+  \end{solution}
   \item Define what it means for a metric space $D$ to be separable.
-  \item Define the duel space of the normed linear space $(X,\|\cdot\|_X)$.
+  \begin{solution}
+    We say $D$ is a seperable subspace of the metric space (X,d) if $D$ is countable and dense in X
+  \end{solution}
+  \item Define the dual space of the normed linear space $(X,\|\cdot\|_X)$.
+  \begin{solution}
+    The  dual of the normed linear space $(X,\|\cdot\|_X)$ is $X' = B(X,F)$ where F is the underlying field and 
+    \begin{eqnarray*}
+      B(X,F) = \{f: X \rightarrow F\;|\;f\text{ is continuous and linear}\} = \{f: X \rightarrow F\;|\;f\text{ is bounded and linear}\} 
+    \end{eqnarray*}
+  \end{solution}
   \item Define the double dual space of the normed linear space $(X,\|\cdot\|_X)$.
+  \begin{solution}
+    The double dual of the normed linear space $(X,\|\cdot\|_X)$ is $X'' = B(B(X,F),F)$ where F is the underlying field and $B(B(X,F),F)$
+    \begin{eqnarray*}
+      B(B(X,F),F) = \{g: X' \rightarrow F\;|\;g\text{ is continuous and linear}\} = \{g: X' \rightarrow F\;|\;g\text{ is bounded and linear}\} 
+    \end{eqnarray*}
+  \end{solution}
 \end{enumerate}
 
 \textbf{Part Two: Theorems and Lemmas}
@@ -131,10 +222,20 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
   \end{solution}
   \item State the Cauchy - Schwartz Ineqaulity
   \begin{solution}
-    Let $\{a_1,...,a_n\}$ and $\{b_1,...,b_n\}$ be finite collection of real numbers with $n \geq 1$. Then
-    \begin{eqnarray*}
-      |\sum_{i=1}^n\:a_ib_i|^2 \leq (\sum_{i=1}^na_i^2)\;(\sum_{i=1}^nb_i^2)
-    \end{eqnarray*}
+    \begin{itemize}
+      \item Real Inner Product Space\\
+      If V is an inner product space with real inner product $<\cdot,\cdot>$ and induced norm $\|\cdot\|$, then
+      \begin{eqnarray*}
+        |<\mathbf{u},\mathbf{v}> \leq \|\mathbf{u}\|\|\mathbf{v}\|
+      \end{eqnarray*}
+      with equality occuring if and only if $\mathbf{u}$ and $\mathbf{v}$ are linearly dependent.
+      \item Complex Inner Product Space
+      If V is an inner product space with complex inner product $<\cdot,\cdot>$ and induced norm $\|\cdot\|$, then
+      \begin{eqnarray*}
+        |<\mathbf{u},\mathbf{v}> \leq \|\mathbf{u}\|\|\mathbf{v}\|
+      \end{eqnarray*}
+      where $|\cdot|$ here is the complex magnitude and with equality occuring if and only if $\mathbf{u}$ and $\mathbf{v}$ are linearly dependent.
+    \end{itemize}
   \end{solution}
 \end{enumerate}
 

@@ -145,6 +145,40 @@ Assume the following
 
 \begin{enumerate}[label=(\alph*)]
     \item Solve for the optimal values of consumption and investment in each period.
+    \begin{solution}
+        From the above constraints, we get
+        \begin{eqnarray*}
+            C_1 &=& C_1\\
+            C_2 &=& A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 +(A_1F(K_1) - T_1) - C_1\\
+            K_2 &=& K_1 + A_1(K_1) - T_1 - C_1)
+        \end{eqnarray*}
+        And, by plugging in the values given we get
+        \begin{eqnarray*}
+            K_2 &=& 2 - C_1\\
+            C_2 &=& 2(2 - C_1)^\frac{1}{4} + 2 - C_1
+        \end{eqnarray*}
+        Then, we reconsider our constrained optimization problem as a single variable unconstrained optimization problem through substitution
+        \begin{eqnarray*}
+            \frac{d}{dC_1}(u(C_1) + \beta u(C_2)) &=& \frac{d}{dC_1}(u(c_1) + .98u(A_2F(K_1 + A_1F(K_1) - T_1 - C_1) - T_2 + K_1 +(A_1F(K_1) - T_1) - C_1)\\
+            &=& \frac{1}{C_1^2} - \frac{(.98)(\frac{1}{2}(2 - C_1)^{-\frac{3}{4}}) - 1}{(2(2 - C_1)^\frac{1}{4} + 2 - c_1)^2}
+        \end{eqnarray*}
+        Which does not seem to have root. To show this, I use the following matlab code
+        \newpage
+        \mylistcode{matlab}{Bisection Code}{rootoptcode1}
+        \singlespacing
+        \lstinputlisting{Bisection.m}
+        \onehalfspacing
+        With the following function
+        \newpage
+        \mylistcode{matlab}{Function Code}{rootoptcode2}
+        \singlespacing
+        \lstinputlisting{f1.m}
+        \onehalfspacing
+        Which returns a root at the highest possible value. Hence, the first derivative of the function we want to optimize never changes sign and we cannot optimize.\\
+        Additionally, the same problem occurs when the parameters are adjusted below so, again, I am unable to solve the equation.
+
+        
+    \end{solution}
     \item What is the capital stock in period 2? What is the value of output?
     \item Skethc the solution graphically\\
     Assume that future productivity decreases, so that

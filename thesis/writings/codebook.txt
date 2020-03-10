@@ -1,0 +1,1018 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/codebook.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}28 Feb 2020, 15:37:13
+
+{com}. codebook
+
+{txt}{hline}
+{res}VDAYR{right:Day of week of visit}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:VDAYRF}
+
+{col 18}range:  [{res}1{txt},{res}7{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}7{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}    12,423{col 33}       1{col 43}{txt}Sunday
+{col 21}{res}    45,055{col 33}       2{col 43}{txt}Monday
+{col 21}{res}    44,234{col 33}       3{col 43}{txt}Tuesday
+{col 21}{res}    40,946{col 33}       4{col 43}{txt}Wednesday
+{col 21}{res}    40,153{col 33}       5{col 43}{txt}Thursday
+{col 21}{res}    33,201{col 33}       6{col 43}{txt}Friday
+{col 21}{res}    13,593{col 33}       7{col 43}{txt}Saturday
+
+{txt}{hline}
+{res}AGE{right:Patient age in years}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:AGEF}, but {res:99} nonmissing values are not labeled
+
+{col 18}range:  [{res}0{txt},{res}100{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}101{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}17{col 32}{txt}
+{ralign 23: }{col 26}{res}34{col 32}{txt}
+{ralign 23: }{col 26}{res}51{col 32}{txt}
+{ralign 23: }{col 26}{res}66{col 32}{txt}
+
+{txt}{hline}
+{res}SEX{right:Patient sex}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:SEXF}
+
+{col 18}range:  [{res}1{txt},{res}2{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   129,759{col 33}       1{col 43}{txt}Female
+{col 21}{res}    99,846{col 33}       2{col 43}{txt}Male
+
+{txt}{hline}
+{res}ETHNIC{right:Patient ethnicity}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:ETHNICF}
+
+{col 18}range:  [{res}1{txt},{res}2{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}225,599{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}       528{col 33}       1{col 43}{txt}Hispanic or Latino
+{col 21}{res}     3,478{col 33}       2{col 43}{txt}Not Hispanic or Latino
+{col 21}{res}   225,599{col 33}       .{col 43}
+
+{txt}{hline}
+{res}PAYPRIV{right:Expected source of payment - Private insurance}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   114,806{col 33}       0{col 43}{txt}No
+{col 21}{res}   114,799{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYMCARE{right:Expected source of payment - Medicare}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   180,959{col 33}       0{col 43}{txt}No
+{col 21}{res}    48,646{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYMCAID{right:Expected source of payment - Medicaid}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   178,508{col 33}       0{col 43}{txt}No
+{col 21}{res}    51,097{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYSELF{right:Expected source of payment - Self pay}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   207,931{col 33}       0{col 43}{txt}No
+{col 21}{res}    21,674{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYNOCHG{right:Expected source of payment - No charge}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   227,437{col 33}       0{col 43}{txt}No
+{col 21}{res}     2,168{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYOTH{right:Expected source of payment - Other}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   220,817{col 33}       0{col 43}{txt}No
+{col 21}{res}     8,788{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYDK{right:Expected source of payment - Unknown}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   219,156{col 33}       0{col 43}{txt}No
+{col 21}{res}    10,449{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PAYTYPE{right:Expected source of payment - hierarchy}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}int{txt})
+{ralign 22:label}:  {res:PAYTYPEF}, but {res:2} nonmissing values are not labeled
+
+{col 18}range:  [{res}-9{txt},{res}8{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}11{col 51}{txt}missing .:  {res}198,813{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}.{col 32}{txt}
+{ralign 23: }{col 26}{res}.{col 32}{txt}
+{ralign 23: }{col 26}{res}.{col 32}{txt}
+{ralign 23: }{col 26}{res}.{col 32}{txt}
+
+{txt}{hline}
+{res}INJURY{right:Is injury visit related?}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:INJURYF}, but {res:3} nonmissing values are not labeled
+
+{col 18}range:  [{res}-9{txt},{res}2{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}5{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}       374{col 33}      -9{col 43}
+{col 21}     3,938{col 33}      -8{col 43}
+{col 21}   183,496{col 33}       0{col 43}{txt}No
+{col 21}{res}    41,567{col 33}       1{col 43}{txt}Yes
+{col 21}{res}       230{col 33}       2{col 43}
+
+{txt}{hline}
+{res}DIAG1{right:Diagnosis #1 - specific}
+{txt}{hline}
+
+{col 19}type:  string ({res}str6{txt}), but longest is str5
+
+{col 10}unique values:  {res}6,638{col 51}{txt}missing "":  {res}0{txt}/{res}229,605
+
+{txt}{col 15}examples:  {res}"37214"
+{col 26}"53550"
+{col 26}"7802-"
+{col 26}"938--"
+
+{txt}{hline}
+{res}DIAG2{right:Diagnosis #2 - specific}
+{txt}{hline}
+
+{col 19}type:  string ({res}str6{txt}), but longest is str5
+
+{col 10}unique values:  {res}5,587{col 51}{txt}missing "":  {res}0{txt}/{res}229,605
+
+{txt}{col 15}examples:  {res}"-9"
+{col 26}"-9"
+{col 26}"2768-"
+{col 26}"7048-"
+
+{txt}{hline}
+{res}DIAG3{right:Diagnosis #3 - specific}
+{txt}{hline}
+
+{col 19}type:  string ({res}str6{txt}), but longest is str5
+
+{col 10}unique values:  {res}3,109{col 51}{txt}missing "":  {res}0{txt}/{res}229,605
+
+{txt}{col 15}examples:  {res}"-9"
+{col 26}"-9"
+{col 26}"-9"
+{col 26}"-9"
+
+{txt}{hline}
+{res}CANCER{right:Does patient now have - Cancer}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   216,889{col 33}       0{col 43}{txt}No
+{col 21}{res}    12,716{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}CEBVD{right:Does patient now have - Cerebrovascular disease}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   225,089{col 33}       0{col 43}{txt}No
+{col 21}{res}     4,516{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}CHF{right:Does patient now have - CHF}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   225,638{col 33}       0{col 43}{txt}No
+{col 21}{res}     3,967{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}COPD{right:Does patient now have - COPD}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   222,232{col 33}       0{col 43}{txt}No
+{col 21}{res}     7,373{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}NOCHRON{right:Does patient now have - None of the listed chronic conditions}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:DIAGSCRF}
+
+{col 18}range:  [{res}0{txt},{res}2{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}3{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   100,688{col 33}       0{col 43}{txt}No
+{col 21}{res}   122,742{col 33}       1{col 43}{txt}Yes
+{col 21}{res}     6,175{col 33}       2{col 43}{txt}Entire item blank
+
+{txt}{hline}
+{res}TOTCHRON{right:Total number of chronic conditions}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:TOTF}, but {res:15} nonmissing values are not labeled
+
+{col 18}range:  [{res}-9{txt},{res}99{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}16{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}0{col 32}{txt}
+{ralign 23: }{col 26}{res}0{col 32}{txt}
+{ralign 23: }{col 26}{res}1{col 32}{txt}
+{ralign 23: }{col 26}{res}2{col 32}{txt}
+
+{txt}{hline}
+{res}TEMPF{right:Vital signs - Temperature (Fahrenheit)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:TEMPFF}, but {res:1} nonmissing value is not labeled
+
+{col 18}range:  [{res}-9{txt},{res}1099{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}166{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}-9{col 32}{txt}
+{ralign 23: }{col 26}{res}-9{col 32}{txt}
+{ralign 23: }{col 26}{res}978{col 32}{txt}97.8
+{ralign 23: }{col 26}{res}984{col 32}{txt}98.4
+
+{txt}{hline}
+{res}BPSYS{right:Vital signs - Systolic blood pressure}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:BPSYSF}, but {res:218} nonmissing values are not labeled
+
+{col 18}range:  [{res}-9{txt},{res}999{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}219{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}-9{col 32}{txt}
+{ralign 23: }{col 26}{res}106{col 32}{txt}
+{ralign 23: }{col 26}{res}122{col 32}{txt}
+{ralign 23: }{col 26}{res}138{col 32}{txt}
+
+{txt}{hline}
+{res}BPDIAS{right:Vital signs - Diastolic blood pressure}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:BPDIASF}, but {res:153} nonmissing values are not labeled
+
+{col 18}range:  [{res}-9{txt},{res}999{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}155{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}-9{col 32}{txt}
+{ralign 23: }{col 26}{res}61{col 32}{txt}
+{ralign 23: }{col 26}{res}73{col 32}{txt}
+{ralign 23: }{col 26}{res}82{col 32}{txt}
+
+{txt}{hline}
+{res}PELVIC{right:Pelvic exam}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   221,029{col 33}       0{col 43}{txt}No
+{col 21}{res}     8,576{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}SKIN{right:Skin exam}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}88,558{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   120,298{col 33}       0{col 43}{txt}No
+{col 21}{res}    20,749{col 33}       1{col 43}{txt}Yes
+{col 21}{res}    88,558{col 33}       .{col 43}
+
+{txt}{hline}
+{res}ANYIMAGE{right:Any imaging}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   170,746{col 33}       0{col 43}{txt}No
+{col 21}{res}    58,859{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}MRI{right:MRI/CT/PET}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   226,218{col 33}       0{col 43}{txt}No
+{col 21}{res}     3,387{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}XRAY{right:X-ray}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   194,376{col 33}       0{col 43}{txt}No
+{col 21}{res}    35,229{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}OTHIMAGE{right:Other imaging}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   226,860{col 33}       0{col 43}{txt}No
+{col 21}{res}     2,745{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}CBC{right:CBC}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   186,936{col 33}       0{col 43}{txt}No
+{col 21}{res}    42,669{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}GLUCOSE{right:Glucose}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   210,460{col 33}       0{col 43}{txt}No
+{col 21}{res}    19,145{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}EKG{right:EKG/ECG (electrocardiogram)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   210,945{col 33}       0{col 43}{txt}No
+{col 21}{res}    18,660{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}URINE{right:Urinalysis}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   198,417{col 33}       0{col 43}{txt}No
+{col 21}{res}    31,188{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}WOUND{right:Wound care}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}88,558{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   138,116{col 33}       0{col 43}{txt}No
+{col 21}{res}     2,931{col 33}       1{col 43}{txt}Yes
+{col 21}{res}    88,558{col 33}       .{col 43}
+
+{txt}{hline}
+{res}NOPROVID{right:No answer to provider item}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   228,589{col 33}       0{col 43}{txt}No
+{col 21}{res}     1,016{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PHYSASST{right:Physician assistant seen}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   212,140{col 33}       0{col 43}{txt}No
+{col 21}{res}    17,465{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}RNLPN{right:RN/LPN seen}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   115,442{col 33}       0{col 43}{txt}No
+{col 21}{res}   114,163{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}OTHPROV{right:Other provider seen}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   183,163{col 33}       0{col 43}{txt}No
+{col 21}{res}    46,442{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}NODISP{right:No answer to disposition item}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NODISPF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   225,378{col 33}       0{col 43}{txt}One or more dispositions marked
+{col 21}{res}     4,227{col 33}       1{col 43}{txt}No visit dispositions marked
+
+{txt}{hline}
+{res}OTHDISP{right:Other disposition}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:NOYESF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   209,386{col 33}       0{col 43}{txt}No
+{col 21}{res}    20,219{col 33}       1{col 43}{txt}Yes
+
+{txt}{hline}
+{res}PATWT{right:Patient visit weight}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+
+{col 18}range:  [{res}16{txt},{res}421070.91{txt}]{col 55}units:  {res}.0001
+{col 10}{txt}unique values:  {res}7,793{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 23673.2
+{txt}{col 15}std. dev:{res}{col 26} 29768.3
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}    1740{col 37}    4126{col 47}   11747{col 57}   32835{col 67}   63894
+
+{txt}{hline}
+{res}REGION{right:Geographic region}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:REGIONF}
+
+{col 18}range:  [{res}1{txt},{res}4{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}4{col 51}{txt}missing .:  {res}11,320{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}    44,086{col 33}       1{col 43}{txt}Northeast
+{col 21}{res}    51,510{col 33}       2{col 43}{txt}Midwest
+{col 21}{res}    72,934{col 33}       3{col 43}{txt}South
+{col 21}{res}    49,755{col 33}       4{col 43}{txt}West
+{col 21}{res}    11,320{col 33}       .{col 43}
+
+{txt}{hline}
+{res}PATCODE{right:Patient code}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+
+{col 18}range:  [{res}1{txt},{res}266{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}266{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 28.6269
+{txt}{col 15}std. dev:{res}{col 26} 28.0359
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}       4{col 37}       9{col 47}      19{col 57}      37{col 67}      73
+
+{txt}{hline}
+{res}BDATEFL{right:Birth date imputed?}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:IMPUTF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   226,343{col 33}       0{col 43}{txt}Not imputed
+{col 21}{res}     3,262{col 33}       1{col 43}{txt}Imputed
+
+{txt}{hline}
+{res}SEXFL{right:Sex imputed?}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:IMPUTF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   228,075{col 33}       0{col 43}{txt}Not imputed
+{col 21}{res}     1,530{col 33}       1{col 43}{txt}Imputed
+
+{txt}{hline}
+{res}ETHNICFL{right:Ethnicity imputed?}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:IMPUTF}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   168,263{col 33}       0{col 43}{txt}Not imputed
+{col 21}{res}    61,342{col 33}       1{col 43}{txt}Imputed
+
+{txt}{hline}
+{res}RACER{right:Race recode}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:RACERF}
+
+{col 18}range:  [{res}1{txt},{res}3{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}3{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   180,619{col 33}       1{col 43}{txt}White
+{col 21}{res}    37,708{col 33}       2{col 43}{txt}Black
+{col 21}{res}    11,278{col 33}       3{col 43}{txt}Other
+
+{txt}{hline}
+{res}AGEDAYS{right:Age in days for patients less than one year}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:AGEDAYSF}, but {res:366} nonmissing values are not labeled
+
+{col 18}range:  [{res}-7{txt},{res}999{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}368{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{ralign 23: examples:}{col 26}{res}-7{col 32}{txt}
+{ralign 23: }{col 26}{res}-7{col 32}{txt}
+{ralign 23: }{col 26}{res}-7{col 32}{txt}
+{ralign 23: }{col 26}{res}-7{col 32}{txt}
+
+{txt}{hline}
+{res}AGER{right:Age recode}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:AGERF}
+
+{col 18}range:  [{res}1{txt},{res}6{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}6{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}    39,660{col 33}       1{col 43}{txt}Under 15 years
+{col 21}{res}    24,837{col 33}       2{col 43}{txt}15-24 years
+{col 21}{res}    54,191{col 33}       3{col 43}{txt}25-44 years
+{col 21}{res}    61,549{col 33}       4{col 43}{txt}45-64 years
+{col 21}{res}    24,398{col 33}       5{col 43}{txt}65-74 years
+{col 21}{res}    24,970{col 33}       6{col 43}{txt}75 years and over
+
+{txt}{hline}
+{res}SETTYPE{right:Setting type}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:SETTYPF}
+
+{col 18}range:  [{res}1{txt},{res}3{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}   141,047{col 33}       1{col 43}{txt}NAMCS
+{col 21}{res}    88,558{col 33}       3{col 43}{txt}NHAMCS - ED
+
+{txt}{hline}
+{res}CSTRATM{right:Clustered CSTRATM -- masked}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+
+{col 18}range:  [{res}10112201{txt},{res}40400000{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}498{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 2.9e+07
+{txt}{col 15}std. dev:{res}{col 26} 1.1e+07
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27} 2.0e+07{col 37} 2.0e+07{col 47} 2.0e+07{col 57} 4.0e+07{col 67} 4.0e+07
+
+{txt}{hline}
+{res}CPSUM{right:Clustered CPSUM -- masked}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+
+{col 18}range:  [{res}0{txt},{res}107000{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2,354{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 50971.8
+{txt}{col 15}std. dev:{res}{col 26} 50677.3
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}      12{col 37}      24{col 47}  100002{col 57}  100503{col 67}  102470
+
+{txt}{hline}
+{res}DIAG4{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  string ({res}str5{txt})
+
+{col 10}unique values:  {res}1,466{col 51}{txt}missing "":  {res}175,237{txt}/{res}229,605
+
+{txt}{col 15}examples:  {res}""
+{col 26}""
+{col 26}""
+{col 26}"-9"
+
+{txt}{hline}
+{res}DIAG5{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  string ({res}str5{txt})
+
+{col 10}unique values:  {res}412{col 51}{txt}missing "":  {res}175,237{txt}/{res}229,605
+
+{txt}{col 15}examples:  {res}""
+{col 26}""
+{col 26}""
+{col 26}"-9"
+
+{txt}{hline}
+{res}PAYTYPER{right:Recoded expected source of payment - based on hierarchy}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:PAYTYPERF}
+
+{col 18}range:  [{res}-9{txt},{res}7{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}9{col 51}{txt}missing .:  {res}30,792{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}     2,260{col 33}      -9{col 43}{txt}All sources of payment are blank
+{col 21}{res}     9,532{col 33}      -8{col 43}{txt}Unknown
+{col 21}{res}    79,963{col 33}       1{col 43}{txt}Private insurance
+{col 21}{res}    40,884{col 33}       2{col 43}{txt}Medicare
+{col 21}{res}    41,484{col 33}       3{col 43}{txt}Medicaid
+{col 21}{res}     1,782{col 33}       4{col 43}{txt}Worker's compensation
+{col 21}{res}    16,252{col 33}       5{col 43}{txt}Self-pay
+{col 21}{res}     1,394{col 33}       6{col 43}{txt}No charge
+{col 21}{res}     5,262{col 33}       7{col 43}{txt}Other
+{col 21}{res}    30,792{col 33}       .{col 43}
+
+{txt}{hline}
+{res}WOUNDCX{right:Wound culture}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:woundcx}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}141,047{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}    87,725{col 33}       0{col 43}{txt}No
+{col 21}{res}       833{col 33}       1{col 43}{txt}Yes
+{col 21}{res}   141,047{col 33}       .{col 43}
+
+{txt}{hline}
+{res}SKINADH{right:Skin adhesives}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}double{txt})
+{ralign 22:label}:  {res:skinadh}
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}141,047{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}    87,518{col 33}       0{col 43}{txt}No
+{col 21}{res}     1,040{col 33}       1{col 43}{txt}Yes
+{col 21}{res}   141,047{col 33}       .{col 43}
+
+{txt}{hline}
+{res}REGIONOFF{right:Region where majority of physician's sampled visits occurred}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:REGIONF}
+
+{col 18}range:  [{res}1{txt},{res}4{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}4{col 51}{txt}missing .:  {res}218,285{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.   Numeric  Label
+{col 21}{res}     2,183{col 33}       1{col 43}{txt}Northeast
+{col 21}{res}     2,672{col 33}       2{col 43}{txt}Midwest
+{col 21}{res}     3,618{col 33}       3{col 43}{txt}South
+{col 21}{res}     2,847{col 33}       4{col 43}{txt}West
+{col 21}{res}   218,285{col 33}       .{col 43}
+
+{txt}{hline}
+{res}month{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}1{txt},{res}12{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}12{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 6.34366
+{txt}{col 15}std. dev:{res}{col 26} 3.39695
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}       2{col 37}       3{col 47}       6{col 57}       9{col 67}      11
+
+{txt}{hline}
+{res}year{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}2006{txt},{res}2016{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}11{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 2010.99
+{txt}{col 15}std. dev:{res}{col 26}  2.7908
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}    2007{col 37}    2009{col 47}    2011{col 57}    2013{col 67}    2015
+
+{txt}{hline}
+{res}firstgenyear{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}2009{txt},{res}2009{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}1{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.  Value
+{col 21}{res}   229,605{col 33}2009
+
+{txt}{hline}
+{res}firstgenmonth{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}12{txt},{res}12{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}1{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.  Value
+{col 21}{res}   229,605{col 33}12
+
+{txt}{hline}
+{res}obsmonth{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}73{txt},{res}204{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}132{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 138.201
+{txt}{col 15}std. dev:{res}{col 26} 33.7035
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}      93{col 37}     110{col 47}     137{col 57}     167{col 67}     186
+
+{txt}{hline}
+{res}genmonth{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}120{txt},{res}120{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}1{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.  Value
+{col 21}{res}   229,605{col 33}120
+
+{txt}{hline}
+{res}monthsAfterGen{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}-47{txt},{res}84{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}132{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 19}mean:{res}{col 26} 18.2012
+{txt}{col 15}std. dev:{res}{col 26} 33.7035
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}     -27{col 37}     -10{col 47}      17{col 57}      47{col 67}      66
+
+{txt}{hline}
+{res}genon{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.  Value
+{col 21}{res}    78,606{col 33}0
+{col 21}   150,999{col 33}1
+
+{txt}{hline}
+{res}genon1year{right:(unlabeled)}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}0{txt},{res}1{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}2{col 51}{txt}missing .:  {res}0{txt}/{res}229,605
+
+{txt}{col 13}tabulation:  Freq.  Value
+{col 21}{res}   103,545{col 33}0
+{col 21}   126,060{col 33}1
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/codebook.txt
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}28 Feb 2020, 16:05:24
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
