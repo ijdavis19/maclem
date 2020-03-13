@@ -1,0 +1,397 @@
+\documentclass[11pt]{article}
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%
+\usepackage{geometry}
+
+\renewcommand{\qedsymbol}{\hfill \blacksquare}
+\newcommand{\subqedsymbol}{\hfill \Box}
+%\theoremstyle{plain}
+
+\newtheoremstyle{mystyle}% name
+  {6pt}%      Space above
+  {6pt}%      Space below
+  {\itshape}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}%        Punctuation after thm head
+  { }%     Space after thm head: " " = normal interword space; \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+\theoremstyle{mystyle}
+ 
+\newtheorem*{solution}{solution}
+\newtheorem*{theorem}{Theorem}
+
+\newenvironment{mysolution}[1]
+{
+\centering
+\begin{solution}%
+\mbox{}\\ \vskip6pt \colorbox{black!15}{\fbox{\parbox{.9\textwidth}{#1}}}
+ $\qedsymbol$
+\end{solution}
+}%
+{}
+      
+\newenvironment{mytheorem}[1]
+{
+\centering
+\begin{theorem}%
+\mbox{}\\ \vskip6pt \colorbox{black!15}{\fbox{\parbox{.9\textwidth}{#1}}}
+\end{theorem}
+}%
+{}
+
+\newenvironment{reason}[1]
+{
+ \vskip0.05in
+ \begin{myproof}
+ \mbox{}\\#1
+ $\qedsymbol$
+ \end{myproof}  
+ \vskip0.05in
+}%
+{}
+
+\newcommand{\bs}[1]{
+\boldsymbol{#1}
+}
+
+\pagestyle{plain}
+\geometry{lmargin=1.0in,rmargin=1.0in,top=1.0in,bottom=1.0in}
+\pagestyle{plain}
+
+\title{Take Home Exam 3: MATH 8210: Spring 2020}
+\author{Dr. Peterson}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\noindent
+\textbf{Ian Davis}\\
+This is a closed book and closed notes test.  Make sure
+to give me all the details of your arguments!
+
+\begin{description} 
+\item[Part 1: Definitions (28 Points)] \mbox{}\\
+  \begin{enumerate}
+  \item(4 Points) Define what an inner product on the set $X$ is carefully.
+                           Do this for both the real and complex field.
+       \begin{mysolution}
+       {
+       \textbf{Real Inner Product Space: }\\
+       Let $V$ be a vector space with reals as the scalar field. Then a mapping $\omega$ which assigns a pair of objects in $V$ to a real number is called an inner produc space if
+       \begin{enumerate}
+        \item $\omega(\mathbf{u},\mathbf{v}) = \omega(\mathbf{v},\mathbf{u})$; the order is important and switching the order will conjugate the result.
+        \item $\omega(c\odot\mathbf{u},\mathbf{v}) = c\omega(\mathbf{u},\mathbf{v})$; scalars in the first slot can be pulled out. 
+        \item $\omega(\mathbf{u} \oplus \mathbf{v},\mathbf{w}) = \omega(\mathbf{u},\mathbf{w}) + \omega(\mathbf{v},\mathbf{w})$; for any three objects in V
+        \item $\omega(\mathbf{u},\mathbf{u}) \geq 0$ and $\omega(\mathbf{u},\mathbf{v}) = 0 \iff \mathbf{u} = 0$
+       \end{enumerate}
+       Additionally, these properties imply that
+       \begin{eqnarray*}
+            \omega(\mathbf{u},c\odot\mathbf{v}) = c\omega(\mathbf{u},\mathbf{v})
+       \end{eqnarray*}
+       A vector space V with a real inner product is called \textbf{Real Inner Product Space}.\\
+       \textbf{Complex Inner Product Space: }\\
+       \\
+       Let $V$ be a vector space with the complex numbers as the scalar field. Then a mapping $\omega$ which assigns a pair of objects in $V$ to a complex number is an inner product space if
+       \begin{enumerate}
+        \item $\omega(\mathbf{u},\mathbf{v}) = \overline{\omega(\mathbf{v},\mathbf{u})}$; the order of the two objects is unimportnat
+        \item $\omega(c\odot\mathbf{u},\mathbf{v}) = c\omega(\mathbf{u},\mathbf{v})$; scalars in the first slot can be pulled out. These two rules imply
+        \begin{eqnarray*}
+            \omega(\mathbf{u},c\odot\mathbf{v}) = \overline{\omega(c\odot\mathbf{v},\mathbf{u})} = c\overline{\omega(\mathbf{v},\mathbf{u})} = \overline{c}\omega(\mathbf{u},\mathbf{v})
+        \end{eqnarray*}
+        \item $\omega(\mathbf{u} \oplus \mathbf{v},\mathbf{w}) = \omega(\mathbf{u},\mathbf{w}) + \omega(\mathbf{v},\mathbf{w})$; for any three objects in V
+        \item $\omega(\mathbf{u},\mathbf{u}) \geq 0$ and $\omega(\mathbf{u},\mathbf{v}) = 0 \iff \mathbf{u} = 0$
+       \end{enumerate}
+       A vector space $V$ with a complex inner product is called a \textbf{Complex Inner Product Space}.
+       }
+       \end{mysolution}
+       
+  \item(4 Points) Define a bounded linear operator $T$ between the normed linear spaces
+                          $(X,\| \cdot \|_X)$ and $(Y,\| \cdot \|_Y)$.
+			  
+       \begin{mysolution}
+       {
+       Let $T:dom(T) \in (X,\| \cdot \|_X) \rightarrow (Y,\| \cdot \|_Y)$ be a linear operator (i.e. $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$). Then, we say $T$ is a bounded linear operator if
+       \begin{eqnarray*}
+        B(T) = sup_{x \in dom(T), \|x\|_X \neq 0}\frac{\|T(x)\|_Y}{\|x\|_X} < \infty
+       \end{eqnarray*}
+       And, because of the linearity of $T$, we can rewrite
+       \begin{eqnarray*}
+        \frac{T(x)}{\|x\|_X} = T(\frac{x}{\|x\|_X})
+       \end{eqnarray*}
+       Which gives us
+       \begin{eqnarray*}
+        B(T) = sup_{x \in dom(T), \|x\|_X = 1}\|T(x)\|_Y < \infty
+       \end{eqnarray*}
+       }
+       \end{mysolution}
+       
+  \item(4 Points) Define what it means for a set $D$ in a metric space to be dense.
+  
+  	\begin{mysolution}
+       {
+       Let $(X,d)$ be a metrc space and $D \in X$. We say $D$ is dense in $X$ if, $\forall \epsilon > 0 \; \exists \; y \in D \ni d(x,y) < \epsilon$. This implies, given $x \in X$, $\exists \; y_n \in D \ni y_n \rightarrow x$ in $d$.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define what it means for a metric space $D$ to be separable.
+  
+  	\begin{mysolution}
+       {
+       We say $D$ is a separable subspace of the metric space $(X,d)$ if D is countable and dense in $X$.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define what a Schauder Basis means for a normed linear space.
+  
+  	\begin{mysolution}
+       {
+       Let $(X,\|\cdot\|)$ be a nonempty normed linear space. Let $M = (m_n)_{n=1}\infty$ be a countable subset of $X$ so that given $x \in X$, there is a unique sequence of scalars $(a_n)_{n=1}^\infty$ so that $x = \lim_{N\rightarrow\infty}\sum_{i=1}^N\:a_im_i$. This says that $x =\sum_{i=1}^\infty\:a_im_i$ is an infinite series in $X$, whose partial sums converge in norm to $x$. This set $M$ is calleed the Schauder Basis for $X$.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define the dual space of the normed linear space $(X,\| \cdot \|_X)$.
+  
+  	\begin{mysolution}
+       {
+       The Duel Space of the Normed Linear Space $(X,\|\cdot\|)$ is $X' = B(X,F)$ where $F$ is the underlying field and
+       \begin{eqnarray*}
+        B(X,F) &=& \{f:X \rightarrow F\:|\:f\; \text{is continuous and linear} \}\\
+        &=& \{f:X \rightarrow F\:|\:f\; \text{is bounded and linear} \}
+       \end{eqnarray*}
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define the double dual space of the normed linear space $(X,\| \cdot \|_X)$
+       and the canonical injection $j: X \rightarrow X^{\prime\prime}$.
+       
+  	\begin{mysolution}
+       {
+       The Double Duel of the Normed Linear Space $(X,\|\cdot\|)$ is $X' = B(B(X,F),F)$ where $F$ is the underlying field and
+       \begin{eqnarray*}
+        B(B(X,F),F) &=& \{g:B(X,F) \rightarrow F\:|\:g\; \text{is continuous and linear} \}\\
+        &=& \{f:B(X,F) \rightarrow F\:|\:g\; \text{is bounded and linear} \}
+       \end{eqnarray*}
+       }
+        \end{mysolution}
+	
+  \end{enumerate}
+%28+8 = 36
+\item[Part 2:  Theorems and Lemmas (8 Points)] \mbox{}\\  
+   \begin{enumerate}
+   \item(4 Points) State the Parallelogram Equality
+   
+	\begin{mysolution}
+       {
+       Let $(X,<\cdot,\cdot>)$ be an inner product space. Then the norm induced by the inner product space satisfies the following
+       \begin{eqnarray*}
+        \|\textbf{x} + \textbf{y}\|^2 + \|\textbf{x} - \textbf{y}\|^2 = 2(\|\textbf{x}\|^2 + \|\textbf{y}\|^2)
+       \end{eqnarray*}
+       $\forall \; \mathbf{x},\; \mathbf{y} \in X.$
+       }
+    \end{mysolution}
+	
+   \item(4 Points) State the Minimizing Vector Theorem.
+   
+	\begin{mysolution}
+       {
+       Let $(X,<\cdot,\cdot>)$ be a nonempty inner product space and let $M \neq 0$ be a be a convex subset of $X$ $(t\mathbf{x} + (t -1)\mathbf{y}) \in X \; \forall \; t \in [0,1]$ and $\textbf{x}, \; \textbf{y} \in M$. This says the line segment $[\mathbf{x},\mathbf{y}]$ lies in $M$ if $\mathbf{x}$ and $\mathbf{y}$ are in $M$ Assume M is complete in the metric induced by $<\cdot,\cdot>$. Then, $\forall \; \textbf{x} \in X, \exists \; y_x \in M$ so that $inf_{\mathbf{y} \in M}\|\mathbf{x} - \mathbf{y}\| = \|\mathbf{x} - y_x\|$
+       }
+        \end{mysolution}
+	
+   \end{enumerate}
+%36+20 = 56
+\item[Part 3:  Is it Possible and Short Answer (20 Points)] \mbox{}\\ 
+  \begin{enumerate}
+  \item(4 Points) Give an example of a metric that cannot be induced by a norm.
+  
+  	\begin{mysolution}
+       {
+       The metric
+       \begin{eqnarray*}
+        d(x,y) = \sum_{n=1}^\infty\:\frac{1}{2^n}(\frac{|x - y|}{1 + |x - y|})
+       \end{eqnarray*}
+       cannot be induced by a norm becuase it fails to satisfy the condition $\rho(\alpha x) = \alpha\rho(x)$
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Give an example of a norm that cannot be induced by an inner product.
+  
+  	\begin{mysolution}
+       {
+       For all $p$ such that $1 \leq p < \infty$, $p \neq 2 \implies \|\cdot\|_p$ cannot be induced by an inner product becuase it would fail the Parallelogram Equality.
+       }
+    \end{mysolution}
+	
+  \item(4 Points) If $(f_n)$ is a Cauchy Sequence in $X^\prime$
+        where $X = (C([a,b]), \| \cdot \|_1)$, is it possible for
+	this sequence to fail to converge?
+			 
+	\begin{mysolution}
+       {
+       No it is not possible. In this case, $X' = (C([a,b]), \| \cdot \|_\infty)$ and all sequences in this space must converge under the $\|\cdot\|_\infty$ norm and, by extension, any $\|\cdot\|_p$ with $1 \leq p < \infty$
+       }
+        \end{mysolution}
+	
+  \item(4 Points) If we identify $\Re^n$ with column vectors,
+       is it true multiplication by a row vector  defines an element of
+       $(\Re^n)^\prime$?
+			 
+	\begin{mysolution}
+       {
+       No, consider the case where we have $\Re^n$ split into column vectors all of dimensionality $1\times n$. Then multiplication with a row vector of $n \times 1$ yields a $1 \times 1$ object which is defined in $\Re^1$ not $\Re^n$
+       }
+        \end{mysolution}
+	
+  \item(4 Points) If $A$ is a $n \times n$ Hermetian matrix, is it true
+                         the eigenvectors of $A$ fail to be a basis of $C^n$
+			 ($C$ denotes the complex field)?
+			 
+	\begin{mysolution}
+       {
+       No, eigenvectors of Hermetian matricies form bases which span the complex field.
+       }
+        \end{mysolution}
+	
+  \end{enumerate}
+%56 + 18 = 74
+\item[Part 3: Computations (18 Points)] \mbox{}\\
+\begin{enumerate}
+\item(4 Points) Describe how to complete $(C([a,b]), d_2)$ in reasonable detail.
+
+	\begin{mysolution}
+       {
+       1. Define
+       \begin{eqnarray*}
+        S = \{(x_n)\;|\;x_n \in (C([a,b]), d_2), \; (x_n) \text{ is a Cauchy Sequence in }(C([a,b]), d_2)\}
+       \end{eqnarray*}
+       2. Define an equivalence relation on S by
+       \begin{eqnarray*}
+        (x_n) \sim (y_n) \iff lim_{n\rightarrow\infty}d_2(x_n,y_n) = 0
+       \end{eqnarray*}
+       3. Let $\widetilde(C([a,b]) = S/\sim$, the set of all equivalence classes in $S$ udner $\sim$. Let the elements of $\widetilde(C([a,b])$ be denoted by $[(\widetilde{x})]$.\\
+       4. Extend the metric $d_2$ on $X$ to the metrix $\widetilde{d}_2$ by defining
+       \begin{eqnarray*}
+        \widetilde{d}_2(\widetilde{x},\widetilde{y}) = lim_{n\rightarrow\infty}(x_n,y_n)
+       \end{eqnarray*}
+       for any equivalence class $\widetilde{x}$ and $\widetilde{y}$ in $\widetilde{X}$ and any choice of representatives $(x_n)\in \widetilde{x}$ and $\widetilde{y}$\\
+       5. Define the mapping $T:C([a,b]) \rightarrow \widetilde{C}([a,b])$ by $T(x) = [(\widetilde{x})]$ where $\widetilde{x} = (x,x,x,...)$ is the constant sequence. Note, each entry $x$ is actually a continuous function on [a,b]. Then $T$ is 1 - 1, onto, and isometric.\\
+       6. $T(C([a,b]))$ is dense (as previously defined) in $(\widetilde{C}([a,b]),\widetilde{d}_2)$\\
+       7. $(\widetilde{C}([a,b]),\widetilde{d}_2)$ is complete.
+       }
+        \end{mysolution}
+	
+\item(6 Points)  Find a Cauchy sequence of Riemann Integrable functions
+       which gives a representative for $f(t) = t^{-4/5}$ on $[0,1]$.
+       
+	\begin{mysolution}
+       {
+       Conider the function 
+        \begin{eqnarray*}
+            x_n(t) &=&
+            \left \{
+            \begin{array}{ll}
+            0, & 0 \leq t \leq \frac{1}{n}\\
+            t^{-\frac{4}{5}}, & \frac{1}{n} < t \leq 1
+            \end{array}
+            \right .
+        \end{eqnarray*}
+        which is clearly Riemann Integrable. Now we consider, for $n > m$
+        \begin{eqnarray*}
+            \int_0^1\:|x_n(t) - x_m(t)|^2dt\\
+            &=& \int_\frac{1}{n}^\frac{1}{m}\:|t^{-\frac{4}{5}} - 0|^2dt\\
+            &=& \int_\frac{1}{n}^\frac{1}{m}\:t^{-\frac{8}{3}}dt\\
+            &=& |-5(\frac{1}{t^\frac{1}{5}})||_\frac{1}{n}^\frac{1}{m}\\
+            &=& 5|m^\frac{1}{5} - n^\frac{1}{5}|\\
+            &=& C_{nm}|\frac{1}{m^\frac{1}{5}} - \frac{1}{n^\frac{1}{5}}| \;\; \text{(By MVT)}\\
+            &<& \frac{1}{m}|\frac{n^\frac{6}{5} - m^\frac{6}{5}}{(mn)^\frac{6}{5}}|\\
+            &<& \frac{1}{m^\frac{12}{5}}
+        \end{eqnarray*}
+        Which is a Cauchy sequence that is able to serve as an upper bound of the integral.
+        }
+    \end{mysolution}
+	
+\item(8 Points) Let 
+         \begin{eqnarray*}
+	 A = &=& 
+	 \begin{bmatrix}
+	 1 & 2 & 3\\
+	 2 & 4 & -1\\
+	 3 & -1 & -2
+	 \end{bmatrix}
+	 \end{eqnarray*}
+	 \noindent
+	 Find $\|A \|_{op}$ for the three cases: using $\| \cdot \|_1$ on
+	 for both the domain and the range of $A$,  using $\| \cdot \|_\infty$ on
+	 for both the domain and the range of $A$ and
+	  using $\| \cdot \|_2$ on
+	 for both the domain and the range of $A$.  You can use \textregistered{MATLAB}
+	 to get the eigenvalues of $A$.
+       
+	\begin{mysolution}
+       {
+       Using matlab/octave, we are able to get
+       \begin{eqnarray*}
+        \lambda_1 = 4.3004\\
+        \lambda_2 = 2.2611\\
+        \lambda_3 = 5.0393
+       \end{eqnarray*}
+       }
+    \end{mysolution}
+	
+\end{enumerate}
+%74 + 26 = 100
+\item[Part 4: Proofs (26 Points)] \mbox{}\\
+Provide careful proofs of the following propositions.  You will
+be graded on the mathematical correctness of your arguments as well
+as your use of language, syntax and organization in the proof.
+  \begin{enumerate}
+  \item(12 Points)  If $A$ is a $n \times n$ Hermetian matrix, we know
+           $f(x) = | <A(x), x>|$ is a continuous function of $x$.	
+       \begin{enumerate}
+       \item(6 Points)    Prove $f$ is not a linear mapping. HINT: what does $f$ do to $cx$
+           for any scalar $c$.	    
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+	\end{mysolution}
+	\item(6 Points)   Prove $f$ is not a bounded mapping. HINT: what does $f$ do to $cE_i$
+           for any scalar $c$ and eigenvector $E_i$?
+	\end{enumerate}	 
+  \item(14 Points)  Let $P$ be the set of all polynomials on $[0,1]$.
+         \begin{enumerate}
+         \item(8 Points) Prove the set of all polynomials with rational coefficients is dense in $P$
+	 using $\| \cdot \|_\infty$.
+	   
+         \begin{mysolution}
+        {
+        Your work here.
+        }
+	 \end{mysolution}
+	 
+         \item(6 Points) There is theorem called the Weierstrass Approximation Theorem
+	          that says given any $f \in (C([a,b], \| \cdot\|_\infty)$, and given any $\epsilon>0$,
+		  there is a polynomial $p_\epsilon$ (called the Bernstein Polynomial) 
+		  with $\| f - p_\epsilon\|_\infty < \epsilon$.  Using the first part of this problem
+		  prove the set of all polynomials with rational coefficients is dense
+	          in $(C([a,b], \| \cdot\|_\infty)$.
+		  
+         \begin{mysolution}
+        {
+        Your work here.
+        }
+	 \end{mysolution}
+	 \end{enumerate}
+	 
+  \end{enumerate}
+\end{description}
+             
+\end{document}

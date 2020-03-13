@@ -242,6 +242,21 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \textbf{Part Three: Is it Possible and Short Answer}
 \begin{enumerate}
   \item Give an example of a norm that cannot be induced by an inner product.
+  \begin{solution}
+    Any $p$ norm in which $p \neq 2$. Consider a finite $p$ with
+    \begin{eqnarray*}
+      x = \{1,1,0,0,0,...\}\\
+      y = \{1,-1,0,0,0,...\}
+    \end{eqnarray*}
+    Then
+    \begin{eqnarray*}
+      \|x\|_p &=& (1^p + 1^p)^\frac{1}{p} = 2^\frac{1}{p} = \|y\|_p\\
+      \|x + y\|_p &=& (2^p + 0^p)^\frac{1}{p} = 2 = \|x + -y\|_p\\
+      \implies \|x + y\|_p^2 - \|x - y\|_p^2 &=& 8
+      2(\|x\|^2 + \|y\|^2) = 2(2^\frac{2}{p} + 2^\frac{2}{p}) = (4)2^\frac{2}{p}
+    \end{eqnarray*}
+    Which only works if $p = 2$
+  \end{solution}
   \item If $T$ is an operator from $dom(T) \subset (X,\|\cdot\|_X)$ into $(Y,\|\cdot\|_Y)$, not necessarily linear, is it posible for $T$ to be bounded? Give an example.
   \item Is it true the dual space of the normed linear space $(X,\|\cdot\|_X)$ must be complete?
   \item Is it true that Riemann integration on $[a,b]$ defines an element of the duel space of $(C([a,b]),\|\cdot\|)$?
@@ -259,7 +274,7 @@ Provide careful proofs of the following propositions.
   \end{bmatrix}
   $
   \begin{enumerate}[label=\alph*)]
-    \item Compute $\max_{\|x\|=1}|<A(x),x>$. Here are some hints:
+    \item Compute $\max_{\|x\|=1}|<A(x),x>|$. Here are some hints:
     \begin{itemize}
       \item Convert the quadratic form $<A(x),x>$ into an equation in $cos(2\theta)$ and $sin(2\theta)$ as to satisfy the constraint $x^2 + y^2 = 1$
       \item This is optimization in on variable $\theta$ and it is ok to ignore optimize over the quadratic form instead of the absolute value of it.

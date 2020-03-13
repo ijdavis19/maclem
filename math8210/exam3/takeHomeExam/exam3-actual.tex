@@ -1,0 +1,302 @@
+\documentclass[11pt]{article}
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%
+\usepackage{geometry}
+
+\renewcommand{\qedsymbol}{\hfill \blacksquare}
+\newcommand{\subqedsymbol}{\hfill \Box}
+%\theoremstyle{plain}
+
+\newtheoremstyle{mystyle}% name
+  {6pt}%      Space above
+  {6pt}%      Space below
+  {\itshape}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}%        Punctuation after thm head
+  { }%     Space after thm head: " " = normal interword space; \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+\theoremstyle{mystyle}
+ 
+\newtheorem*{solution}{solution}
+\newtheorem*{theorem}{Theorem}
+
+\newenvironment{mysolution}[1]
+{
+\centering
+\begin{solution}%
+\mbox{}\\ \vskip6pt \colorbox{black!15}{\fbox{\parbox{.9\textwidth}{#1}}}
+ $\qedsymbol$
+\end{solution}
+}%
+{}
+      
+\newenvironment{mytheorem}[1]
+{
+\centering
+\begin{theorem}%
+\mbox{}\\ \vskip6pt \colorbox{black!15}{\fbox{\parbox{.9\textwidth}{#1}}}
+\end{theorem}
+}%
+{}
+
+\newenvironment{reason}[1]
+{
+ \vskip0.05in
+ \begin{myproof}
+ \mbox{}\\#1
+ $\qedsymbol$
+ \end{myproof}  
+ \vskip0.05in
+}%
+{}
+
+\newcommand{\bs}[1]{
+\boldsymbol{#1}
+}
+
+\pagestyle{plain}
+\geometry{lmargin=1.0in,rmargin=1.0in,top=1.0in,bottom=1.0in}
+\pagestyle{plain}
+
+\title{Take Home Exam 3: MATH 8210: Spring 2020}
+\author{Dr. Peterson}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\noindent
+This is a closed book and closed notes test.  Make sure
+to give me all the details of your arguments!
+
+\begin{description} 
+\item[Part 1: Definitions (28 Points)] \mbox{}\\
+  \begin{enumerate}
+  \item(4 Points) Define what an inner product on the set $X$ is carefully.
+                           Do this for both the real and complex field.
+       \begin{mysolution}
+       {
+       Your work here.
+       }
+       \end{mysolution}
+       
+  \item(4 Points) Define a bounded linear operator $T$ between the normed linear spaces
+                          $(X,\| \cdot \|_X)$ and $(Y,\| \cdot \|_Y)$.
+			  
+       \begin{mysolution}
+       {
+       Your work here.
+       }
+       \end{mysolution}
+       
+  \item(4 Points) Define what it means for a set $D$ in a metric space to be dense.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define what it means for a metric space $D$ to be separable.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define what a Schauder Basis means for a normed linear space.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define the dual space of the normed linear space $(X,\| \cdot \|_X)$.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Define the double dual space of the normed linear space $(X,\| \cdot \|_X)$
+       and the canonical injection $j: X \rightarrow X^{\prime\prime}$.
+       
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \end{enumerate}
+%28+8 = 36
+\item[Part 2:  Theorems and Lemmas (8 Points)] \mbox{}\\  
+   \begin{enumerate}
+   \item(4 Points) State the Parallelogram Equality
+   
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+   \item(4 Points) State the Minimizing Vector Theorem.
+   
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+   \end{enumerate}
+%36+20 = 56
+\item[Part 3:  Is it Possible and Short Answer (20 Points)] \mbox{}\\ 
+  \begin{enumerate}
+  \item(4 Points) Give an example of a metric that cannot be induced by a norm.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) Give an example of a norm that cannot be induced by an inner product.
+  
+  	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) If $(f_n)$ is a Cauchy Sequence in $X^\prime$
+        where $X = (C([a,b]), \| \cdot \|_1)$, is it possible for
+	this sequence to fail to converge?
+			 
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) If we identify $\Re^n$ with column vectors,
+       is it true multiplication by a row vector  defines an element of
+       $(\Re^n)^\prime$?
+			 
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \item(4 Points) If $A$ is a $n \times n$ Hermetian matrix, is it true
+                         the eigenvectors of $A$ fail to be a basis of $C^n$
+			 ($C$ denotes the complex field)?
+			 
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+  \end{enumerate}
+%56 + 18 = 74
+\item[Part 3: Computations (18 Points)] \mbox{}\\
+\begin{enumerate}
+\item(4 Points) Describe how to complete $(C([a,b]), d_2$ in reasonable detail.
+
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+\item(6 Points)  Find a Cauchy sequence of Riemann Integrable functions
+       which gives a representative for $f(t) = t^{-4/5}$ on $[0,1]$.
+       
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+\item(8 Points) Let 
+         \begin{eqnarray*}
+	 A = &=& 
+	 \begin{bmatrix}
+	 1 & 2 & 3\\
+	 2 & 4 & -1\\
+	 3 & -1 & -2
+	 \end{bmatrix}
+	 \end{eqnarray*}
+	 \noindent
+	 Find $\|A \|_{op}$ for the three cases: using $\| \cdot \|_1$ on
+	 for both the domain and the range of $A$,  using $\| \cdot \|_\infty$ on
+	 for both the domain and the range of $A$ and
+	  using $\| \cdot \|_2$ on
+	 for both the domain and the range of $A$.  You can use \textregistered{MATLAB}
+	 to get the eigenvalues of $A$.
+       
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+        \end{mysolution}
+	
+\end{enumerate}
+%74 + 26 = 100
+\item[Part 4: Proofs (26 Points)] \mbox{}\\
+Provide careful proofs of the following propositions.  You will
+be graded on the mathematical correctness of your arguments as well
+as your use of language, syntax and organization in the proof.
+  \begin{enumerate}
+  \item(12 Points)  If $A$ is a $n \times n$ Hermetian matrix, we know
+           $f(x) = | <A(x), x>|$ is a continuous function of $x$.	
+       \begin{enumerate}
+       \item(6 Points)    Prove $f$ is not a linear mapping. HINT: what does $f$ do to $cx$
+           for any scalar $c$.	    
+	\begin{mysolution}
+       {
+       Your work here.
+       }
+	\end{mysolution}
+	\item(6 Points)   Prove $f$ is not a bounded mapping. HINT: what does $f$ do to $cE_i$
+           for any scalar $c$ and eigenvector $E_i$?
+	\end{enumerate}	 
+  \item(14 Points)  Let $P$ be the set of all polynomials on $[0,1]$.
+         \begin{enumerate}
+         \item(8 Points) Prove the set of all polynomials with rational coefficients is dense in $P$
+	 using $\| \cdot \|_\infty$.
+	   
+         \begin{mysolution}
+        {
+        Your work here.
+        }
+	 \end{mysolution}
+	 
+         \item(6 Points) There is theorem called the Weierstrass Approximation Theorem
+	          that says given any $f \in (C([a,b], \| \cdot\|_\infty)$, and given any $\epsilon>0$,
+		  there is a polynomial $p_\epsilon$ (called the Bernstein Polynomial) 
+		  with $\| f - p_\epsilon\|_\infty < \epsilon$.  Using the first part of this problem
+		  prove the set of all polynomials with rational coefficients is dense
+	          in $(C([a,b], \| \cdot\|_\infty)$.
+		  
+         \begin{mysolution}
+        {
+        Your work here.
+        }
+	 \end{mysolution}
+	 \end{enumerate}
+	 
+  \end{enumerate}
+\end{description}
+             
+\end{document}
