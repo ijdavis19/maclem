@@ -130,7 +130,8 @@ qui forval dataset = 2006/2016 {
 forval year = 2006/2016 {
   use "$output/cefotetan/diag/`year'", replace
   gen year = YEAR
-  keep year VMONTH AGE SEX PAYPRIV PAYMCARE PAYMCAID PAYWKCMP PAYSELF PAYNOCHG PAYOTH PAYDK PAYTYPE /*USETOBAC*/ /*PRIMCARE*/ /*TIMEMD*/ /*SPECR*/ /*MDDO*/ /*SOLO*/ /*PRMCARER*/ /*PRMAIDR PRPRVTR PRPATR PROTHR PRMANR REVCAPR REVCASER REVOTHR*/ script relRFV relDIAG
+  //Fix the variables listed here
+  keep year VMONTH DIAG1 DIAG2 DIAG3 AGE SEX PAYPRIV PAYMCARE PAYMCAID PAYWKCMP PAYSELF PAYNOCHG PAYOTH PAYDK PAYTYPE /*USETOBAC*/ /*PRIMCARE*/ /*TIMEMD*/ /*SPECR*/ /*MDDO*/ /*SOLO*/ /*PRMCARER*/ /*PRMAIDR PRPRVTR PRPATR PROTHR PRMANR REVCAPR REVCASER REVOTHR*/ script relRFV relDIAG
   save "$output/cefotetan/diag/`year'", replace
 }
 
@@ -144,7 +145,6 @@ drop VMONTH
 
 gen firstgenyear = 2009
 gen firstgenmonth = 12
-//NEED FIRSTGENYEAR FIRSTGENMONTH
 gen obsmonth = (year - 2000)*12 + month
 gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
 gen monthsAfterGen = obsmonth - genmonth

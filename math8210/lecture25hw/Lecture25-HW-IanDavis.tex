@@ -1,0 +1,264 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Lecture25HW},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Lecture 25 Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Lecture 25 Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Homework from Lecture 25}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\begin{exercise}
+  Let $P_n$ be the set of all polynomials of degree p where $0 \leq p \leq n$ on $[0,1]$.
+  \begin{itemize}
+    \item Prove the inner product space $C([0,1])$ with norm $\|\cdot\|_2$ has the direct sum decomposition $C([0,1]) = P_n \oplus P_n^\perp$
+    \begin{solution}
+        We know that $P_n$ is a finite dimensional normed linear space so it must be complete. $P_n$'s completeness allows us to use the First Projection Theorem and Direct Sum Decompositions which guarantees, because $C([0,1])$ is a nonempty inner product space, that $C([0,1]) = P_n \oplus P_n^\perp$
+    \end{solution}
+    \item Prove $P_n$ is complete and closed with respect to the norm $\|\cdot\|_2$
+    \begin{solution}
+        As stated before, $P_n$ with norm $\|\cdot\|_2$ is a normed linear space as it clearly satisfies the following conditions for any $x \in P_n$
+        \begin{enumerate}
+            \item $\|x\|_2 \geq 0$
+            \item $\|\alpha x\|_2 = \alpha\|x\|_2$
+            \item $\|x\|_2 = 0 \iff x = 0$
+            \item $\|x + y\|_2 = \|x\|_2 + \|y\|_2$
+        \end{enumerate}
+        This tells us that $P_n$ is a finite dimensional normed linear space which implies it is complete and closed under its norm. 
+    \end{solution}
+  \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $Y$ be the span of the functions $1, t$, and $t^2$ on $[0,1]$ in $C([0,1])$
+    \begin{itemize}
+        \item Use GSO to find an orthanormal basis for $Y$
+        \begin{solution}
+            In order to solve above, we use the program GrahamSchmidtTwo.m and get the following output
+\myfancyverbatim{Orthanormal Basis for Y}
+\begin{lstlisting}
+% First we define the functions and store them in the cell structure
+>> f = @(t) 1;
+>> g = @(t) t;
+>> h = @(t) t^2;
+
+>> F = cell(3,1);
+>> F{1} = f;
+>> F{2} = g;
+>> F{3} = h;
+
+% We then call the GSO code and get the following output
+>> G = GrahamSchmidtThree(F,0,1,500);
+d = 
+
+1.0000e+00   1.2030e-15  -1.9177e-15
+1.2030e-15   1.0000e+00  -5.2111e-15
+-1.9177e-15  -5.2111e-15   1.0000e+00
+
+G =
+{
+    [1,1] =
+@(x) f{1} (x) / nf
+
+    [2,1] =
+@(x) f{2} (x) / nf
+
+    [3,1] =
+@(x) f{3} (x) / nf
+
+}
+\end{lstlisting}
+\lstset{fancyvrb=false}
+        \end{solution}
+        \item Find the unique $a_2$, $b_2$, and $c_2$ so that
+        \begin{eqnarray*}
+            \text{inf}_{\mathbf{y} \in Y}\|sin(t) - a - bt - ct^2\|_2 = \|sin(t) - a_2 - b_2t - c_2t^2\|_2
+        \end{eqnarray*}
+        \begin{solution}
+            Again, we use matlab but use the progam GrahamSchmidtThree.m the following way.\\
+\myfancyverbatim{Finding unique $a_2$, $b_2$, and $c_2$}
+\begin{lstlisting}
+% Now we define the function we want to approximate and set up the appropriate inner products
+>> z = @t sin(t)
+>> a1 = innerproduct(G{1},z,0,1,500)
+    a1 = 0.45886
+>> a2 = innerproduct(G{2},z,0,1,500)
+    a2 = 0.24719
+>> a3 = innerproduct(G{3},z,0,1,500)
+    a3 = -0.017518
+
+% Finally, we set up and solve the polynomial
+>> p = @(t) a1*G{1}(t)+a2*G{2}(t)+a3*G{3}(t)
+    @(t) a1 * G {1} (t) + a2 * G {2} (t) + a3 * G {3} (t)
+
+>> p(0,1)
+    ans = -0.0073773
+\end{lstlisting}
+        \end{solution}
+        \item How does this solution compare to the Taylor Series solution
+        \begin{solution}
+        We use Matlab again in the following way
+\myfancyverbatim{Orthanormal Basis for Y}
+\begin{lstlisting}
+>> q = @(base,t) sin(base)+cos(base)*(t-base)-sin(base)*power(t-base,2);
+>> q(0,1);
+    ans = 1
+\end{lstlisting}
+            The inaccuracy is to be expected due to the relatively (in terms of Taylor Series Approximations) large domain we are working with.
+        \end{solution}
+        \item What is the orthogonal complement to Y
+        \begin{solution}
+            Using the functions defined above, the orthogonal complement, $pPerp$, can be found through
+            \begin{eqnarray*}
+                h(t) &=& pPerp(t) + p(t)\\
+                \implies pPerp(t) &=& h(t) - p(t) 
+            \end{eqnarray*}
+        \end{solution}
+        \item Find the decomposition $sin(t) = \mathbf{u} + \mathbf{v}$ with $\mathbf{u} \in Y$ and $\mathbf{v} \in Y^\perp$
+        \begin{solution}
+        Manipulating the equation above, we get
+        \begin{eqnarray*}
+            sin(t) = p(t) = h(t) - pPerp(t)
+        \end{eqnarray*}
+        \end{solution}
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $S = \{1,t,...,t^n,...\}$. This is a subset of $C([0,1])$ with the usual inner product $<\cdot,\cdot>$.
+    \begin{itemize}
+        \item For any continuous $\mathbf{y}$ on $[0,1]$, prove there is a sequence of polynomials $\mathbf{(P_n)}$ which converge uniformly to $\textbf{y}$.
+        \begin{solution}
+            The Weierstrass Approximation Theorem tells us that, because $\mathbf{y}$ is continuous on $[0,1]$, for any $\varepsilon > 0$, $\; \exists \; p \ni$
+            \begin{eqnarray*}
+                |f(t) - p(t)| &<& \varepsilon \forall t \in [0,1]\\
+                \implies \|p - f\|_\infty &<& \varepsilon\\
+                \implies p &\rightarrow& f \text{uniformly}
+            \end{eqnarray*} 
+            So, $\mathbf{P_n} \rightarrow \mathbf{p} \implies \mathbf{P_n} \rightarrow \mathbf{y}$
+        \end{solution}
+        \item If $<y,t^i> = 0$ for all $i$, prove $<\mathbf{y},\mathbf{Q}> = 0$ for all polynomials.
+        \begin{solution}
+            $<y,t^i> = 0$ implies that y is orthogonal to $t^i$ for each $i$. This gives us
+            \begin{eqnarray*}
+                \int_a^b\:\mathbf{y}\mathbf{P_n}dt = {0} \implies \int_a^b\:\mathbf{y}\mathbf{Q}dt = \mathbf{0} \implies <\mathbf{y},\mathbf{Q}> = 0
+            \end{eqnarray*}
+        \end{solution}
+        \item prove $\mathbf{P_n}$ converges in $\|\cdot\|_2$
+        \begin{solution}
+            Because $P_n$ is dense in $C([0,1])$, $\forall \varepsilon > 0 \; \exists \; p \text{and} n \ni n > N \implies$
+            \begin{eqnarray*}
+                |P_n - p| < \varepsilon \implies \|P_n - p \|_2 < \varepsilon
+            \end{eqnarray*}
+            so $\mathbf{P_n}$ converges in $\|\cdot\|_2$
+        \end{solution}
+        \item Now prove $\mathbf{y} = \mathbf{0}$, this shows the only continuous function perpendicular to all powers of $t$ is the zero function
+        \begin{solution}
+            Because we know that $<y,t^i> = 0$ for all $i$ and $y \in \mathbf{y}$, we get
+            \begin{eqnarray*}
+                \int_a^b\:ytdt = \int_a^b\:yt^2dt = \int_a^b\:yt^3dt \implies y = 0 \implies \mathbf{y} = \mathbf{0}
+            \end{eqnarray*}
+        \end{solution}
+    \end{itemize}
+\end{exercise}
+
+\end{document}

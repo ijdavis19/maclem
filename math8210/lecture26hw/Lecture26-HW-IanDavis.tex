@@ -1,0 +1,132 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Lecture26HW},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Lecture 26 Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Lecture 26 Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Homework from Lecture 26}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\begin{exercise}
+    Let $S = \{1,t,...,t^n,...\}.$ This is a subset of $C([0,1])$ with the usual inner product $<\cdot,\cdot>$.
+    \begin{itemize}
+        \item Assume $<y,t^i> = 0$ for all $i$ for $\textbf{y} \in L_2([0,1])$
+        \item For any continuous \textbf{y} on [0,1], we can prove there is a sequence of polynomials $\mathbf{(P_n)}$ which converges uniformly to \textbf{y}. We all know for $\varepsilon > 0$ there is a continuous function $\mathbf{z_\varepsilon}$ so that $\|\mathbf{y} - \mathbf{z_\varepsilon}\|_2 < \varepsilon$
+        \item Prove $<y,y> = 0$ implies $\mathbf{y = 0}$, this shows the only $L_2([0,1])$ function perpendicular to all powers of $t$ is the zero function.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $H$ be an infinite dimensional Hilbert Space and $T$ be a bounded linear operator from $H$ to $H$. Let $\mathbf{E} = (e_n)$, and orthonormal sequence satisfying $\mathbf{E^\perp = 0}$
+    \begin{itemize}
+        \item Prove given $\mathbf{x} \in H$ there is a sequence $\mathbf{(y_n)}$ with each $\mathbf{(y_n)} \in \text{span}\mathbf{(E)}$ so that $\mathbf{y_n} \rightarrow \mathbf{x}$ in the norm of $H$.
+        \item Prove $\overline{\mathbf{(E_i)}}$ is not compact in $H$
+        \item Prove $\overline{T(\mathbf{(E_i)})}$ is not compact in H.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Use Bessel's inequality to show that if $\mathbf{(E_n)}$ is an orthonormal sequence in the inner product space $C([a,b])$ with the usual inner product $<\cdot,\cdot>$, then $F((\mathbf{E_n}),\mathbf{h},[a,b]) \rightarrow 0$.
+\end{exercise}
+
+\end{document}

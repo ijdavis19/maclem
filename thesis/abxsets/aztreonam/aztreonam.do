@@ -23,13 +23,7 @@ local relMax = 0
 ma list
 qui forval year = 2006/2016 {
 	use "$dataraw/namcs`year'-stata.dta", replace
-	gen script=0
-	if `year' >= 2006 & `year' < 2012{
-		forval k = 1/8{
-			replace script = 1 if DRUGID`k' == "`geneq'"
-		}
-	}
-	else if `year' == 2012 | `year' == 2013{
+	gen script=0//NEED FIRSTGENYEAR FIRSTGENMONTHr' == 2012 | `year' == 2013{
 		forval k = 1/9{
 			replace script = 1 if DRUGID`k' == "`geneq'"
 		}
@@ -142,7 +136,6 @@ drop VMONTH
 
 gen firstgenyear = 20009
 gen firstgenmonth = 11
-//NEED FIRSTGENYEAR FIRSTGENMONTH
 gen obsmonth = (year - 2000)*12 + month
 gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
 gen monthsAfterGen = obsmonth - genmonth

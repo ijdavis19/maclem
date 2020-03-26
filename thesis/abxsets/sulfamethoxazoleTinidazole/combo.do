@@ -144,7 +144,6 @@ drop VMONTH
 
 gen firstgenyear = 2012
 gen firstgenmonth = 7 //Tinidazolid is earlier in month 4
-//NEED FIRSTGENYEAR FIRSTGENMONTH
 gen obsmonth = (year - 2000)*12 + month
 gen genmonth = (firstgenyear - 2000)*12 + firstgenmonth
 gen monthsAfterGen = obsmonth - genmonth
