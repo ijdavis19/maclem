@@ -26,16 +26,57 @@ forval d= 1/3 {
         preserve
         drop if n != `i'
         local x = `d'*`i'
-        local initialDiagIndicator`x' = DIAG`d'
-        local indicatorNumber = `indicatorNumber' + 1
+        local initialDiagnosisIndicator`x' = DIAG`d'
+        local initialIndicatorNumber = `initialIndicatorNumber' + 1
         restore 
     }
 }
 ma list
-display "`indicatorNumber'"
+display "`initialIndicatorNumber'"
 // Remove duplicates and null values
-forval k = 1/`indicatorNumber'{
-    
+local finalIndicatorNumber = 1
+local finalDiagnosisIndicator1  = "`initialDiagnosisIndicator1'"
+forval k = 1/`initialIndicatorNumber' {
+    local repeats = 0
+    forval l = 1/`finalIndicatorNumber' {
+        if "`initialDiagnosisIndicator`k''" == "`initialDiagnosisIndicator`l''" {
+            local repeats = `repeats' + 1
+        }
+    }
+    if `repeats' == 0 {
+        local `finalIndicatorNumber' = `finalIndicatorNumber' + 1
+        local finalDiagnosisIndicator`finalIndicatorNumber' = "`initialDiagnosisIndicator`k''"
+    }
 }
 
 // Set up indicators
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+local comp1 = "500"
+local comp2 = "string"
+local comp3 = "null"
+forval x = 1/10 {
+    if "`comp`x''" == "500" {
+        display "Here is the numerical affirmative"
+    }
+    else if "`comp`x''" == "string" {
+        display "Here is the alphabetical affirmative"
+        continue, break
+    }
+    else {
+        display "here is the negative"
+    }
+}
+*/
