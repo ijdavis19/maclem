@@ -1,0 +1,143 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Lecture29HW},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Lecture 29 Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Lecture 29 Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Homework from Lecture 29}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+\begin{exercise}
+Let $\mathbf{f}$ be in $(R^n)^\prime$ which we know to be a Hilbert Space and assume $\mathbf{E}$ is a basis of $R^n$. Let the vector $\mathbf{z_f}$ be defined by $(z_f)_i = f(\mathbf{E_i})$. Prove for any $\mathbf{x} \in R^n\; f(\mathbf{x}) = <\mathbf{x},\mathbf{z_f}> = \sum_{i=1}^n\:x_i(z_f)_i$. Also prove $z_f$ is unique with $\|\mathbf{z_f}\| = \|f\|_{op}$. Note we can prove Riesz's Theorem easier here.
+\begin{itemize}
+  \item Let $T: (R^n)^\prime \rightarrow R^n$ be defined by $T(\mathbf{f})$. Prove T is 1 - 1, onto and isometric.
+  \item Prove $R^n$ is reflexive showing all the details of the mappings involved.
+\end{itemize}
+\end{exercise}
+\begin{solution}
+  Because $\mathbf{E_i}$ is a basis of $R^n$ and we are dealing with some $\mathbf{x} \in R^n$, we get
+  \begin{eqnarray*}
+    x &=& \sum_{i=1}^\infty\:\alpha_iE_i\\
+    &\implies& f(x) = f(\sum_{i=1}^\infty\:\alpha_iE_i)\\
+    &=& \sum_{i=1}^\infty\:\alpha_if(E_i)\\
+    &=& \sum_{i=1}^\infty\:x_i(z_f)_i\\
+    &=& <\mathbf{x},\mathbf{z_f}>
+  \end{eqnarray*}
+  For the question of if $z_f$ is unique, if $f(\mathbf{x}) = <\mathbf{x},\mathbf{z}> = <\mathbf{x},\mathbf{z_f}> \implies <\mathbf{x},\mathbf{z} - \mathbf{z_f}> = 0 \; \forall \; x$. Specifically, we care about the case of $ = \mathbf{z} - \mathbf{z_f} \implies \|\mathbf{z} - \mathbf{z_f}\|^2 = 0 \implies \mathbf{z} = \mathbf{z_f}$\\
+  \\
+  For showing $\|\mathbf{z_f}\| = \|f\|_{op}$, recall $f(\mathbf{x}) = <\mathbf{x},\mathbf{z_f}> \; \forall \; x \implies f(\mathbf{z_f}) = \|\mathbf{z_f}\|^2 \implies \frac{f(\mathbf{z_f})}{\|\mathbf{z_f}\|} = \|\mathbf{z_f}\|$. From here, we get $\|f\|_{op} \geq \|\mathbf{z_f}\|$ Now, we only need to reverse inequality to prove the equality. To do so, consider
+  \begin{eqnarray*}
+    \|f(\mathbf{x})\| &=& |<\mathbf{x},\mathbf{z_f}>|\\
+    &\leq& \|\mathbf{x}\|\;\|\mathbf{z_f}\|\\
+    &\implies& \|f\|_{op} = \sup_{\mathbf{x \neq 0}}\frac{|f(\mathbf{x})}{\|\mathbf{x}\|}\\
+    &\leq& \|\mathbf{z_f}\|
+  \end{eqnarray*}
+  and combining these two inequalities we get $\|\mathbf{z_f}\| = \|f\|_{op}$\\
+  \\
+  To show $T: (R^n)^\prime \rightarrow R^n$ is 1 - 1, onto, and isometric, recall that we already know $\|T(f)\| = \|\mathbf{z_f}\| = \|f\|_{op}$ so to is a norm isometry and the mapping is 1 - 1. Extending this further, we get $f(\mathbf{x}) = <\mathbf{x},\mathbf{z_f}> \implies (\alpha f)(\mathbf{x}) = \alpha(f(\mathbf{x})) = \alpha <\mathbf{x},\mathbf{z_f} = <\mathbf{x},\bar{alpha}\mathbf{z_f}$ which tells us that $T(\alpha f) = <\mathbf{x},\bar{\alpha}\mathbf{z_f}>$ and $\mathbf{z_{\alpha f}} = \bar{\alpha}\mathbf{z_f}$. This arguement can be extended to any linear functional and it is also easy to see T is additive because $(T(f + g))(x) = <\mathbf{x},\mathbf{z_f}+\mathbf{z_g}>$. Lastly
+  \begin{eqnarray*}
+    (T(\alpha f + \beta g))(\mathbf{x}) &=& \mathbf{x},\mathbf{z_\alpha f}+\mathbf{z_\beta g}>\\
+    &=& \alpha <\mathbf{x},\mathbf{z_f}> + \beta <\mathbf{z_f}, \mathbf{z_g}>\\
+    &=& (\alpha T(f) + \beta T(g))(\mathbf{x})
+  \end{eqnarray*}
+  shows us that T is linear. Because any $z \in R^n$ defines the bounded linear functional $f(\mathbf{x}) = <\mathbf{x}, \mathbf{z}>$ and the choice of element assigned to f has to be unique, it must be that $T(f) = \mathbf{z}$ and T is onto. By extention, this also tells us that $R^n$ is reflexive due to the existence of the mapping T taking elements from the original space to the double duel which is linear, 1 - 1, onto, and norm preserving.
+\end{solution}
+\end{document}

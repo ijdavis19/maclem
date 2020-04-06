@@ -1,0 +1,268 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet9},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{pdfpages}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+\usepackage{enumitem}
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip o text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Problem Set Nine, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Problem Set Nine}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set 9.}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+1. \textbf{Solow Simulation.} Consider the Solowmodel with the following parameter values: $s = 0.25, \; \delta = 0.05, \; n = 0.2, \; g = 0.01, \; A_0 = 1, \; L_0 = 5, \; K_0 = 10, \;$ and $\alpha = \frac{1}{3}$
+\begin{enumerate}[label=\alph*]
+  \item Compute the steady state values of GDP and capital stock (aggregate, per worker, and per effective worker).
+  \begin{solution}
+    Aggregate Capital Stock: 55.9017\\
+    Aggregate GDP: 11.1803\\
+    Capital Stock per Worker: 1\\
+    GDP per Worker: 1\\
+    Capital Stock per Effective Worker: .93209\\
+    GDP per Effective Worker: .976831\\
+  \end{solution}
+  \item Use software to simulate and plot the paths of GDP and the capital stock (aggregate, per worker, and per effective worker).
+  \begin{solution}
+    Used \textbf{solowGrowthDefault.cpp}
+  \end{solution}
+  \item Create a plot or chart that shows how quickly the economy is approaching the steady state.
+  \begin{solution}
+    It took 63 time periods for $k_{t+1} - k_t < .01$
+  \end{solution}
+  \item Redo all of the above assuming $\alpha = 0$ and $\alpha = 0.8$
+  \begin{solution}
+    For $\alpha = .8$,\\
+    Aggregate Capital Stock: 15625\\
+    Aggregate GDP: 3125\\
+    Capital Stock per Worker: 1\\
+    GDP per Worker: 1\\
+    Capital Stock per Effective Worker: .791031\\
+    GDP per Effective Worker: .826001\\
+    Time Periods: 55
+  \end{solution}
+\end{enumerate}
+
+2. \textbf{A Tale of Two Economies.} The two neighboring countries of Sto Lat and Quirm were identical in every respect, expect the language they spoke. In particular, thei "Solow Parameters" (investment rate, population size, etc.) were identical (assuming $n = g = 0$). As a consequence, they enjoyed the same moderate standard of living.
+\begin{enumerate}[label=\alph*]
+  \item At some point a new scientific discovery was made in Sto Lat enabling them to produce twice as much output as before given the same inputs. Because the discovery is described in a scientific journal written in Sto Latian, no one in Quirm learned about it. Which parameter (if any) will have changed in Sto Lat after the discovery (and how)?
+  \begin{solution}
+    Their productivity, $\overline{A}$ will double to $2\overline{A}$
+  \end{solution}
+  \item Use the solow diagram to show the effect of the discovery on the eocnomy of Sto Lat. Explain how the capital stock $K$ will respond to the discovery both immediately and in the long run. Which economy will have a higher GDP per capita in the long run?
+  \begin{solution}
+    Recall
+    \begin{eqnarray*}
+      Y_t = K_t^\alpha(\overline{A}\overline{L})^{1- \alpha}\\
+      Y* = \overline{AL}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha}\\
+      K_{t+1} = sK_t^\alpha(\overline{AL})^{1-\alpha} + (1 - \delta)K_t\\
+      K* = \overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha}
+    \end{eqnarray*}
+    So after the productivity increase we get
+    \begin{eqnarray*}
+      Y_t^\prime = K_t^\alpha(2\overline{A}\overline{L})^{1- \alpha}\\
+      Y*^\prime = 2\overline{AL}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha}\\
+      K_{t+1}^\prime = sK_t^\alpha(2\overline{AL})^{1 -\alpha} + (1 - \delta)K_t\\
+      K^{*\prime} = 2\overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha}
+    \end{eqnarray*}
+  \end{solution}
+  \item The two countries are very friendly and Sto Lat wants to help its poorer neighbor. The first attempted aid program is a transfer of capital. A large number of machines from Sto Lat are moved to Quirm. Use the Solow diagram to analyze the immediate and long run impact of this policy on the two economies. Does it work?
+  \begin{solution}
+    Recalling our equation to get $Y*$, we note that $K$ is not actually a variable. Hence, this shifting around of capital will only affect the short term productivity of the communities but not effect either countries steady states. Time horizons will change though. 
+  \end{solution}
+  \item A new proposal is considered whereby a large number of people will be resettled from Sto Lat to Quirm. Since Sto Lat is observed to have a lot more capital per worker than Quirm, they will bring tools and machines with them when they move to Quirm. In fact, it is proposed that one quarter of the population of Sto Lat migrate to Quirm and take exactly one quarter of the capital stock with them. Use the separate Solow diagrams for both countries to show the effect of this policy on the equilibrium total capital stock in the long run $(K*)$ [Just show the old and new steady states].
+  \begin{solution}
+    The new steady state for Sto Lat will be
+    \begin{eqnarray*}
+      K^*_{S} &=& 2\overline{A}*.75\overline{L}(\frac{s}{\delta})^\frac{1}{1 - \alpha}\\
+      &=& 1.25\overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha}\\
+      &<& 2\overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha}
+    \end{eqnarray*}
+    And
+    \begin{eqnarray*}
+      K^*_{Q} &=& \overline{A}*1.25\overline{L}(\frac{s}{\delta})^\frac{1}{1 - \alpha}\\
+      &=& 1.25\overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha}\\
+      &>& \overline{AL}(\frac{s}{\delta})^\frac{1}{1 - \alpha} 
+    \end{eqnarray*}
+  \end{solution}
+  \item For both countries, what will be the effect of this policy on the equilibrium capital per worker in the long run $(k*)$?
+  \begin{solution}
+    We know that
+    \begin{eqnarray*}
+      K^*_S &=& K^*_Q = K^*\\
+      L_S &<& L_Q 
+    \end{eqnarray*}
+    so
+    \begin{eqnarray*}
+      k^*_S = \frac{K^*}{L_S} > \frac{K^*}{L_Q} = k^*_Q
+    \end{eqnarray*}
+  \end{solution}
+  \item Analyze the transition. That is, think about what happens immediately after the population move. How will capital change? Think about what capital per capita was in each country before and how it changed after. Use separate Solow diagrams for each country to show the effect of the policy on the equilibrium total capital stock in the long run $(K*)$ and also how it changes immediately after the move and how it adjusts to the new long run equilibrium.
+  \begin{solution}
+    Because each individual takes one unit of capital with them, capital per worker will not change in the short term. In the long term, however, we know Sto Latin's capital per worker will decrease while Q's will increase.    
+  \end{solution}
+  \item Draw time paths of GDP per capita for each economy from before the policy is implemented to after things settle down into the steady state again.
+\end{enumerate}
+
+\textbf{Earthquakes and Investment.} Imagine that upon completion of your Ph.D. in economics, you have been hired as an adviser to the president of the small island-nation of Incrementia. It is a small, isolated (and thus largely closed) economy. Aggregate output is produced using labor and capital according to
+\begin{eqnarray*}
+  Y_t = K_t^\alpha(A_tL_t)^{1-\alpha}
+\end{eqnarray*}
+where $\alpha < 1$ and $A_t$ measures the productivity of labor. Population is constant and fully employed. Capital accumulates according to
+\begin{eqnarray*}
+  \Delta K_{t+1} = I_t - \delta K_t
+\end{eqnarray*}
+where $I_t$ represents aggregate investment and $\delta$ is a constant depreciation rate. The government collects a constant lump-sum tax and runs a balanced budget (i.e. G = T).\\
+A quick glance at the time series data reveals that aggregate savings is a roughly constant fraction of aggregate pre-tax income (i.e. $S_t = \overline{s}Y_t$), where $\overline{s}$ is the savings rate. Thee other key feature of the data is that GDP per capita grew rapidly in the 1970's and 1980's, slowed down in the 1990's and 2000's, and has been virtually stagnant in the last decade or so. Ending the stagnation is part of the president's main goals and someting you have to advise her on.
+\begin{enumerate}[label=\alph*]
+  \item Write down the national income accounting identity for this economy
+  \begin{eqnarray*}
+      Y_t = C_t + I_t + G_t
+  \end{eqnarray*}
+  \item What macro model would you use to understand the growth of Incrementia and why?
+  \begin{solution}
+    If we look again at the functions given to us, we can deduce the following
+    \begin{eqnarray*}
+      \Delta K_{t+1} &=& I_t - \delta K_t\\
+      \implies K_{t+1} &=& K_t + I_t - \delta K_t\\
+      &=& K_t + \bar{s}Y_t - \delta K_t\\
+      &=& K_t + \bar{s}K_t^\alpha(A_tL_t)^{1-\alpha} - \delta K_t\\
+      &=& \bar{s}K_t^\alpha(\bar{A}\bar{L})^{1 - \alpha} + (1 - \delta)K_t
+    \end{eqnarray*}
+    Which is exactly the Solow growth model. Also, considering we want to look at multiple time periods and are interested in the parameters that are necessary for the Solow Growth model, we can conclude that Solow would be the right model to use. 
+  \end{solution}
+  \item How does this model explain the long run evolution of GDP per capita in Incrementia? (Show this by demonstrating the long run equilibrium of the model and its transitional dynamics. Use equations and/or graphs).
+  \begin{solution}
+    We know that, in the long run, capital stock appraches $K^* = \bar{A}\bar{L}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha}$ and GDP per capital appraches $y^* = \bar{A}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha}$. This means that, barring now change in the parameters, GDP per capita growth will slow as it reaches it steady state and eventually stop completely.
+  \end{solution} 
+  \item The president's team suggests a policy of boosting the savings rate $\overline{s}$ would help in raising the economy's growth rate. Do you agree? Explain.
+  \begin{solution}
+    From above, we can conclude that
+    \begin{eqnarray*}
+      \frac{\partial \bar{s}}{\partial y^*} > 0
+    \end{eqnarray*}
+    So inceasing the savings rate will raise the steady state of GPD per capita which will increase growth. 
+  \end{solution}
+  \item Consider another proposal. The government could increase the lump sum tax $T$ and use the proceeds to improve the country's neglected infrastructure (fix pot holes, etc.). The engineers estimate that such improvements in infrastructure would permanently decrease the rate of depreciation to $\delta^\prime < \delta$. Assuming this is true, evaluate the policy's impact (both immediate and long run) on the economy. 
+  \begin{solution}
+    Again, because
+    \begin{eqnarray*}
+      \frac{\partial \bar{\delta}}{\partial y^*} > 0
+    \end{eqnarray*}
+    there is reason to believe the plan will work. However, we must consider the fact that $\bar{s}$ is not a funciton of taxes so know for sure that the plan would not offset itself. 
+  \end{solution}
+\end{enumerate}
+Redo question 3 assuming the time series data reveal that aggregate saving is a roughly constant fraction of disposable income (i.e. $S_t = \overline{s}(Y_t - T)$), where $\overline{s}$ is the savings rate. 
+\begin{solution}
+  In this case, we have to reconfigure out equation for $K_{t+1}$ giving us
+  \begin{eqnarray*}
+    K_{t+1} = \bar{s}K_t^\alpha(\bar{A}\bat{L})^{1 - \alpha} + (1 - \delta)K_t - \bar{s}T
+  \end{eqnarray*}
+\end{solution}
+
+%\newpage
+%\clearpage
+%\noindent \textbf{Graph 2.1}
+%\begin{figure}[h]
+%  \includegraphics{graph21.png}
+%  \end{figure}
+
+\end{document}

@@ -1,0 +1,190 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Lecture28HW},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Lecture 28 Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Lecture 28 Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Homework from Lecture 28}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+\begin{exercise}
+    $C([a,b])$ is a subspace of $B([a,b])$. Show $p(x) = (b - a)\|\mathbf{x}\|_\infty$ is a subadditive and positive homogeneous functional on $B([a,b])$. Prove the linear functional $f(\mathbf{x}) = \int_a^b\:x(t)dt$ on $C([a,b])$ has an extension $\widetilde{f}$ to $B([a,b])$ satisfying $\widetilde{f}|_{C([a,b])} = f$ with $\widetilde{f}(\mathbf{x}) \leq p(\mathbf{x}) \; \forall \; \mathbf{x} \in B([a,b])$.
+    \begin{solution}
+      Because $\|\cdot\|_\infty$ is a norm and satifies the four norm conditions, we know the following
+      \begin{enumerate}
+        \item $p(x + y) = (b - a)\|x + y\|_\infty \leq (b - a)(\|x\|_\infty + \|y\|_\infty)$ by $\Delta$ inequality
+        \item $p(\alpha x) = (b - a)\|\alpha x\|_\infty = (b - a)|\alpha|\|x\|_\infty$
+      \end{enumerate}
+      With these two conditions satisfied we can conclude $p(x)$ is in fact a subadditive positive homogeneous functional on $B([a,b])$. Now, for $f(\mathbf{x}) = \int_a^b\:x(t)dt$, we know that
+      \begin{eqnarray*}
+        x(t) &\leq& \sup_{t \in [a,b]}x(t) = \|x\|_\infty\\
+        &\implies& f(\mathbf{x}) = \int_a^b\:x(t)dt \leq \int_a^b\:sup_{t \in [a,b]}x(t)dt = (b - a)\|x\|_\infty = p(x)
+      \end{eqnarray*}
+      Then, we know by Hahn - Banach that there is an extension of $f$, $\widetilde{f}$, such that $\widetilde{f}|_{C([a,b])} = f$ with $\widetilde{f}(\mathbf{x}) \leq p(\mathbf{x}) \; \forall \; \mathbf{x} \in B([a,b])$
+    \end{solution}
+\end{exercise}
+
+\begin{exercise}
+  If $x \in R^n$, prove $<y,x> = 0 \; \forall \; y \in R^n \implies x = 0$
+  \begin{solution}
+    Consider $y_i \neq y_j \in R^n$, we know
+    \begin{eqnarray*}
+      0 &=& <x,y_i> = <x,y_j>\\
+      &\implies& <x,y_i> = <x,y_j>\\
+      &\implies& <x,y_i> + <y_j,y_i> = <x,y_j> + <y_j,y_i>\\
+      &\implies& <x \oplus y_j,y_i> = <x \oplus y_i,y_j>\\
+      &\implies& x = 0
+    \end{eqnarray*}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}
+  Let $\mathbf{C}$ denote the vector subspace of $\ell^\infty$ that consists of all sequences that converge. Define the functional $L: \mathbf{C} \rightarrow R$ by $L(x) = lim x_j$ where $x = (x_j)$ is any object in $\mathbf{C}$. Furtherm define $\rho: \ell^\infty \rightarrow R$ by $\rho(x) = \overline{lim}x_j$ when $x = (x_j)$ is any object in $\ell^\infty$. Let's use the sup norm on both $\mathbf{C}$ and $\ell^\infty$.
+  \begin{enumerate}
+    \item Prove that L is a continuos linear functional
+    \begin{solution}
+      For $L$, Consider
+      \begin{enumerate}
+        \item
+        \begin{eqnarray*}
+          x &\in& \ell^\infty\\
+          &\implies& \sum_{i = 1}^\infty\:x_i < \infty\\
+          &\implies& \lim_{n\rightarrow\infty}x_j = 0 < \infty\\
+          &\implies& dom(L) = \ell^\infty
+        \end{eqnarray*}
+        \item
+        \begin{eqnarray*}
+          L(\alpha x + \beta y) &=& \lim_{n \rightarrow \infty}(\alpha x_j + \beta y_j)\\
+          &=& \alpha\lim_{n \rightarrow \infty}x_j + \beta \lim_{n \rightarrow \infty}y_j\\
+          &=& \alpha L(x) + \beta L(y)
+        \end{eqnarray*}
+      \end{enumerate}
+      And we can conclude that $L$ is a continuous linear functional.
+    \end{solution}
+    \item Prove that $\rho$ is sublinear and $L(x) \leq \rho(x)$ on $\mathbf{C}$
+    \begin{solution}
+      Becuase $\rho(x)$ represents the lim sup or $\|\cdot\|_\infty$ so we know $\rho(\alpha x) = \alpha \rho(x) \; \forall \; \alpha > 0$ and $\rho(x + y) \leq \rho(x) + \rho(y)$ by requirements of a norm. This tells us that $\rho$ is sublinear. Next, we know that $\overline{lim}x_j \geq x_i$ for all elements $x_i \in x$ so we can conclude $\overline{lim}x_j \geq \lim x_i$ and $\rho(x) \geq L(x)$
+    \end{solution}
+    \item Show there exists a linear extension of $L, L^*$ to all of $\ell^\infty$
+    \begin{solution}
+      We have shown that $\rho(x)$ is a subadditive positive homogeneous function functional on $\mathbf{C}$ and $L$ is a linear functional on $\mathbf{C}$ with $L(x) \leq \rho(x) \; \forall x \in \mathbf{C}$. Then, by Hahn - Banach, we know there is an extension $L^* \leq \rho(x)$ on all of $\ell^\infty$
+    \end{solution}
+    \item Show for all $x \in \ell^\infty$, that
+    \begin{eqnarray*}
+      \underline{lim}x_j \leq L^*(x) \leq \overline{lim}x_j
+    \end{eqnarray*}
+      \begin{solution}
+        $L^*(x) \leq \rho(x) \implies L^*(x) \leq \overline{lim}x_j$ and we know that $\underline{lim}x_j$ is the inf lim of $x_j$ so we can conclude
+        \begin{eqnarray*}
+        \underline{lim}x_j \leq L^*(x) \leq \overline{lim}x_j
+      \end{eqnarray*} 
+    \end{solution}
+    \item Show that if $x \geq 0$, then $L^*(x) \geq 0$. This says L is a positive linear functional
+    \begin{solution}
+      $x \geq 0 \implies x_j \geq 0 \; \forall \; j \in [1,\infty)$ Hence, $\lim_{n\rightarrow\infty}x_j \geq 0$ so $L^* \geq 0$
+    \end{solution}
+    \item Show that $L^*$ is a continuous linear functional with operator norm 1
+    \begin{solution}
+      Because $\ell^\infty$ is a normed linear space and we have shown that $L^*$ is a continuous linear functional, we can conclude that, by the bounded linear functional theorem, that $\|\widetilde{f}\|_{op} = 1$
+    \end{solution}
+  \end{enumerate}
+\end{exercise}
+\end{document}

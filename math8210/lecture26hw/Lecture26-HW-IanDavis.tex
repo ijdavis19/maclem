@@ -113,6 +113,16 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
         \item Assume $<y,t^i> = 0$ for all $i$ for $\textbf{y} \in L_2([0,1])$
         \item For any continuous \textbf{y} on [0,1], we can prove there is a sequence of polynomials $\mathbf{(P_n)}$ which converges uniformly to \textbf{y}. We also know for $\varepsilon > 0$ there is a continuous function $\mathbf{z_\varepsilon}$ so that $\|\mathbf{y} - \mathbf{z_\varepsilon}\|_2 < \varepsilon$
         \item Prove $<y,y> = 0$ implies $\mathbf{y = 0}$, this shows the only $L_2([0,1])$ function perpendicular to all powers of $t$ is the zero function.
+            \begin{solution}
+                Because we know that $P_n \rightarrow y$ uniformly for all $y$ when $n$ is sufficiently large, then
+                \begin{eqnarray*}
+                    <y,y> &=& 0\\
+                    \implies <y,P_n> &=& 0\\
+                    \implies <y,\alpha_0 + \alpha_1t + \alpha_2t^2 +...+ \alpha_nt^n> &=& 0\\
+                    \implies \alpha_0<y,1> + \alpha_1<y,t> + \alpha_2<y,t^2> +...+ \alpha_n<y,t^n> &=& 0\\
+                    \implies y &=& 0
+                \end{eqnarray*}
+            \end{solution}
     \end{itemize}
 \end{exercise}
 
@@ -120,12 +130,21 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
     Let $H$ be an infinite dimensional Hilbert Space and $T$ be a bounded linear operator from $H$ to $H$. Let $\mathbf{E} = (e_n)$, and orthonormal sequence satisfying $\mathbf{E^\perp = 0}$
     \begin{itemize}
         \item Prove given $\mathbf{x} \in H$ there is a sequence $\mathbf{(y_n)}$ with each $\mathbf{(y_n)} \in \text{span}\mathbf{(E)}$ so that $\mathbf{y_n} \rightarrow \mathbf{x}$ in the norm of $H$.
+        \begin{solution}
+            By the Hilbert Space Convergence Theorem, we know that when $(H,<\cdot,\cdot>)$ is a Hilbert Space and $\mathbf{(E_n)}$ an orthonormal sequence (both of which are satisfied), then $\sum_{n=1}^\infty<\textbf{x},\mathbf{E_n}>\mathbf{E_n}$ converges to some $\textbf{y} \in H$ for a given $x \in H$. In our case $y_n \in span(E) \implies y_n \in H$, then we get $y_n \rightarrow x$ for a given $x$.
+        \end{solution}
         \item Assume also $T$ is a compact operator which means $\Omega \in H$ is bounded, then $\overline{T(\Omega)}$ is sequentially compact. Prove $\overline{T(\mathbf{E_i}))}$ is sequentially compact in $H$.
+        \begin{solution}
+            We know that $\mathbf{E_n}$ is an orhtonormal sequence of $H$ and $\mathbf{E^\perp = 0}$ tells us that $\text{span}\mathbf{(E_i)} = H$ and $\mathbf{E_n}$ is bounded. Hence, $\mathbf{E_i} \in H \; \forall \; i$ and $\mathbf{E_n}$ is bounded so $\overline{T(\mathbf{E_i}))}$ is sequentially compact in H.
+        \end{solution}
     \end{itemize}
 \end{exercise}
 
 \begin{exercise}
-    Use Bessel's inequality to show that if $\mathbf{(E_n)}$ is an orthonormal sequence in the inner product space $C([a,b])$ with the usual inner product $<\cdot,\cdot>$, then, for any $H \in L_2([a,b]), \; F((\mathbf{E_n}),\mathbf{h},[a,b]) \rightarrow 0$.
+    Use Bessel's inequality to show that if $\mathbf{(E_n)}$ is an orthonormal sequence in the inner product space $C([a,b])$ with the usual inner product $<\cdot,\cdot>$, then, for any $h \in L_2([a,b]), \; F((\mathbf{E_n}),\mathbf{h},[a,b]) \rightarrow 0$.
+    \begin{solution}
+        We know from Bessel's inequality that, the sum of the inner products $F((\mathbf{E_n}),\mathbf{h},[a,b])$ is bounded above by $\|h\|^2$ so it must be that, by rules of convergent series,  $F((\mathbf{E_n}),\mathbf{h},[a,b]) \rightarrow 0$
+    \end{solution}
 \end{exercise}
 
 \end{document}

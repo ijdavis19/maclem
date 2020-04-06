@@ -50,33 +50,11 @@ forval k = 1/`initialIndicatorNumber' {
 }
 
 // Set up indicators
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-local comp1 = "500"
-local comp2 = "string"
-local comp3 = "null"
-forval x = 1/10 {
-    if "`comp`x''" == "500" {
-        display "Here is the numerical affirmative"
-    }
-    else if "`comp`x''" == "string" {
-        display "Here is the alphabetical affirmative"
-        continue, break
-    }
-    else {
-        display "here is the negative"
+forval m = 1/`finalDiagnosisIndicator1' {
+    gen diagInd`x' = 0
+    forval d = 1/3 {
+        replace diagInd`x' = 1 if DIAG`d' == "`finalDiagnosisIndicator`x''"
     }
 }
-*/
+
+

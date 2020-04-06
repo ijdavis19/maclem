@@ -1,0 +1,432 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Lecture27HW},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210:  Lecture 27 Homework, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Lecture 27 Homework}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Homework from Lecture 27}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\begin{exercise}
+    Let $M$ be the space of all 2 x 1 vectors whos components are in $l^1$.
+    \begin{itemize}
+        \item Endow M with the norm $\|A\| = \sum_{i = 1}^2\|A_i\|_1$. Prove this is a norm.
+        \begin{solution}
+            First, lets write out $\|A\|$ so we can show that it satifies the four conditions for a norm.
+            \begin{eqnarray*}
+                \|A\| &=& \sum_{i=1}^2\|A_i\|_1\\
+                &=& \|A_1\|_1 + \|A_2\|_1\\
+            \end{eqnarray*}
+            Where both $\|A_1\|_1$ and $\|A_2\|_1$ are both the $\ell^1$ norm. So 
+            \begin{enumerate}
+                \item $\|A_1\|_1 \geq 0$ and $\|A_2\|_1 \geq 0$ so $\|A_1\|_1 + \|A_2\|_1 \geq 0$
+                \item $\|A\| = 0 \iff \|A_1\|_1 + \|A_2\|_1 = 0 \iff \|A_1\|_1 = -\|A_2\|_1$ but becuase $\|A_1\|_1 \geq 0$ and $\|A_2\|_1 \geq 0$, then $\|A_1\|_1 = -\|A_2\|_1 \iff \|A_1\|_1 = \|A_2\|_1 = 0$
+                \item $\|\alpha A\| = \|\alpha A_1\|_1 + \|\alpha A_2\|_1 = |\alpha|(\|A_1\|_1 + \|A_2\|_1)$
+                \item Finally, know that $\|A + B\| < \|A\| + \|B\|$ by Minkowski's Inequality
+            \end{enumerate}
+        \end{solution}
+        \item define $\mathbf{(F_n)}$ by
+        \begin{eqnarray*}
+            \mathbf{F_n^1} \; = \;
+            \begin{bmatrix}
+                \mathbf{E_n}\\
+                \mathbf{0}
+            \end{bmatrix}
+            \; & \;
+            \mathbf{F_n^2} \; = \;
+            \begin{bmatrix}
+                \mathbf{0}\\
+                \mathbf{E_n}
+            \end{bmatrix}
+        \end{eqnarray*}
+        where $(E_n)$ is the usual Schauder basis for $l^1$. Prove this is a Schauder Basis for M.
+        \begin{solution}
+            Because we know both $A_1$ and $A_2$ are in $\ell^1$ and $(E_n)$ is the $\ell^1$ Schauder Basis, then $\exists$ scalars $(\alpha_n)_{n=1}^\infty$ and $(\beta_n)_{n=1}^\infty$ such that, for $m^i \in \mathbf{E_n}$
+            \begin{eqnarray*}
+                A_1 = lim_{n\rightarrow \infty}\sum_{j=1}^n\:\alpha_j m^1_j\\
+                A_2 = lim_{n\rightarrow \infty}\sum_{j=1}^n\:\beta_j m^2_j
+            \end{eqnarray*}
+            So now, we consider the following element,
+            $
+            \begin{bmatrix}
+            x\\
+            y
+            \end{bmatrix}
+            $
+            , of M
+            \begin{eqnarray*}
+                \begin{bmatrix}
+                    x\\
+                    y
+                \end{bmatrix}
+                &=&
+                \begin{bmatrix}
+                    \sum_{i=1}^\infty\;\alpha_i\mathbf{(E_i)}\\
+                    \sum_{i=1}^\infty\;\beta_i\mathbf{(E_i)}
+                \end{bmatrix}
+                \\
+                &=& \sum_{i=1}^\infty\;\alpha_i
+                \begin{bmatrix}
+                    \mathbf{E_i}\\
+                    \mathbf{0}
+                \end{bmatrix}
+                + \sum_{i=1}^\infty\;\beta_i
+                \begin{bmatrix}
+                    \mathbf{0}\\
+                    \mathbf{E_i}
+                \end{bmatrix}
+                \\
+                &=& \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2
+            \end{eqnarray*}
+            Hence, we can conclude that $\mathbf{(F_n)}$ is a Schauder Basis for M.
+        \end{solution}
+        \item Go through all the steps of the proof the characterize $M^\prime$.
+        \begin{solution}
+        First, we define $K$ to be the space of all $2 \times 1$ vectors whose components are in $\ell^\infty$, We want to prove that, with $f \in M^\prime, \; \exists \; !\mathbf{z_f} \in K$ so that for any $\mathbf{x} \in M$
+        \begin{eqnarray*}
+            f(\mathbf{x}) = \sum_{n=1}^\infty\;x_n(z_f)_i
+        \end{eqnarray*}
+        where $\mathbf{x} = (x_n)$ and $\mathbf{z_f} = ((z_f)_n)$. Further $\|z_f\|_\infty = \|f\|_{op}$. To do so, let $f \in M^\prime$. We have $A =
+        \begin{bmatrix}
+        x\\
+        y
+        \end{bmatrix}
+        $
+        which has representation $A = \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2$ and $\|A\| < \infty$ and $\|\mathbf{F_n}\|_1 = 1 \; \forall \; n$. Let $\mathbf{S_n} = \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2$. Then by linearity of f, $f\mathbf{(S_n)} = \sum_{i=1}^\infty\;\alpha_i f(\mathbf{(F_i)}^1) + \sum_{i=1}^\infty\;\beta_i  f(\mathbf{(F_i)}^2)$. We know that $lim_{n\rightarrow\infty}\mathbf{S_n} = A$ because $\mathbf{(F_n)}$ is a Schauder Basis and we also know f is continuous. So $lim_{n\rightarrow\infty}f(\mathbf{S_n}) = f(lim_{n\rightarrow\infty}\mathbf{S_n}) = f(A)$. Hence, $f(A) = lim_{n\rightarrow\infty} \sum_{i=1}^n\;\alpha_if(\mathbf{(F_i)}^1) + \sum_{i=1}^n\;\beta_if(\mathbf{(F_i)}^2)$ and we have shown that the series $\sum_{i=1}^\infty\;\alpha_if(\mathbf{(F_i)}^1) + \sum_{i=1}^\infty\;\beta_if(\mathbf{(F_i)}^2)$ converges.\\
+        \\
+        Let the sequence $\mathbf{z_f}$ be defined by $(z_f)_n = f(\mathbf{F_n})$, Next, we need to show the sequence $\mathbf{z_f} \in K$ and its norm is $\|\mathbf{z_f}\|_\infty = \|f\|_{op}$.\\
+        \\
+        To show $\mathbf{z_f} \in K$, note 
+        \begin{eqnarray*}
+            |(z_f)_n| = |f_(\mathbf{F_n})| \leq \|f\|_{op}\|\mathbf{F_n}\|_1 = \|f\|_{op}
+        \end{eqnarray*}
+        which implies that all the entries of $\mathbf{z_f}$ are bounded and $\mathbf{z_f} \in K$. To show $\|\mathbf{z_f}\|_K = \|f\|_{op}$, we only have to show the reverse inequality of the already proven $\|\mathbf{z_f}\|_K \leq \|f\|_{op}$. To do this, consider
+        \begin{eqnarray*}
+            |f(A)| &=& |f(\sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2)|\\
+            &=& |f(lim_{n\rightarrow\infty}\mathbf{S_n})|\\
+            &=& lim_{n\rightarrow\infty}|f(\mathbf{S_n})| \; \text{by the continuity of f and} \; |\cdot|\\
+            &\leq& lim_{n\rightarrow\infty}\sum_{i=1}^n\;\alpha_i\mathbf{(F_i)}^1 + lim_{n\rightarrow\infty}\sum_{i=1}^n\;\beta_i\mathbf{(F_i)}^2\\
+            &=& lim_{n\rightarrow\infty}\sum_{i=1}^n\;\alpha_i(z_f)_i^1 + lim_{n\rightarrow\infty}\sum_{i=1}^n\;\beta_i(z_f)_i^2\\
+            &\leq& \|\mathbf{z_f}\|_K \sum_{i=1}^n|\alpha_i| \|\mathbf{z_f}\|_K \sum_{i=1}^n|\beta_i|\\
+            &\leq& \|\mathbf{z_f}\|_K\|A\|_1\\
+            &\implies& \|f\|_{op} = \sup_{A\neq\mathbf{0}}\frac{|f(A)|}{\|x\|_1} \leq \|\mathbf{z_f}\|_k
+        \end{eqnarray*}
+        Combining, we get the elements of $\mathbf{z_f} \in \ell^\infty$. Lastly we want to know if $\mathbf{z_f}$ is unique. If we could find $z \in K$ with $f(A) = \sum_{n=1}^\infty\:A_n^1z_n^1 + \sum_{n=1}^\infty\:A_n^2z_n^2$ then $\sum_{n=1}^\infty\:A_n^1z_n^1 + \sum_{n=1}^\infty\:A_n^2z_n^2 = \sum_{n=1}^\infty\:A_n^1(z_f)_n^1 + \sum_{n=1}^\infty\:A_n^2(z_f)_n^2$. Specifically we would find $f(1\mathbf{F_i}) = 1 z_i$ and so $\mathbf{z_f} = z$
+        \end{solution}
+        \item Prove this duel space is equivalent to the space $N$ of two dimensional vectors whose components are in $l^\infty$ using the obvious norm.
+        \begin{solution}
+            We need to show $M^\prime \equiv K$ where K is the same K as defined above. For $f \in M^\prime$, there is unique $\mathbf{z_f} = ((z_f)_n) =
+            \begin{bmatrix}
+                (z_f)_n^1\\
+                (z_f)_n^2
+            \end{bmatrix}
+             \in K$
+        so $f(A) = \sum_{n=1}^\infty A_n^1(z_f)_n^1 + \sum_{n=1}^\infty A_n^2(z_f)_n^2$ with $A \in K$ and $\|z_f\|_K = \|f\|_{op}$ Define $T: M^\prime \rightarrow K$ by $T(f) = \mathbf{z_f}$. Then there is a linear bijective isometry and $M^\prime \equiv K$. To prove this, we want to show that T is a linear bijective isometry. We already know $\|T(f)\|_K = \|\mathbf{z_f}\|_K = \|f\|_{op}$ so $T$ preserves norms. We also know $\mathbf{z_f}$ is unique so T is 1 - 1. Then we have $T(\alpha f + \beta g) = \mathbf{z}_{\alpha f + \beta g}$ and $(\alpha f + \beta g)(\mathbf{A}) = \sum_{n = 1}^\infty A_n^1(z_{\alpha f + \beta g}^1)_n + \sum_{n = 1}^\infty A_n^2(z_{\alpha f + \beta g}^2)_n$. But
+        \begin{eqnarray*}
+            (\alpha f)(A) &=& \sum_{n=1}^\infty A_n^1(z_{\alpha f}^1)_n + \sum_{n=1}^\infty A_n^2(z_{\alpha f}^2)_n\\
+            (\beta g)(A) &=& \sum_{n=1}^\infty A_n^1(z_{\beta g}^1)_n + \sum_{n=1}^\infty A_n^2(z_{\beta g}^2)_n\\
+            f(A) &=& \sum_{n=1}^\infty A_n^1(z_{f}^1)_n + \sum_{n=1}^\infty A_n^2(z_{f}^2)_n\\
+            g(A) &=& \sum_{n=1}^\infty A_n^1(z_{g}^1)_n + \sum_{n=1}^\infty A_n^2(z_{g}^2)_n
+        \end{eqnarray*}
+        and
+        \begin{eqnarray*}
+            \sum_{n=1}^\infty\:A_n^1(z^1_{\alpha f}) + \sum_{n=1}^\infty\:A_n^2(z^2_{\alpha f}) &=& (\alpha f)(A)\\
+            &=& \alpha(\sum_{n=1}^\infty\:A_n^1(z^1_{f}) + \sum_{n=1}^\infty\:A_n^2(z^2_{f}))\\
+            &=& \sum_{n=1}^\infty\:A_n^1\alpha(z^1_{f}) + \sum_{n=1}^\infty\:A_n^2\alpha(z^2_{f})
+        \end{eqnarray*}
+        So we have $(z_{\alpha f})_n = \alpha(z_f)_n$ for all n. A similar argument shows $(z_{\beta g})_n = \beta(z_g)_n$. Thus
+        \begin{eqnarray*}
+            \sum_{n=1}^\infty A_n^1(z^1_{\alpha f + \beta g})_n + \sum_{n=1}^\infty A_n^2(z^2_{\alpha f + \beta g})_n &=& (\alpha f + \beta g)(A_n^1) + (\alpha f + \beta g)A_n^2\\
+            &=& \alpha f(A_n^1) + \alpha f(A_n^2) + \beta f(A_n^1) + \beta f(A_n^2)\\
+            &=& \sum_{n=1}^\infty A_n^1\alpha(z_f^1)_n \sum_{n=1}^\infty A_n^2\alpha(z_f^2)_n + \sum_{n=1}^\infty A_n^1\beta(z_g^1)_n + \sum_{n=1}^\infty A_n^2\beta(z_g^2)_n\\
+            &=& \sum_{n=1}^\infty x_n^1(\alpha (z_f^1)_n + \beta(z_g^1)_n) + \sum_{n=1}^\infty x_n^2(\alpha (z_f^2)_n + \beta(z_g^2)_n)
+        \end{eqnarray*}
+        By uniqueness, we must have $(z^i_{\alpha f + \beta g})_n = \alpha (z^i_f)_n + \beta(z^i_g)_n$ which tells us that $T(\alpha f + \beta g) = \alpha T(f) + \beta T(g)$. We conclude T is linear. To see T is onto note if $\mathbf{w} \in K$, we can define f at any $A \in M$ by $f(A) = \sum_{n=1}^\infty \sum_{i=1}^2 A_n^i w_n^i$ which convergers by Holders as $|f(A)| \leq \|w\|_K \|A\|$. This tells us that $\|f\|_{op} \leq \|w\|_K$ and so f is bounded. It is also clealy linear. Thus $f \in M^\prime$. Finally, we have $f(\mathbf{F_n}) = w_n$ and so $(z_f)_n = f(\mathbf{F_n}) = w_n$. This shows $T(f) = \mathbf{z}_f = \mathbf{w}$ and therefore T is onto. Hence, $M^\prime \equiv K$
+        \end{solution}
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $M$ be the space of all $2 \times 1$ vectors whose components are in $\ell^p$.
+    \begin{itemize}
+        \item Endow M with the norm $\|A\| = \sum_{i = 1}^2\|A_i\|_p$. Prove this is a norm.
+        \begin{solution}
+            First, lets write out $\|A\|$ so we can show that it satifies the four conditions for a norm.
+            \begin{eqnarray*}
+                \|A\| &=& \sum_{i=1}^2\|A_i\|_p\\
+                &=& \|A_1\|_p + \|A_2\|_p\\
+            \end{eqnarray*}
+            Where both $\|A_1\|_1$ and $\|A_2\|_1$ are both the $\ell^p$ norm. So 
+            \begin{enumerate}
+                \item $\|A_1\|_p \geq 0$ and $\|A_2\|_p \geq 0$ so $\|A_1\|_p + \|A_2\|_p \geq 0$
+                \item $\|A\| = 0 \iff \|A_1\|_p + \|A_2\|_p = 0 \iff \|A_1\|_p = -\|A_2\|_p$ but becuase $\|A_1\|_p \geq 0$ and $\|A_2\|_p \geq 0$, then $\|A_1\|_p = -\|A_2\|_p \iff \|A_1\|_p = \|A_2\|_p = 0$
+                \item $\|\alpha A\| = \|\alpha A_1\|_p + \|\alpha A_2\|_p = |\alpha|(\|A_1\|_p + \|A_2\|_p)$
+                \item Finally, know that $\|A + B\| < \|A\| + \|B\|$ by Minkowski's Inequality
+            \end{enumerate}
+        \end{solution}
+        \item define $\mathbf{(F_n)}$ by
+        \begin{eqnarray*}
+            \mathbf{F_n^1} \; = \;
+            \begin{bmatrix}
+                \mathbf{E_n}\\
+                \mathbf{0}
+            \end{bmatrix}
+            \; & \;
+            \mathbf{F_n^2} \; = \;
+            \begin{bmatrix}
+                \mathbf{0}\\
+                \mathbf{E_n}
+            \end{bmatrix}
+        \end{eqnarray*}
+        where $(E_n)$ is the usual Schauder basis for $l^p$. Prove this is a Schauder Basis for M.
+        \begin{solution}
+            Because we know both $A_1$ and $A_2$ are in $\ell^p$ and $(E_n)$ is the $\ell^p$ Schauder Basis, then $\exists$ scalars $(\alpha_n)_{n=1}^\infty$ and $(\beta_n)_{n=1}^\infty$ such that, for $m^i \in \mathbf{E_n}$
+            \begin{eqnarray*}
+                A_1 = lim_{n\rightarrow \infty}\sum_{j=1}^n\:\alpha_j m^1_j\\
+                A_2 = lim_{n\rightarrow \infty}\sum_{j=1}^n\:\beta_j m^2_j
+            \end{eqnarray*}
+            So now, we consider the following element,
+            $
+            \begin{bmatrix}
+            x\\
+            y
+            \end{bmatrix}
+            $
+            , of M
+            \begin{eqnarray*}
+                \begin{bmatrix}
+                    x\\
+                    y
+                \end{bmatrix}
+                &=&
+                \begin{bmatrix}
+                    \sum_{i=1}^\infty\;\alpha_i\mathbf{(E_i)}\\
+                    \sum_{i=1}^\infty\;\beta_i\mathbf{(E_i)}
+                \end{bmatrix}
+                \\
+                &=& \sum_{i=1}^\infty\;\alpha_i
+                \begin{bmatrix}
+                    \mathbf{E_i}\\
+                    \mathbf{0}
+                \end{bmatrix}
+                + \sum_{i=1}^\infty\;\beta_i
+                \begin{bmatrix}
+                    \mathbf{0}\\
+                    \mathbf{E_i}
+                \end{bmatrix}
+                \\
+                &=& \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2
+            \end{eqnarray*}
+            Hence, we can conclude that $\mathbf{(F_n)}$ is a Schauder Basis for M.
+        \end{solution}
+        \item Go through all the steps of the proof the characterize M'. 
+        \begin{solution}
+            First, we define $K$ to be the space of all $2 \times 1$ vectors whose components are in $\ell^q$ with p and q being conjugate indicies. We want to prove that, with $f \in M^\prime, \; \exists \; !\mathbf{z_f} \in K$ so that for any $\mathbf{x} \in M$
+            \begin{eqnarray*}
+                f(A) = \sum_{n=1}^\infty\sum_{i=1}^2\;A_n^i(z^i_f)_n
+            \end{eqnarray*}
+            where $A = (A_n^i)$ for $i = \{1,2\}$ and $\mathbf{z_f} = ((z_f^i)_n)$ for $i = \{1,2\}$. Further $\|z_f\|_\infty = \|f\|_{op}$. To do so, let $f \in M^\prime$. We have $A =
+            \begin{bmatrix}
+            A^1\\
+            A^2
+            \end{bmatrix}
+            $
+            which has representation $A = \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2$ and $\|A\| < \infty$ and $\|\mathbf{F_n}\|_1 = 1 \; \forall \; n$. Let $\mathbf{S_n} = \sum_{i=1}^\infty\;\alpha_i\mathbf{(F_i)}^1 + \sum_{i=1}^\infty\;\beta_i\mathbf{(F_i)}^2$. We use the continuity and linearity of f as discussed earlier to give us $f(A_n) = \sum_{i=1}^\infty\;\alpha_i f(\mathbf{(F_i)}^1) + \sum_{i=1}^\infty\;\beta_i  f(\mathbf{(F_i)}^2)$. Define the sequence $\mathbf{z_f}$ be defined by $(z_f)_n = f(\mathbf{F_n})$, Next, we need to show the sequence $\mathbf{z_f} \in K$ and its norm is $\|\mathbf{z_f}\|_\infty = \|f\|_{op}$.\\
+            \\
+            To show $\mathbf{z_f} \in K$, note 
+            \begin{eqnarray*}
+                |(z_f)_n| = |f_(\mathbf{F_n})| \leq \|f\|_{op}\|\mathbf{F_n}\|_1 = \|f\|_{op}
+            \end{eqnarray*}
+            which implies that all the entries of $\mathbf{z_f}$ are bounded and $\mathbf{z_f} \in K$. To show $\|\mathbf{z_f}\|_K = \|f\|_{op}$, we only have to show the reverse inequality of the already proven $\|\mathbf{z_f}\|_K \leq \|f\|_{op}$. To do this, we consider the following. For each n define the sequence $y_n$ by
+                \begin{eqnarray*}
+                f(x) &=&
+                \left \{
+                    \begin{array}{ll}
+                        \frac{|(z_f)_i|^q}{(z_f)_i}, & 1 \leq i < n \; \text{and} (z_f)_i \neq 0\\
+                        0, & i > n \; \text{or} \; (z_f)_i = b
+                    \end{array}
+                \right .
+                \end{eqnarray*}
+                and $y =
+                \begin{bmatrix}
+                    y_{ni}^1\\
+                    y_{ni}^2
+                \end{bmatrix}
+                $
+                . Then, we get
+                \begin{eqnarray*}
+                    f(y) = \sum_{i=1}^n\sum_{j=1}^2y^j_{ni}f(\mathbf{F_i}^j) = \sum_{i=1}^n\sum_{j=1}^2\frac{|(\gamma_f)_i|^q}{(\gamma_f)_i}f(\mathbf{F_i}^j)
+                \end{eqnarray*}
+                But since $\gamma_i = f(\mathbf{F_i})$
+                \begin{eqnarray*}
+                    f(y) = \sum_{i=1}^n\sum_{j=1}^2y^j_{ni}f(\mathbf{F_i}^j) = \sum_{i=1}^n\sum_{j=1}^2|\gamma_i^j|^q
+                \end{eqnarray*}
+                It is clear then that $f(y) \geq 0$ and
+                \begin{eqnarray*}
+                    |f(y)| = \sum_{i=1}^n|\gamma_i^j|^q \leq \|f\|_{op}\|y\|_M
+                \end{eqnarray*}
+                Now,
+                \begin{eqnarray*}
+                    \|y\|_M &=& (\sum_{i=1}^n\sum_{j=1}^2|\frac{|\gamma_i^j|^q}{\gamma_i^j}|^p)^\frac{1}{p} = (\sum_{i=1}^n\sum_{j=1}^2(|\gamma_i^j|^{q-1})^p)^\frac{1}{p}\\
+                    &=& (\sum_{i=1}^n\sum_{j=1}^2|\gamma_i^j|)^\frac{1}{p}
+                \end{eqnarray*}
+                So we can now say
+                \begin{eqnarray*}
+                    |f(y)| &=& \sum_{i=1}^n\sum_{j=1}^2|\gamma_i^j| \leq \|f\|_{op}\|y^j\| = \|f\|_{op}(\sum_{i=1}^n\sum_{j=1}^2|\gamma_i^j|^q)^\frac{1}{p}\\
+                    &\implies& (\sum_{i=1}^n\sum_{j=1}^2|\gamma_i^j|^q)^{1 - \frac{1}{p} = \frac{1}{q}} \leq \|f\|_{op}
+                \end{eqnarray*}
+                But because $\gamma_i = (z_f)_i$, so we can conclude $\|z_f\|_q \leq \|f\|_{op}$ telling us $z_f \in K$. We know want to show that $\|z_f\|_q = \|f\|_{op}$. We have already $\|z_f\|_q \leq \|f\|_{op}$ so we only need to show the reverse inequality. So
+                \begin{eqnarray*}
+                    |f(A)| = |\sum_{i=1}^\infty\sum_{j=1}^2A^jf(\mathbf{F_i})| \leq \|A\| \|z_f\|_q
+                \end{eqnarray*}
+                By Holders. Taking the sup over all nonzero A, we find
+                \begin{eqnarray*}
+                    \|f\|_{op} =sup_{A \neq \mathbf{0}}\frac{|f(A)|}{\|A\|} \leq \|z_f\|_q
+                \end{eqnarray*}
+                which is the reverse inequality we are looking for. Finally, we need to show $z_f$ is unique. To do so, consider if there were to be another $z \in M$ with 
+                \begin{eqnarray*}
+                    f(A) = \sum_{i=1}^\infty\sum_{j=1}^2A_i^jz_i^j = \sum_{i=1}^\infty\sum_{j=1}^2A_i^j(z_f)^j_i
+                \end{eqnarray*}
+        \end{solution}
+        In particular, we would have $f(1\mathbf{F_i}) = 1z_i$ and so $z_f = z$
+        \item Prove this duel space is equivalent to the space $N$ of two dimensional vectors whose components are in $l^q$ using the obvious norm.
+        \begin{solution}
+            We need to show $M^\prime \equiv K$ where K is the same K as defined above. For $f \in M^\prime$, there is unique $\mathbf{z_f} = ((z_f)_n) =
+            \begin{bmatrix}
+                (z_f)_n^1\\
+                (z_f)_n^2
+            \end{bmatrix}
+             \in K$
+        so $f(A) = \sum_{n=1}^\infty A_n^1(z_f)_n^1 + \sum_{n=1}^\infty A_n^2(z_f)_n^2$ with $A \in K$ and $\|z_f\|_K = \|f\|_{op}$ Define $T: M^\prime \rightarrow K$ by $T(f) = \mathbf{z_f}$. Then there is a linear bijective isometry and $M^\prime \equiv K$. To prove this, we want to show that T is a linear bijective norm isometry. We already know $\|T(f)\|_K = \|\mathbf{z_f}\|_K = \|f\|_{op}$ so $T$ preserves norms. We also know $\mathbf{z_f}$ is unique so T is 1 - 1. Then we have $T(\alpha f + \beta g) = \mathbf{z}_{\alpha f + \beta g}$ and $(\alpha f + \beta g)(\mathbf{A}) = \sum_{n = 1}^\infty A_n^1(z_{\alpha f + \beta g}^1)_n + \sum_{n = 1}^\infty A_n^2(z_{\alpha f + \beta g}^2)_n$. But
+        \begin{eqnarray*}
+            (\alpha f)(A) &=& \sum_{n=1}^\infty A_n^1(z_{\alpha f}^1)_n + \sum_{n=1}^\infty A_n^2(z_{\alpha f}^2)_n\\
+            (\beta g)(A) &=& \sum_{n=1}^\infty A_n^1(z_{\beta g}^1)_n + \sum_{n=1}^\infty A_n^2(z_{\beta g}^2)_n\\
+            f(A) &=& \sum_{n=1}^\infty A_n^1(z_{f}^1)_n + \sum_{n=1}^\infty A_n^2(z_{f}^2)_n\\
+            g(A) &=& \sum_{n=1}^\infty A_n^1(z_{g}^1)_n + \sum_{n=1}^\infty A_n^2(z_{g}^2)_n
+        \end{eqnarray*}
+        and
+        \begin{eqnarray*}
+            \sum_{n=1}^\infty\:A_n^1(z^1_{\alpha f}) + \sum_{n=1}^\infty\:A_n^2(z^2_{\alpha f}) &=& (\alpha f)(A)\\
+            &=& \alpha(\sum_{n=1}^\infty\:A_n^1(z^1_{f}) + \sum_{n=1}^\infty\:A_n^2(z^2_{f}))\\
+            &=& \sum_{n=1}^\infty\:A_n^1\alpha(z^1_{f}) + \sum_{n=1}^\infty\:A_n^2\alpha(z^2_{f})
+        \end{eqnarray*}
+        So we have $(z_{\alpha f})_n = \alpha(z_f)_n$ for all n. A similar argument shows $(z_{\beta g})_n = \beta(z_g)_n$. Thus
+        \begin{eqnarray*}
+            \sum_{n=1}^\infty A_n^1(z^1_{\alpha f + \beta g})_n + \sum_{n=1}^\infty A_n^2(z^2_{\alpha f + \beta g})_n &=& (\alpha f + \beta g)(A_n^1) + (\alpha f + \beta g)A_n^2\\
+            &=& \alpha f(A_n^1) + \alpha f(A_n^2) + \beta f(A_n^1) + \beta f(A_n^2)\\
+            &=& \sum_{n=1}^\infty A_n^1\alpha(z_f^1)_n \sum_{n=1}^\infty A_n^2\alpha(z_f^2)_n + \sum_{n=1}^\infty A_n^1\beta(z_g^1)_n + \sum_{n=1}^\infty A_n^2\beta(z_g^2)_n\\
+            &=& \sum_{n=1}^\infty x_n^1(\alpha (z_f^1)_n + \beta(z_g^1)_n) + \sum_{n=1}^\infty x_n^2(\alpha (z_f^2)_n + \beta(z_g^2)_n)
+        \end{eqnarray*}
+        By uniqueness, we must have $(z^i_{\alpha f + \beta g})_n = \alpha (z^i_f)_n + \beta(z^i_g)_n$ which tells us that $T(\alpha f + \beta g) = \alpha T(f) + \beta T(g)$. We conclude T is linear. To see T is onto note if $\mathbf{w} \in K$, we can define f at any $A \in M$ by $f(A) = \sum_{n=1}^\infty \sum_{i=1}^2 A_n^i w_n^i$ which convergers by Holders as $|f(A)| \leq \|w\|_K \|A\|$. This tells us that $\|f\|_{op} \leq \|w\|_K$ and so f is bounded. It is also clealy linear. Thus $f \in M^\prime$. Finally, we have $f(\mathbf{F_n}) = w_n$ and so $(z_f)_n = f(\mathbf{F_n}) = w_n$. This shows $T(f) = \mathbf{z}_f = \mathbf{w}$ and therefore T is onto. Hence, $M^\prime \equiv K$
+        \end{solution}
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    If $(X,\|\cdot\|)$ is a normed space, prove $\|\cdot\|$ is a sublinear functional which is positive homogeneous.
+    \begin{solution}
+        Because $(X,\|\cdot\|)$ is a normed space, it has to satisfy the 4 norm conditions. Specifcially N4: $\rho(u + v) \leq \rho(u) + \rho(v) \; \forall \; u,v \in X$ and N2: $\rho(\alpha v) = |\alpha|\rho(v) \implies \rho(\alpha v) = \alpha\rho(v) \; \forall \; v \in X, \alpha \geq 0$. These two condition being satisfied tells us that $\|\cdot\|$ is a sublinear, positive homogeneous functional on X.
+    \end{solution}
+\end{exercise}
+
+\end{document}

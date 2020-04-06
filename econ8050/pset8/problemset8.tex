@@ -1,0 +1,153 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet8},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{pdfpages}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip o text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Problem Set Eight, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Problem Set Eight}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set 8.}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\noindent 1. \textbf{Stochastic Small Open Economy.} Suppose that a representative household faces a two-period lifetime and starts with zero assets. The household's lifetime utility is given by
+\begin{eqnarray*}
+  U = u(C_1) + \beta E_1(u(C_2))
+\end{eqnarray*}
+where $u(C) = aC - \frac{b}{2}C^2$. Income in year 1 is given by $Y_1$ and income in year 2 is uncertain, with the following probability distribution: $Y_2 = Y_2(1)$ with probaility of $\pi_1$ and $Y_2 = Y_2(2)$ with probability $\pi_2 = 1 - \pi_1$. There are also two Arrow-Debreu securities and riskless bonds traded in the international financial market.
+\begin{enumerate}
+  \item Find closed form solutions for the optimal consumption plan. [HINT: The first order conditions and the budget contraint will give you a set of three linear equations. They will look messy but still linear so they can be solved easily.]
+  \item Assume that the prices of state-1 and state-2 AD securities are the same and equal 0.4545 (i.e. $\frac{p(1)}{1 + r} = \frac{p_2}{1 + r} = 0.4545$). What is the world riskless real interest rate?
+  \begin{solution}
+    From above we get that 
+    \begin{eqnarray*}
+      p(1) = p(2) \implies .5 = p(1) &=& p(2)\\
+      \implies \frac{.5}{1 + r} &=& .4545\\
+      \implies r &=& .1
+    \end{eqnarray*}
+  \end{solution}
+  \item Assume the $\pi = \frac{1}{2}, \; Y_1 = 10, \; Y_2(1) = 20, \; Y_2(2) = 5 \; $ and $\beta(1 + r) = 1$. Compute the optimal consumption values and required AD purchases and sales.
+  \item Now assume that $\pi = \frac{1}{3}, \; Y_1 = 10, \; Y_2(1) = 20, \; Y_2(2) = 5 \; $ and $\beta(1 + r) = 1$. Compute the optimal consumption values and required AD purchases and sales.
+  \item Now assume that the government of the country prohibits sale and purchases of AD securities while still allowing households to lend/borrow internationally. Find the closed form solutions for the optimal consumptions plan.
+  \item Again, asume that $\pi = \frac{1}{2}, \; Y_1 = 10, \; Y_2(1) = 20, \; Y_2(2) = 5 \; $ and $\beta(1 + r) = 1$. Compute the optimal consumptions values and required borrowing/lending.
+  \item How is the household welfare affected by the restictions? 
+\end{enumerate}
+
+\noindent  2. \textbf{Two-Household Stochastic Economy.} Consider an economy like the one we studied in class. There are two periods, exogenous endowments, uncertain in the secod period with two states of the world possible. There is a riskless bond and two contingent securities (AD). The economy is closed and so asset prices are determined by market clearing. Howeverm unlike in the baseline model, assume there are two households. Both share the same preferences, given by
+\begin{eqnarray*}
+  U = u(C_1) + \beta E_1(u(C_2))
+\end{eqnarray*}
+where $u(C) = \frac{C^{1 - \rho}}{1 - \rho}$. However, their income endowments are different. Household A gets $Y_1$ in year one, while household B gets $Y_i*$ which need not be the same. In year 2 they each get uncertain income with the following probability distribution: $Y_2 = Y_2(1)$ if state 1 occurs (with probability $\pi_1$) and $Y_2 = Y_2(2)$ with probability $\pi_2 = 1 - \pi_1$ for household A and $Y_2* = Y_2*(1)$ if state 1 occurs (with probability $\pi_1$) and $Y_2* = Y_2*(2)$ with probability $\pi_2 = 1 - \pi_1$ for household B.
+\begin{enumerate}
+  \item Using households' first order conditions, find the equilibrium prices of the contingetn securities $\frac{p(1)}{1 + r}$ and $\frac{p(2)}{1 + r}$. [HINT: Recall how we computed these prices in a closed economy. What is the "closed economy" in this case?]
+  \item Determine under what condition will prices be actuarially fair.
+  \item Find the equilibrium real riskless interest rate.
+  \item Find expressions for consumption of each household as a share of the total national income (for each period and state.)
+\end{enumerate}
+
+%\newpage
+%\clearpage
+%\noindent \textbf{Graph 2.1}
+%\begin{figure}[h]
+%  \includegraphics{graph21.png}
+%  \end{figure}
+
+\end{document}
