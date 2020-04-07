@@ -1,0 +1,134 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet 4},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 4, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Problem Set 4}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\begin{enumerate}
+  \item Use the dataset provided, answer the following questions
+  \begin{enumerate}[label=(\alph*)]
+    \item Provide a table of summary statistics. That should include the mean, standard deviation, minimum, and maximum.
+    \item Regress earnings on education, gender, ability, region, experience, and $\text{experience}^2$. Describe the results. What do the results tell you about the return to education, experience, and how ability, age, region, and gender affect earnings?
+    \item Rerun the regression in part (b) without ability and compare the results. Which regression results give you a better estimate of return to education? Explain.
+    \item Rerun the regression in part (b) with occupation and compare the results. Which regression result gives you a better estimate of return to education? Explain.
+    \item Rerun the regression in part (b) without $\text{experience}^2$ and compare the results. Which regresion result gives you a better estimate of return to education? Explain.
+    \item Rerun the regression in part (b) with $\text{experience}^3$ and $\text{experience}^4$. Compare the results. Which regression result gives you a better estimate of return to experience? Explain.
+    \item Rerun the regressionin part (b) with $\text{experience}^2$. Compare the results. Which regression gives you a better estimate of return to education.
+    \item Randomly pick 2000 observations from the dataset. Rerun the regression in part (b). Which regression gives you a better estmate? Explain.
+    \item Rerun the regression in part (b) with clustered standard errors. Pick the cluster level and variable and explain your choice. Does it give you a better estimate?
+    \item Rerun the regression in part (b) for different regions. Compare these results with the results in part (b). What extra insights can you get from these subsample regressions?
+    \item Rerun the regression in part (b) for only male or femal observations. Compare with the result with that of part (b). WhWhat extra insights can you get from these subsample regressions?
+    \item Copy the dataset 5 times and combine them into one dataset (so you have one dataset with 50000 rows). Rerun the regression in part (b). Compare with the result in part (b), which regression gives you better estimates? Explain.
+  \end{enumerate}
+  \item Read the following stories and explain whether Tom and Yujie are correct or not (Either Tom or Yujie can be correct, or they both can be correct, or they both can be wrong. Please explain your answer.)
+  \begin{enumerate}
+    \item Yujie runs a FGLS because hse is concerned about heteroskadasticity. Tom agrees with her and says that estimation of FGLS is always better than those from OLS.
+    \item Consider the model $Y = X\beta + \epsilon$ and all OLS assumptions satisfied, and we know that the OLS estimator is an unbiased estimator of $\beta$. Tom says that the IV estimator is biased if the IV $Z$ is correlated with $\epsilon$. Yujie says that the IV estimator is biased even when the exogeneity assumption is satisfied.
+    \item Yujie says that fixed effects model is better than random effects because it requires weaker assumptions. Tom says that the random effects model is better because individual specific effects are random variables.
+    \item Yujie has a panel dataset with 10 years and 1000 individuals. her estimation involves both individual fixed effects and year fixed effects. Tom says that this is not going to work because we can include either one of those effects.
+    \item Using a dataset with 5 years, Yujie runs a regression with both year fixed effects and month fixed effects. Yujie says that we should include 15 dummy variables for the fixed effects, Tom says there should be 59 dummy variables.
+    \item Yujie estimates a fixed effect model and included gender as a covariate. Tom says that this won't work because gender is a time-invariant covariate. Yujie says it works because in the dataset one of the observations shows that the individuals changed gender once.
+  \end{enumerate}
+\end{enumerate}
+\end{document}

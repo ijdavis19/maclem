@@ -1,4 +1,4 @@
-% SampleProject.tex -- main LaTeX file for sample LaTeX article
+ % SampleProject.tex -- main LaTeX file for sample LaTeX article
 %
 %\documentclass[12pt]{article}
 \documentclass[11pt]{SelfArxOneColBMN}
@@ -31,7 +31,7 @@ urlcolor=color2,%
 citecolor=color1,%
 linkcolor=color1,%
 bookmarksopen=false%
-,pdftitle={ProblemSet9},%
+,pdftitle={Midterm 2},%
 pdfauthor={Peterson}}
 %\usepackage[round,numbers]{natbib}
 \usepackage[numbers]{natbib}
@@ -85,18 +85,18 @@ pdfauthor={Peterson}}
 
 \input{setupsample}
 
-\JournalInfo{Econ 8050:  Problem Set Nine, 1-\pageref{LastPage}, 2020} % Journal information
+\JournalInfo{Econ 8050:  Midterm 2, 1-\pageref{LastPage}, 2020} % Journal information
 \Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
 
-\PaperTitle{Econ 8050 Problem Set Nine}
+\PaperTitle{Econ 8050 Midterm 2}
 \Authors{Ian Davis\textsuperscript{1}}
 \affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
 Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 %\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
 
 \date{\small{Version ~\today}}
-\Abstract{Questions from Problem Set 9.}
-\Keywords{TBD}
+\Abstract{Questions from Midterm 2.}
+\Keywords{None}
 \newcommand{\keywordname}{Keywords}
 %
 \onehalfspacing
@@ -115,16 +115,110 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
 \end{eqnarray*}
 The household has uncertain period two income with probability $\pi(1)$ it is equal to $\bar{Y} + \epsilon$ and with probability $1 - \pi(1)$ it is equal to $\bar{Y}$. The risk free interest rate $r$ and the price of the Arrow-Debreu security for state 1 $\frac{p(1)}{1 + r}$ are given by the world financial market. However, there is no A-D for state 2 traded in the markert.
 \begin{enumerate}
-  \item Write down the household's budget constraints (the flow constraints and the combined life-time constraint).
-  \item Assume utility is log. Solve for the optimal consumption levels in all periods and states.
-  \item Assume that both Arrow-Debreu securities exist, but they are only traded domestically. The economy continues to trade the riskless bond internationally (so that $r$ is still given by the world interest rate). Find the price of the A-D securities. Does the openness to international riskless borrowing and lending put any constraints on the domestic Arrow-Debreu security prices.
+  \item Write down the household's budget constraints (the flow constraints and the combined life-time constraint).\\
+  \indent \textbf{Answer: }Even though we are dealing with an incomplete market, we still are able to use the fact that we have a case 1 A-D security as well as a riskless bond option $(B_r)$ to get the following.\\
+  Period 1 Budget Constraint:\\
+  \begin{eqnarray*}
+    Y_1 = C_1 + B_r + \frac{p(1)}{1 + r}B_2(1)
+  \end{eqnarray*}
+  Period 2 Budget Constraints:\\
+  \begin{eqnarray*}
+    C_2(1) &=& Y_2(1) + (1 + r)B_r + B_2(1)\\
+    &=& \bar{Y} + \epsilon + (1 + r)B_r + B_2(1)\\
+    C_2(2) &=& Y_2(2) + (1 + r)B_r\\
+    &=& \bar{Y} + (1 + r)B_r
+  \end{eqnarray*}
+  Lifetime budget constraint
+  \begin{eqnarray*}
+    C_1 + \frac{p(1)}{1 + r}C_2(1) + \frac{1 - p(1)}{1 + r}C_2(2) = Y_1 + \frac{p(1)}{1 + r}(\bar{Y} + \epsilon) + \frac{p(2)}{1 + r}(\bar{Y})
+  \end{eqnarray*}
+  \item Assume utility is log. Solve for the optimal consumption levels in all periods and states.\\
+  \textbf{Answer: }We are looking to optimize the following lifetime utility
+  \begin{eqnarray*}
+    U(C) &=& u(C_1) + \beta[\pi(1)u(C_2(1)) + \pi(2)u(C_2(2))]\\
+  \end{eqnarray*}
+  Subject to
+  \begin{eqnarray*}
+    C_1 + \frac{p(1)}{1 + r}C_2(1) + \frac{1 - p(1)}{1 + r}C_2(2) = Y_1 + \frac{p(1)}{1 + r}(\bar{Y} + \epsilon) + \frac{p(2)}{1 + r}(\bar{Y})
+  \end{eqnarray*}
+  We define lifetime wealth as
+  \begin{eqnarray*}
+    W_1 = Y_1 + \frac{p(1)}{1 + r}(\bar{Y} + \epsilon) + \frac{1 - p(1)}{1 + r}(\bar{Y})
+  \end{eqnarray*}
+  And, because utility is log, we are able to get the optimum consumption levels in all periods and states by plugging into the budget constraint and get
+  \begin{eqnarray*}
+    C_1 &=&\frac{1}{1 + \beta}W_1\\
+    C_2(1) &=& \frac{\pi(1)W_1\frac{\beta}{1+\beta}}{\frac{p(1)}{1 + r}}\\
+    C_2(2) &=& \frac{\pi(2)W_1\frac{\beta}{1+\beta}}{\frac{1 - p(1)}{1 + r}}\\
+  \end{eqnarray*} 
+  \item Assume that both Arrow-Debreu securities exist, but they are only traded domestically. The economy continues to trade the riskless bond internationally (so that $r$ is still given by the world interest rate). Find the price of the A-D securities. Does the openness to international riskless borrowing and lending put any constraints on the domestic Arrow-Debreu security prices.\\
+  \textbf{Answer: }Because the securities are traded within the closed economy, we cannot have more or less sales of a given security than there are puchases of it. This gives us
+  \begin{eqnarray*}
+  \frac{p(1)}{1 + r} &=& \frac{\pi(1)\beta Y_1}{Y_2(1)}\\
+  &\implies& p(1) = \frac{(1+r)\pi(1)\beta Y_1}{\bar{Y} + \epsilon}\\
+  \frac{p(2)}{1 + r} &=& \frac{\pi(2)\beta Y_1}{Y_2(2)}\\
+  &\implies& p(2) = \frac{(1+r)\pi(2)\beta Y_1}{\bar{Y}}
+  \end{eqnarray*}
+  Finally, becuase $r$ is determined in the global market and there exists a riskless borrowing and saving, the prices of the securities are constrained to ensure $p(1) + p(2) = 1$.
 \end{enumerate}
 
-%\newpage
-%\clearpage
-%\noindent \textbf{Graph 2.1}
-%\begin{figure}[h]
-%  \includegraphics{graph21.png}
-%  \end{figure}
+\textbf{Part II. }In this question the Solow model of economic growth is defined by the following equations.
+\begin{enumerate}
+    \item $Y_t = K_t^\alpha(A_tL_t)^{1 - \alpha}$
+    \item $K_{t+1} = K_t + I_t - \delta K_t$
+    \item $I_t = sY_t$
+\end{enumerate}
+assume that population is constant but technology grows at a rate of $g > 0$.
+\begin{enumerate}
+  \item Carefully draw the Solow diagram. Explain how an economy that starts with low initial capital $\bar{K_0}$ will evolve over time. Make sure you indicate on the graph and explain in words what is happening to the economy over time.\\
+  Explain if there is a long run equilibrium (steady state) to which the economy moves over time. Make sure to indicate where it is on the graph. Which variable will you use to analyze the dynamics of the model and why? Explain what happens with the variable over time and what happens when once it reaches any such long run equilibrium. Draw a path of the variable you chose to use for your solow diagram as well as the path of GDP per capital over time starting in year 0.\\
+  \textbf{Answer: }For graph II.1.a (which is attached and labeled at the end), we look at capital per effective worker to model the growth of this economy. Capital per effective worker, $\widetilde{k}$, is used becuase we have a have productivty growth over time. We see that, even with a small starting $\bar{K_0}$, capital per effective worker grows by the rule of $\widetilde{k_{t+1}} = \frac{1}{1 + g}[s\widetilde{k_t} + (1 - \delta)\widetilde{k_t}]$. Hence, it grows (at a dimishing rate) until it reaches the point where $\widetilde{k}_{t+1} = \widetilde{k}_t$ which can also be described as $\widetilde{k}^* = (\frac{s}{g + \delta})^\frac{1}{1 - \alpha}$. GDP per capita follows a different path because, although capital per effective worker will reach a steady state, GDP per capital continuous to grow along with the productivity of capital and converges to a constant positive slope. This is illustrated on graph II.1.b.
+  \item Suppose we have an economy that has been in its steady state for a while when suddenly, say because of a major breakthrough in AI research, the economy experiences an immediate, one-time, permanent increase in the rate of technological progress. Use the Solow diagram to explain what will happen to the economy.\\
+  \textbf{Answer: }As illustrated in graph II.2 attached, the increase in technological growth raises the steady state level of capital per effective worker from $widetilde{k}^* = (\frac{s}{g + \delta})^\frac{1}{1 - \alpha}$ to $\widetilde{k}^{*\prime} = (\frac{s}{g^\prime + \delta})^\frac{1}{1 - \alpha}$. It is important to note that it will take time to go from the first steady state to the new one as opposed to an immediate jump which would occure if there was a immediate, one time change in the level of productivity.
+  \item In a separate plot, show how GDP per capital will evolve over time. Draw your graph carefully paying attention to changes in the slope. Explain the changes in the growth pattern\\
+  \textbf{Answer: }Graph II.3 shows that, while the slope of GDP per capita initially converges to a positive constant, the increase in the growth of productivity raises this constant and shoots the slope of GDP per capital up until it converges to this new constant slope.\\
+  \\
+  Assume now no technological progress or population growth.\\
+  \item There is no household optimizing utility in this model. But assume for a moment that we have an objective and a policy with which to achieve it. The policy is the investment rate $s$. As for the objective, first, let us assume it is maximizing GDP per capital. What value of s will achieve the objective?\\
+  \textbf{Answer: }We know that GDP per capita converges eventually to $y^* = \bar{A}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha}$ and $\frac{\partial y^*}{\partial s} = \frac{\alpha}{1 - \alpha}\bar{A}(\frac{s}{\delta})^\frac{2\alpha - 1}{1 - \alpha} > 0$ So $y^*$ is increasing in $s$ and $y^*$ is maximized when $s = 1$ which is the largest possible value of $s$.
+  \item Next, assume that consumption per capita is the objective. What value of s will achieve the objective (be as rigorous as possible). Explain. Why is the answer in the last two questions the same or different.\\
+  \textbf{Answer: }In steady stae, we know that investment is exactly what was lost due to depreciation ($\delta k^*$) so consumption is
+  \begin{eqnarray*}
+    c^* &=& y^* - \delta k^* = \bar{A}(\frac{s}{\delta})^\frac{\alpha}{1 - \alpha} - \delta \bar{A}(\frac{s}{\delta})^\frac{1}{1 - \alpha}\\
+    \implies \frac{\partial c}{\partial s} &=& \frac{\alpha}{1 - \alpha}\bar{A}(\frac{s}{\delta})^\frac{2\alpha - 1}{1 - \alpha}\frac{1}{\delta} - \frac{1}{1 - \alpha}\bar{A}(\frac{s}{\delta})^\frac{-\alpha}{1 - \alpha} = 0\\
+    \implies \frac{1}{\delta}\frac{\alpha}{1 - \alpha}\bar{A}(\frac{s}{\delta})^\frac{2\alpha - 1}{1 - \alpha} &=& \frac{1}{1 - \alpha}\bar{A}(\frac{s}{\delta})^\frac{-\alpha}{1 - \alpha}\\
+    \implies \frac{1}{\delta}\frac{\alpha}{1 - \alpha} &=& \frac{1}{1 - \alpha}(\frac{s}{\delta})^\frac{-3\alpha + 1}{1 - \alpha}\\
+    \implies \frac{\alpha}{\delta} &=& (\frac{s}{\delta})^\frac{-3\alpha + 1}{1 - \alpha}\\
+    \implies \delta(\frac{\alpha}{\delta})^\frac{1 - \alpha}{1 - 3\alpha} = s
+  \end{eqnarray*}
+  Which is not the same as the previous answer. This is because that, as consumption increases, we invest less in the next period which would decrease savings from the optimal $s = 1$ for maximizing GDP per capita.
+\end{enumerate}
 
+\newpage
+\clearpage
+\noindent \textbf{Graph II.1.a}
+\begin{figure}[h]
+  \includegraphics{graph1a.png}
+  \end{figure}
+
+\newpage
+\clearpage
+\noindent \textbf{Graph II.1.b}
+\begin{figure}[h]
+  \includegraphics{graph1b.png}
+  \end{figure}
+
+\newpage
+\clearpage
+\noindent \textbf{Graph II.2}
+\begin{figure}[h]
+  \includegraphics{graph2.png}
+  \end{figure}
+
+\newpage
+\clearpage
+\noindent \textbf{Graph II.3}
+\begin{figure}[h]
+  \includegraphics{graph3.png}
+  \end{figure}
 \end{document}
