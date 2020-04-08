@@ -23,7 +23,13 @@ local relMax = 0
 ma list
 qui forval year = 2006/2016 {
 	use "$dataraw/namcs`year'-stata.dta", replace
-	gen script=0//NEED FIRSTGENYEAR FIRSTGENMONTHr' == 2012 | `year' == 2013{
+	gen script=0
+	if `year' >= 2006 & `year' < 2012{
+		forval k = 1/8{
+			replace script = 1 if DRUGID`k' == "`geneq'"
+		}
+	}
+	else if `year' == 2012 | `year' == 2013{
 		forval k = 1/9{
 			replace script = 1 if DRUGID`k' == "`geneq'"
 		}
@@ -82,9 +88,9 @@ qui forval dataset = 2006/2016 {
 					else {
 						forval i = 1/5 {
 							drop if RFV`i' == . & relRFV != 1
-              drop if DIAG`i' == "" & relDIAG != 1
+              				drop if DIAG`i' == "" & relDIAG != 1
 							replace relRFV = 1 if RFV`i' == ``year'reason`runner'k`k''
-              replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
+              				replace relDIAG = 1 if DIAG`i' == "``year'diag`runner'k`k''"
 						}
 					}
 				}
@@ -119,10 +125,17 @@ qui forval dataset = 2006/2016 {
 	save "$output/aztreonam/diag/`dataset'", replace
 }
 
+forval year = 2006/2013 {
+	use "$output/aztreonam/diag/`year'", replace
+	gen DIAG4=""
+	gen DIAG5=""
+	save "$output/aztreonam/diag/`year'", replace
+}
+
 forval year = 2006/2016 {
   use "$output/aztreonam/diag/`year'", replace
   gen year = YEAR
-  keep year VMONTH AGE SEX PAYPRIV PAYMCARE PAYMCAID PAYWKCMP PAYSELF PAYNOCHG PAYOTH PAYDK PAYTYPE /*USETOBAC*/ /*PRIMCARE*/ /*TIMEMD*/ /*SPECR*/ /*MDDO*/ /*SOLO*/ /*PRMCARER*/ /*PRMAIDR PRPRVTR PRPATR PROTHR PRMANR REVCAPR REVCASER REVOTHR*/ script relRFV relDIAG
+  keep year VMONTH AGE SEX ETHNIC PAYPRIV PAYMCARE PAYMCAID PAYSELF PAYNOCHG PAYOTH PAYDK DIAG1 DIAG2 DIAG3 DIAG4 DIAG5 CANCER CEBVD CHF COPD NOCHRON TOTCHRON TEMPF BPSYS BPDIAS PELVIC SKIN ANYIMAGE MRI XRAY OTHIMAGE CBC GLUCOSE EKG URINE WOUND NOPROVID PHYSASST RNLPN OTHPROV NODISP OTHDISP PATWT REGION PATCODE RACER AGEDAYS AGER SETTYPE script relRFV relDIAG
   save "$output/aztreonam/diag/`year'", replace
 }
 

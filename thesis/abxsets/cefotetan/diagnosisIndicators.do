@@ -34,8 +34,8 @@ forval d= 1/3 {
 ma list
 display "`initialIndicatorNumber'"
 // Remove duplicates and null values
-local finalIndicatorNumber = 1
-local finalDiagnosisIndicator1  = "`initialDiagnosisIndicator1'"
+global finalIndicatorNumber = 1
+global finalDiagnosisIndicator1  = "`initialDiagnosisIndicator1'"
 forval k = 1/`initialIndicatorNumber' {
     local repeats = 0
     forval l = 1/`finalIndicatorNumber' {
@@ -44,17 +44,31 @@ forval k = 1/`initialIndicatorNumber' {
         }
     }
     if `repeats' == 0 {
-        local `finalIndicatorNumber' = `finalIndicatorNumber' + 1
+        global finalIndicatorNumber = $finalIndicatorNumber + 1
         local finalDiagnosisIndicator`finalIndicatorNumber' = "`initialDiagnosisIndicator`k''"
     }
 }
 
+
+/*
 // Set up indicators
-forval m = 1/`finalDiagnosisIndicator1' {
+forval m = 1/$finalIndicatorNumber {
     gen diagInd`x' = 0
     forval d = 1/3 {
         replace diagInd`x' = 1 if DIAG`d' == "`finalDiagnosisIndicator`x''"
     }
 }
+*/
 
 
+
+// Possible fix to the whole thing (makes way too many)
+encode DIAG1, gen(nDIAG1)
+
+// Possible fix for possible fix (can probably be in a new do file)
+condition on each value of DIAG1
+	create unique identifier
+	sum identifier
+	save max
+	replace with 0 (currently unused) if max is under a threshold
+	

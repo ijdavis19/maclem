@@ -124,10 +124,17 @@ qui forval dataset = 2006/2016 {
 	save "$output/linezolid/diag/`dataset'", replace
 }
 
+forval year = 2006/2013 {
+	use "$output/linezolid/diag/`year'", replace
+	gen DIAG4=""
+	gen DIAG5=""
+	save "$output/linezolid/diag/`year'", replace
+}
+
 forval year = 2006/2016 {
   use "$output/linezolid/diag/`year'", replace
   gen year = YEAR
-  keep year VMONTH AGE SEX PAYPRIV PAYMCARE PAYMCAID PAYWKCMP PAYSELF PAYNOCHG PAYOTH PAYDK PAYTYPE /*USETOBAC*/ /*PRIMCARE*/ /*TIMEMD*/ /*SPECR*/ /*MDDO*/ /*SOLO*/ /*PRMCARER*/ /*PRMAIDR PRPRVTR PRPATR PROTHR PRMANR REVCAPR REVCASER REVOTHR*/ script relRFV relDIAG
+  keep year VMONTH AGE SEX ETHNIC PAYPRIV PAYMCARE PAYMCAID PAYSELF PAYNOCHG PAYOTH PAYDK DIAG1 DIAG2 DIAG3 DIAG4 DIAG5 CANCER CEBVD CHF COPD NOCHRON TOTCHRON TEMPF BPSYS BPDIAS PELVIC SKIN ANYIMAGE MRI XRAY OTHIMAGE CBC GLUCOSE EKG URINE WOUND NOPROVID PHYSASST RNLPN OTHPROV NODISP OTHDISP PATWT REGION PATCODE RACER AGEDAYS AGER SETTYPE script relRFV relDIAG
   save "$output/linezolid/diag/`year'", replace
 }
 
