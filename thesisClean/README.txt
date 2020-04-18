@@ -16,7 +16,12 @@ We then perform the following for all of our drugs of interest
 	4. Pray that it is less than 229,000
 
 
+Use datasets.do to move around datasets quickly
+
+
 Actual Order of do compilation
-	1. pdr_cleaner.do
+	1. drugInformationDatasetCreation.do
 		fixes some of the pdr information and creates the pdr_cleaned.dta
-	2. 
+	2. panelDataCreation.do
+		makes one big NAMCS panel set
+	
