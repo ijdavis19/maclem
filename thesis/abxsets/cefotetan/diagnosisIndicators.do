@@ -60,15 +60,4 @@ forval m = 1/$finalIndicatorNumber {
 }
 */
 
-
-
-// Possible fix to the whole thing (makes way too many)
-encode DIAG1, gen(nDIAG1)
-
-// Possible fix for possible fix (can probably be in a new do file)
-condition on each value of DIAG1
-	create unique identifier
-	sum identifier
-	save max
-	replace with 0 (currently unused) if max is under a threshold
 	

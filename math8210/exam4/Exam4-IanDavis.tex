@@ -1,0 +1,253 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Exam4},%
+pdfauthor={Ian Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{MATH 8210: Exam 4, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{MATH 8210 Exam 4}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Exam 4}
+\Keywords{}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}
+\textbf{Problem 1: }Let $A$ and $B$ be self adjoint operators on the Hilbert space $H$
+\begin{itemize}
+  \item Prove if $A$ and $B$ commute, then $AB$ is self adjoint.
+  \begin{solution}
+    Because $A$ and $B$ are self-adjoint in the Hilbert space $H$ and commute we know
+    \begin{enumerate}
+      \item $<A(\mathbf{x}),\mathbf{y}> = <\mathbf{x},A(\mathbf{y})>$
+      \item $<B(\mathbf{x}),\mathbf{y}> = <\mathbf{x},B(\mathbf{y})>$
+      \item $A(B(\mathbf{x})) = B(A(\mathbf{x}))$
+    \end{enumerate}
+    From these conditions, we can deduce the following
+    \begin{eqnarray*}
+      <A(B(\mathbf{x})),\mathbf{y}> &=& <B(\mathbf{x}),A(\mathbf{y})>\\
+      &=& <\mathbf{x},B(A(\mathbf{y}))>\\
+      &=& <\mathbf{x},A(B(\mathbf{y}))>
+    \end{eqnarray*}
+    proving AB is self adjoint.
+  \end{solution}
+  \item If $E$ is an eigenvector of $A$ for eigenvalue $\lambda$, and $A$ and $B$ commute, then $BE$ is an eigenvector of $A$ with eigenvalue $\lambda$
+  \begin{solution}
+    We know from above that
+    \begin{eqnarray*}
+      A(E) = \lambda E
+    \end{eqnarray*}
+    and then, because $A$ and $B$ commute, we can get
+    \begin{eqnarray*}
+      A(BE) &=& B(AE)\\
+      &=& B(\lambda E)\\
+      &=& \lambda B(E)
+    \end{eqnarray*}
+    which tells us that $B(E)$ is an eigenvector of $A$ with eigenvalue $\lambda$
+  \end{solution}
+  \item If $F$ is an eigenvector of $B$ for eigenvalue $\mu$, and $A$ and $B$ commute, then $AF$ is an eigenvector of $B$ with eigenvalue $\mu$
+  \begin{solution}
+    Similar to the proof above, we know
+    \begin{eqnarray*}
+      B(F) = \mu F
+    \end{eqnarray*}
+    and then, because $A$ and $B$ commute, we can get
+    \begin{eqnarray*}
+      B(AF) &=& A(BF)\\
+      &=& A(\mu F)\\
+      &=& \mu A(F)
+    \end{eqnarray*}
+    which tells us that $A(F)$ is an eigenvector of $B$ with eigenvalue $\mu$
+  \end{solution}
+\end{itemize}
+
+\textbf{Problem 2: }Let $X = \Re^n$. Define $\mathbf{F_i} \in X^\prime$ by $F_i(\mathbf{E_j}) = \delta_i^j$ where $\mathbf{E = \{E_1,...,E_n\}}$ is a given o.n. basis of X. Then any $\mathbf{x} \in X$ has a unique expansion $\mathbf{x} = \sum_{i=1}^n\:x_i\mathbf{E_i}$. Prove $\mathbf{F = \{F_1,...,F_n\}}$ is an o.n. basis for $X^\prime$ and if 
+\begin{eqnarray*}
+\mathbf{z_F} = 
+  \begin{bmatrix}
+    F(\mathbf{E_1})\\
+    \vdots\\
+    F(\mathbf{E_n})
+  \end{bmatrix}
+\end{eqnarray*}
+then $F(\mathbf{x}) = <\mathbf{x},\mathbf{z_F}>$. Prove this representation and explain how you know $\mathbf{z_F}$ is the unique choice since $X \equiv X^\prime$
+\begin{solution}
+  First, we want to show that $\mathbf{F}$ is an orthonormal basis for $X^\prime$. To start, note that $X = \Re^N$ is a Hilbert Space with the usual inner product space. Because of this, we know that we can extend said inner product to $X^\prime$.\\
+  Also, we know that we can identify $\mathbf{F_i}$ as the following $n\times1$ matricies
+  \begin{eqnarray*}
+    \mathbf{F_1} &=&
+    \begin{bmatrix}
+      1,0,0,\hdots,0
+    \end{bmatrix}
+    \\
+    \mathbf{F_2} &=&
+    \begin{bmatrix}
+      0,1,0,\hdots,0
+    \end{bmatrix}
+    \\
+    \mathbf{F_3} &=&
+    \begin{bmatrix}
+      0,0,1,\hdots,0
+    \end{bmatrix}
+    \\
+    &\vdots&\\
+    \mathbf{F_n} &=&
+    \begin{bmatrix}
+      0,0,0,\hdots,1
+    \end{bmatrix}
+  \end{eqnarray*}
+  which gives us 
+  \begin{eqnarray*}
+    \mathbf{F_j}(\mathbf{x}) &=& \mathbf{E_j^T}\mathbf{x}\\
+    &=& <\mathbf{x},\mathbf{E_j}>\\
+    &=& x_j\\
+  \end{eqnarray*}
+  and $\mathbf{F}$ is an o.n. basis of $X^\prime$. Extending this idea futher, we get
+  \begin{eqnarray*}
+    F(\mathbf{x}) &=& \sum_{j=1}^n\:<\mathbf{x},\mathbf{E_j}>\\
+    &=& <\mathbf{x},\sum_{j=1}^n\:\mathbf{E_j}>\\
+    &=& <\mathbf{x},\mathbf{z_F}>
+  \end{eqnarray*}
+  To show that $z_F$ is unique, we simply look at
+  \begin{eqnarray*}
+    f(\mathbf{x}) &=& <\mathbf{x},\mathbf{z}>\\
+    &=& <\mathbf{x},\mathbf{z_F}>\\
+    \implies <\mathbf{x},\mathbf{z} - \mathbf{z_F}> &=& 0 \; \forall \; \mathbf{x}
+  \end{eqnarray*}.
+  In the specific case of $\mathbf{x} = \mathbf{z} - \mathbf{z_F}$, we get $\|\mathbf{z} - \mathbf{z_F}\|^2 \implies \mathbf{z} = \mathbf{z_F}$. Hence, $\mathbf{z_F}$ is unique. Finally, to show $X \equiv X^\prime$, need to show that $T(\mathbf{F}) = \mathbf{z_F}$ is a linear bijective norm isometry. First, we know from above that $T$ is well defined but we still need to show it is 1 - 1. We can do this but showing it is a norm isometry i.e. $\|T(F)\| = \|\mathbf{z_F}\| = \|F\|_{op}$. First, $\mathbf{F}(\mathbf{x}) = <\mathbf{z_F}> \; \forall \mathbf{x}>$. This means that $\mathbf{F}(\mathbf{z_F}) \implies \frac{\mathbf{F}(\mathbf{z_F})}{{z_F}\|} = \|\mathbf{z_F}\| \implies \|\mathbf{F}\|_{op} = \|\mathbf{z_F}\|$. For the reverse equality, $|\mathbf{F}(\mathbf{x})| = |<\mathbf{x},\mathbf{z_F}>| \leq \|\mathbf{x}\|\|\mathbf{z_F}\| \implies \|\mathbf{F}\|_{op} = \sup_{\mathbf{x \neq 0}}\frac{\|\mathbf{F(x)}}{\|\mathbf{x}} \ leq \|\mathbf{z_F}\|$. When we combine the two inequalities we get $\|\mathbf{z_F}\|= \|\mathbf{F}\|_{op}$ which confirms that $T(\mathbf{F})$ is 1 -1. Next,
+  \begin{eqnarray*}
+    \mathbf{F(x)} &=& <\mathbf{x,z_F}>\\
+    \implies (\alpha \mathbf{F})(\mathbf{x}) &=& \alpha<\mathbf{x,z_F}>\\
+    &=& <\mathbf{x},\bar{\alpha}\mathbf{z_F}>
+  \end{eqnarray*}
+  which says that $T(\alpha\mathbf{F}) = <\mathbf{x},\bar{\alpha}\mathbf{z_F}$ so $\mathbf{z}_{\alpha\mathbf{F}} = \bar{\alpha}\mathbf{z_F}$. Then $T$ is additive because $(T(\mathbf{F} + \mathbf{G}))(\mathbf{x}) = <\mathbf{x},\mathbf{z}_{\alpha\mathbf{F}} + \mathbf{z}_{\beta\mathbf{G}}>$. To show $T$ is linear, we just consider 
+  \begin{eqnarray*}
+    (T(\mathbf{F} + \mathbf{G}))(\mathbf{x}) &=& <\mathbf{x},\mathbf{z}_{\alpha\mathbf{F}} + \mathbf{z}_{\beta\mathbf{G}}>\\
+    &=& <\mathbf{x},\bar{\alpha}\mathbf{z_F} + \bar{\beta}\mathbf{z_G}>\\
+    &=& \alpha<\mathbf{x},\mathbf{z_F}> + \beta<\mathbf{x},\mathbf{z_G}>\\
+    &=& (\alpha T(\mathbf{F}) + \beta T(\mathbf{G}))(\mathbf{x})
+  \end{eqnarray*}
+  Finally we can show that $T$ is because any $\mathbf{z} \in X$ defines the bounded linear functional $F(\mathbf{x}) = <\mathbf{x},\mathbf{z}$. The choice of element assigned to $\mathbf{F}$ must be unique so $T(\mathbf{F}) = \mathbf{z}$. Hence, $T(\mathbf{F}) = \mathbf{z_F}$ is a linear bijective norm isometry and $X \equiv X^\prime$
+\end{solution}
+
+\textbf{Problem 3: }Prove the following statements
+\begin{itemize}
+  \item From our approximation theorem, we also know
+  \begin{eqnarray*}
+    T_N^0 = \sum_{j=0}^n\:\frac{1}{\Theta - \frac{n^2\pi^2}{L^2}}<\hat{u}_j,f>\hat{u}_j
+  \end{eqnarray*}
+  is the best approximation to the solution to $u'' + \Theta u = f;\;u'(0) = u'(L) = 0$ for $f \in \L([0,L])$ data to the subspace spanned by $\{\hat{u}\}_{n=0}^N$\\
+  \begin{solution}
+    First we assume $\Theta \neq \frac{n^2\pi^2}{L^2} \; \forall \; n > 1$ and $\Theta \neq 1$. Then, for $n = 0$, our eigenvalue and eigenfunction is $\beta_0 = 0$ and $u_0(x) = 1$ respectively. For the case of $n > 1$, the eigenvalue and eigenfunction is $\beta_n = \Theta - \frac{n^2\pi^2}{L^2}$ and $u_n(x) = \cos(\frac{n\pi x}{L})$. Normalized, these eigenfunctions are $\hat{u}_0(x) = \sqrt{\frac{1}{L}}$ and $\hat{u}_n(x) = \sqrt{\frac{2}{L}}\cos(\frac{n\pi x}{L})$. The sequence $\hat{u}_n(x)$ is a complete orthonormal sequence because it is a St\"urm - Liouville solution. From here, we get that any $f \in \L_2([0,L])$ has a unique expansion following $f = \sum_{n=0}^\infty<f,\hat{u}_n>\hat{u}_n$ and the patial sums converge in the $\|\cdot\|_2$ norm. Also, we interpret $f$ as a representative of the $[f]$ equivalence class. Now, from the Convergence of Approximations to the St\"urm Liouville Model, we know that partial sums, $\sum_{j=0}^n\:\mu_j\mathbf{u_j}<\mathbf{u_j},\mathbf{f}>$, converge to the continuous function $\mathbf{u} = J_{\lambda_0}(\mathbf{f})$ both uniformly and in the $\L_2([0,L])$ norm. We know that $\mathbf{u} = \frac{1}{\lambda_n - \lambda_0} \rightarrow 0$ where the lambdas represent the eigenvalues discussed above. This gives us
+    an approximation for $f$ as
+    \begin{eqnarray*}
+    T_N^0 = \sum_{j=0}^n\:\frac{1}{\Theta - \frac{n^2\pi^2}{L^2}}<\hat{u}_j,f>\hat{u}_j
+  \end{eqnarray*}
+  \end{solution}
+  \item
+  \begin{eqnarray*}
+    T_N^1 = \sum_{j=1}^n\:\sqrt{\frac{1}{\Theta - \frac{n^2\pi^2}{L^2}}}<\hat{v}_j,f>\hat{v}_j
+  \end{eqnarray*}
+  is the best approximation to the solution to $u'' + \Theta u = f;\;u'(0) = u(L) = 0$ for $f \in \L([0,L])$ data to the subspace spanned by $\{\hat{v}\}_{n=1}^N$
+  \begin{solution}
+    The following arguement is similar to that which was used above. Again, we assume $\Theta \neq \frac{n^2\pi^2}{L^2} \; \forall \; n > 1$ and $\Theta \neq 1$. Then, for $n > 1$, the eigenvalue and eigenfunction is $\beta_n = \Theta - \frac{n^2\pi^2}{L^2}$ and $v_n(x) = \sin(\frac{n\pi x}{L})$. Normalized, this eigenfunction is $\hat{v}_n(x) = \sqrt{\frac{2}{L}}$. The sequence $\hat{v}_n(x)$ is a complete orthonormal sequence because it is a St\"urm - Liouville solution. From here, we get that any $f \in \L_2([0,L])$ has a unique expansion following $f = \sum_{n=0}^\infty<f,\hat{v}_n>\hat{v}_n$ and the patial sums converge in the $\|\cdot\|_2$ norm. Also, we interpret $f$ as a representative of the $[f]$ equivalence class. Now, from the Convergence of Approximations to the St\"urm Liouville Model, we know that partial sums, $\sum_{j=0}^n\:\mu_j\mathbf{v_j}<\mathbf{v_j},\mathbf{f}>$, converge to the continuous function $\mathbf{v} = J_{\lambda_0}(\mathbf{f})$ both uniformly and in the $\L_2([0,L])$ norm. We know that $\mathbf{v} = \frac{1}{\lambda_n - \lambda_0} \rightarrow 0$ where the lambdas represent the eigenvalues discussed above. This gives us
+    an approximation for $f$ as
+    \begin{eqnarray*}
+    T_N^1 = \sum_{j=1}^n\:\frac{1}{\Theta - \frac{n^2\pi^2}{L^2}}<\hat{v}_j,f>\hat{v}_j
+  \end{eqnarray*}
+  \end{solution}
+\end{itemize}
+
+\end{document}

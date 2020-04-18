@@ -1,0 +1,42 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Gendered Regression table (1 = Male 2 = Female)\label{tab1}}
+\begin{tabular}{l*{2}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+            &\multicolumn{1}{c}{earnings}&\multicolumn{1}{c}{earnings}\\
+\hline
+education   &       28.61\sym{***}&       53.33\sym{***}\\
+            &      (3.73)         &      (6.79)         \\
+[1em]
+ability     &       16.15\sym{***}&       11.33\sym{***}\\
+            &     (14.04)         &      (9.61)         \\
+[1em]
+1.region    &           0         &           0         \\
+            &         (.)         &         (.)         \\
+[1em]
+2.region    &      -4.694         &      -45.64         \\
+            &     (-0.15)         &     (-1.41)         \\
+[1em]
+3.region    &      -12.75         &       6.213         \\
+            &     (-0.40)         &      (0.19)         \\
+[1em]
+4.region    &       6.251         &       41.97         \\
+            &      (0.19)         &      (1.30)         \\
+[1em]
+exp         &       22.70\sym{*}  &       52.30\sym{***}\\
+            &      (2.15)         &      (4.86)         \\
+[1em]
+expSquared  &      -0.249         &      -0.810\sym{***}\\
+            &     (-1.32)         &     (-4.21)         \\
+[1em]
+\_cons      &      2171.4\sym{***}&      1871.3\sym{***}\\
+            &     (14.07)         &     (11.87)         \\
+\hline
+r2          &       0.232         &       0.210         \\
+N           &        5006         &        4994         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
