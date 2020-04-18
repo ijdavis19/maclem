@@ -14,3 +14,9 @@ We then perform the following for all of our drugs of interest
 	2. Determine relevant diagnoses
 	3. Create a seperate dataset of just those visits
 	4. Pray that it is less than 229,000
+
+
+Actual Order of do compilation
+	1. pdr_cleaner.do
+		fixes some of the pdr information and creates the pdr_cleaned.dta
+	2. 
