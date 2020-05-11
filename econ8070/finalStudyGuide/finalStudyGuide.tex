@@ -1,0 +1,252 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet 2},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 2, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Final Study Guide}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Midterm and Problem Sets}
+\Keywords{Omitted Variable Bias, Instrumental Variables, 2SLS}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{setion}{Title}
+\maketitle
+
+\textbf{Cheat Sheet:}
+\begin{itemize}
+  \item Mean Squared Error
+  \begin{eqnarray*}
+    MSE &=& \text{Var}(estimator) + \text{Bias}^2(estimator)\\
+    \lim_{n \rightarrow \infty} &=& 0 \implies \text{consistent}
+  \end{eqnarray*}
+  \item Bias
+  \begin{eqnarray*}
+    \text{BIAS} &=& E[estimator] - \mu\\
+    &=& 0 \implies \text{unbiased}
+  \end{eqnarray*}
+  \item OLS Unbiased
+  \begin{eqnarray*}
+    \hat{\beta} &=& (X^\prime X)^{-1}X^\prime Y\\
+    &=& (X^\prime X)^{-1}X^\prime(X\beta - \epsilon)\\
+    &=& (X^\prime X)^{-1}X^\prime X\beta + (X^\prime X)^{-1}X^\prime X\\
+    &=& \beta + (X^\prime X)^{-1}X^\prime\epsilon\\
+    E[\hat{\beta}|X] &=& E[\beta + (X^\prime X)^{-1}X^\prime\epsilon|X]\\
+    &=& \beta + E[(X^\prime X)^{-1}X^\prime\epsilon|X]\\
+    &=& \beta
+  \end{eqnarray*}
+  \item OLS Consistent
+  \begin{eqnarray*}
+    \text{p}\lim_{n\rightarrow\infty}\beta + (X^\prime X)^{-1}X^\prime\epsilon &=& \beta + \text{p}\lim_{n\rightarrow\infty}(X^\prime X)^{-1}X^\prime\epsilon\\
+    &=& \beta + \text{p}\lim_{n\rightarrow\infty}(X^\prime X)^{-1}\text{p}\lim_{n\rightarrow\infty}X^\prime\epsilon\\
+    &=& \beta + \text{p}\lim_{n\rightarrow\infty}(\frac{1}{n}X^\prime X)^{-1}\text{p}\lim_{n\rightarrow\infty}\frac{1}{n}X^\prime\epsilon\\
+    &=& \beta
+  \end{eqnarray*}
+  \item OLS Assumptions
+  \begin{itemize}
+    \item $y = X\beta + \epsilon$
+    \item $X$ is full rank
+    \item $E[\epsilon|X] = 0$
+    \item $E[\epsilon^\prime\epsilon|x] = \sigma^2 I$
+    \begin{itemize}
+      \item not needed for consistent and unbiased
+      \item Needed for Gauss-Markov (Best Linear Unbiased Estimator)
+    \end{itemize}
+  \end{itemize}
+  \item Multilinear Regression
+  \begin{eqnarray*}
+    \hat{\beta} = (X_1^\prime X_1)^{-1}X_1^\prime y - (X_1^\prime X_1)^{-1}(X_1^\prime X_2)\hat{\beta}_2
+  \end{eqnarray*}
+  \item Good Control ($x_2$)
+  \begin{itemize}
+    \item $\beta_2 \neq 0$
+    \item $\text{corr}(x_1,x_2) \neq 0$
+  \end{itemize}
+  \item FWL
+  \begin{itemize}
+    \item reg $y \; x_2 \rightarrow \epsilon_y$
+    \item reg $x_1 \; x_2 \rightarrow \epsilon_1$
+    \item reg $\epsilon_y \; \epsilon_x \rightarrow \hat{\beta}_1$
+  \end{itemize}
+  \item Jensen's Inequality Ramifications
+  \begin{itemize}
+    \item $E[s^2] = \sigma^2$
+    \item $E[\sqrt{s^2}] \neq \sqrt{\sigma^2}$
+    \item so sample standard deviation is biased even though sample variance is not.
+  \end{itemize}
+  \item Continuous Mapping Theorem (Consistent Variance implies Consistent Standard Deviation)
+  \begin{eqnarray*}
+    X_n &\rightarrow& X\\
+    &\implies& F(X_n) \rightarrow F(X)
+  \end{eqnarray*}
+  \item Number of Variables
+  \begin{itemize}
+    \item IV: $Z = X$
+    \item 2SLS: $Z > X$
+  \end{itemize}
+  \item $\text{corr}(X,\epsilon) \neq 0 \implies \text{Endogeneity}$
+  \item Instrumental Variable Requirements
+  \begin{itemize}
+    \item Endogeneity
+    \item Relevance
+    \item Neither are testable
+  \end{itemize}
+  \item $\hat{\beta}_{IV} = \frac{\text{cov}(Y,Z)}{\text{cov}(X,Z)}$
+  \item $\hat{\beta}_{IV}$
+  \begin{eqnarray*}
+    \hat{\beta}_{IV} &=& (Z^\prime X)^{-1}Z^\prime Y\\
+    &=& (Z^\prime X)^{-1}Z^\prime(\beta X + \epsilon)\\
+    &=& (Z^\prime X)^{-1}\beta Z^\prime X + (Z^\prime X)^{-1}Z^\prime\epsilon\\
+    &=& \beta + (Z^\prime X)^{-1}Z^\prime\epsilon
+  \end{eqnarray*}
+  \item $E[\hat{\beta}_{IV}]$
+  \begin{eqnarray*}
+    E[\hat{\beta}_{IV}] &=& E[\beta + (Z^\prime X)^{-1}Z^\prime\epsilon]\\
+    &=& \beta + 0
+  \end{eqnarray*}
+  \item Probability Limit of $\hat{\beta}_{IV}$
+  \begin{eqnarray*}
+    \text{p}\lim_{n\rightarrow\infty}\hat{\beta}_{IV} &=& \beta + (\frac{1}{n}Z^\prime X)^{-1}\frac{1}{n}Z^{\prime}\epsilon\\
+    &=& 0\\
+    \text{if}\\
+    \text{p}\lim_{n\rightarrow\infty}(\frac{1}{n}Z^\prime X)^{-1} &=& 0\\
+    \text{or}\\
+    \text{p}\lim_{n\rightarrow\infty}\frac{1}{n}Z^{\prime}\epsilon &=& 0
+  \end{eqnarray*}
+  \item IV and FWL
+  \begin{eqnarray*}
+    \hat{\beta}_2 &=& [Z_2^\prime(I - X_1(X_1^\prime X_1)^{-1}X_1^\prime)X_2]^{-1}Z^\prime_2(I - X_1(X_1^\prime X_1)^{-1}X_1^\prime)y\\
+    &=& (Z_2^\prime M_1X_2)^{-1}(Z_2^\prime M_1y)\\
+    &=& ((M_1Z_2)^\prime M_1X_2)^{-1}((M_1Z_2)^\prime M_1y)\\
+    = (Z_2^{*\prime}X_2^*)^{-1}X_2^{*\prime}y^{*\prime}
+  \end{eqnarray*}
+  \item LATE: Compliers
+  \item $Z = X = 1$: Complier or Always Taker
+  \item $Z = X = 0$: Complier or Never Taker
+  \item Clustering Assumes less zeroes than Robust Standard Errors
+  \item Classical Measurement Error
+  \begin{eqnarray*}
+    \hat{x} &=& x + \mu\\
+    \text{p}\lim_{n\rightarrow\infty}(\hat{\beta}) &=& \frac{\sigma_x^2}{\sigma_x^2 + \sigma^2_\mu}\beta\\
+    &\neq& \beta\\
+    \text{and}\\
+    |\frac{\sigma_x^2}{\sigma_x^2 + \sigma^2_\mu}||\beta| &<& |\beta|
+  \end{eqnarray*}
+  \item Wald: Assume no defiers and applies only to compliers
+  \item FGLS is unbiased and consistent (no need to prove)
+  \item Random effects and fixed effects both require strict exogeneity $E[\epsilon_{it}|x_i,\alpha_i] = 0$ but random effects also requires $E[\alpha_i|x_i] = 0$. Fixed effects does require that variables are not time invarient. Which assumptions are "weaker" depends on the situation.
+  \item Demeaning is equivalent to First Differencing (if there are two time periods)
+  \begin{eqnarray*}
+    \text{First Differencing: }y_{i2} - y_{i1} &=& (x_{1i2} - x_{1i1})\beta_1 + \epsilon_{i2} - \epsilon{i1}\\
+    &=& (x_{1i2} - \frac{x_{1i2} - x_{1i1}}{2})\beta_1 + (\alpha_i - \alpha_i) + \epsilon_{it} - \bar{\epsilon_i}\\
+    &=& y_{i2} - \frac{y_{i2} - y_{i1}}{2}\text{ :Demeaning}
+  \end{eqnarray*}
+  \item Proof of DiD estimator
+  \begin{eqnarray*}
+    Y_{it} &=& \alpha + \theta D_i + \delta P_t + \gamma D_i * P_t + \epsilon_{it}\\
+    P_t &=& I(t \geq t^*)\\
+    E[Y_{i2}|D = 1] &=& \alpha + \theta + \delta + \gamma\\
+    E[Y_{i1}|D = 1] &=& \alpha + \theta\\
+    E[Y_{i2}|D = 0] &=& \alpha + \delta\\
+    E[Y_{i1}|D = 0] &=& \alpha\\
+    &\implies&\\
+    (E[Y_{i2}|D = 1] - E[Y_{i1}|D = 1]) - (E[Y_{i2}|D = 0] - E[Y_{i1}|D = 0]) &=& (\alpha + \theta + \delta + \gamma) - (\alpha + \theta) - ((\alpha + \delta) - \alpha)\\
+    &=& \gamma
+  \end{eqnarray*}
+\end{itemize}
+
+
+
+\end{document}

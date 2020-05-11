@@ -1,0 +1,265 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={ProblemSet 5},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 5, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Problem Set 5}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Problem Set 5}
+\Keywords{TBD}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\begin{enumerate}
+  \item Read the following stories and explain whether Tom and Yujie are correct or not.
+  \begin{enumerate}
+    \item Yujie says that in the fixed effect model, using demeaning is not the same as using first differencing. Tom says that they are the same because we only have two time periods
+    \begin{solution}
+      First differencing is algebraically the same as demeaning but only when there are only two time periods. Because we do not how many time periods the dataset in question has, we cannot know for sure who is right. If there is more than two, Yujie is correct. If there is exactly two, Tom is correct.
+    \end{solution}
+    \item Tom tries to estimate how $x$ affects $y$ and he regresses $y$ on $\widetilde{x}$, where $\widetilde{x} = x + \mu$ and $\mu$ is a normal random variable. Yujie says that this is incorrect because $\widetilde{x}$ is just a measure of $x$ instead of $x$ itself. Tom says that the magnitude of $\hat{\beta}$ may be incorrect, but at least the sign of it is correct.
+    \begin{solution}
+      Yujie and Tom are mostly correct. Yujie is mostly right due to the fact that $\hat{x} \neq x$ but, because we do not know the distribution of $\mu$, we cannot make a judgement call regarding the quality of an estimate using $\hat{x}$. Tom is correct because classical measurement error does not change the sign of $\beta$ but does move $|\beta|$ closer to 0.  
+    \end{solution}
+    \item Yujie finds that the IV estimate of the same parameter $\beta$ is bigger than the OLS estimate and they are both positive. She says this indicates that the OLS estimate is underestimating $\beta$. Tom thinks that since it  is a downward bias of a positive estimate, it indicates that there is classical measurement error.
+    \begin{solution} 
+      We do not know enough about the underlying variables to make an exact determination about who is right or wrong in this scenario. We know that, if all the OLS assumptions hold, that the OLS estimate is unbiased and we also know that the IV estimate is biased. Hence, while Yujie's conclusion may be right in some regards, her line of reasoning cannot be used becuase we cannot determine a bias by comparing an estimate to a biased estimator. For Tom, there may be an instance of classical measurement error but we again are not provided enough information about the underlying data. Tom and Yujie are both assuming that the IV estimate of $\beta$ is the "right" one but we are provided no reason to believe this would be so.
+    \end{solution}
+    \item Consider the model $y_{it} = \beta_0 + x_{1it}\beta_1 + x_{2it}\beta_2 + \ldots + x_{kit}\beta_k + \alpha_i + \epsilon_{it}$. Tom is estimating $\hat{\beta}$ using a random effects model. Yujie says that Tom is incorrect because she tries to used the fixed effect model instead and she gets individual fixed effects estimates which is significantly different from 0. Tom says the random effect model is better because it uses less assumptions than the fixed effect model.
+    \begin{solution}
+      We can immediately say that Tom is incorrect because the fixed effects model actually requires more assumptions than random effects. We can be less certain that Yujie is wrong but her reasoning is flawed. We cannot be certain that the unrelated effects assumption has been violated because of the significant individual effects. We simply do not know enough about the underlying correlations to be certain Yujie is correct. 
+    \end{solution}
+    \item Tom estimates the model $Y_{it} = \alpha + \theta D_i + \delta P_t + \gamma D_iP+t + \epsilon_{it}$ using OLS where $D = 1$ for the treatment group and $P = 1$ for the post-treatment time periods. Tom claims that the $\hat{\gamma}$ is the difference in difference estimator. Yujies thinks that this is true only when $Y_{it}$ is not a dummy variable.
+    \begin{solution}
+      Tom is correct that $\hat{\gamma}$ represents the difference in difference estimator. Yujie is incorrect because difference in difference can still be used to measure change in a binary probability model.
+    \end{solution}
+    \item Yujie says that the Difference in Difference estimator only works when the policy has no effect on the outcome variable for the control group. Tom says that the Difference in Difference estimator does not work if the policy has no effect on the outcome variable of the treatment group.
+    \begin{solution}
+      Yujie is correct because the difference in difference estimator requires no spillover between the treatment and control group. Any spillover would violate the parallel trends assumption. Tom is incorrect because, in the case where there is no effect, the difference in difference estimate simply tells us that we cannot through out the assumption that the policy had nonzero effect on whatever the variable of interest is. 
+    \end{solution}
+  \end{enumerate}
+  \item Consider the following model $y_i = \alpha + x_{1i}\beta + x_{2i}\gamma + \epsilon_i$. Explain whether (and why) you would think the OLS estimator $(\hat{\beta})$ obtained by regressing $y$ on $x_1$ and $x_2$ is not a good estimator of $\beta$ under each of the following situations.
+  \begin{enumerate}
+    \item $x_{1i}$ is perfectly collinar with $x_{2i}$
+    \begin{solution}
+      Collinearity violates one of the OLS assumptions and OLS is no longer the best linear unbiased estimator.
+    \end{solution}
+    \item $x_{1i}$ is perfectly collinar with $y$
+    \begin{solution}
+      Because one of the OLS assumption is that the data is linear in parameters, we can actually say this would help give us an accurate estimate of our $\beta$
+    \end{solution}
+    \item The $r^2$ is almost the same if you take $x_{2i}$ out of the regression
+    \begin{solution}
+      This would most likely lead us to believe that the true value of $\gamma = 0$ and, by FWL, we can actually take out $x_{2i}$ and it will not harm our estimate of $\beta$
+    \end{solution}
+    \item The $\hat{\beta}_{iv}$is significatly different from $\hat{\beta}$
+    \begin{solution}
+      We know the instrumental variable estimate will always be biased so it is not alarming that IV and OLS produce different values for $\beta$
+    \end{solution}
+    \item $x_{1i} = 0$ for 99.9\% of the sample
+    \begin{solution}
+      The severity of this issue will be reflected in the standard error of our estimate. 
+    \end{solution}
+    \item the bootstrap standard error of $\hat{\beta}$ is smaller than the standard error for $\hat{\beta}$ from the original sample.
+    \begin{solution}
+      This is not an issue and actually makes sense considering the boot strapped SEs are more accurate given their larger sample size.
+    \end{solution}
+  \end{enumerate}
+  \item This is an exercise about evaluating the IV estimator
+  \begin{enumerate}
+    \item generate a new dataset with 10000 using the following specifications
+    \begin{eqnarray*}
+      \beta_0 &=& 50\\
+      \beta_1 &=& 1\\
+      \beta_2 &=& -3\\
+      \beta_3 &=& 5\\
+      \gamma_1 &=& 2\\
+      \gamma_2 &=& 3\\
+      \gamma_3 &=& 1\\
+      \gamma_4 &=& 1\\
+      \gamma_5 &=& 6\\
+      \gamma_6 &=& 5\\
+      r_1 &\sim& normal(0,50)\\
+      r_2 &\sim& normal(0,80)\\
+      z_1 &\sim& uniform(0,100)\\
+      z_2 &\sim& uniform(0,100)\\
+      \xi_2 &\sim& normal(0,10)\\
+      \xi_2 &\sim& normal(0,10)\\
+      x_1 &=& \gamma_1z_1 + \gamma_3r_1 + \xi_1\\
+      x_2 &=& \gamma_2z_2 + \gamma_4r_2 + \xi_2\\
+      x_3 &\sim& uniform(0,100)\\
+      \epsilon &\sim& uniform(0,100)\\
+      y &=&  \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \gamma_5r-1 + \gamma_6r_2 + \epsilon 
+    \end{eqnarray*}
+    Bind the columns into one dataframe. Notice that you use $r_1$, $r_2$, and $\epsilon$ in the data generating process but the dataset you generated should only contain $x_1$, $x_2$, $x_3$, $z_1$, $z_2$, and $y$.
+    \begin{solution}
+      To create the above dataset and answer the questions below I use the program problemset5.3.do shown below
+      \mylistcode{matlab}{problemset5.3.do}{rootoptcode3}
+      \singlespacing
+      \lstinputlisting{problemset5.3.do}
+      \onehalfspacing
+    \end{solution}
+    \item This dataset simulates the situation when we have an endogeneity problem for $x_1$ and $x_2$. Regress $y$ on $x_1$, $x_2$, and $x_3$ once using OLS, verify that OLS cannot get you a correct estimate.
+    \begin{solution}
+      After regressing y on $x1, x2,$ and  $x3,$, we get
+      \begin{eqnarray*}
+        \hat{\beta_0} &=& -248.513  \neq 50 = \beta_0\\
+        \hat{\beta_1} &=& 3.5331 \neq 1 = \beta_1\\
+        \hat{\beta_2} &=& -2.559 \neq -3 = \beta_2\\
+        \hat{\beta_3} &=& -.157 \neq 5 = \beta_3\\
+      \end{eqnarray*}
+      which occurs because of the endogeneity of $x_1$ and $x_2$
+    \end{solution}
+    \item Replicate part (b) 1000 times. Report the mean of the estimates for $\beta_0$, $\beta_1$, $\beta_2$, $\beta_3$. Verify that OLS gives you a biased estimator.
+    \begin{solution}
+      \begin{eqnarray*}
+          \hat{\beta_0}_{bs} &=& -248.4373  \neq 50 = \beta_0\\
+          \hat{\beta_1}_{bs} &=& 3.534 \neq 1 = \beta_1\\
+          \hat{\beta_2}_{bs} &=& -2.5603 \neq -3 = \beta_2\\
+          \hat{\beta_3}_{bs} &=& -.157 \neq 5 = \beta_3\\
+        \end{eqnarray*}
+    \end{solution}
+    \item Run an IV regression using $z_1$ and $z_2$ as an instrument. Verify that is gets you a better estimate.
+    \begin{solution}
+      \begin{eqnarray*}
+          \hat{\beta_0}_{iv} &=& 80.61  \neq 50 = \beta_0\\
+          \hat{\beta_1}_{iv} &=& 1.05 \approx 1 = \beta_1\\
+          \hat{\beta_2}_{iv} &=& -3.04 \approx -3 = \beta_2\\
+          \hat{\beta_3}_{iv} &=& -.339 \neq 5 = \beta_3\\
+        \end{eqnarray*}
+    \end{solution}
+    \item Replicate part (d) 1000 times. Report the mean of the estimates for $\beta_0$, $\beta_1$, $\beta_2$, $\beta_3$. Verify that what you get in the previous part is not merely luck.
+    \begin{solution}
+      \begin{eqnarray*}
+          \hat{\beta_0}_{ivbs} &=& 80.259  \neq 50 = \beta_0\\
+          \hat{\beta_1}_{ivbs} &=& 1.047 \approx 1 = \beta_1\\
+          \hat{\beta_2}_{ivbs} &=& -3.037\approx -3 = \beta_2\\
+          \hat{\beta_3}_{ivbs} &=& -.335 \neq 5 = \beta_3\\
+        \end{eqnarray*}
+    \end{solution}
+  \end{enumerate}
+  \item Using the same set up as the previous question:
+  \begin{enumerate}
+    \item Simulate a situation where there is no endogeneity ($r_1$ and $r_2$ do not enter into the formation of $y$). Verify that the IV estimator is performing worse than OLS.
+    \begin{solution}
+    To set up this question and answer the questions below we use the following do file
+      \mylistcode{matlab}{problemset5.4.do}{rootoptcode3}
+      \singlespacing
+      \lstinputlisting{problemset5.4.do}
+      \onehalfspacing
+      \begin{eqnarray*}
+          \hat{\beta_0} = \hat{\beta_0}_{iv} &=& 80  \neq 50 = \beta_0\\
+          \hat{\beta_1} = \hat{\beta_1}_{iv} &=& 1 \approx 1 = \beta_1\\
+          \hat{\beta_2} = \hat{\beta_2}_{iv} &=& -3 \approx -3 = \beta_2\\
+          \hat{\beta_3} = \hat{\beta_3}_{iv} &=& -.339 \neq 5 = \beta_3\\
+        \end{eqnarray*}
+    \end{solution}
+    We actually see no difference in the regular regression and the iv regression.
+    \item Simulate a situation where the instrument is endogenous (the genereation of $z_1$ and $z_2$ involves $r_1$ and $r_2$). Verify that the IV estimator is not performing well.
+    \begin{solution}
+      \begin{eqnarray*}
+          \hat{\beta_0} = \hat{\beta_0}_{iv} &=& 80  \neq 50 = \beta_0\\
+          \hat{\beta_1} = \hat{\beta_1}_{iv} &=& 1 \approx 1 = \beta_1\\
+          \hat{\beta_2} = \hat{\beta_2}_{iv} &=& -3 \approx -3 = \beta_2\\
+          \hat{\beta_3} = \hat{\beta_3}_{iv} &=& -.339 \neq 5 = \beta_3\\
+        \end{eqnarray*}
+    \end{solution}
+    Again I get the same results for both estimators.
+  \end{enumerate}
+\end{enumerate}
+\end{document}

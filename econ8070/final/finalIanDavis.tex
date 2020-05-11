@@ -1,0 +1,188 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={Econ8070Final},%
+pdfauthor={Davis}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip of text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econonomics 8070: Problem Set 2, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econonomics 8070: Final}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+ % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Answers to Final4.pdf}
+\Keywords{None}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{setion}{Title}
+\maketitle
+
+\begin{enumerate}
+  \item Problem 1
+  \begin{enumerate}
+    \item Method 2 (leaving out the indicator for whether or not the student attended the second TA session) would be better only if the true value for $\beta_{\text{session2}}$ is zero. In that case, because $\hat{\beta}_1 = (X_1^\prime X_1)^{-1}X_1^\prime y - (X_1^\prime X_1)^{-1}(X_1^\prime X_2)\hat{\beta}_2$ the estimate for $\hat{\beta}_1$ (the $\beta$ for session 1) does not require $\beta_2$ (the $\beta$ for session 2) so we can omit it and get a degree of freedom back. If this were not the case, method 1 would be better than method 2.
+    \item For similar reasons stated above, if $\beta_\text{{session 2}} = 0$ then omitting will not change our estimate of session one's effect and will save a degree of freedom. In this case, method three would only look at the students who attended both which could bias or estimator due to throwing out the observations that only attended the first session. If Yujie has reason to belive that only attending one of the sessions has no effect on its own but attneding both session had a significant effect on the students final grade, then method 3 is better.
+    \item Because attendence is mandatory for those chosen and only those chosen may attend, attendence to each session has been randomized. We can then treat the sessions as a random even and regress the exam score on if they attended session 1, 2, either, and on their gender to get the effect of Yujie's sessions on exam score. We still want to add which session they attended to control for differences between the sessions.
+    \item Because the student's like having pizza, we can treat the dataset as if there are no defiers. Hence, we can then use the chosen statuses as instruments to construct a Wald estimator which, because it applies only to compliers, will give us the LATE of Yujie's sessions.
+    \item In this case, students not chosen (which was a random event) will not attend the session. Hence, the situation will be the same as in problem (c) so we will use that strategy again.
+  \end{enumerate}
+  \item Problem 2
+  \begin{enumerate}
+    \item If there were classical measurement error, we know that the estimate $\hat{\beta_1}$ is biased toward zero because
+    \begin{eqnarray*}
+      \text{p}\lim_{n\rightarrow\infty}(\hat{\beta}) &=& \frac{\sigma_x^2}{\sigma_x^2 + \sigma^2_\mu}\beta\\
+      &\neq& \beta\\
+      \text{and}\\
+      |\frac{\sigma_x^2}{\sigma_x^2 + \sigma^2_\mu}||\beta| &<& |\beta|
+    \end{eqnarray*}
+    \item $x_{i1}$ being perfectly collinear with $x_{i2}$ would imply that the matrix $(X^\prime X)$ is not full rank which is required in order to invert it and get $(X^\prime X)^{-1}X^\prime Y = \hat{\beta}$. Hence we need to drop $x_{i2}$ so we can satisfy the OLS assumptions and get the correct estimator.
+    \item Strict exogenity and $E[\alpha_i|x_{i1},x_{i2}]$ tells us that the requirements for the random effects model are satisfied and that OLS is no longer our best linear unbiased estimator of $\beta_1$ so we should use random effects instead.
+    \item Assuming that the 50\% is completely random and the sample size is sufficiently large, we can simply discard the incomplete observations and all of the OLS assumptions will still be satisfied.
+    \item Differences between the original standard error and the bootstrapped standard error do not give us valuable information about the quality of our estiamtor.
+    \end{enumerate}
+  \item Problem 3
+  \begin{enumerate}
+    \item In the case where there are two time periods, Tom is correct and Yujie is wrong. The fact that we have dummy variables is not important and we know, when there are two time periods, we get
+    \begin{eqnarray*}
+      \text{First Differencing: }y_{i2} - y_{i1} &=& (x_{1i2} - x_{1i1})\beta_1 + \epsilon_{i2} - \epsilon{i1}\\
+      &=& (x_{1i2} - \frac{x_{1i2} - x_{1i1}}{2})\beta_1 + (\alpha_i - \alpha_i) + \epsilon_{it} - \bar{\epsilon_i}\\
+      &=& y_{i2} - \frac{y_{i2} - y_{i1}}{2}\text{ :Demeaning}
+    \end{eqnarray*}
+    \item Tom is correct in saying that $\hat{\gamma}$ is the difference in difference estimator as we know, in the case of
+    \begin{eqnarray*}
+      Y_{it} &=& \alpha + \theta D_i + \delta P_t + \gamma D_i * P_t + \epsilon_{it}
+    \end{eqnarray*}
+    and
+    \begin{eqnarray*}
+      P_t &=& I(t \geq t^*)\\
+    E[Y_{i2}|D = 1] &=& \alpha + \theta + \delta + \gamma\\
+    E[Y_{i1}|D = 1] &=& \alpha + \theta\\
+    E[Y_{i2}|D = 0] &=& \alpha + \delta\\
+    E[Y_{i1}|D = 0] &=& \alpha\\
+    \end{eqnarray*}
+    The difference in difference estimator is
+    \begin{eqnarray*}
+      (E[Y_{i2}|D = 1] - E[Y_{i1}|D = 1]) - (E[Y_{i2}|D = 0] - E[Y_{i1}|D = 0]) &=& (\alpha + \theta + \delta + \gamma) - (\alpha + \theta) - ((\alpha + \delta) - \alpha)\\
+      &=& \gamma
+    \end{eqnarray*}
+    Yujie is not correct because if $\theta = 0$ then that tells us that there is no change in our dependent variable just due to being in the treatment group. The difference between the populations in this case can be traced back the the actual treatment having been administered not from initial differences in the populations.
+    \item Tom is correct because if $Z$ is correlated with $\epsilon$ then the exogeneity assumption is violated and the IV estimator no longer has the properties it usually does (unbiasedness). When exogeneity is satisfied we get
+    \begin{eqnarray*}
+      \hat{\beta}_{IV} &=& (Z^\prime X)^{-1}Z^\prime Y\\
+      &=& (Z^\prime X)^{-1}Z^\prime(\beta X + \epsilon)\\
+      &=& (Z^\prime X)^{-1}\beta Z^\prime X + (Z^\prime X)^{-1}Z^\prime\epsilon\\
+      &=& \beta + (Z^\prime X)^{-1}Z^\prime\epsilon
+    \end{eqnarray*}
+    and
+    \begin{eqnarray*}
+      E[\hat{\beta}_{IV}] &=& E[\beta + (Z^\prime X)^{-1}Z^\prime\epsilon]\\
+      &=& \beta + 0\\
+      &=& \beta
+    \end{eqnarray*}
+    so the estimator is unbiased and Yujie is wrong.
+    \item Tom and Yujie are both correct. Generalized, the Oaxaca-Blinder decomposition can be written as
+    \begin{eqnarray*}
+      \bar{y_1} - \bar{y_2} &=& (\frac{a}{b}\hat{\beta_1} + \frac{c}{d}\hat{\beta_0})(\bar{X_1} - \bar{X_0}) + (\hat{\beta}_1 - \hat{\beta}_0)(\frac{c}{d}\bar{X_1} + \frac{a}{b}\bar{X_0})
+    \end{eqnarray*}
+    so long as $\frac{a}{b} + \frac{c}{d} = 1$ which occurs in both Tom and Yujie's answers.
+    \item Tom and Yujie are both correct. Clustered standard errors does require weaker assumptions because it allows for less zeroes in the variance-covariance matrix and the larger the cluster the larger the level of correlation you are willing to tolerate (i.e. correlation at the school level v. the classroom level). Because of this, we get that the larger clusters require even weaker assumptions than smaller ones.
+    \item Yujie is correct because if $\text{corr}(Z,\epsilon) \neq 0$ then $Z$ would be endogenuous which would violate the exogeneity assumption required for IV. Tom is incorrect because the statistically significant slope on its own is not a reason to discard the IV estimator. Recall
+    \begin{eqnarray}
+      \hat{\beta}_{IV} = \frac{\text{cov}(Y,Z)}{\text{cov}(X,Z)}
+    \end{eqnarray}
+    and there could be a significant relationship between Z and Y through X.
+    \item Tom is wrong because simply controlling for gender is not enough to ensure that there is adequate variation in female on its own. Yujie is most likely right but we cannot be sure. If the data set was very large then it is possible for there to be enough variation in female even though such a small fraction is not female.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}

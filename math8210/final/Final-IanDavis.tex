@@ -117,30 +117,386 @@ Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
     \right .
   \end{eqnarray*}
 \noindent
-for some $a < c < b$. Let $f_1(t) = 0$ on $[1,c]$ and $f_2(t) = H$. Solve $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_1}) = \mathbf{f_1}, \; (\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_2}) = \mathbf{f_2}$ and discuss how these solutions compare to the solution $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u}) = \mathbf{f}$. Explain how we obtain a solution which satisfies $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u}) = \mathbf{f}$ as a classical differential equation on [a,b] except at c; i.e. $(\mathbf{L} - \lambda_0\mathbf{I}(\mathbf{u}) = \mathbf{f}$ a.e.
+for some $a < c < b$. Let $f_1(t) = 0$ on $[1,c]$ and $f_2(t) = H$. Solve $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_1}) = \mathbf{f_1}, \; (\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_2}) = \mathbf{f_2}$ and discuss how these solutions compare to the solution $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u}) = \mathbf{f}$. Explain how we obtain a solution which satisfies $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u}) = \mathbf{f}$ as a classical differential equation on [a,b] except at c; i.e. $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u}) = \mathbf{f}$ a.e.
+\begin{solution}
+  We know that the steps to solve the individual $f_1$ and $f_2$ on $[a,c-\epsilon]$ and $[c,b]$ respectively. We need only to solve the equations $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_1}) = \mathbf{f_1} = 0$ and $(\mathbf{L} - \lambda_0\mathbf{I})(\mathbf{u_1}) = \mathbf{f_2} = H$ which are fairly standard ODE's with boundary conditions $f_1^\prime(a) = f_1^\prime(c- \epsilon) = f_2^\prime(c) = f_2^\prime(b) = 0$. Lastly, using the integrability of $f_1$ and $f_2$, we are able to solve for $u_1$ and $u_2$ as
+  \begin{eqnarray*}
+    \mathbf{u_1} &=& \mathbf{J_{\lambda_0}}(f_1) = \int_a^{c-\epsilon}{k_{\lambda_0}}(s,t)r(s)f_1(s)ds\\
+    \mathbf{u_2} &=& \mathbf{J_{\lambda_0}}(f_2) = \int_c^{b}{k_{\lambda_0}}(s,t)r(s)f_2(s)ds\\
+  \end{eqnarray*}
+  But in the case of the entire data function $f(t)$, the required twice differentiability of $\mathbf{u}$ is not as obvious because $f$ is not continuous. However, we do know that only continuity \textbf{almost everywhere} is needed for Riemann integration. This allows us to use the inverted Str{\"u}m Liouville operator $\mathbf{L_{\lambda_0}}^{-1} = \mathbf{J_{\lambda_0}}(f)$ to reconstruct $\mathbf{u}$ and give us fully continuous approximation of almost everywhere of $f$.
+\end{solution}
 \end{exercise}
 
 \begin{exercise}
   See Section 13.7 and repeat the problem with $L =6$ for $k = 1$ and $k = 2$. Perform the full derivation using the Frobenius technique for power series solutions before doing the code. 
+  \begin{solution}
+    The particular Bessel equation we are looking at is
+    \begin{eqnarray*}
+      t^2\mathbf{x}^{\prime\prime} + t\mathbf{x}^\prime + (\lambda t^2 - 1)\mathbf{x} = 0
+    \end{eqnarray*}
+    on $[0,6]$. In self-adjoint form this is
+    \begin{eqnarray*}
+      \frac{(t\mathbf{x}^\prime)^\prime - \frac{1}{t}}{t} = -\lambda\mathbf{x}
+    \end{eqnarray*}
+    Where $BC_2$ is applied so $x(0)$ when we approach $0^+$ and $x(6) = 0$. Additionally,
+    \begin{eqnarray*}
+      p(t) &=& t\\
+      p(0) &=& 0\\
+      q(t) &=& \frac{1}{t}\\
+      r(t) &=& t
+    \end{eqnarray*}
+    With the inner product given as
+    \begin{eqnarray*}
+      <f,g> = \int_0^6\:tf(t)g(t)dt
+    \end{eqnarray*}
+    We assume a solution of the form
+    \begin{eqnarray*}
+      x(t) &=& t^r\sum_{n=0}^\infty\:a_nt^n = \sum_{n=0}^\infty\:a_nt^{n + r}\\
+      tx^\prime(t) &=& \sum_{n=0}^\infty\:(n + r)a_nt^{n + r}\\
+      t^2x^{\prime\prime}(t) &=& \sum_{n=0}^\infty\:(n + r)(n + r - 1)a_nt^{n + r}
+    \end{eqnarray*}
+    The ODE then becomes
+    \begin{eqnarray*}
+      (r(r - 1)a_0 + ra_0 - a_0)t^r + ((r + 1)(r)a_1 + (r + 1)a_1 - a_1)t^{r + 1}\\
+       + (\sum_{n = 2}^\infty(r + n)(r + n - 1)a_n + (r + n)a_1 - a_n - \lambda a_{n - 2})t^{r + n} = 0
+    \end{eqnarray*}
+    And this implies
+    \begin{eqnarray*}
+      (r^2 - 1)a_0 &=& 0 \rightarrow r \pm 1\\
+      ((r \pm 1)^2 - 1)a_1 &=& 0 \rightarrow a_1 = 0\\
+      ((n + 1)^2 - 1)a_n - \lambda a_{n-2} &=& 0 \rightarrow a_n = \frac{\lambda}{(n - 1)^2 - 1}a_{n - 2}
+    \end{eqnarray*}
+    To satisfy the boundary conditions at $t = 0$, we need a bounded solutoin so we must choose $r = 1$ and we want $x(0) = 1$. Thus $a_0  = 1$. Since $a_1 = 0$, all the odd coefficients must be 0 also and so only the even coefficients matter. Therefore, the solution has the form
+    \begin{eqnarray*}
+      x(t) = t^1(1 + \sum_{n=1}^\infty a_{2n}t^{2n})
+    \end{eqnarray*}
+    The coefficients are solved recursively
+    \begin{eqnarray*}
+      a_0^\lambda &=& 1\\
+      a_2^\lambda &=& \frac{\lambda}{(2 + k)^2 - k^2} = \frac{\lambda}{8}a_0 = \frac{\lambda}{8}\\
+      a_4^\lambda &=& \frac{\lambda}{(4 + k)^2 - k^2}a_2 = \frac{\lambda^2}{((4 + k)^2 - k^2)((2 + k)^2 - k^2)} = \frac{\lambda^2}{192}\\
+      \vdots &=& \vdots\\
+      a_{2n}^\lambda &=& \frac{\lambda}{((2n + 1)^2 - 1)}a_{2n - 2} = \frac{\lambda^n}{((2n + 1)^2 - 1)\cdots(8)}
+    \end{eqnarray*}
+    Let
+    \begin{eqnarray*}
+      \Lambda(n,1) &=&
+      \left \{
+      \begin{array}{ll}
+        1, & n = 0\\
+        ((2n + 1)^2 - 1)\cdots(8), & n > 0 
+      \end{array}
+      \right .
+    \end{eqnarray*}
+    Then the solution we seek is
+    \begin{eqnarray*}
+      x(t) = t^1\sum_{n = 0}^\infty\:a_{n2}^\lambda t^{2n} = t^2(\sum_{n=0}^\infty\:\frac{\lambda^n}{\Lambda(n,1)}t^{2n})
+    \end{eqnarray*}
+    To satisfy the final boundary condition $x(6) = 0$ we must have
+    \begin{eqnarray*}
+      0 = 6(\sum_{n = 0}^\infty\frac{\lambda^n}{\Lambda(n,1)}6^{2n})
+    \end{eqnarray*}
+    Since all the terms in this sum are positive if $\lambda$ is positive, we must assume $\lambda = -\omega^2$ for some $\omega > 0$ in order to satisfy this last condition. This gives the equation
+    \begin{eqnarray*}
+      0 = 6(\sum_{n = 0}^\infty(-1)^n\frac{\omega^{2n}}{(1,n)}6^{2n})
+    \end{eqnarray*}
+    Defining for convenience $a_{2n}^{-1} = \frac{(-1)^n}{\lambda(1,n)}$ to satisfy the boundary condition, we must have
+    \begin{eqnarray*}
+      \sum_{n=0}^\infty\:a_{2n}^{-1}(6\omega)^{2n} = 0
+    \end{eqnarray*}
+    To find the values of $\omega$ that work, we will find the zeroes of the function
+    \begin{eqnarray*}
+      y(\omega) = \sum_{n=0}^\infty\:a_{2n}^{-1}(6\omega)^{2n}
+    \end{eqnarray*}
+    To do so, we use the following matlab code
+    %\textbf{exfullfunc1.m Picture}\\
+    \mylistcode{matlab}{mybessel.m}{rootoptcode3}
+    \singlespacing
+    \lstinputlisting{mybessel.m}
+    \onehalfspacing
+    After passing our parameters into the program, the eigenvalues are stored in the $W$ vector. giving us the following.
+    \myfancyverbatim{Eigenvalues for k = 1}
+    \begin{lstlisting}
+[c,p,q,Z,E,W] = mybessel(1,25,481,3.6,6);
+W = 
+0.64125   1.16625   1.69875   2.22375   2.74875   3.27375   3.46875
+    \end{lstlisting}
+    To get the eigenfunctions, we use FindInnerProducts.m
+    %\textbf{exfullfunc1.m Picture}\\
+    \mylistcode{matlab}{FindInnerProducts.m}{rootoptcode3}
+    \singlespacing
+    \lstinputlisting{FindInnerProducts.m}
+    \onehalfspacing
+    which provides the following output and illustration of the normalized eigenfunctions
+    \myfancyverbatim{FindInnerProducts.m Output}
+    \begin{lstlisting}
+[c,p,q,Z,E,W] = mybessel(1,25,481,3.6,6);
+[ip,norm,phi] = FindInnerProducts(1,c,W,6,101,301,5)
+ip =
+
+   1.00000000   0.01055133  -0.00197414   0.00169825  -0.00137273
+   0.01055133   1.00000000  -0.01155470   0.00577327  -0.00404185
+  -0.00197414  -0.01155470   1.00000000   0.00167921  -0.00108121
+   0.00169825   0.00577327   0.00167921   1.00000000   0.00038911
+  -0.00137273  -0.00404185  -0.00108121   0.00038911   1.00000000
+
+norm =
+
+   5.29878   2.18556   1.24288   0.83065   0.60467   0.46553   0.41653
+
+phihat =
+
+@(i, t) phi (i, t) / norm (i)    
+    \end{lstlisting}
+    \includegraphics[scale=.5]{eigenFuncKis1.png}\\
+    \centering
+    \textbf{x-axis = t}\\
+    \textbf{y-axis = x values}\\
+    For the case of $k = 2$, the process is fairly similar. The equation of interest now becomes
+    \begin{eqnarray*}
+      t^2\mathbf{x}^{\prime\prime} + t\mathbf{x}^\prime + (\lambda t^2 - 4)\mathbf{x} = 0
+    \end{eqnarray*}
+    or, in self-adjoint form
+    \begin{eqnarray*}
+      \frac{(t\mathbf{x}^\prime)^\prime - \frac{4}{t}}{t} = -\lambda\mathbf{x}
+    \end{eqnarray*}
+    Because we use the same $BC_2$ we know
+    \begin{eqnarray*}
+      p(t) &=& t\\
+      p(0) &=& 0\\
+      q(t) &=& \frac{k^2}{t} = \frac{4}{t}\\
+      r(t) &=& t
+    \end{eqnarray*}
+    with the same inner product. We assume a solution of the form
+    \begin{eqnarray*}
+      x(t) &=& t^r\sum_{n=0}^\infty\:a_nt^n = \sum_{n=0}^\infty\:a_nt^{n + r}\\
+      tx^\prime(t) &=& \sum_{n=0}^\infty\:(n + r)a_nt^{n + r}\\
+      t^2x^{\prime\prime}(t) &=& \sum_{n=0}^\infty\:(n + r)(n + r - 1)a_nt^{n + r}
+    \end{eqnarray*}
+    The ODE then becomes
+    \begin{eqnarray*}
+      (r(r - 1)a_0 + ra_0 - 4a_0)t^r + ((r + 1)(r)a_1 + (r + 1)a_1 - 4a_1)t^{r + 1}\\
+       + (\sum_{n = 2}^\infty(r + n)(r + n - 1)a_n + (r + n)a_1 - 4a_n - \lambda a_{n - 2})t^{r + n} = 0
+    \end{eqnarray*}
+    which implies 
+    \begin{eqnarray*}
+      (r^2 - 4)a_0 &=& 0 \rightarrow r \pm 2\\
+      ((r \pm 2)^2 - 4)a_1 &=& 0 \rightarrow a_1 = 0\\
+      ((n + 4)^2 - 1)a_n - \lambda a_{n-2} &=& 0 \rightarrow a_n = \frac{\lambda}{(n - 4)^2 - 4}a_{n - 2}
+    \end{eqnarray*}
+    We need to solve the boundary condition at $t = 0$ and to do so we need a bounded solution. Hence, we choose $r = k$ and we want $x(0) = 1$. Thus, $a_0 = 0$. Since $a_1 = 0$, all the odd coefficients must be 0 also and so only the even coefficients matter. Therefore, the solution has the form
+    \begin{eqnarray*}
+      x(t) = t^1(1 + \sum_{n=1}^\infty a_{2n}t^{2n})
+    \end{eqnarray*}
+    We solve the coefficients recursively to get
+    \begin{eqnarray*}
+      a_0^\lambda &=& 1\\
+      a_2^\lambda &=& \frac{\lambda}{(2 + k)^2 - k^2} = \frac{\lambda}{12}a_0 = \frac{\lambda}{8}\\
+      a_4^\lambda &=& \frac{\lambda}{(4 + k)^2 - k^2}a_2 = \frac{\lambda^2}{((4 + k)^2 - k^2)((2 + k)^2 - k^2)} = \frac{\lambda^2}{720}\\
+      \vdots &=& \vdots\\
+      a_{2n}^\lambda &=& \frac{\lambda}{((2n + 2)^2 - 3)}a_{2n - 2} = \frac{\lambda^n}{((2n + 2)^2 - 4)\cdots(12)}
+    \end{eqnarray*}
+    Let
+    \begin{eqnarray*}
+      \Lambda(n,2) &=&
+      \left \{
+      \begin{array}{ll}
+        1, & n = 0\\
+        ((2n + 2)^2 - 4)\cdots(12), & n > 0 
+      \end{array}
+      \right .
+    \end{eqnarray*}
+    Then the solution we want is
+    \begin{eqnarray*}
+      x(t) = t^1\sum_{n = 0}^\infty\:a_{n2}^\lambda t^{2n} = t^2(\sum_{n=0}^\infty\:\frac{\lambda^n}{\Lambda(n,2)}t^{2n})
+    \end{eqnarray*}
+    To satisfy the final boundary condition $x(6) = 0$ we must have
+    \begin{eqnarray*}
+      0 = 6(\sum_{n = 0}^\infty\frac{\lambda^n}{\Lambda(n,1)}6^{2n})
+    \end{eqnarray*}
+    Since all the terms in this sum are positive if $\lambda$ is positive, we must assume $\lambda = -\omega^2$ for some $\omega > 0$ in order to satisfy this last condition. This gives the equation
+    \begin{eqnarray*}
+      0 = 6(\sum_{n = 0}^\infty(-1)^n\frac{\omega^{2n}}{(1,n)}6^{2n})
+    \end{eqnarray*}
+    Defining for convenience $a_{2n}^{-1} = \frac{(-1)^n}{\lambda(1,n)}$ to satisfy the boundary condition, we must have
+    \begin{eqnarray*}
+      \sum_{n=0}^\infty\:a_{2n}^{-1}(6\omega)^{2n} = 0
+    \end{eqnarray*}
+    To find the values of $\omega$ that work, we will find the zeroes of the function
+    \begin{eqnarray*}
+      y(\omega) = \sum_{n=0}^\infty\:a_{2n}^{-1}(6\omega)^{2n}
+    \end{eqnarray*}
+    We use the same code to get the eigenvalues and eigenfunctions as above and get the following output
+  \end{solution}
+    \myfancyverbatim{Bessel Function K = 2 Output}
+    \begin{lstlisting}
+[c,p,q,Z,E,W] = mybessel(2,25,481,3.6,6);
+W = 
+0.85875   1.40625   1.93875   2.46375   2.99625
+
+[ip,norm,phi] = FindInnerProducts(1,c,W,6,101,301,5)
+ip =
+
+   1.00000000   0.00170668  -0.00241458   0.00332525  -0.00143285
+   0.00170668   1.00000000   0.00402299  -0.00560928   0.00170708
+  -0.00241458   0.00402299   1.00000000   0.00825939  -0.00023256
+   0.00332525  -0.00560928   0.00825939   1.00000000  -0.00961187
+  -0.00143285   0.00170708  -0.00023256  -0.00961187   1.00000000
+
+norm =
+
+   15.55612    4.63892    2.09317    1.15401    0.70786
+
+phihat =
+
+@(i, t) phi (i, t) / norm (i)    
+    \end{lstlisting}
+    \includegraphics[scale=.5]{eigenFuncKis2.png}\\
+    \centering
+    \textbf{x-axis = t}\\
+    \textbf{y-axis = x values}\\
 \end{exercise}
 
 \begin{exercise}
   Find the eigenfunctions and eigenvalues for the Bessel's Equation as discussed above on [0,7] for $k =2$ and use them to find the best approximation to $f(x) = 3sin(4x)e^{0.7x}$
+  \begin{solution}
+    The same strategy and code used in exercise two can be used again in conjunctoin with the code, FindBestApprox.m, shown below.
+    \mylistcode{matlab}{FindBestApprox.m}{rootoptcode3}
+    \singlespacing
+    \lstinputlisting{FindBestApprox.m}
+    \onehalfspacing
+  and get the following output
+  \myfancyverbatim{$3sin(4x)e^{0.7x}$ Output}
+    \begin{lstlisting}
+[c,p,q,Z,E,W] = mybessel(2,25,481,3.3,7);
+W = 
+0.73219   1.19969   1.66031   2.11406   2.56781
+
+[ip,norm,phi] = FindInnerProducts(2,c,W,7,101,301,5)
+ip =
+
+  1.00000000   0.00058681   0.00242102  -0.00171353   0.00175973
+   0.00058681   1.00000000  -0.00759848   0.00414940  -0.00374897
+   0.00242102  -0.00759848   1.00000000   0.00013889   0.00138985
+  -0.00171353   0.00414940   0.00013889   1.00000000  -0.00337002
+   0.00175973  -0.00374897   0.00138985  -0.00337002   1.00000000
+
+norm =
+
+   25.0977    7.4714    3.3327    1.8266    1.1246
+
+phihat =
+
+@(i, t) phi (i, t) / norm (i)    
+    \end{lstlisting}
+    \includegraphics[scale=.5]{EigenVal3.png}\\
+    \centering
+    \textbf{x-axis = t}\\
+    \textbf{y-axis = x values}\\
+Now we imput our function to be approximated and use the FindBestApprox.m code to get the following.
+\myfancyverbatim{$3sin(4x)e^{0.7x}$ Output}
+    \begin{lstlisting}
+f =
+
+  @(x) 3 * sin (4 * x) .^ (0.7 * x)
+
+[c,fstar] = FindBestApprox(1,5,250,400,7,phihat,f);
+
+ip =
+
+   1.16994   0.55927   0.25739   0.16180   0.10621
+   0.55927   1.11212   0.66627   0.38832   0.26579
+   0.25739   0.66627   1.05277   0.72716   0.47687
+   0.16180   0.38832   0.72716   1.03727   0.77308
+   0.10621   0.26579   0.47687   0.77308   1.03818
+
+c =
+
+   3.2560 + 0.0466i
+   1.4870 - 0.1651i
+   1.9197 + 0.5381i
+  -1.3306 + 0.5815i
+  -1.1955 + 1.0721i
+    \end{lstlisting}
+    \includegraphics[scale=.5]{approx.png}\\
+    \centering
+    \textbf{blue = function}\\
+    \textbf{orange = approximation}\\
+
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
-  Let $G(V,E)$ be a graph with $|V|$ nodes and $|E|$ edges. Let $N = |V|$ be the number of nodes. Then a fully connected graph with no self connections has at most $N^2 - N$ edges. Then if $i$ and $j$ are nodes, the edge $E_{i \rightarrow j}$ is the edge cost connecting node $i$ to node $j$. Assume all the edge costs are positive but the cost $E_{i \rightarrow j}$ is not necessarily ther same as the cost $E_{j \rightarrow i}$. For any path that connects node $i$ to node $j$, dynamic programming is an algorithm which will calculate the minimum cost path. Let $d_{ij}$ be the minimum cost path connecting node $i$ and node $j$ where we set $d_{ii} = 0$ for all nodes $i$. Prove $(V,d)$ is a metric space.
+  Let $G(V,E)$ be a graph with $|V|$ nodes and $|E|$ edges. Let $N = |V|$ be the number of nodes. Then a fully connected graph with no self connections has at most $N^2 - N$ edges. Then if $i$ and $j$ are nodes, the edge $E_{i \rightarrow j}$ is the edge cost connecting node $i$ to node $j$. Assume all the edge costs are positive and the cost $E_{i\rightarrow j} = E_{j\rightarrow i}$. For any path that connects node $i$ to node $j$, dynamic programming is an algorithm which will calculate the minimum cost path. Let $d_{ij}$ be the minimum cost path connecting node $i$ and node $j$ where we set $d_{ii} = 0$ for all nodes $i$. Prove $(V,d)$ is a metric space. Do you think this is still true if we drop the symmetry of the edge costs?
+  \begin{solution}
+    In order for $(V,d)$ to be a metric space, it must satisfy the following\\
+    \indent \textbf{M1: }$d_{ij} \geq \; \forall \; i,j \in V$\\
+    \indent \textbf{M2: }$d_{ij} = 0 \iff i = j$\\
+    \indent \textbf{M3: }$d_{ij} = d_{ji} \forall \; i,j \in V$\\
+    \indent \textbf{M4: }$d_{ij} \leq d_{ik} + d_{kj} \forall \; i,j,k \in V$\\
+    We know \textbf{M1} to be true because we have assumed all (non selfconnecting) edge costs to be positive with the self connecting edge is handled in \textbf{M2}. \textbf{M2} is satisfied because we have set $d_{ii} = 0 \; \forall \; \in V$. In conjunctoin with all $E_{i\rightarrow j} > 0$, we can conclude $d_{ij} = 0$ if and only if $i = j$. \textbf{M3} is satisfied because of the symmetry condition placed on the edge costs ($E_{i\rightarrow j} = E_{j\rightarrow i}$). Finally, the triangle inequality in \textbf{M4} is satisfied by the algorithm finding the minimum cost path from $i$ to $j$. Hence, $d_{ij} = d_{ik} + d_{kj}$ implies that the cheapest cost path already goes through node $k$. If it were the case that $d_{ij} > d_{ik} + d_{kj}$, then $d_{ij}$ is not the least cost path which leads to a contradiction. Hence, \textbf{M4} is satisfied and $(V,d)$ is indeed a metric space.\\
+    \\
+    Note that satisfying \textbf{M3} requires symmetry of edge costs. If we were to relax that assumption, then the least cost path from node $i$ to node $j$ may not longer be the same as the path from $j$ to $i$. Hence, we cannot state for certain that $d_{ij} = d_{ji}$ and we do not satisfy \textbf{M3} anymore. Because it is required that each requirement is satisfied, dropping symmetry means we can no longer classify $(V,d)$ as a metric space.
+    \end{solution}
 \end{exercise}
 
 \begin{exercise}
-  A symmetric bilinear map between the vector spaces $V$ adn $W$ is a mapping that satisfies IP1, IP2, and IP3 for an inner product. So clearly, any inner product is also a symmetric bilinear map. Define $\phi: \ell^p \times \ell^q \rightarrow \Re$ by $\phi_{pq}(x,y) = \sum_{n = 1}^\infty\:x_iy_j$.
+  A bilinear map between the vector spaces $V$ and $W$ is a mapping that is linear in both slots. So clearly, any inner product is also a bilinear map which is symmetric. Define $\phi: \ell^p \times \ell^q \rightarrow \Re$ by $\phi_{pq}(x,y) = \sum_{n = 1}^\infty\:x_ny_n$. Note, $\phi_{qp}$ simply reverses the order of the arguments but gives the same result. So strictly speaking these are not symmetric maps unless $p = q = 2$ of course.
   \begin{itemize}
     \item Prove $\phi_{pq}$ is a well defined symmetric bilinear map for the conjugate indices $p$ and $q$.
+    \begin{solution}
+      Consider for a constant $\alpha$,
+      \begin{eqnarray*}
+        \phi_{pq}(\alpha x,y) = \sum_{n=1}^\infty\:\alpha x_ny_n &=& \alpha \sum_{n=1}^\infty\:x_ny_n = \alpha \phi_{pq}(x,y)\\
+        \phi_{pq}(x,\alpha y) = \sum_{n=1}^\infty\:x_n\alpha y_n &=& \alpha \sum_{n=1}^\infty\:x_ny_n = \alpha \phi_{pq}(x,y)
+      \end{eqnarray*}
+      hence
+      \begin{eqnarray*}
+        \phi_{pq}(\alpha x,y) = \phi_{pq}(x,\alpha y) = \alpha\phi_{pq}(x,y)
+      \end{eqnarray*}
+      which proves $\phi_{pq}$ is bilinear in both slots or, in other words, is a bilinear map. 
+    \end{solution}
     \item Prove 
     \begin{eqnarray*}
       \sup_{\|x\|_p=1,\|y\|_p=1}|\phi_{pq}(x,y)| \leq 1
     \end{eqnarray*}
+    \begin{solution}
+      By H\"older's Inequality, we know
+      \begin{eqnarray*}
+        \sum_{n=1}^\infty\:|x_ny_n| \leq (\sum_{n=1}^\infty\:|x_n|^p)^\frac{1}{p}(\sum_{n=1}^\infty\:|y_n|^q)^\frac{1}{q}
+      \end{eqnarray*}
+      which holds for any $x \in \ell^p$ and $y \in \ell^q$. Hence
+      \begin{eqnarray*}
+        \sup_{\|x\|_p=1,\|y\|_p=1}|\phi_{pq}(x,y)| &=& \sup_{\|x\|_p=1,\|y\|_p=1}\sum_{n=1}^\infty\:|x_ny_n|\\
+        &\leq& (\sum_{n=1}^\infty\:|x_n|^p)^\frac{1}{p}(\sum_{n=1}^\infty\:|y_n|^q)^\frac{1}{q}\\
+        &=& (\|x\|_p)(\|y\|_q)\\
+        &=& 1
+      \end{eqnarray*}
+    \end{solution}
     \item Prove $\phi_{22}$ is an inner product.
+    \begin{solution}
+      For $\phi_{22}$ to be an inner product, the following must hold\\
+      \indent \textbf{IP1: }$\phi_{22}(y,x)$; that is, the order does not matter\\
+      \indent \textbf{IP2: }$\phi_{22}(\alpha x,y) = \alpha \phi_{22}(x,y)$; that is, the scalars in the first slot can be pulled out\\
+      \indent \textbf{IP3: }$\phi_{22}(x + z,y) = \phi_{22}(x,y) + \phi_{22}(z,y)$ for any three objects\\
+      \indent \textbf{IP4: }$\phi_{22}(x,x) \geq 0$ and $\phi_{22}(x,x) = 0 \iff x = \mathbf{0}$ where $\mathbf{0}$ represents the constant zero function.\\
+      \\
+      \textbf{IP1 }holds because 
+      \begin{eqnarray*}
+        \phi_{22}(x,y) = \sum_{n=1}^\infty\:x_ny_n = \sum_{n=1}^\infty\:y_nx_n = \phi_{22}(y,x)
+      \end{eqnarray*}
+      Also, because $p = q = 2$, we do not have to worry about a series being in $\ell^p$ and not $\ell^q$ which would cause the pair to exit the domain of $\phi$ one the slots are switched.\\
+      \textbf{IP2 }holds because of the bilinear property of the mapping which has already been proven.\\
+      For \textbf{IP3}, we first need to note that, for $x$ and $z \in \ell^p$, $x + z \in \ell^p$. Again this holds as a check preventing us from exiting the range of $\phi$ as we transform the function. Next, we consider
+      \begin{eqnarray*}
+        \phi_{22}(x + z,y) &=& \sum_{n=1}^\infty\:(x_n + z_n)y_n\\
+        &=& \sum_{n=1}^\infty\:x_ny_n + z_ny_n\\
+        &=& \sum_{n=1}^\infty\:x_ny_n + \sum_{n=1}^\infty\:z_ny_n\\
+        &=& \phi_{22}(x,y) + \phi_{22}(z,y)
+      \end{eqnarray*}
+      And finally, the first part \textbf{IP4} holds because $\phi_{22}(x,x) = \sum_{n=1}^\infty x_n^2$. Because every element is squared, we know every element is greater than or equal to zero. Hence, it must be that the sum of all of these elements is greater than or equal to zero. For the second part of \textbf{IP4}, again we rely on the fact that no elements of the series can be negative. This tells us that the elements are bounded below by 0. Then, if any element is greater than zero, there would be way to bring the sum back down to zero later on. Hence, $\phi_{22}(x,x) = 0$ implies that every element in the series $\sum_{n=1}^\infty\:x_n^2$ is 0 which means each element in the sequence $x_n$ is also 0. 
+    \end{solution}
   \end{itemize}
 \end{exercise}
 \end{document}

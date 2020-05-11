@@ -1,0 +1,225 @@
+% SampleProject.tex -- main LaTeX file for sample LaTeX article
+%
+%\documentclass[12pt]{article}
+\documentclass[11pt]{SelfArxOneColBMN}
+% add the pgf and tikz support.  This automatically loads
+% xcolor so no need to load color
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usepackage{pbox}
+\usepackage{etoolbox}
+\usepackage{marginfix}
+\usepackage{xparse}
+\setlength{\parskip}{0pt}% fix as marginfix inserts a 1pt ghost parskip
+% standard graphics support
+\usepackage{graphicx,xcolor}
+\usepackage{wrapfig}
+%
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+%----------------------------------------------------------------------------------------
+% HYPERLINKS
+%----------------------------------------------------------------------------------------
+\usepackage[pdftex]{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,
+colorlinks,
+breaklinks=true,%
+urlcolor=color2,%
+citecolor=color1,%
+linkcolor=color1,%
+bookmarksopen=false%
+,pdftitle={FinalExam},%
+pdfauthor={Peterson}}
+%\usepackage[round,numbers]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{xspace}
+%
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+  \hspace{\subfigtopskip}
+  \hspace{\subfigbottomskip}}
+%
+\usepackage{atbegshi}
+%
+\usepackage[hyper]{listings}
+%
+% use ams math packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{mathrsfs}
+%
+% use new improved Verbatim
+\usepackage{fancyvrb}
+%
+\usepackage[titletoc,title]{appendix}
+%
+\usepackage{url}
+%
+% Create length for the baselineskip o text in footnotesize
+\newdimen\footnotesizebaselineskip
+\newcommand{\test}[1]{%
+ \setbox0=\vbox{\footnotesize\strut Test \strut}
+ \global\footnotesizebaselineskip=\ht0 \global\advance\footnotesizebaselineskip by \dp0
+}
+%
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif,.png}
+
+% make sure we don't get orphaned words if at top of page
+% or orphans if at bottom of page
+\clubpenalty=9999
+\widowpenalty=9999
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\floatpagefraction}{0.66}
+%
+\DeclareMathOperator{\sech}{sech}
+
+\input{setupsample}
+
+\JournalInfo{Econ 8050:  Final Exam, 1-\pageref{LastPage}, 2020} % Journal information
+\Archive{Draft Version \today} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{Econ 8050 Final Exam}
+\Authors{Ian Davis\textsuperscript{1}}
+\affiliation{\textsuperscript{1}\textit{John E. Walker Department of Economics,
+Clemson University,Clemson, SC: email ijdavis@g.clemson.edu}}
+%\affiliation{*\textbf{Corresponding author}: yournamehere@clemson.edu} % Corresponding author
+
+\date{\small{Version ~\today}}
+\Abstract{Questions from Final Exam}
+\Keywords{None}
+\newcommand{\keywordname}{Keywords}
+%
+\onehalfspacing
+\begin{document}
+
+\flushbottom
+
+\addcontentsline{toc}{section}{Title}
+\maketitle
+
+\renewcommand{\theexercise}{\arabic{exercise}}%
+
+\begin{enumerate}
+  \item Consider a Solow model with both physical $(K)$ and human $(H)$ capital. The production functions is given by
+  \begin{eqnarray*}
+    Y_t = K_t^\alpha H_t^\beta L_t^{1 - \alpha - \beta}
+  \end{eqnarray*}
+  where $\alpha + \beta < 1$. The number of workers grows over time at an exogenous and constatnt rate $n$ according to
+  \begin{eqnarray*}
+    L_{t+1} = (1 + n)L_t
+  \end{eqnarray*}
+  Assume that a constant fraction of output $s_K$ $(s_H)$ is invested in physical (human) capital. Physical capital depreciates at the rate of $\delta$ but human capital does not depreciate at all.
+  \begin{enumerate}
+    \item Derive the equations of the phase diagram showing the dynamics of the model. Explain what variables you are using for your analysis.
+    \begin{solution}
+      First, we want to normalize $A = 1$ for simplicity of notation and we can do this because of its constant nature. Next, we need to address the ramifications of Labor constantly growing. The growth of Labor will force us to use the variables \textbf{Human Capital per Capita} and \textbf{Physical Capital per Capita} in our phase diagram as opposed to the usual aggregate values. Let's first note the behavior of $H_t$ and $K_t$
+      \begin{eqnarray*}
+        K_{t+1} - K_t &=& s_KK_t^\alpha H_t^\beta L^{1 - \alpha - \beta} - \delta K_t\\
+        H_{t+1} - H_t &=& s_HK_t^\alpha H_t^\beta L^{1 - \alpha - \beta}
+      \end{eqnarray*}
+      Setting $\Delta K = 0$ we find
+      \begin{eqnarray*}
+        s_KH_t^\beta L^{1 - \alpha - \beta} &=& \delta K\\
+        \implies (\frac{s_K}{\delta})H_t^\beta L^{1 - \alpha - \beta} &=& K^{1 - \alpha}\\
+        \implies (\frac{s_K}{\delta})^\frac{1}{1 - \alpha}H_t^\frac{\beta}{1 - \alpha} L^\frac{1 - \alpha - \beta}{1 - \alpha} &=& K^*
+      \end{eqnarray*}
+      and dividing both sides by $L_t$ to give us per worker values leaves us with
+      \begin{eqnarray*}
+        (\frac{s_K}{\delta + n})^\frac{1}{1 - \alpha}h_t^\frac{\beta}{1 - \alpha} = k
+      \end{eqnarray*}
+      where $k$ is constant. In similar fashion, we can substitute values in values of $H_t$ to find a constant $h$ as
+      \begin{eqnarray*}
+        (\frac{s_H}{n})^\frac{1}{1 - \beta}k_t^\frac{\alpha}{1 - \beta} = h
+      \end{eqnarray*}
+    \end{solution}
+    \item Draw that phase diagram showing the dynamics of the model and the steady state. make sure you show the arrows indicating the dynamics of the steady state.
+    \begin{solution}
+    \end{solution}
+      \includegraphics[scale=.185]{graph1b.JPG}\\
+      \centering
+    \item In steady state, what will be the growth rate of per worker values $(\frac{Y}{L},\frac{H}{L},\frac{K}{L})$? How about total $GDP$, $H$, and $K$? Explain your answers.
+    \begin{solution}
+      In the steady state, the growth rate of each of the per worker values will be zero but the aggregate values of GDP, H, and K will continue to grow because Labor continues to grow. This is because the growth of each of these aggregate values reaches a steady state which is equivalent to the growth of Labor. Hence, in all of the per worker values, the growth of the numerator is cancled by the growth of the denominator and we are left with an unchanging value as $t$ increases.
+      
+    \end{solution}
+    \item Show how an economy that starts with a low level of human capital and physical capital will get to the steady state. Use the phase diagram as well as time-series plots of $K$ and $H$.
+    \begin{solution}
+      As shown in the graphs below, the phase diagram shows the economy starting at $(k_0,h_0)$ will eventually move to the steady state values of $(k^*,h^*)$ but the time series plots of $H_t$ and $K_t$ only converge to a steady state value of $\frac{\partial K}{\partial t}$ and $\frac{\partial H}{\partial t}$. The time plots of $\frac{K}{L} = k$ and $\frac{H}{L} = H$ do reach steady state values however.\\
+      \includegraphics[scale=.2]{graph1d.JPG}\\
+      \centering
+    \end{solution}
+    \item Assume that the economy is in its steady state when suddenly there is permanent increase in the growth rate of population $n$. Use the phase diagram to analyze the immediate and long run change to the economy. Additionally, plot the path of total \textit{GPD} and \textit{GPD per capita} over time.
+    \begin{solution}
+      By looking back at the dynamics equations we derived above, we can see the effect of moving from $n_0$ to $n_\prime$ with $n_0 < n_\prime$ is
+      \begin{eqnarray*}
+        k_0 = (\frac{s_K}{\delta + n_0})^\frac{1}{1 - \alpha}h_t^\frac{\beta}{1 - \alpha} > (\frac{s_K}{\delta + n_\prime})^\frac{1}{1 - \alpha}h_t^\frac{\beta}{1 - \alpha} = k_\prime
+      \end{eqnarray*}
+      and
+      \begin{eqnarray*}
+        h_0 = (\frac{s_H}{n_0})^\frac{1}{1 - \beta}k_t^\frac{\alpha}{1 - \beta} > (\frac{s_H}{n_\prime})^\frac{1}{1 - \beta}k_t^\frac{\alpha}{1 - \beta} = h_\prime
+      \end{eqnarray*}
+      So our phase diagram behaves as shown below. For simplicity, we relabel the lines $k_{t+1} - k_t = 0 \equiv k(t)$ and $h_{t+1} - h_t = 0 \equiv h(t)$. Notice that moving from $n_0$ to $n_\prime$ at time $t_n$ moves the economy from the lines $k(t)_0$ to $k(t)_\prime$ and $h(t)_0$ to $h(t)_\prime$ with $k(t)_0 > k(t)_\prime$ and $h(t)_0 > h(t)_\prime$. This puts the economy on track to a a new steady state of $(k_\prime^*,h_\prime^*)$ where $k_\prime^* < k_0^*$ and $h_\prime^* < h_0^*$. Finally, the time plots of GDP and GDP per Capita show us that GDP still doesn't reach a steady state but does reach a new, higher, steady state rate of change $\frac{\partial GDP}{\partial t}^\prime$ and GDP per capita reaches a new steady state value of $gdp_\prime^* < gdp_0^*$\\
+      \includegraphics[scale=.2]{graph1e.JPG}\\
+      \centering
+    \end{solution}
+    \item Instead, assume that the economy is in its steady state when suddenly there is permanent increase in the depreciation rate $\delta$. Use the phase diagram to analze the immediate and long run change to the economy. Additionally, plot the path of total \textit{GPD} and \textit{GPD per capita} over time.
+    \begin{solution}
+      Using the same terminology as above, the decrease in the value of $\delta$ from $\delta_0$ to $\delta_\prime$ where $\delta_0 > \delta_\prime$ does not affect the $h(t)$ line because human capital does not depreciate but it does shift $k(t)_0$ to $k(t)_\prime$ with $k(t)_0 < k(t)_\prime$ because
+      \begin{eqnarray*}
+        k_0 = (\frac{s_K}{\delta_0 + n})^\frac{1}{1 - \alpha}h_t^\frac{\beta}{1 - \alpha} < (\frac{s_K}{\delta_\prime + n})^\frac{1}{1 - \alpha}h_t^\frac{\beta}{1 - \alpha} = k_\prime
+      \end{eqnarray*}
+      This moves out steady state to $(k_\prime^*,h_\prime^*)$ where $k_\prime^* > k_0^*$ and $h_\prime^* > h_0^*$. The time plot of GDP behaves the same as it did before where it reaches a higher steady state rate of change but GDP per capita ends up moving to a higher steady state.\\
+      \includegraphics[scale=.2]{graph1f.JPG}\\
+      \centering
+    \end{solution}
+  \end{enumerate}
+
+  \item In the neoclassical growth model technology and population are constant and the government can impose two types of taxes on the household: a lump sum tax on household income or a proportional tax on output. That means that a household's budget constraint is
+  \begin{eqnarray*}
+    K_{s + 1} = (1 - \delta)K_s + (1 - \tau_s)K_s^\alpha - C_s - T_s
+  \end{eqnarray*}
+  where $T_s$ is the lump sum tax in year $s$ and $\tau$ is the proportional tax on output in year $s$ and everything else is as usual.
+  \begin{enumerate}
+    \item Write down the Euler equation for the household. Make sure you use appropriate time subscripts for each variable in the equation.
+    \begin{solution}
+      The household Euler equation is
+      \begin{eqnarray*}
+        u^\prime(C_s) = \beta(1 + (1 - \tau)F^\prime(K_{s+1}))u^\prime(C_{s+1})
+      \end{eqnarray*}
+    \end{solution}
+    \item Suppose initially the economy is in steady state and there are no taxes ($\tau_s = T_s = 0 \; \forall s$). Draw the phase diagram and show the steady state.
+    \begin{solution}
+      We see from the phase diagram that the economy begins in at $(C^*,K^*)$ which is the steady state. We also see the "saddly path stable" nature of the phase space showing how different starting spots lead towards or away from the steady state as well.\\
+      \includegraphics[scale=.2]{graph2b.JPG}\\
+      \centering
+    \end{solution}
+    Seperately consider the following scenarios (each starting in the above steady state with no taxes).
+    \item Starting with the economy in steady state, the government, unexpectedly and permanently, introduces \textbf{constant taxes} of both types, so that $\tau_s = \tau > 0$ and $T_s = T > 0$ from now on. Draw the phase diagram and show the steady state. Constrast it with the original one and show the dynamics of the economy as it moves to a new steady state (if there is a new steady state).
+    \begin{solution}
+      Increasing $T_s$ will cause a downward shift in the line representing $\Delta K_{s+1} = 0$ but will not shift the line representing $\frac{C_{s+1}}{C_s} = 1$. The increase in $\tau_s$ will shift the line representing $\frac{C_{s+1}}{C_s} = 1$ left and shift the the line representing $\Delta K_{s+1} = 0$ down. In order for the economy to reach the new steady state, consumption must immediately drop to to $C^\prime_s$ which puts the economy on the new stable arm and then eventually leads it to the new steady state.\\
+      \includegraphics[scale=.2]{graph2c.JPG}\\
+      \centering
+    \end{solution}
+    \item Starting with the economy in steady state, the government, unexpectedly and permanently, introduces \textbf{non-constant taxes} of both types. In this case, we are also told that the proportional tax $\tau$ is indeed constant, while the lump sum tax will be variable and given by $T_s = \tau K_s^\alpha$. Draw the phase diagram and show the steady state. Contrast it with the original one and show the dynamics of the economy as it moves to a new steady state (if there is a new steady state).
+    \begin{solution}
+      This new tax policy will have a similar affect to the one discussed in part (c) where the line representing $\Delta C_{s+1} = 0$ shifts to the left and $\Delta K_{s+1} = 0$ shifts down. However, because $T = \tau K_s^\alpha$, the gap between the original line for $\Delta K_{s+1} = 0$ and the new one will be $2\tau K_s^\alpha$. For the economy to reach the new steady state, again, consumption must immediatly fall to the new stable arm at $C^\prime_s$\\
+      \includegraphics[scale=.2]{graph2d.JPG}\\
+      \centering
+    \end{solution}
+    \item Same situation the same is in (d) above but now the change in tax policy is announced 5 years in advance (that is 5 years before the taxes are actually introduced). Draw the phase diagram and show the steady state. Contrast it with the original one and show the dynamics of the economy as it moves to a new steady state (if there is a new steady state). Also, carefully plot the time paths of capital and consumption, Make sure to explain when and why any changes occur.
+    \begin{solution}
+      The lines representing $\Delta K_{s+1} = 0$ and $\Delta C_{s+1} = 0$ will move the exact same way as they did in (d) but the economy's response will be different. In this case, consumption will immediately drop to the point $A$ and because the taxes have not been put into place yet, the system will still abide by the original dynamics. This moves the economy from $A$ to $B$ and at the moment the taxes begin and new the dynamics take effect. Because $B$ is on the new stable arm, the economy will then go to the new steady state.\\
+      \includegraphics[scale=.2]{graph2e.JPG}\\
+      \centering
+    \end{solution}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
