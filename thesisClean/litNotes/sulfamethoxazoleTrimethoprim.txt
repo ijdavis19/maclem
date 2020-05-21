@@ -1,0 +1,66 @@
+readings/thesis/sulfamethoxazoleTrimethoprim/antibioticsManual
+
+Basic Characteristics
+    Class:
+        Antimetabolite/sulfonamide
+    Mechanism of Action:
+        1. Plasmid mediated alterations in dihydrofolate reductase and changes in cell permeability
+        2. Overproduction of para-aminobenzoic acid
+        3. Structural change in dihydropteroate synthesis
+    Metabolic Route:
+        Both trimethoprim and sulfamethoxazole are excreted in the urine
+
+FDA-Approved Indications
+    Urinary tract infections
+    Acute otitis media
+        Ear infection
+    Acute exacerbations of chronic bronchitis in adults
+    Shigellosis
+        causes diarrhea, fever, and stomach cramps
+    Pneumocytic jirovecii pneumonia: treatment of prohylaxis
+    Traveler's diarrhea in adults
+    Also used for:
+        Infections due to Listeria, Nocardia, Salmonella, Brucella, Paraccidiodes, meliodosis, Burkholderia, Strenotrophomonas, cyclospora, isospora, Whipple's disease, and alternative therapy for toxoplasmosis and community acquired MRSA skin infections.
+
+The Art of Antimicrobial Therapy
+    Clinical Pearls:
+        1. Because sulfamethoxazole and trimethoprim may interfere with folic acid metabolism, it should be used udirng pregnancy only if the potential benefit justifies the potential risk to the fetus
+            *******Control for Pregnancy*******
+        2. The sulfonamides shoudl not be used for treatment of gorup A Beta-hemolytic streptococcal infections
+        3. Although nto FDA approved, the usual dose of TMP/SMX for systemic infections due to typical bacteria is 10mg/kg.day of trimethoprim and 50mg/day of sulfamethoxazole.
+        4. Clinical signs of such as rash, sore throat, fever, athralgia, pallor, pupura, or jaundice may be early indications of serious reactions.
+        5. Patients taking trimethoprim/sulfamethoxazole should drink adequate amounts of water to decrease the liklelihood of crystalluria and stone formation.
+
+NAMCS Related Diagnoses
+    Urinary tract infections:
+        N390
+        580-629 (Genitourianary System)
+
+    Acute otitis media:
+        H6500-H6993
+        
+    Acute exacerbations of chronic bronchitis in adults:
+        Acute bronchitis and bronchiolitis: J200-J219
+        Other acute repiratory infections (?): J00-J22 [not exactly]
+        Chronic and unspecified bronchitis: J40-J42
+
+    Shigellosis:
+     
+    Pneumocytic jirovecii pneumonia: treatment of prohylaxis:
+        Pneumonia: J120-J189
+
+    Traveler's diarrhea in adults:
+
+    Also used for
+        Listeria:
+        Nocardia:
+        Salmonella:
+        Brucella:
+        Paraccidiodes:
+        meliodosis:
+        Burkholderia:
+        Strenotrophomonas:
+        cyclospora:
+        isospora:
+        Whipple's disease:
+        alternative therapy for toxoplasmosis and community acquired MRSA skin infections.

@@ -1,0 +1,878 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/linezolidLog.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}12 May 2020, 12:28:36
+{txt}
+{com}. use "$output/NAMCSPanel.dta", replace
+{txt}
+{com}. gen relevantDiagIndicator = 0
+{txt}
+{com}. forval diagNumber = 1/5 {c -(}
+{txt}  2{com}.     forval diagCounter = 1/`diagMax`diagNumber'' {c -(}
+{txt}  3{com}.         forval diagNumberComp = 1/5{c -(}
+{txt}  4{com}.             display "``diagNumber'diag`diagCounter''"
+{txt}  5{com}.             replace relevantDiagIndicator = 1 if DIAG`diagNumberComp' == "``diagNumber'diag`diagCounter''"
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.     {c )-}
+{txt}  8{com}. {c )-}
+-9
+{txt}(2,032 real changes made)
+-9
+(124,859 real changes made)
+-9
+(71,190 real changes made)
+-9
+(7,635 real changes made)
+-9
+(4,014 real changes made)
+0389-
+(124 real changes made)
+0389-
+(52 real changes made)
+0389-
+(36 real changes made)
+0389-
+(11 real changes made)
+0389-
+(8 real changes made)
+1120-
+(16 real changes made)
+1120-
+(28 real changes made)
+1120-
+(24 real changes made)
+1120-
+(0 real changes made)
+1120-
+(3 real changes made)
+1629-
+(181 real changes made)
+1629-
+(66 real changes made)
+1629-
+(34 real changes made)
+1629-
+(2 real changes made)
+1629-
+(3 real changes made)
+1749-
+(472 real changes made)
+1749-
+(69 real changes made)
+1749-
+(53 real changes made)
+1749-
+(1 real change made)
+1749-
+(1 real change made)
+25080
+(43 real changes made)
+25080
+(23 real changes made)
+25080
+(11 real changes made)
+25080
+(2 real changes made)
+25080
+(1 real change made)
+36252
+(41 real changes made)
+36252
+(8 real changes made)
+36252
+(2 real changes made)
+36252
+(0 real changes made)
+36252
+(0 real changes made)
+3829-
+(550 real changes made)
+3829-
+(288 real changes made)
+3829-
+(180 real changes made)
+3829-
+(0 real changes made)
+3829-
+(1 real change made)
+41400
+(1,705 real changes made)
+41400
+(723 real changes made)
+41400
+(645 real changes made)
+41400
+(16 real changes made)
+41400
+(23 real changes made)
+486--
+(337 real changes made)
+486--
+(168 real changes made)
+486--
+(104 real changes made)
+486--
+(12 real changes made)
+486--
+(15 real changes made)
+51881
+(34 real changes made)
+51881
+(36 real changes made)
+51881
+(20 real changes made)
+51881
+(4 real changes made)
+51881
+(5 real changes made)
+53641
+(0 real changes made)
+53641
+(1 real change made)
+53641
+(0 real changes made)
+53641
+(0 real changes made)
+53641
+(0 real changes made)
+55320
+(22 real changes made)
+55320
+(14 real changes made)
+55320
+(8 real changes made)
+55320
+(0 real changes made)
+55320
+(0 real changes made)
+5990-
+(670 real changes made)
+5990-
+(428 real changes made)
+5990-
+(385 real changes made)
+5990-
+(20 real changes made)
+5990-
+(26 real changes made)
+6820-
+(24 real changes made)
+6820-
+(9 real changes made)
+6820-
+(5 real changes made)
+6820-
+(0 real changes made)
+6820-
+(0 real changes made)
+6822-
+(31 real changes made)
+6822-
+(18 real changes made)
+6822-
+(7 real changes made)
+6822-
+(0 real changes made)
+6822-
+(0 real changes made)
+6823-
+(39 real changes made)
+6823-
+(19 real changes made)
+6823-
+(5 real changes made)
+6823-
+(3 real changes made)
+6823-
+(2 real changes made)
+6826-
+(109 real changes made)
+6826-
+(42 real changes made)
+6826-
+(21 real changes made)
+6826-
+(0 real changes made)
+6826-
+(2 real changes made)
+6829-
+(112 real changes made)
+6829-
+(65 real changes made)
+6829-
+(58 real changes made)
+6829-
+(1 real change made)
+6829-
+(3 real changes made)
+72981
+(37 real changes made)
+72981
+(46 real changes made)
+72981
+(32 real changes made)
+72981
+(4 real changes made)
+72981
+(3 real changes made)
+73020
+(6 real changes made)
+73020
+(5 real changes made)
+73020
+(4 real changes made)
+73020
+(0 real changes made)
+73020
+(1 real change made)
+78009
+(29 real changes made)
+78009
+(19 real changes made)
+78009
+(22 real changes made)
+78009
+(0 real changes made)
+78009
+(1 real change made)
+78900
+(906 real changes made)
+78900
+(347 real changes made)
+78900
+(218 real changes made)
+78900
+(17 real changes made)
+78900
+(17 real changes made)
+8798-
+(78 real changes made)
+8798-
+(39 real changes made)
+8798-
+(20 real changes made)
+8798-
+(2 real changes made)
+8798-
+(4 real changes made)
+9962-
+(1 real change made)
+9962-
+(0 real changes made)
+9962-
+(0 real changes made)
+9962-
+(0 real changes made)
+9962-
+(0 real changes made)
+99631
+(3 real changes made)
+99631
+(1 real change made)
+99631
+(0 real changes made)
+99631
+(0 real changes made)
+99631
+(0 real changes made)
+V508-
+(124 real changes made)
+V508-
+(194 real changes made)
+V508-
+(168 real changes made)
+V508-
+(0 real changes made)
+V508-
+(0 real changes made)
+V6284
+(57 real changes made)
+V6284
+(54 real changes made)
+V6284
+(32 real changes made)
+V6284
+(6 real changes made)
+V6284
+(3 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+00000
+(270 real changes made)
+00000
+(13,302 real changes made)
+00000
+(7,311 real changes made)
+00000
+(0 real changes made)
+00000
+(0 real changes made)
+25002
+(124 real changes made)
+25002
+(43 real changes made)
+25002
+(41 real changes made)
+25002
+(3 real changes made)
+25002
+(3 real changes made)
+2724-
+(576 real changes made)
+2724-
+(1,414 real changes made)
+2724-
+(1,655 real changes made)
+2724-
+(43 real changes made)
+2724-
+(55 real changes made)
+2761-
+(27 real changes made)
+2761-
+(43 real changes made)
+2761-
+(50 real changes made)
+2761-
+(7 real changes made)
+2761-
+(4 real changes made)
+30590
+(22 real changes made)
+30590
+(61 real changes made)
+30590
+(79 real changes made)
+30590
+(12 real changes made)
+30590
+(7 real changes made)
+319--
+(13 real changes made)
+319--
+(29 real changes made)
+319--
+(42 real changes made)
+319--
+(2 real changes made)
+319--
+(1 real change made)
+34400
+(3 real changes made)
+34400
+(5 real changes made)
+34400
+(1 real change made)
+34400
+(0 real changes made)
+34400
+(0 real changes made)
+4019-
+(2,375 real changes made)
+4019-
+(2,670 real changes made)
+4019-
+(2,464 real changes made)
+4019-
+(146 real changes made)
+4019-
+(102 real changes made)
+4241-
+(39 real changes made)
+4241-
+(34 real changes made)
+4241-
+(56 real changes made)
+4241-
+(1 real change made)
+4241-
+(0 real changes made)
+486--
+(0 real changes made)
+486--
+(0 real changes made)
+486--
+(0 real changes made)
+486--
+(0 real changes made)
+486--
+(0 real changes made)
+51881
+(0 real changes made)
+51881
+(0 real changes made)
+51881
+(0 real changes made)
+51881
+(0 real changes made)
+51881
+(0 real changes made)
+5559-
+(21 real changes made)
+5559-
+(20 real changes made)
+5559-
+(27 real changes made)
+5559-
+(1 real change made)
+5559-
+(1 real change made)
+5609-
+(24 real changes made)
+5609-
+(11 real changes made)
+5609-
+(3 real changes made)
+5609-
+(0 real changes made)
+5609-
+(1 real change made)
+5939-
+(45 real changes made)
+5939-
+(65 real changes made)
+5939-
+(93 real changes made)
+5939-
+(6 real changes made)
+5939-
+(8 real changes made)
+5959-
+(24 real changes made)
+5959-
+(17 real changes made)
+5959-
+(18 real changes made)
+5959-
+(0 real changes made)
+5959-
+(0 real changes made)
+7079-
+(6 real changes made)
+7079-
+(9 real changes made)
+7079-
+(10 real changes made)
+7079-
+(0 real changes made)
+7079-
+(0 real changes made)
+73027
+(1 real change made)
+73027
+(1 real change made)
+73027
+(3 real changes made)
+73027
+(0 real changes made)
+73027
+(0 real changes made)
+78900
+(0 real changes made)
+78900
+(0 real changes made)
+78900
+(0 real changes made)
+78900
+(0 real changes made)
+78900
+(0 real changes made)
+99591
+(3 real changes made)
+99591
+(6 real changes made)
+99591
+(5 real changes made)
+99591
+(0 real changes made)
+99591
+(0 real changes made)
+99931
+(1 real change made)
+99931
+(0 real changes made)
+99931
+(0 real changes made)
+99931
+(0 real changes made)
+99931
+(0 real changes made)
+V0980
+(0 real changes made)
+V0980
+(0 real changes made)
+V0980
+(0 real changes made)
+V0980
+(0 real changes made)
+V0980
+(0 real changes made)
+V6709
+(57 real changes made)
+V6709
+(192 real changes made)
+V6709
+(134 real changes made)
+V6709
+(0 real changes made)
+V6709
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+00000
+(0 real changes made)
+00000
+(0 real changes made)
+00000
+(0 real changes made)
+00000
+(0 real changes made)
+00000
+(0 real changes made)
+04112
+(4 real changes made)
+04112
+(5 real changes made)
+04112
+(5 real changes made)
+04112
+(1 real change made)
+04112
+(1 real change made)
+25000
+(725 real changes made)
+25000
+(581 real changes made)
+25000
+(704 real changes made)
+25000
+(32 real changes made)
+25000
+(51 real changes made)
+2724-
+(0 real changes made)
+2724-
+(0 real changes made)
+2724-
+(0 real changes made)
+2724-
+(0 real changes made)
+2724-
+(0 real changes made)
+30560
+(7 real changes made)
+30560
+(23 real changes made)
+30560
+(23 real changes made)
+30560
+(3 real changes made)
+30560
+(2 real changes made)
+34590
+(108 real changes made)
+34590
+(70 real changes made)
+34590
+(90 real changes made)
+34590
+(5 real changes made)
+34590
+(5 real changes made)
+4439-
+(31 real changes made)
+4439-
+(37 real changes made)
+4439-
+(63 real changes made)
+4439-
+(2 real changes made)
+4439-
+(4 real changes made)
+4589-
+(34 real changes made)
+4589-
+(38 real changes made)
+4589-
+(33 real changes made)
+4589-
+(4 real changes made)
+4589-
+(2 real changes made)
+496--
+(270 real changes made)
+496--
+(189 real changes made)
+496--
+(166 real changes made)
+496--
+(13 real changes made)
+496--
+(15 real changes made)
+5781-
+(20 real changes made)
+5781-
+(13 real changes made)
+5781-
+(20 real changes made)
+5781-
+(0 real changes made)
+5781-
+(1 real change made)
+586--
+(20 real changes made)
+586--
+(33 real changes made)
+586--
+(28 real changes made)
+586--
+(0 real changes made)
+586--
+(0 real changes made)
+6823-
+(0 real changes made)
+6823-
+(0 real changes made)
+6823-
+(0 real changes made)
+6823-
+(0 real changes made)
+6823-
+(0 real changes made)
+7245-
+(351 real changes made)
+7245-
+(311 real changes made)
+7245-
+(212 real changes made)
+7245-
+(11 real changes made)
+7245-
+(8 real changes made)
+78550
+(0 real changes made)
+78550
+(0 real changes made)
+78550
+(1 real change made)
+78550
+(0 real changes made)
+78550
+(0 real changes made)
+V5861
+(14 real changes made)
+V5861
+(36 real changes made)
+V5861
+(43 real changes made)
+V5861
+(0 real changes made)
+V5861
+(6 real changes made)
+V5883
+(86 real changes made)
+V5883
+(117 real changes made)
+V5883
+(64 real changes made)
+V5883
+(1 real change made)
+V5883
+(0 real changes made)
+V6759
+(97 real changes made)
+V6759
+(1,305 real changes made)
+V6759
+(1,075 real changes made)
+V6759
+(1 real change made)
+V6759
+(1 real change made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(32,835 real changes made)
+
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+04104
+(0 real changes made)
+04104
+(0 real changes made)
+04104
+(0 real changes made)
+04104
+(0 real changes made)
+04104
+(0 real changes made)
+2449-
+(1 real change made)
+2449-
+(1 real change made)
+2449-
+(8 real changes made)
+2449-
+(10 real changes made)
+2449-
+(12 real changes made)
+3051-
+(0 real changes made)
+3051-
+(13 real changes made)
+3051-
+(27 real changes made)
+3051-
+(21 real changes made)
+3051-
+(50 real changes made)
+4019-
+(0 real changes made)
+4019-
+(0 real changes made)
+4019-
+(0 real changes made)
+4019-
+(0 real changes made)
+4019-
+(0 real changes made)
+5849-
+(8 real changes made)
+5849-
+(10 real changes made)
+5849-
+(7 real changes made)
+5849-
+(11 real changes made)
+5849-
+(5 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+2967-
+(1 real change made)
+2967-
+(1 real change made)
+2967-
+(2 real changes made)
+2967-
+(0 real changes made)
+2967-
+(0 real changes made)
+4430-
+(0 real changes made)
+4430-
+(0 real changes made)
+4430-
+(0 real changes made)
+4430-
+(0 real changes made)
+4430-
+(0 real changes made)
+53290
+(0 real changes made)
+53290
+(0 real changes made)
+53290
+(0 real changes made)
+53290
+(1 real change made)
+53290
+(0 real changes made)
+70705
+(0 real changes made)
+70705
+(0 real changes made)
+70705
+(0 real changes made)
+70705
+(0 real changes made)
+70705
+(0 real changes made)
+
+{com}. 
+. tab prescriptionIndicator
+
+{txt}prescriptio {c |}
+ nIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}    297,557       99.99       99.99
+{txt}          1 {c |}{res}         36        0.01      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    297,593      100.00
+{txt}
+{com}. tab relevantDiagIndicator
+
+{txt}relevantDia {c |}
+ gIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      2,840        0.95        0.95
+{txt}          1 {c |}{res}    294,753       99.05      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    297,593      100.00
+{txt}
+{com}. tab relevantDiagIndicator if DIAG1 == "-9" | DIAG2 == "-9" | DIAG3 == "-9" | DIAG4 == "-9" | DIAG5 == "-9"
+
+{txt}relevantDia {c |}
+ gIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}    209,730      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    209,730      100.00
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/linezolidLog.txt
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}12 May 2020, 12:28:54
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

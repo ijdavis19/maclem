@@ -1,0 +1,368 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/cefotetanLog.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}12 May 2020, 12:27:59
+{txt}
+{com}. use "$output/NAMCSPanel.dta", replace
+{txt}
+{com}. gen relevantDiagIndicator = 0
+{txt}
+{com}. forval diagNumber = 1/5 {c -(}
+{txt}  2{com}.     forval diagCounter = 1/`diagMax`diagNumber'' {c -(}
+{txt}  3{com}.         forval diagNumberComp = 1/5{c -(}
+{txt}  4{com}.             display "``diagNumber'diag`diagCounter''"
+{txt}  5{com}.             replace relevantDiagIndicator = 1 if DIAG`diagNumberComp' == "``diagNumber'diag`diagCounter''"
+{txt}  6{com}.         {c )-}
+{txt}  7{com}.     {c )-}
+{txt}  8{com}. {c )-}
+1369-
+{txt}(35 real changes made)
+1369-
+(55 real changes made)
+1369-
+(16 real changes made)
+1369-
+(3 real changes made)
+1369-
+(2 real changes made)
+3659-
+(477 real changes made)
+3659-
+(124 real changes made)
+3659-
+(56 real changes made)
+3659-
+(6 real changes made)
+3659-
+(2 real changes made)
+5409-
+(121 real changes made)
+5409-
+(10 real changes made)
+5409-
+(2 real changes made)
+5409-
+(0 real changes made)
+5409-
+(0 real changes made)
+541--
+(105 real changes made)
+541--
+(28 real changes made)
+541--
+(5 real changes made)
+541--
+(0 real changes made)
+541--
+(1 real change made)
+5609-
+(154 real changes made)
+5609-
+(37 real changes made)
+5609-
+(13 real changes made)
+5609-
+(5 real changes made)
+5609-
+(1 real change made)
+57420
+(409 real changes made)
+57420
+(139 real changes made)
+57420
+(68 real changes made)
+57420
+(4 real changes made)
+57420
+(4 real changes made)
+57450
+(12 real changes made)
+57450
+(9 real changes made)
+57450
+(1 real change made)
+57450
+(0 real changes made)
+57450
+(0 real changes made)
+5849-
+(121 real changes made)
+5849-
+(111 real changes made)
+5849-
+(99 real changes made)
+5849-
+(32 real changes made)
+5849-
+(13 real changes made)
+74720
+(1 real change made)
+74720
+(1 real change made)
+74720
+(0 real changes made)
+74720
+(0 real changes made)
+74720
+(0 real changes made)
+78904
+(160 real changes made)
+78904
+(59 real changes made)
+78904
+(18 real changes made)
+78904
+(5 real changes made)
+78904
+(2 real changes made)
+V7285
+(256 real changes made)
+V7285
+(109 real changes made)
+V7285
+(32 real changes made)
+V7285
+(0 real changes made)
+V7285
+(0 real changes made)
+-9
+(2,032 real changes made)
+-9
+(123,940 real changes made)
+-9
+(70,483 real changes made)
+-9
+(7,543 real changes made)
+-9
+(3,930 real changes made)
+3669-
+(406 real changes made)
+3669-
+(252 real changes made)
+3669-
+(184 real changes made)
+3669-
+(0 real changes made)
+3669-
+(2 real changes made)
+49390
+(517 real changes made)
+49390
+(547 real changes made)
+49390
+(532 real changes made)
+49390
+(66 real changes made)
+49390
+(49 real changes made)
+5409-
+(0 real changes made)
+5409-
+(0 real changes made)
+5409-
+(0 real changes made)
+5409-
+(0 real changes made)
+5409-
+(0 real changes made)
+541--
+(0 real changes made)
+541--
+(0 real changes made)
+541--
+(0 real changes made)
+541--
+(0 real changes made)
+541--
+(0 real changes made)
+5849-
+(0 real changes made)
+5849-
+(0 real changes made)
+5849-
+(0 real changes made)
+5849-
+(0 real changes made)
+5849-
+(0 real changes made)
+7479-
+(0 real changes made)
+7479-
+(0 real changes made)
+7479-
+(1 real change made)
+7479-
+(0 real changes made)
+7479-
+(0 real changes made)
+V4589
+(196 real changes made)
+V4589
+(385 real changes made)
+V4589
+(313 real changes made)
+V4589
+(6 real changes made)
+V4589
+(15 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+27651
+(123 real changes made)
+27651
+(210 real changes made)
+27651
+(197 real changes made)
+27651
+(23 real changes made)
+27651
+(21 real changes made)
+4019-
+(3,907 real changes made)
+4019-
+(4,231 real changes made)
+4019-
+(3,308 real changes made)
+4019-
+(203 real changes made)
+4019-
+(143 real changes made)
+5531-
+(35 real changes made)
+5531-
+(26 real changes made)
+5531-
+(18 real changes made)
+5531-
+(0 real changes made)
+5531-
+(1 real change made)
+5609-
+(0 real changes made)
+5609-
+(0 real changes made)
+5609-
+(0 real changes made)
+5609-
+(0 real changes made)
+5609-
+(0 real changes made)
+V508-
+(119 real changes made)
+V508-
+(190 real changes made)
+V508-
+(172 real changes made)
+V508-
+(0 real changes made)
+V508-
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(66,465 real changes made)
+
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+53081
+(5 real changes made)
+53081
+(14 real changes made)
+53081
+(36 real changes made)
+53081
+(43 real changes made)
+53081
+(45 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+-9
+(0 real changes made)
+2720-
+(0 real changes made)
+2720-
+(3 real changes made)
+2720-
+(4 real changes made)
+2720-
+(12 real changes made)
+2720-
+(15 real changes made)
+
+{com}. 
+. tab prescriptionIndicator
+
+{txt}prescriptio {c |}
+ nIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}    297,577       99.99       99.99
+{txt}          1 {c |}{res}         16        0.01      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    297,593      100.00
+{txt}
+{com}. tab relevantDiagIndicator
+
+{txt}relevantDia {c |}
+ gIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      3,702        1.24        1.24
+{txt}          1 {c |}{res}    293,891       98.76      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    297,593      100.00
+{txt}
+{com}. tab relevantDiagIndicator if DIAG1 == "-9" | DIAG2 == "-9" | DIAG3 == "-9" | DIAG4 == "-9" | DIAG5 == "-9"
+
+{txt}relevantDia {c |}
+ gIndicator {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}    209,730      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    209,730      100.00
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/cefotetanLog.txt
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}12 May 2020, 12:28:06
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
