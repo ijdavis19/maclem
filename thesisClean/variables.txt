@@ -1,0 +1,68 @@
+Bad Variables (missing > 30%)
+ETHNIC
+TEMP
+BPSYS (like right at the cutoff)
+BPDIAS (same thing)
+SKIN
+WOUNDCL
+SKINAHD
+
+Good but questionable Variables
+CANCER
+CEBVD
+CHF
+COPD
+NOCHRON
+TOTCHRON
+PELVIC
+ANYIAMGE
+MRI
+XRAY
+OTHIMAGE
+NOPROVID
+NOPR
+PATCODE (?)
+AGEDAYS
+AGE (age raw)
+YEAR
+
+Good and Interesting Variables
+VMONTH
+AGER (age recoded)
+PAYPRIV
+PAYMCARE
+PAYMCAID
+PAYSELF
+PAYNOCHG
+PAYOTH
+PAYDK
+PHYSASST
+RNLPN
+OTHPROV
+PATWT [weight for observation]
+REGION
+RACER
+genericOn
+
+Other control variables
+prescriptionIndicator
+relevantDiagnosisIndicator
+infAndPara
+neoplasm
+endoNutMeta
+bloodAndBloodOrgans
+mental
+nervousSystem
+circSystem
+respSystem
+digSystem
+genSystem
+pregAndChildbirth
+skinAndSubCut
+muscAndConnect
+congenitalAnomaly
+newborn
+illDefined
+injAndPoison
+suppFactors
+general
