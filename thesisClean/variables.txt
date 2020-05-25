@@ -1,4 +1,4 @@
-Bad Variables (missing > 30%)
+****Bad Variables (missing > 30%)****
 ETHNIC
 TEMP
 BPSYS (like right at the cutoff)
@@ -7,7 +7,7 @@ SKIN
 WOUNDCL
 SKINAHD
 
-Good but questionable Variables
+****Good but questionable Variables****
 CANCER
 CEBVD
 CHF
@@ -26,7 +26,7 @@ AGEDAYS
 AGE (age raw)
 YEAR
 
-Good and Interesting Variables
+****Good and Interesting Variables****
 VMONTH
 AGER (age recoded)
 PAYPRIV
@@ -44,7 +44,7 @@ REGION
 RACER
 genericOn
 
-Other control variables
+****Other control variables****
 prescriptionIndicator
 relevantDiagnosisIndicator
 infAndPara
