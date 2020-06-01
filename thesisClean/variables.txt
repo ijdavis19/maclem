@@ -41,7 +41,7 @@ RNLPN
 OTHPROV
 PATWT [weight for observation]
 REGION
-RACER
+ 
 genericOn
 
 ****Other control variables****

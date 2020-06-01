@@ -1567,7 +1567,7 @@ gen genericOn = 1 if monthsAfterGeneric >= 0
 replace genericOn = 0 if monthsAfterGeneric < 0 
 
 /* forval diagNumber = 1/5 {
-    tab DIAG`diagNumber' if infAndPara == 0 & neoplasm == 0 & endoNutMeta == 0 & bloodAndBloodOrgans == 0 & mental == 0 & nervousSystem == 0 & circSystem == 0 & respSystem == 0 & digSystem == 0 & genSystem == 0 & pregAndChildBirth == 0 & skinAndSubCut == 0 & muscAndConnect == 0 & congenitalAnomaly == 0 & newborn == 0 & illDefined == 0 & injAndPoison == 0 & suppFactors == 0 & general == 1
+    tab DIAG`diagNumber' if infAndPara == 0 & neoplasm == 0 & endoNutMeta == 0 & bloodAndBloodOrgans == 0 & mental == 0 & nervousSystem == 0 & circSystem == 0 & respSystem == 0 & digSystem == 0 & genSystem == 0 & pregAndChildBirth == 0 & skinAndSubCut == 0 & muscAndConnect == 0 & congenitalAnomaly == 0 & newborn == 0 & illDefined == 0 & injAndPoison == 0 & suppFactors == 0 & general == 0
 }
 */
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
