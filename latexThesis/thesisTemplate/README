@@ -1,0 +1,74 @@
+ClemsonThesis Template README
+-----------------------------
+This package includes a template for generating a thesis or dissertation
+following the style requirements for the Graduate School at Clemson University.
+
+Contents
+--------
+    1. File Descriptions
+    2. Caption Formatting in the 'List of [Figures, Tables, ...]'
+
+
+1. File Descriptions
+--------------------
+The files contained in this package serve various purposes.
+'ClemsonThesis.cls' is the main document class that defines how things are 
+supposed to look.  You should not have to modify this file.
+
+'thesis.tex' is a sample of the main LaTeX document that uses the
+'ClemsonThesis' class.  Comments are included in this file to explain what
+everything does.  Each section of the document is contained in the following
+separate .tex files:
+
+    abstract.tex
+    dedication.tex
+    acknowledgments.tex
+    introduction.tex
+    researchDesign.tex
+    relatedWork.tex
+    results.tex
+    conclusions.tex
+    appendixA.tex
+    appendixB.tex
+    appendixC.tex
+
+These files are included by the main 'thesis.tex' file.  Dividing the document
+up into separate files that are included by the main file makes it easier to
+conditionally build parts of the document (i.e., if you only want to print the
+introduction, you can comment out the inclusion of all of the other sections).
+
+'bibliography.bib' is the BibTeX database used by 'thesis.tex'.  That file 
+will contain all of the bibliography entries to be cited in the document.  
+The one included includes some samples to show you the proper format.  The
+file 'introduction.tex' includes examples of how to cite those references
+(e.g., \cite{refTag}).
+
+'Makefile' is used to convert the document into a PDF in a UNIX (e.g., MacOS, 
+Linux) environment.  If they're using some other environment (e.g., Windows),
+whatever tool they choose to use will take care of that for them.
+
+Finally, 'testbed.jpg' is an image that is part of the sample document.  I 
+included that as an example of how to include an image in the document.
+
+
+
+2. Caption Formatting in the 'List of [Figures, Tables, ...]'
+-------------------------------------------------------------
+The Graduate School's style guidelines requires that in the 'List of
+<Whatever>', when entries are longer than 4.5 inches, that they be split
+onto two lines.  Basically, the text should not run all the way to the
+page number -- some dots should be included.  The style specification
+included in this package does *not* automatically handle this case.  You
+*must* review your captions and include appropriate breaks when necessary.
+
+To do this, you can use the '\newline' command.  Here's an example:
+
+    \caption[This is a really really really really really really long caption
+             that might need a newline \newline here so I put one in manually]
+            {This is a really really really really really really long caption
+            that might need a newline here so I put one in manually}
+
+The text between the square brackets (i.e., [ ]) will be shown in the 'List of
+<Whatever>', and the text between the curly braces (i.e., { }) will be shown
+inline in the text.  The only difference between the two is a '\newline' in
+the first that indicates where LaTeX should place the line break.

@@ -35,3 +35,7 @@ global testVars "i.VMONTH genericOn genericOn"
 ma list 
 
 reg rand $controls $intControls $diagCats $intDiagCats
+
+logit rand $controls $intControls $diagCats $intDiagCats
+
+probit rand $controls $intControls $diagCats $intDiagCats
