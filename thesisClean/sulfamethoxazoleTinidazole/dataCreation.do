@@ -40,7 +40,6 @@ forval year = 2006/2016 {
   save "$output/temp`year'.dta", replace
 }
 
-
 // Append the dataset starting with 2006
 use "$output/temp2006.dta", replace
 forval year = 2007/2016 {
@@ -48,6 +47,16 @@ forval year = 2007/2016 {
   erase "$output/temp`year'.dta"
 }
 
+// Recode expected source of payment
+replace PAYDK = 1 if PAYMCAID == 0 & PAYMCARE == 0 & PAYNOCHG == 0 & PAYOTH == 0 & PAYPRIV == 0 & PAYSELF == 0
+gen payRecode = 0
+replace payRecode = 1 if PAYMCAID == 1
+replace payRecode = 2 if PAYMCARE == 1
+replace payRecode = 3 if PAYNOCHG == 1
+replace payRecode = 4 if PAYOTH == 1
+replace payRecode = 5 if PAYPRIV == 1
+replace payRecode = 6 if PAYSELF == 1
+replace payRecode = 7 if PAYDK == 1
 
 // Save the new dataset and delete the 2006 set
 save "$output/NAMCSPanel.dta", replace

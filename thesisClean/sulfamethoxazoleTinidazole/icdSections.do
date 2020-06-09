@@ -114,3 +114,5 @@ forval diagNumber = 1/3 {
   // 680-686 -> Infections of Skin and Subcutaneous Tissue
   
 }
+
+save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace

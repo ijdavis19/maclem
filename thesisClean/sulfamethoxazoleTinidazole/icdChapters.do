@@ -29,7 +29,7 @@ gen respSystem = 0
 gen digSystem = 0
 gen genSystem = 0
 gen pregAndChildBirth = 0
-gen skinAndSubCut = 0
+gen skinAndSubCutDiseases = 0
 gen muscAndConnect = 0
 gen congenitalAnomaly = 0
 gen newborn = 0
@@ -74,7 +74,7 @@ forval diagNumber = 1/3 {
     replace pregAndChildBirth = 1 if real(substr(DIAG`diagNumber',1,3)) >= 630 & real(substr(DIAG`diagNumber',1,3)) <= 679
 
     // Diseases Skin and Subcutaneous Tissue (680-709)
-    //replace skinAndSubCut = 1 if real(substr(DIAG`diagNumber',1,3)) >= 680 & real(substr(DIAG`diagNumber',1,3)) <= 709
+    replace skinAndSubCutDiseases = 1 if real(substr(DIAG`diagNumber',1,3)) >= 680 & real(substr(DIAG`diagNumber',1,3)) <= 709
 
     // Diseases of Musculoskeletal and Connective Tissue (710-739)
     replace muscAndConnect = 1 if real(substr(DIAG`diagNumber',1,3)) >= 710 & real(substr(DIAG`diagNumber',1,3)) <= 739

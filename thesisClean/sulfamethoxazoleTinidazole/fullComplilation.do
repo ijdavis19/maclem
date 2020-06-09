@@ -29,3 +29,6 @@ qui do "$dofiles/icdSections.do"
 
 // Create dummies for chapters of ICD book
 qui do "$dofiles/icdChapters.do"
+
+// Save dataset
+save "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace

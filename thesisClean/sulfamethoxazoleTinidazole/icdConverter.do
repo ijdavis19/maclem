@@ -15,6 +15,7 @@ global dataraw =  "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
 
+
 use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 
 
