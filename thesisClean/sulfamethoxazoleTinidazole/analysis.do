@@ -13,7 +13,7 @@ global storage: env storage
 // General locations
 global dataraw =  "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
-global dofiles = "economics/maclem/thesisClean"
+global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
 
 // Dataset
 use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
