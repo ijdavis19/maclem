@@ -23,7 +23,7 @@ gen rand = uniform() < .3
 // Controls
 global controls = "i.YEAR i.VMONTH i.payRecode i.PHYSASST i.RNLPN i.OTHPROV i.REGION i.RACER i.AGER"
 
-global intControls = "genericOn#i.VMONTH genericOn#i.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION genericOn#i.RACER genericOn#i.AGER"
+global intControls = "i.YEAR i.VMONTH genericOn#i.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION genericOn#i.RACER genericOn#i.AGER"
 
 // Diagnosis Categories
 global daigCats = "infAndPara neoplasm endoNutMeta bloodAndBloodOrgans mental nervousSystem circSystem respSystem digSystem genSystem pregAndChildBirth skinAndSubCut muscAndConnect congenitalAnomaly newborn illDefined injAndPoison suppFactors general"
