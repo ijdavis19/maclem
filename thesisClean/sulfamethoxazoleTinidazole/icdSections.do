@@ -30,7 +30,6 @@ gen lymphosarcoma = 0
 gen otherInfectionsAndParaDiseases = 0
 gen unspecBacterialInfections = 0
 gen skinAndSubCut = 0
-gen generalSkinInfection = 0
 
 
 forval diagNumber = 1/3 {
@@ -110,9 +109,27 @@ forval diagNumber = 1/3 {
   // 680-686 -> Infections of Skin and Subcutaneous Tissue
 
   // General Skin Infection (Not mentioned in drug handbook but appears many times in data. Could be because MRSA needs to be tested for while these diagnoses are unspecified. Most likely every doc isn't testing every skin infection he/she sees.)
-  replace generalSkinInfection = 1 if substr(DIAG`diagNumber',1,3) == "682" // Other cellulitis and abscess
+  //replace generalSkinInfection = 1 if substr(DIAG`diagNumber',1,3) == "682" // Other cellulitis and abscess
   // 680-686 -> Infections of Skin and Subcutaneous Tissue
-  
 }
+
+
+// Off label prescription sections
+gen offLabelSkinInfection = 0
+gen offLabelUTI = 0
+gen offLabelAbsPelvis = 0
+gen offLabelUrinarySymptoms = 0
+gen offLabelCellulitisDigit = 0
+gen offLabelCystitis = 0
+
+forval diagNumber = 1/3 {
+  replace offLabelSkinInfection = 1 if substr(DIAG`diagNumber',1,3) == "682" // Other cellulitis and abscess
+  replace offLabelUTI = 1 if substr(DIAG`diagNumber',1,3) == "599" & substr(DIAG`diagNumber',1,4) != "5990"
+  replace offLabelAbsPelvis = 1 if substr(DIAG`diagNumber',1,3) == "789"
+  replace offLabelUrinarySymptoms = 1 if substr(DIAG`diagNumber',1,3) == "788"
+  replace offLabelCellulitisDigit = 1 if substr(DIAG`diagNumber',1,3) == "681"
+  replace offLabelCystitis = 1 if substr(DIAG`diagNumber',1,3) == "595"
+}
+
 
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace

@@ -113,9 +113,6 @@ forval diagNumber = 1/3 {
   // MRSA Skin Infections
   replace mrsaSkinInfection = 1 if substr(DIAG`diagNumber',1,4) == "0412" // Pneumococcus infection in conditions classified elsewhere and of unspecified site
   // 041 -> Bacterial infection in conditions classified elsewhere and of unspecified site
-
-  
-  
 }
 
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace

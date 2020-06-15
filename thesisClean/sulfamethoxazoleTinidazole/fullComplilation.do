@@ -30,5 +30,9 @@ qui do "$dofiles/icdSections.do"
 // Create dummies for chapters of ICD book
 qui do "$dofiles/icdChapters.do"
 
+// Assign Variables for Covariates
+qui do "$dofiles/variables.do"
+
+
 // Save dataset
 save "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace

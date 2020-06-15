@@ -36,7 +36,7 @@ forval year = 2006/2016 {
       gen DIAG`diagNumber' = ""
     }
   }
-  keep YEAR VMONTH AGE SEX ETHNIC PAYPRIV PAYMCARE PAYMCAID PAYSELF PAYNOCHG PAYOTH PAYDK DIAG1 DIAG2 DIAG3 DIAG4 DIAG5 DRUGID1 DRUGID2 DRUGID3 DRUGID4 DRUGID5 DRUGID6 DRUGID7 DRUGID8 DRUGID9 DRUGID10 DRUGID11 DRUGID12 DRUGID13 DRUGID14 DRUGID15 DRUGID16 DRUGID17 DRUGID18 DRUGID19 DRUGID20 DRUGID21 DRUGID22 DRUGID23 DRUGID24 DRUGID25 DRUGID26 DRUGID27 DRUGID28 DRUGID29 DRUGID30 CANCER CEBVD CHF COPD NOCHRON TOTCHRON TEMPF BPSYS BPDIAS PELVIC SKIN ANYIMAGE MRI XRAY OTHIMAGE CBC GLUCOSE EKG URINE WOUND NOPROVID PHYSASST RNLPN OTHPROV NODISP OTHDISP PATWT REGION PATCODE RACER AGEDAYS AGER SETTYPE
+  keep YEAR VMONTH AGE SEX ETHNIC PAYPRIV PAYMCARE PAYMCAID PAYSELF PAYNOCHG PAYOTH PAYDK DIAG1 DIAG2 DIAG3 DIAG4 DIAG5 DRUGID1 DRUGID2 DRUGID3 DRUGID4 DRUGID5 DRUGID6 DRUGID7 DRUGID8 CANCER CEBVD CHF COPD NOCHRON TOTCHRON TEMPF BPSYS BPDIAS PELVIC SKIN ANYIMAGE MRI XRAY OTHIMAGE CBC GLUCOSE EKG URINE WOUND NOPROVID PHYSASST RNLPN OTHPROV NODISP OTHDISP PATWT REGION PATCODE RACER AGEDAYS AGER SETTYPE
   save "$output/temp`year'.dta", replace
 }
 
@@ -58,6 +58,9 @@ replace payRecode = 5 if PAYPRIV == 1
 replace payRecode = 6 if PAYSELF == 1
 replace payRecode = 7 if PAYDK == 1
 
+// Create Age^2
+gen ageSQ = AGE*AGE
+
 // Save the new dataset and delete the 2006 set
 save "$output/NAMCSPanel.dta", replace
 erase "$output/temp2006.dta"
@@ -72,9 +75,20 @@ local firstGenMonth = 11
 gen prescriptionIndicator =.
 
 // indicator for prescription
-forval number = 1/30 {
+forval number = 1/8 {
     replace prescriptionIndicator = 1 if DRUGID`number' == "`genEQ'"
     replace prescriptionIndicator = 0 if prescriptionIndicator != 1
+}
+save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
+
+global otherScripts = "d00096 d00043 d03428"
+gen otherScriptIndicator = 0
+foreach script in $otherScripts {
+    gen `script' = 0
+    forval number = 1/8 {
+        replace otherScriptIndicator = 1 if DRUGID`number' == "`script'"
+        replace `script' = 1 if DRUGID`number' == "`script'"
+    }
 }
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 
@@ -119,5 +133,11 @@ gen genericMonth = (`firstGenYear' - 2000)*12 + `firstGenMonth'
 gen monthsAfterGeneric = observationMonth - genericMonth
 gen genericOn = 1 if monthsAfterGeneric >= 0
 replace genericOn = 0 if monthsAfterGeneric < 0 
+
+forval x = 1/3 {
+  gen section`x' = substr(DIAG`x',1,3)
+}
+
+drop if relevantDiagIndicator == 0
 
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace

@@ -18,19 +18,17 @@ global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
 // Dataset
 use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 
-gen rand = uniform() < .3
-
 // Controls
-global controls = "i.YEAR i.VMONTH i.payRecode i.PHYSASST i.RNLPN i.OTHPROV i.REGION i.RACER i.AGER"
+global controls = "i.YEAR i.VMONTH i.SEX i.payRecode i.PHYSASST i.RNLPN i.OTHPROV i.REGION i.RACER"
 
-global intControls = "i.YEAR i.VMONTH genericOn#i.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION genericOn#i.RACER genericOn#i.AGER"
+global intControls = "i.YEAR i.VMONTH genericOn#i.SEX genericOn#i.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION genericOn#i.RACER"
 
 // Diagnosis Categories
-global daigCats = "infAndPara neoplasm endoNutMeta bloodAndBloodOrgans mental nervousSystem circSystem respSystem digSystem genSystem pregAndChildBirth skinAndSubCut muscAndConnect congenitalAnomaly newborn illDefined injAndPoison suppFactors general"
+global daigCats = "infAndPara neoplasm endoNutMeta bloodAndBloodOrgans mental nervousSystem circSystem respSystem digSystem genSystem pregAndChildBirth skinAndSubCut muscAndConnect congenitalAnomaly newborn illDefined injAndPoison suppFactors"
 
 global intDiagCats = "genericOn#infAndPara genericOn#neoplasm genericOn#endoNutMeta genericOn#bloodAndBloodOrgans genericOn#mental genericOn#nervousSystem genericOn#circSystem genericOn#respSystem genericOn#digSystem genericOn#genSystem genericOn#pregAndChildBirth genericOn#skinAndSubCut genericOn#muscAndConnect genericOn#congenitalAnomaly genericOn#newborn genericOn#illDefined genericOn#injAndPoison genericOn#suppFactors genericOn#general"
 
-global specDiags = "travelersDiarrhea urinaryTractInfection earInfection chronicBronchitis shigellosis pneumonia listeria nocardia salmonella paracoccidioides melioidoisis burkholderia stenotrophomonas cyclospora isospora whipplesDisease toxoplasmosis mrsaSkinInfection "
+global specDiags = "travelersDiarrhea urinaryTractInfection earInfection chronicBronchitis shigellosis pneumonia listeria nocardia salmonella paracoccidioides melioidoisis burkholderia stenotrophomonas cyclospora isospora whipplesDisease toxoplasmosis mrsaSkinInfection"
 
 gen inttravelersDiarrhea = genericOn*travelersDiarrhea
 gen inturinaryTractInfection = genericOn*urinaryTractInfection
@@ -54,7 +52,7 @@ gen intmrsaSkinInfection = genericOn*mrsaSkinInfection
 
 global intSpecDiags = "inttravelersDiarrhea inturinaryTractInfection intearInfection intchronicBronchitis intshigellosis intpneumonia intlisteria intbrucella intnocardia intsalmonella intparacoccidioides intmelioidoisis intburkholderia intstenotrophomonas intcyclospora intisospora intwhipplesDisease inttoxoplasmosis intmrsaSkinInfection"
 
-global unSpecDiags = "genDigestiveSystem urinaryDisorders diseasesOfEar chronichPulmonaryDiseases intenstinalInfectiousDiseases pneumoniaAndInfluenza otherBacterialDiseases blastomycoticInfection zoonoticBactDiseases lymphosarcoma otherInfectionsAndParaDiseases unspecBacterialInfections generalSkinInfection"
+global unSpecDiags = "genDigestiveSystem urinaryDisorders diseasesOfEar chronichPulmonaryDiseases intenstinalInfectiousDiseases pneumoniaAndInfluenza otherBacterialDiseases blastomycoticInfection zoonoticBactDiseases lymphosarcoma otherInfectionsAndParaDiseases unspecBacterialInfections"
 
 gen intGenDigestiveSystem = genericOn*genDigestiveSystem
 gen intUrinaryDisorders = genericOn*urinaryDisorders
@@ -68,9 +66,8 @@ gen intZoonoticBactDiseases = genericOn*zoonoticBactDiseases
 gen intLlymphosarcoma = genericOn*lymphosarcoma
 gen intOtherInfectAndParaDiseases = genericOn*otherInfectionsAndParaDiseases
 gen intUnspecBacterialInfections = genericOn*unspecBacterialInfections
-gen intGeneralSkinInfection = genericOn*generalSkinInfection
 
-global intUnSpecDiags = "intGenDigestiveSystem intUrinaryDisorders intDiseasesOfEar intChronichPulmonaryDiseases intIntenstinalInfectiousDiseases intPneumoniaAndInfluenza intOtherBacterialDiseases intBlastomycoticInfection intZoonoticBactDiseases intLlymphosarcoma intOtherInfectAndParaDiseases intUnspecBacterialInfections intGeneralSkinInfection"
+global intUnSpecDiags = "intGenDigestiveSystem intUrinaryDisorders intDiseasesOfEar intChronichPulmonaryDiseases intIntenstinalInfectiousDiseases intPneumoniaAndInfluenza intOtherBacterialDiseases intBlastomycoticInfection intZoonoticBactDiseases intLlymphosarcoma intOtherInfectAndParaDiseases intUnspecBacterialInfections"
 
 global chapters = "infAndPara neoplasm endoNutMeta bloodAndBloodOrgans mental nervousSystem circSystem respSystem digSystem genSystem pregAndChildBirth skinAndSubCutDiseases muscAndConnect congenitalAnomaly newborn signsAndSymptoms injAndPoison suppFactors general"
 
@@ -98,3 +95,14 @@ global intChapters = "intinfAndPara intneoplasm intendoNutMeta intbloodAndBloodO
 
 save "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace
 
+global offLabelDiags = "offLabelSkinInfection offLabelUTI offLabelAbsPelvis offLabelUrinarySymptoms offLabelCellulitisDigit offLabelCystitis"
+
+gen intOffLabelSkinInfection = offLabelSkinInfection*genericOn
+gen intOffLabelUTI = offLabelUTI*genericOn
+gen intOfLabelAbsPelvis = offLabelAbsPelvis*genericOn
+gen intOffLabelUrinarySymptoms = offLabelUrinarySymptoms*genericOn
+gen intOffLabelCellulitisDigit = offLabelCellulitisDigit*genericOn
+gen intOffLabelCystitis= offLabelCystitis*genericOn
+
+
+global intOffLabelDiags = "intOffLabelSkinInfection intOffLabelUTI intOfLabelAbsPelvis intOffLabelUrinarySymptoms intOffLabelCellulitisDigit intOffLabelCystitis"

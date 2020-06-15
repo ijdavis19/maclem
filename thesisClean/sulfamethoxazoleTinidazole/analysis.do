@@ -10,12 +10,15 @@ global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace
 
-gen specDiagTest = 0
+gen onLabel = 0
 foreach diag in $specDiags {
-    replace specDiagTest = 1 if `diag' == 1
+    replace onLabel = 1 if `diag' == 1
 }
-tab prescriptionIndicator if specDiagTest == 0
-gen intSpecDiagTest = genericOn*specDiagTest
+tab prescriptionIndicator if onLabel == 0
+gen intOnLabel = genericOn*onLabel
+gen offLabel = 0
+replace offLabel = 1 if onLabel == 0
+gen intOffLabel = genericOn*offLabel
 
 gen unSpecDiagTest = 0
 foreach diag in $unspecDiags{ 
@@ -33,17 +36,8 @@ tab prescriptionIndicator if chapterTest == 0
 gen intChapterTest = genericOn*chapterTest
 
 
-
 /*
-reg prescriptionIndicator $intControls specDiagTest genericOn intSpecDiagTest [pweight = PATWT]
-
-reg prescriptionIndicator $intControls unSpecDiagTest genericOn intUnSpecDiagTest [pweight = PATWT]
-
-reg prescriptionIndicator $intControls chapterTest genericOn intChapterTest [pweight = PATWT]
-
 reg prescriptionIndicator $intControls $specDiags genericOn $intSpecDiags [pweight = PATWT]
 
-reg prescriptionIndicator $intControls $unSpecDiags genericOn $intUnspecDiags [pweight = PATWT]
-
-reg prescriptionIndicator $intControls $chapters genericOn $intChapters [pweight = PATWT]
+reg prescriptionIndicator $intControls genericOn onLabel intOnLabel $offLabelDiags $intOffLabelDiags [w = PATWT]
 */
