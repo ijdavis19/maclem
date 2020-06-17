@@ -1,0 +1,135 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/sulfamethoxazoleTinidazole/logisticModel.txt
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Jun 2020, 09:49:18
+{txt}
+{com}. logistic prescriptionIndicator $intControls genericOn onLabel intOnLabel $offLabelDiags $intOffLabelDiags [pweight = PATWT]
+{txt}note: 1.genericOn#2.SEX omitted because of collinearity
+note: 1.genericOn#7.payRecode omitted because of collinearity
+note: 1.genericOn#1.PHYSASST omitted because of collinearity
+note: 1.genericOn#1.RNLPN omitted because of collinearity
+note: 1.genericOn#1.OTHPROV omitted because of collinearity
+note: 1.genericOn#4.REGION omitted because of collinearity
+note: 1.genericOn#3.RACER omitted because of collinearity
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}   284,415
+{txt}{col 49}Wald chi2({res}68{txt}){col 67}= {res}   5097.28
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-2.969e+08{txt}{col 49}Pseudo R2{col 67}= {res}    0.1643
+
+{txt}{hline 32}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 33}{c |}{col 45}    Robust
+{col 1}          prescriptionIndicator{col 33}{c |} Odds Ratio{col 45}   Std. Err.{col 57}      z{col 65}   P>|z|{col 73}     [95% Con{col 86}f. Interval]
+{hline 32}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 27}YEAR {c |}
+{space 26}2007  {c |}{col 33}{res}{space 2} 1.002334{col 45}{space 2} .1283693{col 56}{space 1}    0.02{col 65}{space 3}0.985{col 73}{space 4} .7798275{col 86}{space 3} 1.288327
+{txt}{space 26}2008  {c |}{col 33}{res}{space 2} .8933721{col 45}{space 2} .1151031{col 56}{space 1}   -0.88{col 65}{space 3}0.382{col 73}{space 4}  .694005{col 86}{space 3} 1.150012
+{txt}{space 26}2009  {c |}{col 33}{res}{space 2} .8944248{col 45}{space 2} .1137212{col 56}{space 1}   -0.88{col 65}{space 3}0.380{col 73}{space 4} .6971372{col 86}{space 3} 1.147544
+{txt}{space 26}2010  {c |}{col 33}{res}{space 2} 1.013513{col 45}{space 2} .1287145{col 56}{space 1}    0.11{col 65}{space 3}0.916{col 73}{space 4} .7901838{col 86}{space 3} 1.299962
+{txt}{space 26}2011  {c |}{col 33}{res}{space 2} 1.181661{col 45}{space 2} .1501095{col 56}{space 1}    1.31{col 65}{space 3}0.189{col 73}{space 4} .9212186{col 86}{space 3} 1.515735
+{txt}{space 26}2012  {c |}{col 33}{res}{space 2} 1.253205{col 45}{space 2} .1700216{col 56}{space 1}    1.66{col 65}{space 3}0.096{col 73}{space 4} .9605949{col 86}{space 3} 1.634949
+{txt}{space 26}2013  {c |}{col 33}{res}{space 2} 1.231769{col 45}{space 2} .2847516{col 56}{space 1}    0.90{col 65}{space 3}0.367{col 73}{space 4} .7829873{col 86}{space 3} 1.937778
+{txt}{space 26}2014  {c |}{col 33}{res}{space 2}  1.16499{col 45}{space 2} .2761596{col 56}{space 1}    0.64{col 65}{space 3}0.519{col 73}{space 4} .7320587{col 86}{space 3} 1.853953
+{txt}{space 26}2015  {c |}{col 33}{res}{space 2} 1.002819{col 45}{space 2} .2330764{col 56}{space 1}    0.01{col 65}{space 3}0.990{col 73}{space 4} .6358948{col 86}{space 3} 1.581466
+{txt}{space 31} {c |}
+{space 25}VMONTH {c |}
+{space 22}February  {c |}{col 33}{res}{space 2} .8233045{col 45}{space 2}  .128535{col 56}{space 1}   -1.25{col 65}{space 3}0.213{col 73}{space 4} .6062757{col 86}{space 3} 1.118023
+{txt}{space 25}March  {c |}{col 33}{res}{space 2}  .702903{col 45}{space 2} .1183314{col 56}{space 1}   -2.09{col 65}{space 3}0.036{col 73}{space 4} .5053571{col 86}{space 3} .9776703
+{txt}{space 25}April  {c |}{col 33}{res}{space 2} .9874719{col 45}{space 2} .1507328{col 56}{space 1}   -0.08{col 65}{space 3}0.934{col 73}{space 4}  .732138{col 86}{space 3} 1.331854
+{txt}{space 27}May  {c |}{col 33}{res}{space 2} 1.196281{col 45}{space 2} .1764392{col 56}{space 1}    1.22{col 65}{space 3}0.224{col 73}{space 4} .8959623{col 86}{space 3} 1.597264
+{txt}{space 26}June  {c |}{col 33}{res}{space 2} 1.110436{col 45}{space 2} .1626841{col 56}{space 1}    0.72{col 65}{space 3}0.475{col 73}{space 4} .8332754{col 86}{space 3} 1.479785
+{txt}{space 26}July  {c |}{col 33}{res}{space 2} 1.289211{col 45}{space 2} .1869149{col 56}{space 1}    1.75{col 65}{space 3}0.080{col 73}{space 4} .9703163{col 86}{space 3}  1.71291
+{txt}{space 24}August  {c |}{col 33}{res}{space 2} 1.156564{col 45}{space 2} .1679227{col 56}{space 1}    1.00{col 65}{space 3}0.316{col 73}{space 4} .8701271{col 86}{space 3} 1.537292
+{txt}{space 21}September  {c |}{col 33}{res}{space 2} 1.252935{col 45}{space 2} .1840461{col 56}{space 1}    1.54{col 65}{space 3}0.125{col 73}{space 4} .9394934{col 86}{space 3} 1.670949
+{txt}{space 23}October  {c |}{col 33}{res}{space 2} .9978277{col 45}{space 2}  .148099{col 56}{space 1}   -0.01{col 65}{space 3}0.988{col 73}{space 4}  .745966{col 86}{space 3} 1.334726
+{txt}{space 22}November  {c |}{col 33}{res}{space 2} .9350179{col 45}{space 2} .1466522{col 56}{space 1}   -0.43{col 65}{space 3}0.668{col 73}{space 4} .6875652{col 86}{space 3} 1.271528
+{txt}{space 22}December  {c |}{col 33}{res}{space 2}  1.02592{col 45}{space 2} .1622834{col 56}{space 1}    0.16{col 65}{space 3}0.871{col 73}{space 4} .7524328{col 86}{space 3} 1.398812
+{txt}{space 31} {c |}
+{space 18}genericOn#SEX {c |}
+{space 24}0#Male  {c |}{col 33}{res}{space 2} .9250366{col 45}{space 2} .0642315{col 56}{space 1}   -1.12{col 65}{space 3}0.262{col 73}{space 4} .8073359{col 86}{space 3} 1.059897
+{txt}{space 22}1#Female  {c |}{col 33}{res}{space 2} 1.264591{col 45}{space 2}  .096687{col 56}{space 1}    3.07{col 65}{space 3}0.002{col 73}{space 4} 1.088603{col 86}{space 3} 1.469029
+{txt}{space 24}1#Male  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 12}genericOn#payRecode {c |}
+{space 20}0#Medicare  {c |}{col 33}{res}{space 2} .9258119{col 45}{space 2} .1181721{col 56}{space 1}   -0.60{col 65}{space 3}0.546{col 73}{space 4} .7208984{col 86}{space 3} 1.188972
+{txt}{space 19}0#No Charge  {c |}{col 33}{res}{space 2} .7684162{col 45}{space 2}  .255217{col 56}{space 1}   -0.79{col 65}{space 3}0.428{col 73}{space 4} .4007594{col 86}{space 3} 1.473361
+{txt}{space 23}0#Other  {c |}{col 33}{res}{space 2} 1.042781{col 45}{space 2} .2246735{col 56}{space 1}    0.19{col 65}{space 3}0.846{col 73}{space 4} .6835919{col 86}{space 3} 1.590705
+{txt}{space 11}0#Private Insurance  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 20}0#Self pay  {c |}{col 33}{res}{space 2} 1.660349{col 45}{space 2}   .20508{col 56}{space 1}    4.10{col 65}{space 3}0.000{col 73}{space 4} 1.303353{col 86}{space 3} 2.115127
+{txt}{space 21}0#Unknown  {c |}{col 33}{res}{space 2} .9170834{col 45}{space 2} .1424777{col 56}{space 1}   -0.56{col 65}{space 3}0.577{col 73}{space 4} .6763423{col 86}{space 3} 1.243515
+{txt}{space 20}1#Medicaid  {c |}{col 33}{res}{space 2} .9564904{col 45}{space 2} .1345152{col 56}{space 1}   -0.32{col 65}{space 3}0.752{col 73}{space 4} .7260602{col 86}{space 3} 1.260052
+{txt}{space 20}1#Medicare  {c |}{col 33}{res}{space 2} 1.064996{col 45}{space 2} .2203898{col 56}{space 1}    0.30{col 65}{space 3}0.761{col 73}{space 4} .7099061{col 86}{space 3}   1.5977
+{txt}{space 19}1#No Charge  {c |}{col 33}{res}{space 2} 1.488341{col 45}{space 2} .5607674{col 56}{space 1}    1.06{col 65}{space 3}0.291{col 73}{space 4} .7112011{col 86}{space 3} 3.114674
+{txt}{space 23}1#Other  {c |}{col 33}{res}{space 2} .6665478{col 45}{space 2} .1802058{col 56}{space 1}   -1.50{col 65}{space 3}0.134{col 73}{space 4} .3923766{col 86}{space 3} 1.132295
+{txt}{space 11}1#Private Insurance  {c |}{col 33}{res}{space 2}  .885258{col 45}{space 2} .1237699{col 56}{space 1}   -0.87{col 65}{space 3}0.383{col 73}{space 4} .6730718{col 86}{space 3} 1.164336
+{txt}{space 20}1#Self pay  {c |}{col 33}{res}{space 2} .8898698{col 45}{space 2} .1321642{col 56}{space 1}   -0.79{col 65}{space 3}0.432{col 73}{space 4} .6651281{col 86}{space 3}  1.19055
+{txt}{space 21}1#Unknown  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 13}genericOn#PHYSASST {c |}
+{space 25}0#Yes  {c |}{col 33}{res}{space 2} 1.177398{col 45}{space 2} .1885913{col 56}{space 1}    1.02{col 65}{space 3}0.308{col 73}{space 4} .8601633{col 86}{space 3} 1.611631
+{txt}{space 26}1#No  {c |}{col 33}{res}{space 2}  .757937{col 45}{space 2} .0790427{col 56}{space 1}   -2.66{col 65}{space 3}0.008{col 73}{space 4} .6178232{col 86}{space 3} .9298268
+{txt}{space 25}1#Yes  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 16}genericOn#RNLPN {c |}
+{space 25}0#Yes  {c |}{col 33}{res}{space 2} 1.343574{col 45}{space 2} .1034325{col 56}{space 1}    3.84{col 65}{space 3}0.000{col 73}{space 4} 1.155403{col 86}{space 3} 1.562391
+{txt}{space 26}1#No  {c |}{col 33}{res}{space 2} .8235515{col 45}{space 2} .1336989{col 56}{space 1}   -1.20{col 65}{space 3}0.232{col 73}{space 4} .5991052{col 86}{space 3} 1.132084
+{txt}{space 25}1#Yes  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 14}genericOn#OTHPROV {c |}
+{space 25}0#Yes  {c |}{col 33}{res}{space 2} .8823505{col 45}{space 2} .0879178{col 56}{space 1}   -1.26{col 65}{space 3}0.209{col 73}{space 4} .7258169{col 86}{space 3} 1.072643
+{txt}{space 26}1#No  {c |}{col 33}{res}{space 2} 1.172757{col 45}{space 2} .1020129{col 56}{space 1}    1.83{col 65}{space 3}0.067{col 73}{space 4} .9889307{col 86}{space 3} 1.390754
+{txt}{space 25}1#Yes  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 15}genericOn#REGION {c |}
+{space 21}0#Midwest  {c |}{col 33}{res}{space 2} 1.801455{col 45}{space 2} .2201518{col 56}{space 1}    4.82{col 65}{space 3}0.000{col 73}{space 4} 1.417751{col 86}{space 3} 2.289005
+{txt}{space 23}0#South  {c |}{col 33}{res}{space 2} 1.983186{col 45}{space 2} .2265708{col 56}{space 1}    5.99{col 65}{space 3}0.000{col 73}{space 4}  1.58532{col 86}{space 3} 2.480902
+{txt}{space 24}0#West  {c |}{col 33}{res}{space 2} 1.881826{col 45}{space 2}  .229047{col 56}{space 1}    5.19{col 65}{space 3}0.000{col 73}{space 4} 1.482434{col 86}{space 3} 2.388822
+{txt}{space 19}1#Northeast  {c |}{col 33}{res}{space 2} .8118445{col 45}{space 2} .1088246{col 56}{space 1}   -1.56{col 65}{space 3}0.120{col 73}{space 4} .6242702{col 86}{space 3} 1.055779
+{txt}{space 21}1#Midwest  {c |}{col 33}{res}{space 2} .8948795{col 45}{space 2} .1121649{col 56}{space 1}   -0.89{col 65}{space 3}0.376{col 73}{space 4} .6999617{col 86}{space 3} 1.144076
+{txt}{space 23}1#South  {c |}{col 33}{res}{space 2} 1.515823{col 45}{space 2} .1555562{col 56}{space 1}    4.05{col 65}{space 3}0.000{col 73}{space 4} 1.239644{col 86}{space 3} 1.853533
+{txt}{space 24}1#West  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 16}genericOn#RACER {c |}
+{space 23}0#Black  {c |}{col 33}{res}{space 2} 1.150757{col 45}{space 2} .1241414{col 56}{space 1}    1.30{col 65}{space 3}0.193{col 73}{space 4} .9314462{col 86}{space 3} 1.421705
+{txt}{space 23}0#Other  {c |}{col 33}{res}{space 2}  .713995{col 45}{space 2} .1252325{col 56}{space 1}   -1.92{col 65}{space 3}0.055{col 73}{space 4} .5062874{col 86}{space 3} 1.006916
+{txt}{space 23}1#White  {c |}{col 33}{res}{space 2} 1.293614{col 45}{space 2} .2971894{col 56}{space 1}    1.12{col 65}{space 3}0.262{col 73}{space 4} .8246189{col 86}{space 3} 2.029346
+{txt}{space 23}1#Black  {c |}{col 33}{res}{space 2} 1.350346{col 45}{space 2} .3221963{col 56}{space 1}    1.26{col 65}{space 3}0.208{col 73}{space 4} .8459525{col 86}{space 3}  2.15548
+{txt}{space 23}1#Other  {c |}{col 33}{res}{space 2}        1{col 45}{txt}  (omitted)
+{space 31} {c |}
+{space 16}genericOn#c.AGE {c |}
+{space 29}0  {c |}{col 33}{res}{space 2} 1.030232{col 45}{space 2} .0053983{col 56}{space 1}    5.68{col 65}{space 3}0.000{col 73}{space 4} 1.019705{col 86}{space 3} 1.040867
+{txt}{space 29}1  {c |}{col 33}{res}{space 2} 1.038186{col 45}{space 2} .0063101{col 56}{space 1}    6.17{col 65}{space 3}0.000{col 73}{space 4} 1.025892{col 86}{space 3} 1.050628
+{txt}{space 31} {c |}
+{space 14}genericOn#c.ageSQ {c |}
+{space 29}0  {c |}{col 33}{res}{space 2} .9996106{col 45}{space 2} .0000635{col 56}{space 1}   -6.13{col 65}{space 3}0.000{col 73}{space 4} .9994863{col 86}{space 3}  .999735
+{txt}{space 29}1  {c |}{col 33}{res}{space 2} .9994551{col 45}{space 2} .0000789{col 56}{space 1}   -6.90{col 65}{space 3}0.000{col 73}{space 4} .9993005{col 86}{space 3} .9996098
+{txt}{space 31} {c |}
+{space 22}genericOn {c |}{col 33}{res}{space 2} 2.016996{col 45}{space 2} .8050768{col 56}{space 1}    1.76{col 65}{space 3}0.079{col 73}{space 4} .9224673{col 86}{space 3} 4.410208
+{txt}{space 24}onLabel {c |}{col 33}{res}{space 2} 9.681582{col 45}{space 2} .9095817{col 56}{space 1}   24.16{col 65}{space 3}0.000{col 73}{space 4} 8.053343{col 86}{space 3} 11.63902
+{txt}{space 21}intOnLabel {c |}{col 33}{res}{space 2}  .595215{col 45}{space 2} .0798648{col 56}{space 1}   -3.87{col 65}{space 3}0.000{col 73}{space 4} .4575739{col 86}{space 3} .7742594
+{txt}{space 3}offLabelUnspecCellandAbscess {c |}{col 33}{res}{space 2} 34.47862{col 45}{space 2} 3.938101{col 56}{space 1}   31.00{col 65}{space 3}0.000{col 73}{space 4} 27.56302{col 86}{space 3} 43.12935
+{txt}{space 20}offLabelUTI {c |}{col 33}{res}{space 2} 3.078491{col 45}{space 2} .9300021{col 56}{space 1}    3.72{col 65}{space 3}0.000{col 73}{space 4} 1.702914{col 86}{space 3}  5.56523
+{txt}{space 14}offLabelAbsPelvis {c |}{col 33}{res}{space 2}  1.14735{col 45}{space 2} .3114601{col 56}{space 1}    0.51{col 65}{space 3}0.613{col 73}{space 4} .6739513{col 86}{space 3} 1.953275
+{txt}{space 8}offLabelUrinarySymptoms {c |}{col 33}{res}{space 2} 3.421793{col 45}{space 2} .6156413{col 56}{space 1}    6.84{col 65}{space 3}0.000{col 73}{space 4} 2.404958{col 86}{space 3} 4.868554
+{txt}{space 8}offLabelCellulitisDigit {c |}{col 33}{res}{space 2} 41.02008{col 45}{space 2} 13.02706{col 56}{space 1}   11.69{col 65}{space 3}0.000{col 73}{space 4} 22.01274{col 86}{space 3} 76.43971
+{txt}{space 15}offLabelCystitis {c |}{col 33}{res}{space 2}  25.9701{col 45}{space 2} 6.169292{col 56}{space 1}   13.71{col 65}{space 3}0.000{col 73}{space 4}   16.303{col 86}{space 3} 41.36944
+{txt}intOffLabelUnspecCellandAbscess {c |}{col 33}{res}{space 2} 1.561479{col 45}{space 2} .2310575{col 56}{space 1}    3.01{col 65}{space 3}0.003{col 73}{space 4} 1.168371{col 86}{space 3} 2.086851
+{txt}{space 17}intOffLabelUTI {c |}{col 33}{res}{space 2} 1.383133{col 45}{space 2} .7142191{col 56}{space 1}    0.63{col 65}{space 3}0.530{col 73}{space 4} .5027155{col 86}{space 3} 3.805445
+{txt}{space 12}intOfLabelAbsPelvis {c |}{col 33}{res}{space 2} .6903268{col 45}{space 2} .2157899{col 56}{space 1}   -1.19{col 65}{space 3}0.236{col 73}{space 4} .3740906{col 86}{space 3} 1.273892
+{txt}{space 5}intOffLabelUrinarySymptoms {c |}{col 33}{res}{space 2} .8340059{col 45}{space 2} .2682709{col 56}{space 1}   -0.56{col 65}{space 3}0.573{col 73}{space 4} .4439836{col 86}{space 3} 1.566647
+{txt}{space 5}intOffLabelCellulitisDigit {c |}{col 33}{res}{space 2} .8815989{col 45}{space 2} .3931689{col 56}{space 1}   -0.28{col 65}{space 3}0.778{col 73}{space 4} .3678397{col 86}{space 3} 2.112922
+{txt}{space 12}intOffLabelCystitis {c |}{col 33}{res}{space 2} .5193075{col 45}{space 2} .2012429{col 56}{space 1}   -1.69{col 65}{space 3}0.091{col 73}{space 4} .2429772{col 86}{space 3}   1.1099
+{txt}{space 26}_cons {c |}{col 33}{res}{space 2} .0020357{col 45}{space 2} .0003936{col 56}{space 1}  -32.05{col 65}{space 3}0.000{col 73}{space 4} .0013936{col 86}{space 3} .0029737
+{txt}{hline 32}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/home/ian/economics/maclem/thesisClean/sulfamethoxazoleTinidazole/logisticModel.txt
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Jun 2020, 09:50:15
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

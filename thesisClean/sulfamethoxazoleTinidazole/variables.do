@@ -21,7 +21,7 @@ use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 // Controls
 global controls = "i.YEAR i.VMONTH i.SEX i.payRecode i.PHYSASST i.RNLPN i.OTHPROV i.REGION i.RACER"
 
-global intControls = "i.YEAR i.VMONTH genericOn#i.SEX genericOn#i.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION genericOn#i.RACER"
+global intControls = "i.YEAR i.VMONTH o0.genericOn#i.SEX o0.genericOn#i.o5.payRecode genericOn#i.PHYSASST genericOn#i.RNLPN genericOn#i.OTHPROV genericOn#i.REGION o0.genericOn#o1.i.RACER genericOn#c.AGE genericOn#c.ageSQ"
 
 // Diagnosis Categories
 global daigCats = "infAndPara neoplasm endoNutMeta bloodAndBloodOrgans mental nervousSystem circSystem respSystem digSystem genSystem pregAndChildBirth skinAndSubCut muscAndConnect congenitalAnomaly newborn illDefined injAndPoison suppFactors"
@@ -95,9 +95,9 @@ global intChapters = "intinfAndPara intneoplasm intendoNutMeta intbloodAndBloodO
 
 save "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace
 
-global offLabelDiags = "offLabelSkinInfection offLabelUTI offLabelAbsPelvis offLabelUrinarySymptoms offLabelCellulitisDigit offLabelCystitis"
+global offLabelDiags = "offLabelUnspecCellandAbscess offLabelUTI offLabelAbsPelvis offLabelUrinarySymptoms offLabelCellulitisDigit offLabelCystitis"
 
-gen intOffLabelSkinInfection = offLabelSkinInfection*genericOn
+gen intOffLabelUnspecCellandAbscess = offLabelUnspecCellandAbscess*genericOn
 gen intOffLabelUTI = offLabelUTI*genericOn
 gen intOfLabelAbsPelvis = offLabelAbsPelvis*genericOn
 gen intOffLabelUrinarySymptoms = offLabelUrinarySymptoms*genericOn
@@ -105,4 +105,4 @@ gen intOffLabelCellulitisDigit = offLabelCellulitisDigit*genericOn
 gen intOffLabelCystitis= offLabelCystitis*genericOn
 
 
-global intOffLabelDiags = "intOffLabelSkinInfection intOffLabelUTI intOfLabelAbsPelvis intOffLabelUrinarySymptoms intOffLabelCellulitisDigit intOffLabelCystitis"
+global intOffLabelDiags = "intOffLabelUnspecCellandAbscess intOffLabelUTI intOfLabelAbsPelvis intOffLabelUrinarySymptoms intOffLabelCellulitisDigit intOffLabelCystitis"

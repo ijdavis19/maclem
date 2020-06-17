@@ -58,6 +58,9 @@ replace payRecode = 5 if PAYPRIV == 1
 replace payRecode = 6 if PAYSELF == 1
 replace payRecode = 7 if PAYDK == 1
 
+label define PAYCODE 1 "Medicaid" 2 "Medicare" 3 "No Charge" 4 "Other" 5 "Private Insurance" 6 "Self pay" 7 "Unknown"
+label values payRecode PAYCODE
+
 // Create Age^2
 gen ageSQ = AGE*AGE
 

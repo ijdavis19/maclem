@@ -115,7 +115,7 @@ forval diagNumber = 1/3 {
 
 
 // Off label prescription sections
-gen offLabelSkinInfection = 0
+gen offLabelUnspecCellandAbscess = 0
 gen offLabelUTI = 0
 gen offLabelAbsPelvis = 0
 gen offLabelUrinarySymptoms = 0
@@ -123,7 +123,7 @@ gen offLabelCellulitisDigit = 0
 gen offLabelCystitis = 0
 
 forval diagNumber = 1/3 {
-  replace offLabelSkinInfection = 1 if substr(DIAG`diagNumber',1,3) == "682" // Other cellulitis and abscess
+  replace offLabelUnspecCellandAbscess = 1 if substr(DIAG`diagNumber',1,3) == "682" // Other cellulitis and abscess
   replace offLabelUTI = 1 if substr(DIAG`diagNumber',1,3) == "599" & substr(DIAG`diagNumber',1,4) != "5990"
   replace offLabelAbsPelvis = 1 if substr(DIAG`diagNumber',1,3) == "789"
   replace offLabelUrinarySymptoms = 1 if substr(DIAG`diagNumber',1,3) == "788"
