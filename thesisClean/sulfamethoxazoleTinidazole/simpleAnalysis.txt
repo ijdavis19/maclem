@@ -1,0 +1,11 @@
+Regression 1:
+ constant -> the probability of being prescribed conditional on having a relevant diagnosis before generic enters the market
+ genericOn coefficient + constant -> probability of being prescribed conditional on having a relevant diagnosis after generic enter the market
+
+Regression 2:
+  Added slopes for amount of time until generic comes on (monthsBeforeGeneric) and amount of time generic has been on (monthsAfterGeneric)
+
+Regression 3:
+  Added monthly indicators with January as base case
+  const -> the probability of being prescribed conditional on having a relevant diagnosis before generic enters the market in January
+
