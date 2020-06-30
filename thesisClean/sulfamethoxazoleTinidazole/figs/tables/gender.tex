@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Genders\label{tab1}}
+\begin{tabular}{l*{2}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(Female)}&\multicolumn{1}{c}{(Male)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+offLabel    &     -0.0429\sym{***}&     -0.0170\sym{***}\\
+            &    (-13.27)         &     (-4.67)         \\
+[1em]
+monthsAfterGeneric&   -0.000488\sym{***}&  -0.0000491         \\
+            &     (-7.65)         &     (-0.69)         \\
+[1em]
+OFmonthsAfter&    0.000547\sym{***}&    0.000102         \\
+            &      (8.42)         &      (1.42)         \\
+[1em]
+GOmonthsAfter&   -0.000296\sym{*}  &   -0.000223         \\
+            &     (-2.19)         &     (-1.48)         \\
+[1em]
+genericOn   &      0.0275\sym{***}&     0.00222         \\
+            &      (4.65)         &      (0.32)         \\
+[1em]
+GOoffLabel  &     -0.0142\sym{*}  &     0.00990         \\
+            &     (-2.52)         &      (1.51)         \\
+[1em]
+OFGOmonthsAfter& -0.00000380         & -0.00000305         \\
+            &     (-1.51)         &     (-1.10)         \\
+[1em]
+AGE         &    0.000300\sym{***}&    0.000281\sym{***}\\
+            &      (8.44)         &      (7.63)         \\
+[1em]
+ageSQ       & -0.00000385\sym{***}& -0.00000347\sym{***}\\
+            &     (-9.79)         &     (-8.02)         \\
+[1em]
+\_cons      &      0.0492\sym{***}&      0.0238\sym{***}\\
+            &     (15.28)         &      (6.61)         \\
+\hline
+r2          &      0.0167         &     0.00264         \\
+N           &      168418         &      128751         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

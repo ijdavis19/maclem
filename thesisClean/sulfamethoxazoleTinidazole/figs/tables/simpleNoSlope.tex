@@ -1,0 +1,33 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{someName\label{tab1}}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+monthsAfterGeneric&   0.0000462\sym{***}&                     &   0.0000462\sym{***}&                     \\
+            &      (4.97)         &                     &      (4.97)         &                     \\
+[1em]
+GOmonthsAfter&   -0.000514\sym{***}&                     &   -0.000514\sym{***}&                     \\
+            &    (-15.56)         &                     &    (-15.56)         &                     \\
+[1em]
+genericOn   &      0.0175\sym{***}&     0.00999\sym{***}&      0.0175\sym{***}&     -0.0127\sym{***}\\
+            &     (13.73)         &     (21.51)         &     (13.73)         &     (-6.10)         \\
+[1em]
+offLabel    &                     &                     &                     &     -0.0475\sym{***}\\
+            &                     &                     &                     &    (-44.30)         \\
+[1em]
+GOoffLabel  &                     &                     &                     &      0.0158\sym{***}\\
+            &                     &                     &                     &      (7.40)         \\
+[1em]
+\_cons      &      0.0110\sym{***}&      0.0105\sym{***}&      0.0110\sym{***}&      0.0548\sym{***}\\
+            &     (23.71)         &     (41.98)         &     (23.71)         &     (52.02)         \\
+\hline
+r2          &    0.000976         &     0.00156         &    0.000976         &     0.00770         \\
+N           &      297169         &      297169         &      297169         &      297169         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

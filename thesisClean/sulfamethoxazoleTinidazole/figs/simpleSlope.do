@@ -1,3 +1,5 @@
+// esttab using "$figures/genderRegressions.tex", stats(r2 N) title(Gendered Regression table (1 = Male 2 = Female)\label{tab1})
+// esttab using "$figures/genderRegressions.tex", stats(r2 N) title(Gendered Regression table (1 = Male 2 = Female)\label{tab1})
 // Set environmental variables
 global projects: env projects
 global storage: env storage
@@ -6,12 +8,12 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
+global tables = "$output/tables"
 
-use "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace // Relevant Visit Dataset
+use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace // Relevant Visit Dataset
 
-// Add Monthly Slopes
-gen GOmonthsAfter = genericOn*monthsAfterGeneric
-reg prescriptionIndicator monthsAfterGeneric GOmonthsAfter genericOn [w = PATWT]
+eststo: reg prescriptionIndicator monthsAfterGeneric GOmonthsAfter genericOn [w = PATWT]
+esttab using "$tables/simpleSlope.tex", stats(r2 N) title(Simple Slope Table\label{tab1})
 
 mat list e(b)
 
@@ -28,7 +30,9 @@ line fit monthsAfterGeneric
 
 // offLabel Simple Regression
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
-reg prescriptionIndicator monthsAfterGeneric OFmonthsAfter GOmonthsAfter OFGOmonthsAfter offLabel GOoffLabel genericOn [w = PATWT]
+eststo: reg prescriptionIndicator monthsAfterGeneric OFmonthsAfter GOmonthsAfter OFGOmonthsAfter offLabel GOoffLabel genericOn [w = PATWT]
+esttab using "$tables/simpleSlopeOnOff.tex", stats(r2 N) title(Simple Slope Table OnOff\label{tab1})
+
 clear
 set obs 132
 gen monthsAfterGeneric = _n - 83
@@ -52,6 +56,6 @@ gen genericOn = 0
 replace genericOn = 1 if monthsAfterGeneric >= 0
 gen GOmonthsAfter = genericOn*monthsAfterGeneric
 mat list e(b)
-gen ONfit = e(b)[1,56] + monthsAfterGeneric*e(b)[1,1] + GOmonthsAfter*e(b)[1,3]*0 + genericOn*e(b)[1,7]*0
+gen ONfit = e(b)[1,56] + monthsAfterGeneric*e(b)[1,1] + GOmonthsAfter*e(b)[1,3]*0 + genericOn*e(b)[1,7]
 gen OFFfit = e(b)[1,56] + e(b)[1,5] + monthsAfterGeneric*e(b)[1,1] + monthsAfterGeneric*e(b)[1,2] + genericOn*e(b)[1,7]*0 + genericOn*e(b)[1,6]*0 + GOmonthsAfter*e(b)[1,3]*0 + GOmonthsAfter*e(b)[1,4]*0
 line ONfit OFFfit monthsAfterGeneric

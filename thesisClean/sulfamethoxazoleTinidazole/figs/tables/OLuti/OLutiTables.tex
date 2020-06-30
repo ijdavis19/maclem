@@ -1,0 +1,46 @@
+%Input preamble
+\input{preamble}
+\let\counterwithout\relax
+\let\counterwithin\relax
+\definecolor{maroon}{HTML}{4B0082}
+
+\begin{document}
+
+\noindent \textbf{8190: Masters Thesis Research}\\
+\noindent \textbf{29 June 2020}\\
+\noindent Instructor: Scott Templeton \\
+e-mail: stemple@clemson.edu\\
+
+\noindent All tables are for individuals who have been diagnosed with an unspecified urinary tract infection. 
+\noindent \textbf{Variables}\\
+\begin{itemize}
+    \item prescriptionIndicator: Indicator for if ST was prescribed
+    \item genericOn: Indicator for if the generic version of ST was on the market at the time of the visit
+    \item AGE: Age of the patient
+    \item ageSQ: Squared age of the patient
+    \item monthsAfterGeneric: Continuous variable for months since the generic has entered the market.(Min -82, Max 50)
+    \item GOmonthsAfterGeneric: Interaction between monthsAfterGeneric and genericOn
+    \item offLabel: Indicator for if no diagnoses made were for FDA approved indications
+    \item GOoffLabel: Interaction between genericOn and monthsAfterGeneric
+    \item OFmonthsAfter: Interaction between offLabel and monthsAfterGeneric
+    \item OFGOmonthsAfter: Interaction between OFmonthsAfter and genericOn
+\end{itemize}
+\begin{landscape}
+\input{uncontrolled}
+\newpage
+\input{regions}
+\newpage
+\input{gender}
+\newpage
+\input{race}
+\newpage
+\input{seasons}
+\newpage
+\input{majpay}
+\newpage
+\input{minpay}
+\end{landscape}
+
+
+
+\end{document}

@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Major Payment Types\label{tab1}}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(Medicaid)}&\multicolumn{1}{c}{(Medicare)}&\multicolumn{1}{c}{(Private Insurance)}&\multicolumn{1}{c}{(Self Pay)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+offLabel    &     -0.0163\sym{***}&     -0.0197\sym{**} &     -0.0422\sym{***}&     -0.0420\sym{***}\\
+            &     (-3.29)         &     (-2.94)         &    (-12.26)         &     (-3.59)         \\
+[1em]
+monthsAfterGeneric&   -0.000427\sym{***}&   -0.000182         &   -0.000112         &    -0.00180\sym{***}\\
+            &     (-4.44)         &     (-1.36)         &     (-1.67)         &     (-7.84)         \\
+[1em]
+OFmonthsAfter&    0.000465\sym{***}&    0.000227         &    0.000167\sym{*}  &     0.00194\sym{***}\\
+            &      (4.69)         &      (1.67)         &      (2.45)         &      (8.33)         \\
+[1em]
+GOmonthsAfter&    0.000215         &    0.000747\sym{**} &    -0.00101\sym{***}&    0.000606         \\
+            &      (1.07)         &      (3.02)         &     (-6.08)         &      (1.62)         \\
+[1em]
+genericOn   &      0.0332\sym{***}&    -0.00254         &      0.0135         &      0.0204         \\
+            &      (3.95)         &     (-0.22)         &      (1.82)         &      (1.17)         \\
+[1em]
+GOoffLabel  &     -0.0271\sym{***}&     0.00665         &     0.00399         &     -0.0153         \\
+            &     (-3.31)         &      (0.59)         &      (0.59)         &     (-0.88)         \\
+[1em]
+OFGOmonthsAfter&  -0.0000109\sym{**} &  -0.0000213\sym{***}&   0.0000114\sym{***}&  -0.0000261\sym{***}\\
+            &     (-2.88)         &     (-4.71)         &      (3.79)         &     (-3.48)         \\
+[1em]
+AGE         &    0.000593\sym{***}&   -0.000223         &    0.000332\sym{***}&  -0.0000955         \\
+            &      (8.15)         &     (-1.66)         &      (9.39)         &     (-0.64)         \\
+[1em]
+ageSQ       & -0.00000900\sym{***}& 0.000000426         & -0.00000379\sym{***}& 0.000000442         \\
+            &     (-8.07)         &      (0.38)         &     (-9.29)         &      (0.25)         \\
+[1em]
+\_cons      &      0.0218\sym{***}&      0.0411\sym{***}&      0.0465\sym{***}&      0.0637\sym{***}\\
+            &      (4.51)         &      (5.33)         &     (13.62)         &      (5.39)         \\
+\hline
+r2          &     0.00926         &     0.00651         &     0.00896         &      0.0245         \\
+N           &       50921         &       39722         &      147815         &       26715         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

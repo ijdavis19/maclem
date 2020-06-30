@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Basic Model\label{tab1}}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+genericOn   &       0.106\sym{***}&       0.144\sym{***}&       0.294         &      -0.146         \\
+            &      (6.96)         &      (4.60)         &      (1.59)         &     (-0.59)         \\
+[1em]
+AGE         &     0.00610\sym{***}&     0.00564\sym{***}&     0.00585\sym{***}&     0.00560\sym{***}\\
+            &      (5.79)         &      (5.37)         &      (5.56)         &      (5.34)         \\
+[1em]
+ageSQ       &  -0.0000914\sym{***}&  -0.0000854\sym{***}&  -0.0000875\sym{***}&  -0.0000851\sym{***}\\
+            &     (-7.99)         &     (-7.48)         &     (-7.64)         &     (-7.45)         \\
+[1em]
+monthsAfterGeneric&                     &     0.00160\sym{***}&                     &     0.00618\sym{*}  \\
+            &                     &      (4.66)         &                     &      (2.45)         \\
+[1em]
+GOmonthsAfter&                     &    -0.00563\sym{***}&    -0.00401\sym{***}&   -0.000653         \\
+            &                     &     (-5.89)         &     (-4.48)         &     (-0.18)         \\
+[1em]
+offLabel    &                     &                     &    -0.00140         &      -0.195         \\
+            &                     &                     &     (-0.02)         &     (-1.55)         \\
+[1em]
+GOoffLabel  &                     &                     &     -0.0841         &       0.250         \\
+            &                     &                     &     (-0.45)         &      (1.03)         \\
+[1em]
+OFmonthsAfter&                     &                     &                     &    -0.00466         \\
+            &                     &                     &                     &     (-1.83)         \\
+[1em]
+OFGOmonthsAfter&                     &                     &                     &  -0.0000939         \\
+            &                     &                     &                     &     (-1.40)         \\
+[1em]
+\_cons      &       0.149\sym{***}&       0.221\sym{***}&       0.151\sym{*}  &       0.414\sym{**} \\
+            &      (6.77)         &      (8.28)         &      (2.14)         &      (3.25)         \\
+\hline
+r2          &      0.0470         &      0.0583         &      0.0526         &      0.0599         \\
+N           &        3523         &        3523         &        3523         &        3523         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

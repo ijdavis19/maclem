@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Race\label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(White)}&\multicolumn{1}{c}{(Black)}&\multicolumn{1}{c}{(Other)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+offLabel    &       0.195         &       0.207         &           0         \\
+            &      (1.32)         &      (0.40)         &         (.)         \\
+[1em]
+monthsAfterGeneric&    0.000891         &     -0.0399         &      0.0132         \\
+            &      (0.33)         &     (-1.68)         &      (0.10)         \\
+[1em]
+OFmonthsAfter&    0.000142         &      0.0434         &    -0.00588         \\
+            &      (0.05)         &      (1.82)         &     (-0.04)         \\
+[1em]
+GOmonthsAfter&    -0.00313         &      0.0110         &      0.0365         \\
+            &     (-0.76)         &      (1.25)         &      (1.94)         \\
+[1em]
+genericOn   &       0.444         &           0         &      -0.409         \\
+            &      (1.61)         &         (.)         &     (-1.48)         \\
+[1em]
+GOoffLabel  &      -0.313         &    -0.00924         &           0         \\
+            &     (-1.16)         &     (-0.09)         &         (.)         \\
+[1em]
+OFGOmonthsAfter&  -0.0000417         &   -0.000475\sym{**} &   -0.000878\sym{**} \\
+            &     (-0.54)         &     (-2.61)         &     (-2.75)         \\
+[1em]
+AGE         &     0.00532\sym{***}&     0.00495         &      0.0121\sym{*}  \\
+            &      (4.49)         &      (1.90)         &      (2.20)         \\
+[1em]
+ageSQ       &  -0.0000816\sym{***}&  -0.0000972\sym{**} &   -0.000113         \\
+            &     (-6.42)         &     (-3.04)         &     (-1.92)         \\
+[1em]
+\_cons      &     0.00545         &       0.145         &       0.279         \\
+            &      (0.04)         &      (0.28)         &      (1.81)         \\
+\hline
+r2          &      0.0540         &       0.139         &       0.230         \\
+N           &        2744         &         662         &         117         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

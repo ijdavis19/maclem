@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Minor Payment Types\label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(No Charge)}&\multicolumn{1}{c}{(Other)}&\multicolumn{1}{c}{(Unknown)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+offLabel    &     -0.0457         &     -0.0218         &     -0.0427\sym{***}\\
+            &     (-1.28)         &     (-1.69)         &     (-4.29)         \\
+[1em]
+monthsAfterGeneric&    0.000310         &   -0.000594\sym{*}  &   -0.000294         \\
+            &      (0.44)         &     (-2.25)         &     (-1.42)         \\
+[1em]
+OFmonthsAfter&  -0.0000939         &    0.000711\sym{**} &    0.000277         \\
+            &     (-0.13)         &      (2.66)         &      (1.32)         \\
+[1em]
+GOmonthsAfter&    -0.00105         &  -0.0000131         &    0.000606         \\
+            &     (-0.88)         &     (-0.02)         &      (1.64)         \\
+[1em]
+genericOn   &      0.0451         &      0.0142         &      0.0320         \\
+            &      (0.81)         &      (0.64)         &      (1.84)         \\
+[1em]
+GOoffLabel  &    -0.00765         &     -0.0142         &     -0.0207         \\
+            &     (-0.14)         &     (-0.66)         &     (-1.23)         \\
+[1em]
+OFGOmonthsAfter& 0.000000174         & -0.00000759         &  -0.0000191\sym{**} \\
+            &      (0.01)         &     (-0.70)         &     (-2.80)         \\
+[1em]
+AGE         &     0.00108\sym{*}  &    0.000525\sym{***}&    0.000170         \\
+            &      (2.27)         &      (3.61)         &      (1.53)         \\
+[1em]
+ageSQ       &  -0.0000114\sym{*}  & -0.00000603\sym{***}& -0.00000276\sym{*}  \\
+            &     (-2.07)         &     (-3.78)         &     (-2.13)         \\
+[1em]
+\_cons      &      0.0398         &      0.0270\sym{*}  &      0.0477\sym{***}\\
+            &      (1.09)         &      (2.08)         &      (4.82)         \\
+\hline
+r2          &      0.0213         &      0.0105         &      0.0153         \\
+N           &        2259         &       10494         &       19243         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

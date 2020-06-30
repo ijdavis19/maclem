@@ -1,0 +1,45 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Seasons\label{tab1}}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(Winter)}&\multicolumn{1}{c}{(Spring)}&\multicolumn{1}{c}{(Summer)}&\multicolumn{1}{c}{(Fall)}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}\\
+\hline
+offLabel    &       0.129         &      -0.630\sym{***}&       0.175\sym{*}  &      0.0739         \\
+            &      (1.26)         &    (-10.86)         &      (2.21)         &      (0.95)         \\
+[1em]
+monthsAfterGeneric&    -0.00248         &     0.00942\sym{***}&    -0.00169         &   -0.000666         \\
+            &     (-1.20)         &      (9.35)         &     (-0.91)         &     (-0.37)         \\
+[1em]
+OFmonthsAfter&     0.00449\sym{*}  &    -0.00955\sym{***}&     0.00324         &     0.00164         \\
+            &      (2.09)         &     (-8.87)         &      (1.66)         &      (0.89)         \\
+[1em]
+GOmonthsAfter&   -0.000276         &      0.0233\sym{***}&      0.0263\sym{***}&    -0.00258         \\
+            &     (-0.07)         &      (4.42)         &      (5.09)         &     (-0.72)         \\
+[1em]
+genericOn   &       0.107         &      -1.103\sym{***}&      -0.111         &       0.172         \\
+            &      (0.64)         &     (-5.08)         &     (-0.50)         &      (1.11)         \\
+[1em]
+GOoffLabel  &      -0.207         &       0.882\sym{***}&      -0.313         &     -0.0281         \\
+            &     (-1.20)         &      (4.81)         &     (-1.58)         &     (-0.19)         \\
+[1em]
+OFGOmonthsAfter&  -0.0000538         &   -0.000430\sym{***}&   -0.000490\sym{***}&  -0.0000481         \\
+            &     (-0.66)         &     (-4.03)         &     (-5.01)         &     (-0.76)         \\
+[1em]
+AGE         &     -0.0102\sym{***}&    0.000349         &     0.00120         &    0.000866         \\
+            &     (-4.27)         &      (0.20)         &      (0.53)         &      (0.50)         \\
+[1em]
+ageSQ       &   0.0000982\sym{***}& -0.00000398         &  -0.0000310         & -0.00000419         \\
+            &      (4.12)         &     (-0.26)         &     (-1.42)         &     (-0.24)         \\
+[1em]
+\_cons      &       0.233\sym{*}  &       0.631\sym{***}&     0.00617         &     -0.0446         \\
+            &      (2.02)         &      (8.68)         &      (0.08)         &     (-0.52)         \\
+\hline
+r2          &       0.108         &       0.473         &       0.470         &      0.0420         \\
+N           &         355         &         468         &         422         &         432         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
