@@ -36,6 +36,10 @@ forval year = 2006/2016 {
       gen DIAG`diagNumber' = ""
     }
   }
+  if `year' > 2011 {
+    gen REGION = REGIONOFF
+    label values REGION REGIONF
+  }
   keep YEAR VMONTH AGE SEX ETHNIC PAYPRIV PAYMCARE PAYMCAID PAYSELF PAYNOCHG PAYOTH PAYDK DIAG1 DIAG2 DIAG3 DIAG4 DIAG5 DRUGID1 DRUGID2 DRUGID3 DRUGID4 DRUGID5 DRUGID6 DRUGID7 DRUGID8 CANCER CEBVD CHF COPD NOCHRON TOTCHRON TEMPF BPSYS BPDIAS PELVIC SKIN ANYIMAGE MRI XRAY OTHIMAGE CBC GLUCOSE EKG URINE WOUND NOPROVID PHYSASST RNLPN OTHPROV NODISP OTHDISP PATWT REGION PATCODE RACER AGEDAYS AGER SETTYPE
   save "$output/temp`year'.dta", replace
 }
@@ -96,7 +100,7 @@ foreach script in $otherScripts {
 save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 
 // create local variables for each diagnosis
-forval diagNumber = 1/5 {
+forval diagNumber = 1/3 {
     use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
     drop if prescriptionIndicator == 0
     bysort DIAG`diagNumber': gen spec`diagNumber'DiagCount = _n
@@ -118,9 +122,9 @@ ma list
 // Loop through all diagnoses to determine if relevant diagnosis was made
 use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
 gen relevantDiagIndicator = 0
-forval diagNumber = 1/5 {
+forval diagNumber = 1/3 {
     forval diagCounter = 1/`diagMax`diagNumber'' {
-        forval diagNumberComp = 1/5{
+        forval diagNumberComp = 1/3{
 	    display "``diagNumber'diag`diagCounter''"
         replace relevantDiagIndicator = 1 if DIAG`diagNumberComp' == "``diagNumber'diag`diagCounter''"        
         }

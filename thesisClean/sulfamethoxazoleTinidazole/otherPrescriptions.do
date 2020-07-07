@@ -38,8 +38,9 @@ forval x = 1/8{
         local code = DRUGID1
         use "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
         forval y = 1/8 {
-            replace otherPrescription = 1 if DRUGID`y' == "`code'" & generalSkinInfection == 1 & prescriptionIndicator == 0
+            replace otherPrescription = 1 if DRUGID`y' == "`code'" & generalSkinInfection == 1
         }
         save "$output/NAMCSPanelSulfamethoxazoleTinidazole.dta", replace
     }
+    erase "$output/temp`x'.dta"
 }

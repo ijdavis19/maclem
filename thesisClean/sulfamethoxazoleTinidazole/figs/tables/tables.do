@@ -21,7 +21,7 @@ eststo: reg prescriptionIndicator offLabel genericOn GOmonthsAfter GOoffLabel AG
 eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT]
 
 
-esttab using "$tables/uncontrolled.tex", stats(r2 N) title(Basic Model\label{tab1}) replace
+// esttab using "$tables/uncontrolled.tex", stats(r2 N) title(Basic Model\label{tab1}) replace
 
 
 // Regional Table
@@ -141,7 +141,7 @@ global tables = "$dofiles/figs/tables"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
-eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if race == 1
-eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if race == 2
-eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if race == 3
-esttab using "$tables/race.tex", stats(r2 N) title(Race\label{tab1}) replace
+eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if RACER == 1
+eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if RACER == 2
+eststo: reg prescriptionIndicator offLabel monthsAfterGeneric OFmonthsAfter GOmonthsAfter genericOn GOoffLabel OFGOmonthsAfter AGE ageSQ [w = PATWT] if RACER == 3
+// esttab using "$tables/race.tex", stats(r2 N) title(Race\label{tab1}) replace

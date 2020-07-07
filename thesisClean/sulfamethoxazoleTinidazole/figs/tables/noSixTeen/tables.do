@@ -36,7 +36,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
@@ -58,7 +58,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
@@ -78,7 +78,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
@@ -100,7 +100,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
@@ -121,7 +121,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
@@ -143,7 +143,7 @@ global storage: env storage
 global dataraw = "$storage/thesis_antibiotics"
 global output = "$projects/thesis_antibioticsCleaned"
 global dofiles = "economics/maclem/thesisClean/sulfamethoxazoleTinidazole"
-global tables = "$dofiles/figs/tables"
+global tables = "$dofiles/figs/tables/noSixTeen"
 
 
 use "$output/NAMCSPanelSulfamethoxazoleTinidazoleCompAnalysis.dta", replace
