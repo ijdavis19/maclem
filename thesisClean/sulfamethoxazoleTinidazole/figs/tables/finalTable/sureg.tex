@@ -1,0 +1,26 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Estimated Intercepts and Seemingly Unrelated Regression Test Results\label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(Before Generic Entry)}&\multicolumn{1}{c}{(After Generic Entry)}&\multicolumn{1}{c}{Difference}\\
+            &\multicolumn{1}{c}{Constant}&\multicolumn{1}{c}{Constant}&\multicolumn{1}{c}{}\\
+\hline
+Base&   0.0394\sym{***}&   0.0574\sym{***}&   .018\sym{*}\\
+            &     [0.000]         &     [0.000]         &     [0.0756]       \\
+[1em]
+offLabel    &     0.00644\sym{***}&     .0062\sym{***}&   -.000238\\
+            &    [0.000]         &    [.00195]         &    [0.924]         \\
+[1em]
+govInsurance&    0.0394\sym{***}         &     0.592\sym{***} &   0.0198\\
+            &      [0.000]         &      [0.000]        &    [0.0519]         \\
+[1em]
+nonwhite    &  0.0394\sym{***}         &     0.0598\sym{***}&   0.0204\sym{*}\\
+            &     [0.000]        &      [0.000]         &    [0.0447]         \\
+\hline
+N           &      249345         &      149900\\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize $\text{P}> X^2$ in brackets}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

@@ -14,18 +14,18 @@ e-mail: stemple@clemson.edu\\
 \noindent \textbf{Variables}\\
 \begin{itemize}
     \item prescriptionIndicator: Indicator for if ST was prescribed
-    \item monthsAfterGeneric: Slope
+    \item timeSinceGeneric: Continuous variable for months since the generic has entered the market. (Min -82, Max 50)
     \item offLabel: No on label diagnoses were made during the Visit
-    \item OFmonthsAfter: Slope for offLabel visits
+    \item offLabelINT: offLabel interacted with timeSinceGeneric
     \item AGE: Age of the patient
     \item ageSQ: Squared age of the patient
-    \item monthsAfterGeneric: Continuous variable for months since the generic has entered the market.(Min -82, Max 50)
+    \item ageINt: AGE interacted with timeSinceGeneric
+    \item ageSQINT: ageSQ interacted with timeSinceGeneric
     \item govInsurance: Patient was either on Medicaid or Medicare
-    \item south: Visit occured in the south
+    \item nonwhite: Patient was not white
 \end{itemize}
-\begin{landscape}
 \input{comp}
-\end{landscape}
+\input{sureg}
 
 
 

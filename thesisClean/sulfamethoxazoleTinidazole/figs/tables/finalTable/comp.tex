@@ -3,37 +3,43 @@
 \caption{Before and After Generic Comparison\label{tab1}}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
-            &\multicolumn{1}{c}{(Before Generic)}&\multicolumn{1}{c}{(After Generic)}&\multicolumn{1}{c}{}\\
-            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{Difference}\\
+            &\multicolumn{1}{c}{(Before Generic Entry)}&\multicolumn{1}{c}{(After Generic Entry)}&\multicolumn{1}{c}{Difference}\\
+            &\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{prescriptionIndicator}&\multicolumn{1}{c}{}\\
 \hline
-monthsAfterGeneric&   -0.000270\sym{***}&   -0.000533\sym{***}& -0.00026246\\
-            &     (-5.28)         &     (-4.89)         & \\
+timeSinceGeneric&   -0.000283\sym{***}&   -0.000608\sym{***}&   -.0003246\\
+            &     (-6.18)         &     (-6.16)         &     [0.322]         \\
 [1em]
-offLabel    &     -0.0337\sym{***}&     -0.0400\sym{***}& -0.00623441\\
-            &    (-12.98)         &    (-10.51)         & \\
+offLabel    &     -0.0329\sym{***}&     -0.0512\sym{***}&   -.0182\sym{*}\\
+            &    (-15.29)         &    (-18.92)         &    [0.0853]         \\
 [1em]
-OFmonthsAfter&    0.000327\sym{***}&    0.000315\sym{**} & -0.00001175\\
-            &      (6.27)         &      (2.83)         & \\
+OffLableINT &    0.000345\sym{***}&    0.000507\sym{***}&   .000162\\
+            &      (7.68)         &      (5.42)         &    [0.642]         \\
 [1em]
-govInsurance&    0.000246         &     0.00190\sym{*}  & 0.00164936\\
-            &      (0.50)         &      (2.35)         & \\
+age         &    0.000122\sym{*}  &    0.000144\sym{*}  &   .0000228\\
+            &      (2.26)         &      (2.05)         &    [0.852]         \\
 [1em]
-south       &     0.00288\sym{***}&      0.0154\sym{***}& 0.01255479\\
-            &      (6.85)         &     (12.11)         & \\
+ageSQ       & -0.00000163\sym{**} & -0.00000201\sym{*}  &   -0.000000375\\
+            &     (-2.66)         &     (-2.54)         &    [0.775]         \\
 [1em]
-AGE         &    0.000290\sym{***}&    0.000461\sym{***}& 0.00017117\\
-            &      (9.62)         &      (8.57)         & \\
+ageINT      & -0.00000310\sym{**} &  0.00000219         &   -0.00000528\\
+            &     (-2.76)         &      (0.86)         &    [0.236]         \\
 [1em]
-ageSQ       & -0.00000359\sym{***}& -0.00000568\sym{***}& -0.000002094\\
-            &    (-10.43)         &     (-9.13)         & \\
+AgeSQINT    &    3.55e-08\sym{**} &   -1.06e-08         &   -0.0000000461\\
+            &      (2.78)         &     (-0.37)         &    [0.348]         \\
 [1em]
-\_cons      &      0.0389\sym{***}&      0.0499\sym{***}& 0.01095526\\
-            &     (15.04)         &     (13.12)         & \\
+govInsurance&    0.000262         &     0.00182\sym{**} &   0.00155\\
+            &      (0.59)         &      (3.25)         &    [0.219]         \\
+[1em]
+nonwhite    &  -0.0000826         &     0.00246\sym{***}&   0.00254\\
+            &     (-0.16)         &      (3.85)         &    [0.13]         \\
+[1em]
+\_cons      &      0.0394\sym{***}&      0.0574\sym{***}&   0.018\\
+            &     (17.80)         &     (20.29)         &    [0.0756]         \\
 \hline
-r2          &     0.00953         &     0.00982         \\
-N           &      210171         &       86998         \\
+r2          &     0.00895         &     0.00569\\
+N           &      249345         &      149900\\
 \hline\hline
-\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses, $\text{P}> X^2$ in brackets}\\
 \multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
 \end{tabular}
 \end{table}
