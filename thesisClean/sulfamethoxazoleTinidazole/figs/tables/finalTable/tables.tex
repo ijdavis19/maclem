@@ -7,23 +7,12 @@
 \begin{document}
 
 \noindent \textbf{8190: Masters Thesis Research}\\
-\noindent \textbf{1 July 2020}\\
+\noindent \textbf{14 July 2020}\\
 \noindent Instructor: Scott Templeton \\
 e-mail: stemple@clemson.edu\\
-
-\noindent \textbf{Variables}\\
-\begin{itemize}
-    \item prescriptionIndicator: Indicator for if ST was prescribed
-    \item timeSinceGeneric: Continuous variable for months since the generic has entered the market. (Min -82, Max 50)
-    \item offLabel: No on label diagnoses were made during the Visit
-    \item offLabelINT: offLabel interacted with timeSinceGeneric
-    \item AGE: Age of the patient
-    \item ageSQ: Squared age of the patient
-    \item ageINt: AGE interacted with timeSinceGeneric
-    \item ageSQINT: ageSQ interacted with timeSinceGeneric
-    \item govInsurance: Patient was either on Medicaid or Medicare
-    \item nonwhite: Patient was not white
-\end{itemize}
+\begin{landscape}
+\input{indVars}
+\end{landscape}
 \input{comp}
 \input{sureg}
 
