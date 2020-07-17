@@ -1,0 +1,40 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Estimated Effects on Probability of Prescription Before and After Generic Entry for Patients with Uncomplicated Skin Abscess or Cellulitis\label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{Before Generic Entry}&\multicolumn{1}{c}{After Generic Entry}&\multicolumn{1}{c}{Difference}\\
+\hline
+\textbf{timeSinceGeneric}&     0.00181         &     -0.0107\sym{**} & -.0125\\
+(Time in months since generic entry            &      (1.47)         &     (-3.12) & [.0052]\\
+of Sulfamethoxazole-Trimethoprim)\\
+[1em]
+\textbf{age}         &     0.00189         &    -0.00582 & -.0077\\
+(Age of patient in years)            &      (0.63)         &     (-1.50) & [.212]\\
+[1em]
+\textbf{ageSQ}       &  -0.0000445         &   0.0000238 & .0000682\\
+(Age of patient in years squared)            &     (-1.33)         &      (0.57) & [.267]\\
+[1em]
+\textbf{age}$\times$\textbf{timeSinceGeneric}      &  -0.0000630         &    0.000379\sym{*}& .000442 \\
+            &     (-1.00)         &      (2.48)         & [.0274]\\
+[1em]
+\textbf{ageSQ}$\times$\textbf{timeSinceGeneric}    & 0.000000653         & -0.00000324\sym{*}  & -.0000039\\
+            &      (0.91)         &     (-2.08)         & [.0449]\\
+[1em]
+\textbf{govInsurance}&      0.0156         &      0.0256         & .01\\
+(=1 if patient is on either Medicare or            &      (0.65)         &      (0.77)         & [.896]\\
+Medicaid)\\
+[1em]
+\textbf{nonwhite}    &   0.0000720         &      0.0911\sym{*}  & .091\\
+(=1 if patient is race other than white)            &      (0.00)         &      (2.46)         & [.364]\\
+[1em]
+\textbf{\_cons}      &       0.228\sym{***}&       0.413\sym{***} & .185\\
+            &      (3.72)         &      (4.90)         & [.207] \\
+\hline
+r2          &      0.0268         &      0.0439         & (.)\\
+N           &        1359         &         779         & (.)\\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses, \scalebox{1.25}{$\text{Pr}(\frac{\hat{\beta}^\text{before}_i - \hat{\beta}^\text{after}_i}{[\hat{\sigma}^2\{\hat{\beta}^\text{before}_i\} + \hat{\sigma}^2\{\hat{\beta}^\text{after}_i\}]^\frac{1}{2}} > X^2)$} in brackets}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
