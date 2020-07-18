@@ -1,0 +1,31 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Estimated Probability of Prescription of Sulfamethoxazole-Trimethoprim Immediately Before and After Generic Entry \label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+Patient Group  &\multicolumn{1}{c}{(Before Generic Entry)}&\multicolumn{1}{c}{(After Generic Entry)}&\multicolumn{1}{c}{Difference}\\
+\hline
+\textbf{onLabel}                                               &   0.0405\sym{***}   &   0.0594\sym{***}   &   .019\\
+(=1 if at least one diagnosis made during visit is an          &     [0.000]         &     [0.000]         &     [0.0736]       \\
+FDA approved indication of Sulfamethoxazole-Trimethoprim)\\
+[1em]
+\textbf{offLabel}                                     &     0.00756\sym{***}&     .00824\sym{***}  &   .000679\\
+(=1 if no diagnoses made were FDA approved            &    [0.000]          &    [.00195]         &    [0.389]         \\
+indications of Sulfamethoxazole-Trimethoprim)\\
+[1em]
+\textbf{govInsurance}$\times$\textbf{onLabel}&    0.0405\sym{***}         &     0.0607\sym{***} &   0.0202\\
+(Patient on Medicare or Medicaid        &      [0.000]         &      [0.000]        &    [0.0600]         \\
+and \textbf{onLabel}=1)\\
+[1em]
+\textbf{nonwhite}$\times$\textbf{onLabel}    &  0.0405\sym{***}         &     0.0614\sym{***}&   0.0209\sym{*}\\
+(Patient race other than white            &     [0.000]        &      [0.000]         &    [0.0484]         \\
+and \textbf{onLabel}=1)\\
+[1em]
+\textbf{UnspecCellAbscess}                   &  0.228\sym{***}         &     0.435&   0.207\\
+(=1 if patient was diagnosed with an unspecified            &     [0.004]        &      [0.000]         &    [0.162]         \\
+ skin abscess or cellulitis)\\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \scalebox{1.25}{$\text{Pr}(\frac{\hat{\beta}^\text{before}_i - \hat{\beta}^\text{after}_i}{[\hat{\sigma}^2\{\hat{\beta}^\text{before}_i\} + \hat{\sigma}^2\{\hat{\beta}^\text{after}_i\}]^\frac{1}{2}} > X^2)$} in brackets}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
