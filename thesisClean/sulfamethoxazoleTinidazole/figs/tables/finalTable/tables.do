@@ -185,69 +185,69 @@ estimate store After
 suest Before After
 
 // On Label
-local onLabelEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0
+local onLabelEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite
 local onLabelEst1 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 local onLabelDiff = `onLabelEst1' - `onLabelEst0'
 display "First Estimate: `onLabelEst0'"
 display "Second Estimate: `onLabelEst1'"
 display "Difference: `onLabelDiff'"
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = 0
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = 0
 test [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite = 0
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 
 // Off Label
-local offLabelEst0 = [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0
+local offLabelEst0 = [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite
 local offLabelEst1 = [After_mean]_cons + [After_mean]offLabel + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 local offLabelDiff = `offLabelEst1' - `offLabelEst0'
 display "First Estimate: `offLabelEst0'"
 display "Second Estimate: `offLabelEst1'"
 display "Difference: `offLabelDiff'"
-test [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = 0
+test [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = 0
 test [After_mean]_cons + [After_mean]offLabel + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite = 0
-test [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = [After_mean]_cons + [After_mean]offLabel + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
+test [Before_mean]_cons + [Before_mean]offLabel + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = [After_mean]_cons + [After_mean]offLabel + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 
 // Government Insurance
-local govInsuranceEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0
+local govInsuranceEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite
 local govInsuranceEst1 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + [After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 local govInsuranceDiff = `govInsuranceEst1' - `govInsuranceEst0'
 display "First Estimate: `govInsuranceEst0'"
 display "Second Estimate: `govInsuranceEst1'"
 display "Difference: `govInsuranceDiff'"
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = 0
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = 0
 test [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + [After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite = 0
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance*0 + `nonwhite0'*[Before_mean]nonwhite*0 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + [After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + [Before_mean]govInsurance + `nonwhite0'*[Before_mean]nonwhite = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + [After_mean]govInsurance + `nonwhite1'*[After_mean]nonwhite
 
 // Non White
-local nonWhiteEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + [Before_mean]nonwhite*0
+local nonWhiteEst0 = [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + [Before_mean]nonwhite
 local nonWhiteEst1 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + [After_mean]nonwhite
 local nonWhiteDiff = `nonWhiteEst1' - `nonWhiteEst0'
 display "First Estimate: `nonWhiteEst0'"
 display "Second Estimate: `nonWhiteEst1'"
 display "Difference: `nonWhiteDiff'"
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + [Before_mean]nonwhite*0 = 0
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + [Before_mean]nonwhite = 0
 test [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + [After_mean]nonwhite = 0
-test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance*0 + [Before_mean]nonwhite*0 = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + [After_mean]nonwhite
+test [Before_mean]_cons + `age0'*[Before_mean]age + `ageSQ0'*[Before_mean]ageSQ + `govInsurance0'*[Before_mean]govInsurance + [Before_mean]nonwhite = [After_mean]_cons + `age1'*[After_mean]age + `ageSQ1'*[After_mean]ageSQ + `govInsurance1'*[After_mean]govInsurance + [After_mean]nonwhite
 
 // Abscess
 sum age [w = PATWT] if genericOn == 0 & unspecCellAbscess == 1
-local age0 = r(mean)
+local age0AC = r(mean)
 sum age [w = PATWT] if genericOn == 1 & unspecCellAbscess == 1
-local age1 = r(mean)
+local age1AC = r(mean)
 
 sum ageSQ [w = PATWT] if genericOn == 0 & unspecCellAbscess == 1
-local ageSQ0 = r(mean)
+local ageSQ0AC = r(mean)
 sum ageSQ [w = PATWT] if genericOn == 1 & unspecCellAbscess == 1
-local ageSQ1 = r(mean)
+local ageSQ1AC = r(mean)
 
 sum govInsurance [w = PATWT] if genericOn == 0 & unspecCellAbscess == 1
-local govInsurance0 = r(mean)
+local govInsurance0AC = r(mean)
 sum govInsurance [w = PATWT] if genericOn == 1 & unspecCellAbscess == 1
-local govInsurance1 = r(mean)
+local govInsurance1AC = r(mean)
 
 sum nonwhite [w = PATWT] if genericOn == 0 & unspecCellAbscess == 1
-local nonwhite0 = r(mean)
+local nonwhite0AC = r(mean)
 sum nonwhite [w = PATWT] if genericOn == 1 & unspecCellAbscess == 1
-local nonwhite1 = r(mean)
+local nonwhite1AC = r(mean)
 
 reg prescriptionIndicator timeSinceGeneric age ageSQ ageINT AgeSQINT govInsurance nonwhite [w = PATWT] if genericOn == 0 & unspecCellAbscess  == 1
 estimate store SkinBefore
@@ -255,16 +255,17 @@ reg prescriptionIndicator timeSinceGeneric age ageSQ ageINT AgeSQINT govInsuranc
 estimate store SkinAfter
 suest SkinBefore SkinAfter
 
-local abscessEst0 = [SkinBefore_mean]_cons + `age0'*[SkinBefore_mean]age*0 + `ageSQ0'*[SkinBefore_mean]ageSQ*0 + `govInsurance0'*[SkinBefore_mean]govInsurance*0 + `nonwhite0'*[SkinBefore_mean]nonwhite*0
-local abscessEst1 = [SkinAfter_mean]_cons + `age1'*[SkinAfter_mean]age*0 + `ageSQ1'*[SkinAfter_mean]ageSQ*0 + `govInsurance1'*[SkinAfter_mean]govInsurance + `nonwhite1'*[SkinAfter_mean]nonwhite
+local abscessEst0 = [SkinBefore_mean]_cons + `age0AC'*[SkinBefore_mean]age + `ageSQ0AC'*[SkinBefore_mean]ageSQ + `govInsurance0AC'*[SkinBefore_mean]govInsurance + `nonwhite0AC'*[SkinBefore_mean]nonwhite
+local abscessEst1 = [SkinAfter_mean]_cons + `age1AC'*[SkinAfter_mean]age + `ageSQ1AC'*[SkinAfter_mean]ageSQ + `govInsurance1AC'*[SkinAfter_mean]govInsurance + `nonwhite1AC'*[SkinAfter_mean]nonwhite
 local abscessDiff = `abscessEst1' - `abscessEst0'
 display "First Estimate: `abscessEst0'"
 display "Second Estimate: `abscessEst1'"
 display "Difference: `abscessDiff'"
-test [SkinBefore_mean]_cons + `age0'*[SkinBefore_mean]age*0 + `ageSQ0'*[SkinBefore_mean]ageSQ*0 + `govInsurance0'*[SkinBefore_mean]govInsurance*0 + `nonwhite0'*[SkinBefore_mean]nonwhite*0 = 0
-test [SkinAfter_mean]_cons + `age1'*[SkinAfter_mean]age*0 + `ageSQ1'*[SkinAfter_mean]ageSQ*0 + `govInsurance1'*[SkinAfter_mean]govInsurance*0 + `nonwhite1'*[SkinAfter_mean]nonwhite = 0
-test [SkinBefore_mean]_cons + `age0'*[SkinBefore_mean]age*0 + `ageSQ0'*[SkinBefore_mean]ageSQ*0 + `govInsurance0'*[SkinBefore_mean]govInsurance*0 + `nonwhite0'*[SkinBefore_mean]nonwhite*0 = [SkinAfter_mean]_cons + `age1'*[SkinAfter_mean]age*0 + `ageSQ1'*[SkinAfter_mean]ageSQ*0 + `govInsurance1'*[SkinAfter_mean]govInsurance*0 + `nonwhite1'*[SkinAfter_mean]nonwhite
+test [SkinBefore_mean]_cons + `age0AC'*[SkinBefore_mean]age + `ageSQ0AC'*[SkinBefore_mean]ageSQ + `govInsurance0AC'*[SkinBefore_mean]govInsurance + `nonwhite0AC'*[SkinBefore_mean]nonwhite = 0
+test [SkinAfter_mean]_cons + `age1AC'*[SkinAfter_mean]age + `ageSQ1AC'*[SkinAfter_mean]ageSQ + `govInsurance1AC'*[SkinAfter_mean]govInsurance + `nonwhite1AC'*[SkinAfter_mean]nonwhite = 0
+test [SkinBefore_mean]_cons + `age0AC'*[SkinBefore_mean]age + `ageSQ0AC'*[SkinBefore_mean]ageSQ + `govInsurance0AC'*[SkinBefore_mean]govInsurance + `nonwhite0AC'*[SkinBefore_mean]nonwhite = [SkinAfter_mean]_cons + `age1AC'*[SkinAfter_mean]age + `ageSQ1AC'*[SkinAfter_mean]ageSQ + `govInsurance1AC'*[SkinAfter_mean]govInsurance + `nonwhite1AC'*[SkinAfter_mean]nonwhite
 
+*****************************************************************************************************************************************
 local cats = "offLabel govInsurance nonwhite"
 foreach cat in `cats' {
     display "`cat'"
@@ -317,16 +318,18 @@ replace timeSinceGeneric = _n - 83
 keep timeSinceGeneric
 gen genericOn = 0
 replace genericOn = 1 if timeSinceGeneric >= 0
-// fix insignificant shit
-gen ONfit = Before[1,10] + timeSinceGeneric*Before[1,1] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*Before[1,6]*timeSinceGeneric + `ageSQ0'*timeSinceGeneric*Before[1,7] + `govInsurance0'*Before[1,8]*0 + `nonwhite0'*Before[1,9]*0 if genericOn == 0
-replace ONfit = After[1,10] + timeSinceGeneric*After[1,1] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + `govInsurance0'*After[1,8] + `nonwhite0'*After[1,9] if genericOn == 1
-gen OFFfit = Before[1,10] + timeSinceGeneric*Before[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*timeSinceGeneric*Before[1,6] + `ageSQ0'*timeSinceGeneric*Before[1,7] + `govInsurance0'*Before[1,8]*0 + `nonwhite0'*Before[1,9]*0 if genericOn == 0
-replace OFFfit = After[1,10] + timeSinceGeneric*After[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + `govInsurance0'*After[1,8] + `nonwhite0'*After[1,9] if genericOn == 1
-sum ONfit
-sum OFFfit
-// line ONfit OFFfit timeSinceGeneric
 
-gen ONfitCell = SkinBefore[1,8] + timeSinceGeneric*SkinBefore[1,1] + `age0'*SkinBefore[1,2] + `ageSQ0'*SkinBefore[1,3] + `age0'*SkinBefore[1,4]*timeSinceGeneric + `ageSQ0'*timeSinceGeneric*SkinBefore[1,5] + `govInsurance0'*SkinBefore[1,6]*0 + `nonwhite0'*SkinBefore[1,7]*0 if genericOn == 0
-replace ONfitCell = SkinAfter[1,8] + timeSinceGeneric*SkinAfter[1,1] + `age1'*SkinAfter[1,3] + `ageSQ1'*SkinAfter[1,3] + `age1'*timeSinceGeneric*SkinAfter[1,4] + `ageSQ1'*timeSinceGeneric*SkinAfter[1,5] + `govInsurance0'*SkinAfter[1,6] + `nonwhite0'*SkinAfter[1,7] if genericOn == 1
+
+// fix insignificant shit
+gen ONfit = Before[1,10] + timeSinceGeneric*Before[1,1] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*Before[1,6]*timeSinceGeneric + `ageSQ0'*timeSinceGeneric*Before[1,7] + `govInsurance0'*Before[1,8] + `nonwhite0'*Before[1,9] if genericOn == 0
+replace ONfit = After[1,10] + timeSinceGeneric*After[1,1] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + `govInsurance0'*After[1,8] + `nonwhite0'*After[1,9] if genericOn == 1
+gen OFFfit = Before[1,10] + timeSinceGeneric*Before[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*timeSinceGeneric*Before[1,6] + `ageSQ0'*timeSinceGeneric*Before[1,7] + `govInsurance0'*Before[1,8] + `nonwhite0'*Before[1,9] if genericOn == 0
+replace OFFfit = After[1,10] + timeSinceGeneric*After[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + `govInsurance0'*After[1,8] + `nonwhite0'*After[1,9] if genericOn == 1
+sum ONfit   
+sum OFFfit
+line ONfit OFFfit timeSinceGeneric
+
+gen ONfitCell = SkinBefore[1,8] + timeSinceGeneric*SkinBefore[1,1] + `age0AC'*SkinBefore[1,2] + `ageSQ0AC'*SkinBefore[1,3] + `age0AC'*SkinBefore[1,4]*timeSinceGeneric + `ageSQ0AC'*timeSinceGeneric*SkinBefore[1,5] + `govInsurance0AC'*SkinBefore[1,6] + `nonwhite0AC'*SkinBefore[1,7] if genericOn == 0
+replace ONfitCell = SkinAfter[1,8] + timeSinceGeneric*SkinAfter[1,1] + `age1AC'*SkinAfter[1,2] + `ageSQ1AC'*SkinAfter[1,3] + `age1AC'*timeSinceGeneric*SkinAfter[1,4] + `ageSQ1AC'*timeSinceGeneric*SkinAfter[1,5] + `govInsurance0AC'*SkinAfter[1,6] + `nonwhite0AC'*SkinAfter[1,7] if genericOn == 1
 sum ONfitCell
-// line ONfitCell timeSinceGeneric
+line ONfitCell timeSinceGeneric

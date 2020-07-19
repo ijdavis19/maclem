@@ -1,0 +1,60 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Proportions of Patients Prescribed Sulfamethoxazole-Trimethoprim (SXT) by Group\label{tab1}}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+            Variable&\multicolumn{1}{c}{Timeframe}&\multicolumn{1}{c}{Total Prescriptions of SXT}&\multicolumn{1}{c}{Weighted Proportion Prescribed SXT}\\
+\hline
+\textbf{Total Sample}                                   &     Entire Study&             3340&     .0861\\
+                                                        &     Before Generic Entry&    2072&     .00851\\
+                                                        &     After Generic Entry&      1268&     .0088\\
+[1em]
+\textbf{offLabel}                                       &     Entire Study&             2736&     .00718\\
+(=1 if no diagnoses made were FDA approved         &     Before Generic Entry&    1663&     .00696\\
+indications of Sulfamethoxazole-Trimethoprim)  &     After Generic Entry&      1073&     .00078\\
+[1em]
+(=0 if at least one diagnosis made during               &     Entire Study&             604&     .0507\\
+visit is an FDA approved indication of                  &     Before Generic Entry&    409&     .0535\\
+Sulfamethoxazole-Trimethoprim)                          &     After Generic Entry&      195&     .0454\\
+[1em]
+\textbf{govInsurance}                                   &     Entire Study&             869&     .00871\\
+(=1 if patient is on either Medicare of Medicaid)       &     Before Generic Entry&     533 &     .00806\\
+                                                        &     After Generic Entry&      336 &     .00975\\
+[1em]
+(=0 if patient is on neither Medicare nor Medicaid)     &     Entire Study&             2471&     .00858\\
+                                                        &     Before Generic Entry&     1539 &     .00865\\
+                                                        &     After Generic Entry&      932 &     .00843\\
+[1em]
+\textbf{nonWhite}                                       &     Entire Study&             534&      .00933\\
+(=1 if patient is race other than white)                &     Before Generic Entry&     354&      .00846\\
+                                                        &     After Generic Entry&      180&      .0108\\
+[1em]
+(=0 if patient is white)                                &     Entire Study&             2806&      .00847\\
+                                                        &     Before Generic Entry&     1718&      .00852\\
+                                                        &     After Generic Entry&      1088&      .00838\\
+[1em]
+\textbf{UnspecCellAbscess}                              &     Entire Study&             349 &      .175\\
+(=1 if patient was diagnosed with an unspecified        &     Before Generic Entry&     224 &      .170\\
+ skin abscess or cellulitis)                            &     After Generic Entry&      125  &      .184\\
+[1em]
+(=0 if patient was not diagnosed with an unspecified    &     Entire Study&             2291 &      .00761\\
+skin abscess or cellulitis)                             &     Before Generic Entry&     1848 &      .0075\\
+                                                        &     After Generic Entry&      1143  &      .0078\\
+\hline
+$n(\text{Entire Study}) = 399245$\\
+$n(\text{Before Generic Entry}) = 249345$\\
+$n(\text{After Generic Entry}) = 149900$\\
+\hline\hline
+%\multicolumn{5}{l}{"Share of Sample" and "Proportion Prescribed ST" are both weighted proportions}\\
+%\multicolumn{5}{l}{offLabel(=1) indicates no diagnoses made were on label indicators, govInsurance(=1) indicates patient is on Medicare or Medicaid, nonWhite(=1) indicates}\\
+%\multicolumn{5}{l}{patient is race other than white, UnspecCellAbscess(=1) indicates patient was diagnosed with and unspecified skin abscess or cellulitis}\\
+\end{tabular}
+\label{tab:Table4.3}
+\end{table}
+
+%multicolumn{5}{l}{"Share of Sample" and "Proportion Prescribed ST" are both weighted proportions}\\
+%\multicolumn{5}{l}{offLabel(=1) indicates no diagnoses made were on label indicators, govInsurance(=1) indicates patient is on Medicare or Medicaid,}\\
+%\multicolumn{5}{l}{nonWhite(=1) indicates patient is race other than white}\\
+%\end{tabular}
+%\label{tab:Table4.2}
+%\end{table}
