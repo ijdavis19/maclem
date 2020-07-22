@@ -35,8 +35,8 @@
 \graduationYear{2020}
 \author{Ian James Davis}
 \committeeChair{Dr. Scott Templeton}
-\committeeMemberOne{Lawrence Reed Watson}
-\committeeMemberTwo{Dr. Michael McCowsky}
+\committeeMemberOne{Reed Watson}
+\committeeMemberTwo{Dr. Michael Makowsky}
 %% optional (for Master's) \committeeMemberThree{Dr. John Doe}
 %% optional \committeeMemberFour{Dr. Jane Doe}
 %% optional \committeeMemberFive{Dr. Mary Doe}
@@ -82,13 +82,13 @@
     % The dedication page is optional.  Comment out this line if you do not
     % want to include this page.
     %
-    \addtotoc{Dedication}{\input{dedication.tex}}
+    %\addtotoc{Dedication}{\input{dedication.tex}}
 
     %
     % The acknowledgment page is optional.  Comment out this line if you do
     % not want to include this page.
     %
-    \addtotoc{Acknowledgments}{\input{acknowledgments.tex}}
+    %\addtotoc{Acknowledgments}{\input{acknowledgments.tex}}
 
     \singlespacing                             % Single space the lists
     \tableofcontents \clearpage                % Generate the Table of Contents
@@ -121,8 +121,9 @@
     % the \inputfile command.
     %
     \inputfile{introduction.tex}
+    \inputfile{background.tex}
     \inputfile{economicFramework.tex}
-    \inputfile{dataBackground.tex}
+    \inputfile{data.tex}
     \inputfile{analysis.tex}
     \inputfile{discussion.tex}
     \inputfile{conclusions.tex}
@@ -171,6 +172,6 @@
     %               [Dyson and Edgar, 2001] F.W. Dyson, A.G. Edgar ... 2001
     %               [Dyson, 2001] F.W. Dyson ... 2001
     %
-    \bibliographystyle{plain}
+    \bibliographystyle{amsplain}
     \addtotoc{Bibliography}{\bibliography{bibliography}}
 \end{document}
