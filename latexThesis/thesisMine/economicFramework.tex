@@ -1,6 +1,6 @@
 \chapter{Economic Framework}
 \section{Theoretical Model}
-To illustrate how generic entry may lead to an increase in demand for antibiotics, we first posit the following model. With assistance from their physician, an individual patient, $i$ seeks to maximize their utility from their treatment decision. Specifically, the patient demands an anitbiotic, $s$ if the patient's expected utility of treatment is greater than the expected utility of the best alternative treatment, $t$. This decision is shown in equation (3.1).
+To illustrate how generic entry may lead to an increase in demand for antibiotics, I first posit the following model. With assistance from their physician, an individual patient, $i$ seeks to maximize the utility from their treatment decision. Specifically, the patient demands an anitbiotic, $s$, if the patient's expected utility of treatment is greater than the expected utility of the best alternative treatment, $t \in T$ where $T$ is the set of all possible treatment decisions for the patients specific ailment. This decision is shown in equation (3.1).
 \begin{eqnarray}
   D =
   \begin{cases}
@@ -18,13 +18,13 @@ where $t \neq s$. It must also be noted that the $t$ may include the option of n
                                    t, & \text{if }\EX[u_i(p_t,e_t)] > \EX[u_i(p_s,e_s)] \\
   \end{cases}
 \end{eqnarray}
- Theory says that the expiration of a drug patent would entice market entry and lower the price of treatment with a given antibiotic. Holding efficacy constant, we can anticipate expected utility of treatment to increase in response to a decrease in prices caused by generic entry. At the margin, this increase in expected utility causes consumers to substitute \cite{train_discrete_nodate, templeton_household_2008} treatment $t$ with treatment $s$, raising the number of total prescriptions of antibiotic $s$. %bring in some empirical citation here I guess.\\
+ \indent Theory says that the expiration of a drug patent would entice market entry and lower the price of treatment with a given antibiotic. Holding efficacy constant, we can anticipate expected utility of treatment to increase in response to a decrease in prices caused by generic entry. At the margin, this increase in expected utility causes consumers to substitute treatment $t$ with treatment $s$, raising the number of total prescriptions of antibiotic $s$.
 \section{Econometric Model and Estimation Procedures}
-\indent It is important to distinguish that, although these expected utilties are known to the patient, they cannot be observed by the econometrician. Instead, the econometrician sees the decision as a probabilistic one as outlined in the literature \cite{train_discrete_nodate, templeton_household_2008}. We split the expected utility of a given treatment into two parts
+\indent It is important to distinguish that, although these expected utilties are known to the patient, they cannot be observed by the econometrician. Instead, the econometrician sees the decision as a probabilistic one \cite{train_discrete_nodate, templeton_household_2008}. With this form in mind, I split the expected utility of a given treatment into two parts
 \begin{eqnarray}
 \EX[u_i(p_s,e_s)] = V_i^s + \nu_i^s
 \end{eqnarray}
-where $V_i^s$ is the observable portion of the patient's utility from treatment $s$ and $\nu_i^s$ is the unobservable portion. $V_i^s$ is a function of characteristcs of drug $s$ and individual $i$. These characteristcs include the price of drug $s$ or, more specifically, the price faced by consumer $i$ which may vary due to variances in insurance policies. Additional characteristcs include patient $i$'s race, their diagnosis/diagnoses, and a proxy for the when the visit occured. $\nu_i^s$ is an independently and identically distributed random variable. This makes the decision to demand treatment with antibiotic $s$ as opposed to the next best treatment $t$ (maybe switch to $\forall t \in T$ with $t \neq s$), from the perspective of the econometrician, to be
+where $V_i^s$ is the observable portion of the patient's utility from treatment $s$ and $\nu_i^s$ is the unobservable portion. $V_i^s$ is a function of characteristcs of drug $s$ and individual $i$. These characteristcs include the price of drug $s$ or, more specifically, the price faced by consumer $i$ which may vary due to variances in insurance policies. Additional characteristics include patient $i$'s race, their diagnosis/diagnoses, and a proxy for the when the visit occured. $\nu_i^s$ is an independently and identically distributed random variable. This makes the decision to demand treatment with antibiotic $s$ as opposed to the next best treatment $t \in T$, from the perspective of the econometrician, to be
 \begin{eqnarray}
   D =
   \begin{cases}
@@ -32,8 +32,8 @@ where $V_i^s$ is the observable portion of the patient's utility from treatment 
                                    t, & \text{if }V_i^t + \nu_i^t > V_i^s + \nu_i^s \\
   \end{cases}
 \end{eqnarray}
-From this, we get
+Equation 3.5 can be rewritten in terms of probability as
 \begin{eqnarray}
-P_i^s = \text{Prob}(V_i^s + \nu_i^s > V_i^t + \nu_i^t)
+P_i^s =\text{Pr}(D = s) = \text{Pr}(V_i^s + \nu_i^s > V_i^t + \nu_i^t)
 \end{eqnarray}
-which is the probability a patient $i$ chooses treatment $t$. To estimate 3.3, we use a binary linear probability model.
+which is the probability a patient $i$ chooses treatment $s$. To estimate this equation, I use a binary linear probability model with variables described in the following chapter.
