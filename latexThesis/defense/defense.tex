@@ -1,0 +1,183 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+%%Packages
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[english]{babel}
+%\usepackage{Romannum}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage[para, flushleft]{threeparttablex}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[capposition=top]{floatrow}
+%\usepackage[plainpages=false,pdfpagelabels]{hyperref}
+%\usepackage[toc,title,page]{appendix}
+%\usepackage{tocloft}
+%\usepackage{indentfirst}
+%\usepackage{fancyhdr}
+\usepackage{graphicx}
+%\usepackage{setspace}
+
+%Commands
+\newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
+
+
+\title{The Effect of Entry of Generic Antibiotics on Prescriptions of Antibiotics in the Ambulatory Care Settings}
+\subtitle{The Case of Sulfamethoxazole-Trimethoprim}
+\author{Ian Davis}
+\institute{Clemson University}
+\date{August 3, 2020}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Purpose of Study}
+\begin{frame}{Research Questions}
+\begin{enumerate}
+\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
+\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Contribution to Literature}
+\begin{enumerate}
+\item I use a comprehensive data set on US colleges that allows me to better estimate the effect of universities by exploiting variation in the size of student populations as a proxy for college size.
+\item I examine the effects of colleges on both manufacturing and agricultural productivity
+\end{enumerate}
+\end{frame}
+
+%\section{Methodology}
+%\begin{frame}{Summary Statistics of College Variables}
+%\begin{threeparttable}
+%\centering
+%\footnotesize
+%\scalebox{.45}{\input{tables/college_summarystats.tex}}
+%\end{threeparttable}
+%\end{frame}
+
+\setbeamertemplate{caption}{\insertcaption}
+
+\begin{frame} % In this frame, table and caption take their default values
+\begin{table}[tbp]
+\begin{tabular}{cc}
+1 & 2 \\
+3 & 4
+\end{tabular}
+\caption{A caption}
+\end{table}
+\end{frame}
+
+\end{document}
+%\begin{frame}{Geographic Distribution of Agricultural Output Per Acre (USD) 1880}
+%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_agricultural_output_per_acre_1880.png}
+%\end{frame}
+
+%\begin{frame}{Geographic Distribution of Agricultural Output Per Acre (USD) 1930}
+%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_agricultural_output_per_acre_1930.png}
+%\end{frame}
+
+%\begin{frame}{Geographic Distribution of Manufacturing Output Per Employee (USD) 1880}
+%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_manufacturer_output_per_employee_1880.png}
+%\end{frame}
+
+%\begin{frame}{Geographic Distribution of Manufacturing Output Per Employee (USD) 1930}
+%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_manufacturer_output_per_employee_1930.png}
+%\end{frame}
+
+\begin{frame}{College Expansion}
+\begin{itemize}
+\item From 1870-1940 the size of the university system increased significantly. 
+\begin{itemize}
+\item The Morrill Act of 1862 promoted the establishment of colleges specializing in agriculture and the mechanic arts by granting states land for education. 
+\item The number of colleges in the Reports of the Commissioner of Education more than doubled from 332 to 700 with a peak of 906 colleges in 1926.
+\item Total student enrollment in universities increased nearly twenty-fold from 54,033 to 1,009,945.
+\end{itemize}
+\item I assume colleges are plausibly located randomly when controlling for county and county-by-year.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Location of Colleges 1880}
+%\includegraphics[width=\textwidth]{images/map_college_locations_1880.png}
+%\end{frame}
+
+%\begin{frame}{Location of Colleges 1930}
+%\includegraphics[width=\textwidth]{images/map_college_locations_1930.png}
+%\end{frame}
+
+%\begin{frame}{Geographic Distribution of Students 1880}
+%\includegraphics[width=\textwidth]{images/map_num_students_1880.png}
+%\end{frame}
+
+%\begin{frame}{Geographic Distribution of Students 1930}
+%\includegraphics[width=\textwidth]{images/map_num_students_1930.png}
+%\end{frame}
+
+\section{Empirical Results}
+\begin{frame}{Productivity Measures}
+\begin{equation*}
+y_{ct}=\beta_0+\beta_1students_{ct}+\beta_2population_{ct}+\gamma_c+\gamma_{ct}+\varepsilon_{ct}
+\end{equation*}
+\begin{itemize}
+\item c=county; t=year; y=outcome variable (either agricultural revenue per acre or manufacturing revenue per employee); students=average number of students enrolled in universities over the decennial and 9 previous years; $\gamma_c$=county fixed effects; $\gamma_{ct}$=county-by-year fixed effects
+\item The coefficient $\beta_1$ reports the effect of average number of students on outcome, y, comparing changes in counties with relative increases in average number of students to other counties controlling for population, county fixed effects, and county-by-year fixed effects.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Fixed Effect Regression Table for Productivity Lagged Students}
+%\begin{center}
+%\small
+%\begin{threeparttable}
+%\centering
+%\input{tables/productivity_growth_fe_reg_summary_lagged_students.tex} 
+%\begin{tablenotes}
+%\footnotesize
+%\item[1]$y_{ct}=\beta_0+\beta_1students_{ct}+\gamma_c+\gamma_{ct}+\varepsilon_{ct}$
+%\item[2] $y_{ct}=\beta_0+\beta_1students_{ct}+\beta_2population_{ct}+\gamma_c+\gamma_{ct}+\varepsilon_{ct}$
+%\end{tablenotes}
+%\end{threeparttable}
+%\end{center}
+%\end{frame}
+
+%\begin{frame}{Agricultural Revenue Per Acre (USD) and Lagged Number of Students}
+%\includegraphics[width=\textwidth, height=.8\textheight]{graphs/graph_compare_fopa_college.png}
+%\end{frame}
+
+%\begin{frame}{Manufacturing Revenue Per Employee (USD) and Laggged Number of Students}
+%\includegraphics[width=\textwidth, height=.8\textheight]{graphs/graph_compare_mope_college.png}
+%\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item I find that every one unit increase in the average number of students enrolled in a university in a county over the previous decade increases 
+\begin{itemize}
+\item Agricultural output per acre by $\$.01$. 
+\item Manufacturing output per employee by $\$2.13$.
+\end{itemize}
+\item I find that the effect of universities on agricultural productivity occurs as early as 1880.
+\item I find that the effect on manufacturing productivity does not appear significant until 1920.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations of Study}
+\begin{itemize}
+\item Results are undermined if colleges are not located randomly and are instead influenced by the presence of highly productive firms.
+\item Lack of consistent data throughout the period of study limited the types of studies that could be conducted and required me to make possibly inaccurate.
+\end{itemize}
+\end{frame}
+
+\end{document}

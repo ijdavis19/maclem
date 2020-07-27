@@ -1,39 +1,25 @@
 \chapter{Economic Framework}
 \section{Theoretical Model}
-To illustrate how generic entry may lead to an increase in demand for antibiotics, I first posit the following model. With assistance from their physician, an individual patient, $i$ seeks to maximize the utility from their treatment decision. Specifically, the patient demands an anitbiotic, $s$, if the patient's expected utility of treatment is greater than the expected utility of the best alternative treatment, $t \in T$ where $T$ is the set of all possible treatment decisions for the patients specific ailment. This decision is shown in equation (3.1).
+To illustrate how generic entry may lead to an increase in demand for antibiotics, I first posit the following model. The model assumes that, with assistance from their physician, an individual patient, seeks to maximize their utility from the treatment of their specific medical condition. To do so, a patient considers both the cost of a treatment option and how effective this treatment will be. Weighing these two characteristics, a patient will choose treatment with a given antibiotic if it is the utility maximizing treatment option. A patient may be willing to trade of a higher probability of treatment success(effectiveness) if the cost of treatment will be is cheaper. Conversely, a patient may be willing to pay more for treatment if it shortens convalescence or has a higher probability of effectiveness. I assume, holding effectiveness constant, a patient will choose the lower priced treatment option. This logic indicates that a reduction in price caused by entry of manufacturers of generic antibiotics would increase demand for treatments in which the active ingredient of said antibiotic is used.
+
+\indent More formally, a patient's utility $(U)$ decreases with the cost of the treatment $(C)$ and increases with the treatment's efficacy $(E)$. Hence, a patient's utility can be expressed as $U(C,E)$ where $U_C < 0$ and $U_E > 0$.\\
+\indent Simply put, the patient can either demanda treatment that leverages the active ingredient in antibiotic $\alpha$ or not. The case of choosing a treatment which does not use $\alpha$ will be denoted by the $0$ superscript. Hence, the patient will demand a treatment that uses the active ingredient of antibiotic $\alpha$ if the expected utility of a treatment with antibiotic $\alpha$, $\EX[U(C^\alpha,E^\alpha)]$ is greater than the expected value of the utility maximizing treatment for the patient's condition that does not include the active ingredient of antibiotic $\alpha$, $\text{max}(\EX[U(C^0,E^0)])$.\\
+Extending this notation, define the patient's decision, $D$, to be $D=1$ if the patient demands a treatment that uses the active ingredient in antibiotic $\alpha$ and $D=0$ otherwise. Hence, the entire decision can be described symbolically as
 \begin{eqnarray}
   D =
   \begin{cases}
-                                   s, & \text{if }\EX[u_i(s)] > \EX[u_i(t)] \\
-                                   t, & \text{if }\EX[u_i(t)] > \EX[u_i(s)] \\
+    1, & \text{if }\EX[U(C^\alpha,E^\alpha)] > \text{max}(\EX[U(C^0,E^0)]) \\
+    0, & \text{if }\text{max}(\EX[U(C^0,E^0)]) > \EX[U(C^\alpha,E^\alpha)] \\
   \end{cases}
 \end{eqnarray}
-where $t \neq s$. It must also be noted that the $t$ may include the option of no treatment at all.\\
-\\
-\indent The expected utility of a given treatment is driven by two characteristics: the price faced by the consumer, $p$, and the efficacy of treatment, $e$. Some consumers may be willing to pay more for an increased certainty that treatment will be effective while others may become indifferent to increases in treatment certainty after a threshold leading them to make their decision wholly on price. With this understanding, we can rewrite equation (3.1) as
-\begin{eqnarray}
-  D =
-  \begin{cases}
-                                   s, & \text{if }\EX[u_i(p_s,e_s)] > \EX[u_i(p_t,e_t)] \\
-                                   t, & \text{if }\EX[u_i(p_t,e_t)] > \EX[u_i(p_s,e_s)] \\
-  \end{cases}
-\end{eqnarray}
- \indent Theory says that the expiration of a drug patent would entice market entry and lower the price of treatment with a given antibiotic. Holding efficacy constant, we can anticipate expected utility of treatment to increase in response to a decrease in prices caused by generic entry. At the margin, this increase in expected utility causes consumers to substitute treatment $t$ with treatment $s$, raising the number of total prescriptions of antibiotic $s$.
+\indent Theory says that the entry of generic antibiotic manufacturers would increase the supply of antibiotic $\alpha$ and lower the price of treatments using its active ingredient. Holding efficacy constant, we can anticipate expected utility of treatment to increase in response to a decrease in prices caused by generic entry. At the margin, this increase in expected utility causes consumers to substitute treatments that do not use the active ingredient of antibiotic $\alpha$ with treatments that do, raising the number of total prescriptions of antibiotic $\alpha$.
 \section{Econometric Model and Estimation Procedures}
-\indent It is important to distinguish that, although these expected utilties are known to the patient, they cannot be observed by the econometrician. Instead, the econometrician sees the decision as a probabilistic one \cite{train_discrete_nodate, templeton_household_2008}. With this form in mind, I split the expected utility of a given treatment into two parts
+\indent It is important to distinguish that, although these expected utilities are known to the patient, they cannot be observed by a researcher. Instead, the binary decision must be transformed into a probabilistic one \cite{train_discrete_nodate, templeton_household_2008}. To do so, define the transformed expected utility of a given treatment, $\EX[\tilde{U}(C^i,E^i)]$ where $i = \{\alpha,0\}$ into two parts
 \begin{eqnarray}
-\EX[u_i(p_s,e_s)] = V_i^s + \nu_i^s
+\EX[\tilde{U}(C^i,E^i)] = \tilde{U}^i + \tilde{\nu}^i
 \end{eqnarray}
-where $V_i^s$ is the observable portion of the patient's utility from treatment $s$ and $\nu_i^s$ is the unobservable portion. $V_i^s$ is a function of characteristcs of drug $s$ and individual $i$. These characteristcs include the price of drug $s$ or, more specifically, the price faced by consumer $i$ which may vary due to variances in insurance policies. Additional characteristics include patient $i$'s race, their diagnosis/diagnoses, and a proxy for the when the visit occured. $\nu_i^s$ is an independently and identically distributed random variable. This makes the decision to demand treatment with antibiotic $s$ as opposed to the next best treatment $t \in T$, from the perspective of the econometrician, to be
+where $V_i^s$ is the observable portion of the patient's utility from treatment $s$ and $\nu_i^s$ is the unobservable portion. $\tilde{U}^i$ is a function of characteristics of the treatment and the patient. These characteristics include the price of the treatment or, more specifically, the price faced by the patient which may vary due to variances in insurance policies. Additional characteristics include patient $i$'s race, their diagnosis/diagnoses, and a proxy for the when the visit occurred. $\tilde{\nu}^i$ is an independently and identically distributed random variable. This makes the decision to demand treatment with antibiotic $\alpha$ from the perspective of the researcher, to be
 \begin{eqnarray}
-  D =
-  \begin{cases}
-                                   s, & \text{if }V_i^s + \nu_i^s > V_i^t + \nu_i^t \\
-                                   t, & \text{if }V_i^t + \nu_i^t > V_i^s + \nu_i^s \\
-  \end{cases}
-\end{eqnarray}
-Equation 3.5 can be rewritten in terms of probability as
-\begin{eqnarray}
-P_i^s =\text{Pr}(D = s) = \text{Pr}(V_i^s + \nu_i^s > V_i^t + \nu_i^t)
+P^\alpha =\text{Pr}(D = 1) = \text{Pr}(\tilde{U}^\alpha + \tilde{\nu}^\alpha > \text{max}(\tilde{U}^0 + \tilde{\nu}^0))
 \end{eqnarray}
 which is the probability a patient $i$ chooses treatment $s$. To estimate this equation, I use a binary linear probability model with variables described in the following chapter.
