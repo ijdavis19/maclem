@@ -28,10 +28,10 @@
 
 
 \title{The Effect of Entry of Generic Antibiotics on Prescriptions of Antibiotics in the Ambulatory Care Settings}
-\subtitle{The Case of Sulfamethoxazole-Trimethoprim}
+\subtitle{The Case Study of Sulfamethozaxole-Trimethoprim}
 \author{Ian Davis}
 \institute{Clemson University}
-\date{August 3, 2020}
+\date{March 23, 2020}
 
 \begin{document}
 
@@ -59,43 +59,43 @@
 \end{enumerate}
 \end{frame}
 
-%\section{Methodology}
-%\begin{frame}{Summary Statistics of College Variables}
-%\begin{threeparttable}
-%\centering
-%\footnotesize
-%\scalebox{.45}{\input{tables/college_summarystats.tex}}
-%\end{threeparttable}
-%\end{frame}
+\begin{frame}{TestFrame}
 
-\setbeamertemplate{caption}{\insertcaption}
+    %\begin{table}[ht]
+    \centering
+    %\subfloat[Decay Channels]{
+     %\rule{4cm}{3cm}
+     % \newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}}
+     %\renewcommand{\multirowsetup}{\centering}
+      \begin{tabular}{|c|c|} \hline
+        Description & Basic cuts  \\ \hline
+       \multirow{4}{*}{Jet} &${\bf p}_T >$ 25 GeV   \\
+           &$|\eta| < $ 2.5   \\
+           &$\Delta R(j,l) >$ 0.2  \\
+           &$\Delta \phi(j,{\bf p}_T^{miss}) >$ 0.6  \\ \hline
+        3 Leading jets & ${\bf p}_T >$ 40 GeV   \\ \hline
+        b-tagging & $\ge$ 2 \\ \hline
+        \multirow{3}{*}{Lepton} & ${\bf p}_T >$ 20 GeV \\
+               & $|\eta| <$ 2.5 \\
+               & $\Delta R(l,j) >$ 0.4 \\ \hline
+        {${\bf p}_T^{miss}$} & $\Delta \phi({\bf p}_T^{miss},j) >$ 0.8 \\ \hline
+        & {\bf Advanced cuts} \\ \hline
+        $E_T^{miss}$ & $>$ 100, 120, 140, 160, 180, 200 (GeV)\\ \hline
+        $H_T$ & $>$ 400, 450, 500, 550, 600 (GeV)\\ \hline
+        $m_T$ & $>$ 100, 120, 140, 160, 180, 200 (GeV)\\ \hline
+        $N_j$ & $\ge$ 4, 5, 6 \\ \hline
+        $N_{bj}$ & $\ge$ 2, 3, 4 \\ \hline
+      \end{tabular}
+    %}
+  %  \caption{Summary of event selection cuts}
+  % \end{table}
 
-\begin{frame} % In this frame, table and caption take their default values
-\begin{table}[tbp]
-\begin{tabular}{cc}
-1 & 2 \\
-3 & 4
-\end{tabular}
-\caption{A caption}
-\end{table}
 \end{frame}
 
-\end{document}
-%\begin{frame}{Geographic Distribution of Agricultural Output Per Acre (USD) 1880}
-%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_agricultural_output_per_acre_1880.png}
-%\end{frame}
+\begin{frame}{Test 2}
+\input{catVars.tex}
+\end{frame}
 
-%\begin{frame}{Geographic Distribution of Agricultural Output Per Acre (USD) 1930}
-%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_agricultural_output_per_acre_1930.png}
-%\end{frame}
-
-%\begin{frame}{Geographic Distribution of Manufacturing Output Per Employee (USD) 1880}
-%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_manufacturer_output_per_employee_1880.png}
-%\end{frame}
-
-%\begin{frame}{Geographic Distribution of Manufacturing Output Per Employee (USD) 1930}
-%\includegraphics[width=\textwidth, height=.85\textheight]{images/map_manufacturer_output_per_employee_1930.png}
-%\end{frame}
 
 \begin{frame}{College Expansion}
 \begin{itemize}
@@ -109,22 +109,6 @@
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Location of Colleges 1880}
-%\includegraphics[width=\textwidth]{images/map_college_locations_1880.png}
-%\end{frame}
-
-%\begin{frame}{Location of Colleges 1930}
-%\includegraphics[width=\textwidth]{images/map_college_locations_1930.png}
-%\end{frame}
-
-%\begin{frame}{Geographic Distribution of Students 1880}
-%\includegraphics[width=\textwidth]{images/map_num_students_1880.png}
-%\end{frame}
-
-%\begin{frame}{Geographic Distribution of Students 1930}
-%\includegraphics[width=\textwidth]{images/map_num_students_1930.png}
-%\end{frame}
-
 \section{Empirical Results}
 \begin{frame}{Productivity Measures}
 \begin{equation*}
@@ -135,29 +119,6 @@ y_{ct}=\beta_0+\beta_1students_{ct}+\beta_2population_{ct}+\gamma_c+\gamma_{ct}+
 \item The coefficient $\beta_1$ reports the effect of average number of students on outcome, y, comparing changes in counties with relative increases in average number of students to other counties controlling for population, county fixed effects, and county-by-year fixed effects.
 \end{itemize}
 \end{frame}
-
-%\begin{frame}{Fixed Effect Regression Table for Productivity Lagged Students}
-%\begin{center}
-%\small
-%\begin{threeparttable}
-%\centering
-%\input{tables/productivity_growth_fe_reg_summary_lagged_students.tex} 
-%\begin{tablenotes}
-%\footnotesize
-%\item[1]$y_{ct}=\beta_0+\beta_1students_{ct}+\gamma_c+\gamma_{ct}+\varepsilon_{ct}$
-%\item[2] $y_{ct}=\beta_0+\beta_1students_{ct}+\beta_2population_{ct}+\gamma_c+\gamma_{ct}+\varepsilon_{ct}$
-%\end{tablenotes}
-%\end{threeparttable}
-%\end{center}
-%\end{frame}
-
-%\begin{frame}{Agricultural Revenue Per Acre (USD) and Lagged Number of Students}
-%\includegraphics[width=\textwidth, height=.8\textheight]{graphs/graph_compare_fopa_college.png}
-%\end{frame}
-
-%\begin{frame}{Manufacturing Revenue Per Employee (USD) and Laggged Number of Students}
-%\includegraphics[width=\textwidth, height=.8\textheight]{graphs/graph_compare_mope_college.png}
-%\end{frame}
 
 \section{Conclusion}
 
