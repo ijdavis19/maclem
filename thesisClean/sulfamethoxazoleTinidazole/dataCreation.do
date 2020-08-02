@@ -77,7 +77,7 @@ use "$output/NAMCSPanel.dta", replace
 //set local variables
 local genEQ = "d00124"
 local firstGenYear = 2012
-local firstGenMonth = 11
+local firstGenMonth = 8
 
 gen prescriptionIndicator =.
 

@@ -33,6 +33,11 @@ qui do "$dofiles/icdChapters.do"
 // Assign Variables for Covariates
 qui do "$dofiles/variables.do"
 
-
 // Save dataset
 save "$output/NAMCSPanelSulfamethoxazoleTinidazoleComp.dta", replace
+
+// Make Analysis Variables
+qui do "$dofiles/slopedAnalysis.do"
+
+// Tables 
+do "$dofiles/figs/tables/finalTable/tables.do"
