@@ -1,0 +1,45 @@
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+Variable            &\multicolumn{1}{c}{Before Generic Entry}&\multicolumn{1}{c}{After Generic Entry}&\multicolumn{1}{c}{Difference}\\
+\hline
+\textbf{timeSinceGeneric}&                           -0.00032\sym{***}&   -0.000592\sym{***}&   -.000272\\
+(Time in months since generic entry            &     (-6.51)         &     (-6.72)         &     [0.368]         \\
+of Sulfamethoxazole-Trimethoprim)\\
+[.5em]
+\textbf{offLabel}    &                                     -0.0326\sym{***}&     -0.0513\sym{***}&   -.0188\\
+(=1 if no diagnoses made were FDA approved            &    (-14.65)         &    (-20.05)         &    [0.0676]         \\
+indications of Sulfamethoxazole-Trimethoprim)\\
+[.5em]
+\textbf{offLabel}$\times$\textbf{timeSinceGeneric} &    0.000372\sym{***}&    0.00047\sym{***}&   .0000984\\
+            &                                           (7.7)         &      (5.64)         &    [0.757]         \\
+[.5em]
+\textbf{age}         &                      0.000172\sym{*}  &    0.0000696\sym{*}  &   -.000103\\
+(Age of patient in years)            &      (3.08)         &      (1.06)         &    [0.378]         \\
+[.5em]
+\textbf{ageSQ}       &                             -0.00000215\sym{**} & -0.00000128\sym{*}  &   0.000000863\\
+(Age of patient in years squared)            &     (-3.36)         &     (-1.74)         &    [0.495]         \\
+[.5em]
+\textbf{age}$\times$\textbf{timeSinceGeneric}      & -0.00000229\sym{**} &  0.00000419         &   0.000000648\\
+            &                                        (-1.88)         &      (1.88)         &    [0.107]         \\
+[.5em]
+\textbf{ageSQ}$\times$\textbf{timeSinceGeneric}    &    .0000000274\sym{**} &   -0.000000031         &   -0.000000059\\
+            &                                           (1.98)         &     (-1.23)         &    [0.184]         \\
+[.5em]
+\textbf{govInsurance}&                                    0.000176         &     0.00185\sym{**} &   0.00168\\
+(=1 if patient is on either Medicare or            &      (0.38)         &      (3.54)         &    [0.161]         \\
+Medicaid)\\
+[.5em]
+\textbf{nonwhite}    &                                    -0.00000675         &     0.00219\sym{***}&   0.00222\\
+(=1 if patient is race other than white)            &     (-0.01)         &      (3.65)         &    [0.164]         \\
+[.5em]
+\textbf{\_cons}      &      0.0383\sym{***}&      0.0586\sym{***}&   0.0203\sym{*}\\
+            &               (16.83)         &     (21.83)         &    [0.0403]         \\
+\hline
+r2          &     0.009         &     0.0058\\
+N           &      230182         &      169063\\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses, \scalebox{1.25}{$\text{Pr}(\frac{\hat{\beta}^\text{before}_i - \hat{\beta}^\text{after}_i}{[\hat{\sigma}^2\{\hat{\beta}^\text{before}_i\} + \hat{\sigma}^2\{\hat{\beta}^\text{after}_i\}]^\frac{1}{2}} > X^2)$} in brackets}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\multicolumn{4}{l}{\footnotesize "Probability of prescription" refers to probability that medical visit will have a prescription of Sulfamethoxazole-Trimethoprim}
+\end{tabular}

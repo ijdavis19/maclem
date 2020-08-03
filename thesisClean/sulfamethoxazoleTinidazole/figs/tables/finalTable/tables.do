@@ -292,7 +292,7 @@ gen OFFfitGI = Before[1,10] + timeSinceGeneric*Before[1,1] + Before[1,2] + timeS
 replace OFFfitGI = After[1,10] + timeSinceGeneric*After[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + After[1,8] + `nonwhite1'*After[1,9] if genericOn == 1
 sum ONfitGI  
 sum OFFfitGI
-line ONfitGI OFFfitGI timeSinceGeneric
+line ONfitGI OFFfitGI timeSinceGeneric, legend(rows(2))
 
 // NonWhite
 gen ONfitNW = Before[1,10] + timeSinceGeneric*Before[1,1] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*Before[1,6]*timeSinceGeneric + `ageSQ0'*timeSinceGeneric*Before[1,7] + `govInsurance0'*Before[1,8] + `nonwhite0'*Before[1,9] if genericOn == 0
@@ -301,17 +301,17 @@ gen OFFfitNW = Before[1,10] + timeSinceGeneric*Before[1,1] + Before[1,2] + timeS
 replace OFFfitNW = After[1,10] + timeSinceGeneric*After[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + `govInsurance1'*After[1,8] + After[1,9] if genericOn == 1
 sum ONfitNW
 sum OFFfitNW
-line ONfitNW OFFfitNW timeSinceGeneric
+line ONfitNW OFFfitNW timeSinceGeneric, legend(rows(2))
 
 // Abcess and Cellulitis
 gen ONfitCell = SkinBefore[1,8] + timeSinceGeneric*SkinBefore[1,1] + `age0AC'*SkinBefore[1,2] + `ageSQ0AC'*SkinBefore[1,3] + `age0AC'*SkinBefore[1,4]*timeSinceGeneric + `ageSQ0AC'*timeSinceGeneric*SkinBefore[1,5] + `govInsurance0AC'*SkinBefore[1,6] + `nonwhite0AC'*SkinBefore[1,7] if genericOn == 0
 replace ONfitCell = SkinAfter[1,8] + timeSinceGeneric*SkinAfter[1,1] + `age1AC'*SkinAfter[1,2] + `ageSQ1AC'*SkinAfter[1,3] + `age1AC'*timeSinceGeneric*SkinAfter[1,4] + `ageSQ1AC'*timeSinceGeneric*SkinAfter[1,5] + `govInsurance0AC'*SkinAfter[1,6] + `nonwhite0AC'*SkinAfter[1,7] if genericOn == 1
 replace ONfitCell = SkinAfter[1,8] + timeSinceGeneric*SkinAfter[1,1] + `age1AC'*SkinAfter[1,2] + `ageSQ1AC'*SkinAfter[1,3] + `age1AC'*timeSinceGeneric*SkinAfter[1,4] + `ageSQ1AC'*timeSinceGeneric*SkinAfter[1,5] + `govInsurance1AC'*SkinAfter[1,6] + `nonwhite1AC'*SkinAfter[1,7] if genericOn == 1
 label variable ONfitCell "Probability of Prescription"
-line ONfitCell timeSinceGeneric 
+line ONfitCell timeSinceGeneric, legend(rows(2))
 
 *****************************************************************************************************************************************
-
+use "$output/temp.dta", replace
 local cats = "offLabel govInsurance nonwhite"
 foreach cat in `cats' {
     display "`cat'"
@@ -479,6 +479,9 @@ bysort timeSinceGeneric: gen timeCount = _n
 drop if timeCount > 1
 line OFFthreeMonthMA timeSinceGeneric
 
+// Three Month Moving Average On and Off
+line ONthreeMonthMA OFFthreeMonthMA timeSinceGeneric, legend(rows(2))
+
 
 
 // Twelve Month Moving Average
@@ -502,8 +505,8 @@ forval month = `12monthMinMA'/`monthMax' {
         local 12MONTHS = `12MONTHS' + `SCRIPTADDER'
     }
     use "$output/temp.dta", replace
-    replace twelveMonthScripts = `12MONTHV' if timeSinceGeneric == `month'
-    replace twelveMonthVisits = `12MONTHS' if timeSinceGeneric == `month'
+    replace twelveMonthVisits = `12MONTHV' if timeSinceGeneric == `month'
+    replace  twelveMonthScripts= `12MONTHS' if timeSinceGeneric == `month'
     save "$output/temp.dta", replace
 }
 gen twelveMonthMA = twelveMonthScripts/twelveMonthVisits
@@ -566,4 +569,8 @@ bysort timeSinceGeneric: gen timeCount = _n
 drop if timeCount > 1
 line OFFtwelveMonthMA timeSinceGeneric
 
+
+line OFFtwelveMonthMA ONtwelveMonthMA timeSinceGeneric, legend(row(2))
+
+use "$output/temp.dta", replace
 save "$output/complete.dta", replace
