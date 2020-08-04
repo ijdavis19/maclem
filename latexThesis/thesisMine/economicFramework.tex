@@ -31,7 +31,7 @@ which is the probability a patient $i$ chooses a treatment that utilizes antibio
     & + \beta_7^t\cdot(ageSQ_i\times timeSinceGeneric_i)  + \beta_8^t\cdot(govInsurance_i)\\
     & + \beta_9^t\cdot(nonWhite_i) + \varepsilon_i
 \end{split}
-\end{equation}\
+\end{equation}
 where $t$ represents if the treatment is occurring before or after entry of the generic and the variable $\varepsilon_i$ is the normally distributed error term.\\
 \indent To test the significance of the differences among coefficients for the two possible treatment times, I use a cross model hypothesis test which rejects the null hypothesis that $\beta_i^{before} = \beta_i^{after}$ if 
 \begin{equation}

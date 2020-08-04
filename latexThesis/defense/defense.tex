@@ -22,13 +22,13 @@
 %\usepackage{fancyhdr}
 \usepackage{graphicx}
 %\usepackage{setspace}
-
+\DeclareMathOperator{\EX}{\mathbb{E}}
 %Commands
 \newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
 
 
-\title{The Effect of Entry of Generic Antibiotics on Prescriptions of Antibiotics in the Ambulatory Care Settings}
-\subtitle{The Case Study of Sulfamethozaxole-Trimethoprim}
+\title{Effect of the Entry of Generic Antibiotics on Prescriptions of the Antibiotic}
+\subtitle{The Case of Sulfamethoxazole-Trimethoprim}
 \author{Ian Davis}
 \institute{Clemson University}
 \date{August 4, 2020}
@@ -48,103 +48,234 @@
 \begin{frame}{Introduction}
 \begin{itemize}
 \item The effectiveness of an antibiotic is an exhaustible resource and efficient use eventually renders the ineffective.
-\item Over 2.8 million Americans per year are sickened by antibiotic resistant bacteria leading to at least 35,000 deaths. \textbf{CITE}
+\item Over 2.8 million Americans per year are sickened by antibiotic resistant bacteria leading to at least 35,000 deaths (\cite{centers_for_disease_control_and_prevention_us_antibiotic_2019}).
 \item Through increasing the amount of treatment options available to a patient and raising aggregate demand for treatments using a given antibiotic, entry of generic antibiotics may accelerate the spread of antibiotic resistant bacteria.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Research Question}
 \begin{itemize}
-\item How does entry of a generic form of an antibiotic affect the demand for treatments which rely on the use of the antibiotic? 
-\item How does this affect differ among patient populations?
+\item How does entry of a generic form of an antibiotic affect demand for the antibiotic? 
+\begin{itemize}
+\item How does this effect differ among patient populations?
+\end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Generic Medications}
 \begin{itemize}
-\item Hatch-Waxely
-\item Now only need to show medications are Bioequivalent
-\item Bioequivalent means this
+\item The Drug Price Competition and Patent Term Restoration Act (1984) established the rules for generic medicines as they are known today.
+\item Generic medications need only to prove bioequivalence to name brands (\cite{fda_primer}).
+\begin{itemize}
+  \item Same active ingredient
+  \item Same actions within the body
+\end{itemize}
+\item The new standards significantly lowered the cost of entry for generic medications (\cite{eban_bottle_2019}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Brand Name and Generic Comparisions}
+\begin{itemize}
+\item Further adoption of generic medications is viewed by many as a simple and quick way to cut healthcare costs in the United States (\cite{walensky_economic_2013}) and abroad (\cite{mercanoglu_evaluation_2018}).
+\item Empirical evidence has found comparable to equivalent outcomes between treatments using brand named drugs and generic counterparts (\cite{lin_comparative_2017}, \cite{desai_comparative_2019}).
+\item A 2015 meta analysis found patients held negative views of generic medicines while physicians do not (\cite{dunne_what_2015}).
+\item A patient's trust in their physician often overrules their biases.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Entry of Generic Medicines}
+\begin{itemize}
+\item Demand for antibiotics persists beyond patent expiration and entry of generic forms (\cite{mansley_utilization_2008}).
+\begin{itemize}
+  \item Between 64\% and 99\% usage 15 to 30 years after patent expiration.
+\end{itemize}
+\item One thing
+\item Second thing
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Antibiotic Usage}
 \begin{itemize}
-\item Much research focuses on the ambulatory setting.
-\item Over 50\% of Fluoroquinole antibiotics are prescribed for patients who do not have a diagnosis associated with an Food and Drug Administration (FDA) approved usage. 
+\item Most research in this area focuses on the ambulatory setting.
+\item Many times antibiotics are prescribed for diagnoses whose treatments are not associated with a Food and Drug Administration (FDA) approved usage (\cite{almalki_off-label_2016}).
 \begin{itemize}
-  \item These non FDA approved uses are known as "off-label" uses
+  \item These non FDA approved uses are known as "off-label" uses 
 \end{itemize}
-\item Usage rates for adults and the elderly have remained constant since the early 2000s
-\item Antibiotics behave similarly to other goods in terms of own price and cross price elasticities.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Sulfamethozaxole-Trimethoprim}
-\begin{itemize}
-\item Analysis focuses on Sulfamethozaxole-Trimethoprim due to its generic appearing in the middle of the observational period and having a relatively large amount of prescriptions in the data compared to other antibiotics with similar dates of entry of generics.
-\item The drug is a combination antibiotic from the antimetabolite/sulfonamide class first introduced in 1968.
-\item Brand name versions of the antibiotic include Bactrim, Bactrim DS, Septra and Septra DS.
-\item Popular antibiotic due to its low cost and high familiarity among physicians.
+\item Usage rates for adults and the elderly have remained constant since the early 2000s with the elderly being prescribed one antibiotic per medical visit on average (\cite{roumie_trends_2005}, \cite{kabbani_outpatient_2018}).
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Sulfamethozaxole-Trimethoprim}
+\begin{frame}{Demand for Antibiotics}
 \begin{itemize}
-\item The drug has FDA approval to fight urinary tract infections, ear infections (acute otitis media), acute exacerbations of chronic bronchitis in adults, Shigellosis, treatment and prophylaxis of \textit{Pneumocystis jirovecii} pneumonia, and Traveler's diarrhea in adults.
-\item The antibiotic is also approved for use against infections due to \textit{Listeria, Nocardia, Salmonella, Brucella, Paracoccidioides,} melioidosis, \textit{Burkholderia, Stenotrophomonas,} cyclospora, isospora, Whipple's disease, and alternative therapy for toxoplasmosis and community-acquired MRSA skin infections.
-\item Evidence has been found to indicate effectiveness in curing uncomplicated skin infections.
+\item Antibiotics behave similarly to other goods in terms of own price and cross price elasticities (\cite{kianmehr_system_2020}).
+\item Elderly populations tend to demand newer antibiotics at higher rates.
+\item Significant own price elasticities observed in outpatient settings but are not found in hospital settings (\cite{kaier_impact_2013}).
 \end{itemize}
 \end{frame}
 
 \section{Economic Framework}
 \begin{frame}{Theoretical Model}
 \begin{itemize}
-\item Patient's, with assistance of their physician, seek to maximize their expected utility from treatment of their medical condition.
-\item A patient considers both the cost and effectiveness of the treatment.
+\item A patient, with assistance of their physician, seeks to maximize their expected utility from treatment of their medical condition, $a$.
+\begin{equation}
+\EX[U(C_a^s,E_a^s)]
+\end{equation}
+with treatment $s = \{\alpha,\omega\}$
+\begin{itemize}
+  \item $s = \alpha \rightarrow$ treatment using antibiotic $\alpha$
+  \item $s = \omega \rightarrow$ treatment using the utility maximizing treatment option which does not include antibiotic $\alpha$
+\end{itemize}
+\item A patient considers both the cost, $C_a^s$, and effectiveness. $E_a^s$, of the treatment.
   \begin{itemize}
     \item Probability condition will be cured
     \item Minimizing treatment convalescence
   \end{itemize}
-\item Entry of the generic lowers the efficiency templeton phrase which would increase demand under these assumptions
+\item $U_{C_a} < 0$
+\item $U_{E_a} > 0$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Theoretical Model}
+\begin{frame}{Theoretical Model Cont.}
 \begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Here's a point where I use $\zeta$ to see what it looks like
+\item A patients demands a treatment with antibiotic $\alpha$ if the expected value of said treatment is greater than the expected value of the utility maximizing treatment that does not use $\alpha$.
+\item Decision to demand treatment with antibiotic $\alpha$ formally described as
+\begin{eqnarray}
+  y =
+  \begin{cases}
+    1, & \text{if }\EX[U(C_a^\alpha,E_a^\alpha)] \geq \EX[U(C_a^\omega,E_a^\omega)] \\
+    0, & \text{if }\EX[U(C_a^\omega,E_a^\omega)] > \EX[U(C_a^\alpha,E_a^\alpha)] \\
+  \end{cases}
+\end{eqnarray}
 \end{itemize}
 \end{frame}
-
 
 \begin{frame}{Econometric Model and Estimation Procedures}
 \begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
+\item The expected utilities are known to the patient but are not observable to the researcher.
+\item The binary decision of the patient becomes a probabilistic one to the researcher.
+\item The patient's expected utility is split into two parts
+\begin{equation}
+  \EX[U(C_a^s,E_a^s)] = U_a^s + \nu_a^s
+\end{equation}
+\item $U_a^s \equiv$ observable portion of the expectation of the patient's expected utility from treatment $s$ for medical condition $a$
+\begin{itemize}
+  \item function of characteristics of the treatment, patient, and medical visit
+\end{itemize}
+\item $\nu_a^s \equiv$ unobservable portion of the expectation of the patient's expected utility from treatment $s$ for medical condition $a$
+\begin{itemize}
+  \item Independently and identically distributed random variable.
+\end{itemize}
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Econometric Model and Estimation Procedures}
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
 \begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
+\item The probability a patient demands treatment with antibiotic $\alpha$ for medical condition $a$ is
+  \begin{equation}
+  \begin{split}
+      P_a^\alpha =\text{Pr}(y = 1)_a & = \text{Pr}(U_a^\alpha + \nu_a^\alpha > U_a^\omega + \nu_a^\omega)\\
+      & = \text{Pr}(\nu_a^\alpha - \nu_a^\omega > U_a^\omega - U_a^\alpha)\\
+  \end{split}
+  \end{equation}
+\end{itemize}  
+\end{frame}
+
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
+\begin{itemize}
+\item $U_a^s$ can be altered further to reflect theory and data
+\begin{equation}
+\begin{split}  \EX[U_a^s] & =\bar{U}_a^s + \nu_a^s\\
+& = \beta_a^s + \gamma C_a^s + \delta_a^st + \zeta_a^sK + \nu_a^s
+\end{split}
+\end{equation}
+\item $\beta_a^s$ is the treatment choice specific constant representing the mean effect of omitted variables for medical condition $a$.
+\item $\gamma$ is the effect on expected utility from $C_a^s$ which is the cost of treatment $s$ for medical condition $a$
+\item $\delta_a^s$ is marginal effect of time since entry of a generic form of $\alpha$, $t$, specific to the medical condition and treatment.
+\item $\zeta_a^s$ are marginal effects of the vector of patient characteristics $K$ specific to the treatment and medical condition.
+\item $\nu_a^s$ serves as an error term
+\begin{itemize} 
+  \item Assumed to be uncorrelated with the other variables and to have an expected value of zero.
 \end{itemize}
+\end{itemize}  
+\end{frame}
+
+
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
+\begin{itemize}
+\item The final step is to derive the difference in expected utility due to treatment-specific values.
+\item Let $\bar{U}_a \equiv \bar{U}_a^\alpha - \bar{U}_a^\omega \implies$
+\begin{equation}
+\begin{split}
+  \EX[U_a] & = (\beta_a^\alpha - \beta_a^\omega) + \gamma (C_a^\alpha - C_a^\omega) + (\delta_a^\alpha - \delta_a^\omega)t\\
+  & + (\zeta^\alpha_a - \zeta^\omega_a)K + (\nu_a^\alpha - \nu_a^\omega)\\
+  & = \beta_a + \gamma C_a + \delta_at + \zeta_aK + \nu_a
+\end{split}
+\end{equation}
+\item Marginal effects are now due to differences in the treatment options.
+\item Assuming $\EX[U_a] \in [0,1]$ equations (4) and (7) can be combined to get a binary linear probability model where
+\begin{equation}
+  \text{Pr}(y = 1)_a = \EX[U_a] = \beta_a + \gamma C_a + \delta_at + \zeta_aK + \nu_a
+\end{equation}
+\item $\text{Pr}(y = 1)_a$ is estimated twice. Once for patients before entry of the generic and again for patients after.
+\end{itemize}  
 \end{frame}
 
 \section{Data and Variables}
+\begin{frame}{Sulfamethoxazole-Trimethoprim}
+\begin{itemize}
+\item Analysis focuses on Sulfamethoxazole-Trimethoprim due to its generic appearing in the middle of the observational period and having a relatively large amount of prescriptions in the data compared to other antibiotics with similar dates of entry of generics.
+\item The drug is a combination antibiotic from the antimetabolite/sulfonamide class first introduced in 1968.
+\item Brand name versions of the antibiotic include Bactrim, Bactrim DS, Septra and Septra DS.
+\item The antibiotic is popular due to its low cost and high familiarity among physicians.
+\item Generic form of the drug entered the market in the latter half of July 2016
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sulfamethoxazole-Trimethoprim}
+\begin{itemize}
+\item The FDA has approved the drug to fight urinary tract infections, ear infections (acute otitis media), acute exacerbations of chronic bronchitis in adults, Shigellosis, treatment and prophylaxis of \textit{Pneumocystis jirovecii} pneumonia, and Traveler's diarrhea in adults.
+\item The antibiotic is also approved for use against infections due to \textit{Listeria, Nocardia, Salmonella, Brucella, Paracoccidioides,} melioidosis, \textit{Burkholderia, Stenotrophomonas,} cyclospora, isospora, Whipple's disease, and alternative therapy for toxoplasmosis and community-acquired MRSA skin infections.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{National Ambulatory Medical Care Survey}
 \begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
+\item Data used are from the National Ambulatory Medical Care Survey (NAMCS) years 2006-2016.
+\item The NAMCS is a nationally representative survey of outpatient medical visits.
+\item Visits are weighted in order to create national estimates.
+\item Only visits where sulfamethoxazole-trimethoprim could have been prescribed are included in the analysis.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{National Ambulatory Medical Care Survey Scope}
+\begin{itemize}
+\item Included in the NAMCS are freestanding clinics/urgicenters, community health centers, mental health centers, health maintenance organizations,  non-federal government clinics, family practice plans, and private solo or group practices.
+\item Not included in the scope are hospital emergency or outpatient departments, ambulatory surgicenters, institutional settings such as schools or prisons, industrial outpatient facilities, clinics operated by the federal government, and laser vision surgery centers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Data Cleaning Procedures}
+\begin{itemize}
+\item Only visits which could have led to a prescription of sulfamethoxazole-trimethoprim are used in the analysis.
+\item Each diagnosis which occurred during a visit is tagged as a "relevant diagnosis".
+\item Every visit where one of these diagnoses occurred then is considered a visit which a prescription of sulfamethoxazole-trimethoprim could have occurred.
+\item Because the specific diagnosis which lead to the prescription is not known, this method could lead to over counting observations.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Variables}
 \begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
+\item Variables included in the analysis are
+\begin{itemize}
+  \item \textbf{TimeSinceGeneric} = Time in months since entry of the generic sulfamethoxazole-trimethoprim or August of 2012
+  \item \textbf{Age} = The age of the patient in years
+  \item \textbf{AgeSQ} = The age of the patient squared
+  \item \textbf{offLabel = 1} if no diagnoses made during during the visit were associated with FDA approved uses of sulfamethoxazole-trimethoprim
+  \item \textbf{offLabel = 1} if at least one diagnoses made during during the visit were associated with FDA approved uses of sulfamethoxazole-trimethoprim  
+  \item \textbf{GovInsurance = 1} if the patient was on either Medicare or Medicaid
+  \item \textbf{NonWhite = 1} if the patient a race other than white
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -157,120 +288,86 @@
 \end{frame}
 
 % Probs split into two
-\begin{frame}{Proportions of Patients Prescribed Sulfamethozaxole-Trimethoprim by Patient Characteristics}
+\begin{frame}{Proportions of Patients Prescribed Sulfamethoxazole-Trimethoprim by Patient Characteristics}
 \begin{center}
-\scalebox{.4}{\input{figs/proportions.tex}}
+\scalebox{.45}{\input{figs/proportions.tex}}
 \end{center}
 \end{frame}
 
-\begin{frame}{12 Month Moving Average Probability of Prescription of Sulfamethozaxole-Trimethoprim}
+\begin{frame}{12-Month Moving-Average Probability of Prescription of Sulfamethoxazole-Trimethoprim}
 \includegraphics[width=\textwidth, height=.75\textheight]{figs/twelveMonthMA.png}
 \end{frame}
 
-\begin{frame}{Seperated 12 Month Moving Average Probability of Prescription of Sulfamethozaxole-Trimethoprim}
+\begin{frame}{12-Month Moving-Average Probabilities of Prescription of Sulfamethoxazole-Trimethoprim by Type of Diagnosis}
 \includegraphics[width=\textwidth, height=.75\textheight]{figs/twelveMonthMAonoff.png}
 \end{frame}
+%Fix X label
+%Visits with at least one diagnosis associated with an on-label indication
+
 
 \section{Empirical Analysis and Results}
-\begin{frame}{Empirical Analysis and Results}
-\begin{itemize}
-\item Build an empirical understanding of the extent to which  universities increase productivity in the manufacturing and agricultural sector.
-\item Determine whether the foundation of colleges from 1870-1940 impacted productivity of the manufacturing and agricultural sectors differently.
-\end{itemize}
-\end{frame}
-
 \begin{frame}{Estimated Effects on Probability of Prescription Before and After Generic Entry}
 \begin{center}
 \scalebox{.45}{\input{figs/reg.tex}}
 \end{center}
 \end{frame}
 
-\begin{frame}{Empirical Analysis and Results}
-\begin{itemize}
-\item From 1870-1940 the size of the university system increased significantly. 
-\begin{itemize}
-\item The Morrill Act of 1862 promoted the establishment of colleges specializing in agriculture and the mechanic arts by granting states land for education. 
-\item The number of colleges in the Reports of the Commissioner of Education more than doubled from 332 to 700 with a peak of 906 colleges in 1926.
-\item Total student enrollment in universities increased nearly twenty-fold from 54,033 to 1,009,945.
-\end{itemize}
-\item I assume colleges are plausibly located randomly when controlling for county and county-by-year.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Estimated Effects on Probability of Prescription Before and After Generic Entry for Patients with an Uncomplicated Skin Abscess or Cellulitis}
-\begin{center}
-\scalebox{.45}{\input{figs/abscess.tex}}
-\end{center}
-\end{frame}
-
-\begin{frame}{Estimated Probability of Prescription Before and After Generic Entry}
+\begin{frame}{Estimated Probability of Prescription Immediately Before and After Generic Entry}
 \begin{center}
 \scalebox{.55}{\input{figs/regdiff.tex}}
 \end{center}
 \end{frame}
 
-\section{Discussion}
+\section{Results}
 \begin{frame}{Results}
 \begin{itemize}
-\item I find that every one unit increase in the average number of students enrolled in a university in a county over the previous decade increases 
-\begin{itemize}
-\item Agricultural output per acre by $\$.01$. 
-\item Manufacturing output per employee by $\$2.13$.
-\end{itemize}
-\item I find that the effect of universities on agricultural productivity occurs as early as 1880.
-\item I find that the effect on manufacturing productivity does not appear significant until 1920.
+\item Patients with diagnoses whose treatments are associated with on-label uses of sulfamethoxazole-trimethoprim were 1.87 percentage points (90\% CI) more likely to demand treatments which used the drug.
+\item Patients on Medicare or Medicaid and non white patients were no more or less likely to demand treatment with sulfamethoxazole-trimethoprim before entry of the generic than other patient groups.
+\item Patients on Medicare or Medicaid were .185 percentage points (99\% CI) more likely to demand treatment that uses sulfamethoxazole-trimethoprim than those on other forms of insurance after entrance of the generic.
+\item Probability of prescription of the antibiotic was falling before the generic began being sold. After an initial increase in the probability of patients still became less incline to demand the antibiotic as time went on.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Visits with Diagnoses Associated with On-Label Indications}
+\begin{frame}{Discussion}
 \begin{itemize}
-\item I find that every one unit increase in the average number of students enrolled in a university in a county over the previous decade increases 
+\item Increases in probability of prescriptions can be attributed to the entrance of generic manufacturers shifting the supply curve out. 
+\item Non white patients become more likely to use the antibiotic after the shift in the supply curve because they are more likely to be affected by the price decrease.
+\item Patients on Medicare or Medicaid become more likely to demand the antibiotic because of their more restrictive choice sets.
+\item  Decreases in probability of prescription over time can be attributed to the rise of sulfamethoxazole-trimethoprim resistant bacteria.
 \begin{itemize}
-\item Agricultural output per acre by $\$.01$. 
-\item Manufacturing output per employee by $\$2.13$.
+  \item Resistant bacteria had been discovered as early as 1997 (\cite{gales_urinary_2002}) and has continued to develop through the 2000s and 2010s (\cite{noauthor_resistance_nodate}, \cite{khamash_increasing_2019})
+  \item Increases in the prevalence of resistance can be interpreted as an increase in the cost of a treatment option through necessitating a greater quantity to achieve similar outcomes.
 \end{itemize}
-\item I find that the effect of universities on agricultural productivity occurs as early as 1880.
-\item I find that the effect on manufacturing productivity does not appear significant until 1920.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Visits with Diagnoses Not Associated with On-Label Indications}
-\begin{itemize}
-\item I find that every one unit increase in the average number of students enrolled in a university in a county over the previous decade increases 
-\begin{itemize}
-\item Agricultural output per acre by $\$.01$. 
-\item Manufacturing output per employee by $\$2.13$.
-\end{itemize}
-\item I find that the effect of universities on agricultural productivity occurs as early as 1880.
-\item I find that the effect on manufacturing productivity does not appear significant until 1920.
 \end{itemize}
 \end{frame}
 
 \section{Conclusions}
-\begin{frame}{Conclusions}
-\begin{itemize}
-\item I find that every one unit increase in the average number of students enrolled in a university in a county over the previous decade increases 
-\begin{itemize}
-\item Agricultural output per acre by $\$.01$. 
-\item Manufacturing output per employee by $\$2.13$.
-\end{itemize}
-\item I find that the effect of universities on agricultural productivity occurs as early as 1880.
-\item I find that the effect on manufacturing productivity does not appear significant until 1920.
-\end{itemize}
-\end{frame}
-
 \begin{frame}{Limitations of Study}
 \begin{itemize}
-\item Results are undermined if colleges are not located randomly and are instead influenced by the presence of highly productive firms.
-\item Lack of consistent data throughout the period of study limited the types of studies that could be conducted and required me to make possibly inaccurate.
+\item Finding are restricted to the specific setting where the data is from.
+\item Doctors may be prescribing each part of sulfamethoxazole-trimethoprim separately
+\item Sulfamethoxazole-trimethoprim is just one of many antibiotics.
+\item Limited number of variables were included.
+\item Further refinement of the observation selection process.
+\item No inclusion of drugs which could be considered close substitutes.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Recommendations for Future Research}
 \begin{itemize}
-\item Results are undermined if colleges are not located randomly and are instead influenced by the presence of highly productive firms.
-\item Lack of consistent data throughout the period of study limited the types of studies that could be conducted and required me to make possibly inaccurate.
+\item Expand data used to include hospital emergency departments
+\item Subject additional drugs to the same methodologies to determine if results persist between antibiotics.
+\item Consider visits where sulfamethoxazole and trimethoprim were prescribed individually as having had sulfamethoxazole/trimethoprim prescribed.
+\item Include additional variables for patient characteristics
+\item Develop a more accurate method of determining diagnoses which could be treated with sulfamethoxazole-trimethoprim.
+\item Controlling for prescription trends of antibiotics which can be considered close substitutes.
 \end{itemize}
 \end{frame}
+
+\begin{frame}[allowframebreaks]{Bibliography}
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
+\end{frame}
+
 
 \end{document}
