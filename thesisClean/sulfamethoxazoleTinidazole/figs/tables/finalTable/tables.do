@@ -569,7 +569,9 @@ bysort timeSinceGeneric: gen timeCount = _n
 drop if timeCount > 1
 line OFFtwelveMonthMA timeSinceGeneric
 
-
+label variable timeSinceGeneric "Months Since Entry of Generic"
+label variable ONtwelveMonthMA "Visits with One or More Diagnoses Associated with On-Label Uses"
+label variable OFFtwelveMonthMA "Visits with No Diagnoses Associated with On-Label Uses"
 line OFFtwelveMonthMA ONtwelveMonthMA timeSinceGeneric, legend(row(2))
 
 use "$output/temp.dta", replace
