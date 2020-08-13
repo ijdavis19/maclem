@@ -1,0 +1,38 @@
+\begin{table}[htbp]\
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Statistical Descriptions of Categorical Variables\label{tab1}}
+{
+\centering
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            Variable&\multicolumn{1}{c}{Time Frame}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Weighted Share of Sample}\\
+\hline
+\textbf{OffLabel}                                                &     Entire Study&             387264&      .967\\
+(=1 if no diagnoses made were          &     Before Entry of Generic&    223267&      .966\\
+ FDA approved indications of  &     After Entry of Generic&      163997&      .968\\
+sulfamethoxazole-trimethoprim)\\
+[1em]
+\textbf{GovInsurance}                                            &     Entire Study&             105273&      .26 \\
+(=1 if patient is on either)       &     Before Entry of Generic&     30480 &      .248\\
+Medicare or Medicaid)           &     After Entry of Generic&      44793 &      .28\\
+[1em]
+\textbf{NonWhite}                                                &     Entire Study&             61442&      .164\\
+(=1 if patient is a race                &     Before Entry of Generic&     37733&      .16\\
+other than white)                         &     After Entry of Generic&      23709&      .171\\
+\hline
+\multicolumn{4}{l}{$\text{Sample Size for Years 2006-2016} = 399245$}\\
+\multicolumn{4}{l}{$\text{Sample Size before Entry of Generic} = 230182$}\\
+\multicolumn{4}{l}{$\text{Sample Size after Entry of Generic} = 169063$}\\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize All observations after August 2012 are considered to be after entry of generic.}\\
+\end{tabular}
+}
+\label{tab:Table3.2}
+\end{table}
+
+%multicolumn{5}{l}{"Share of Sample" and "Proportion Prescribed ST" are both weighted proportions}\\
+%\multicolumn{5}{l}{offLabel(=1) indicates no diagnoses made were on label indicators, govInsurance(=1) indicates patient is on Medicare or Medicaid,}\\
+%\multicolumn{5}{l}{nonWhite(=1) indicates patient is race other than white}\\
+%\end{tabular}
+%\label{tab:Table4.2}
+%\end{table}

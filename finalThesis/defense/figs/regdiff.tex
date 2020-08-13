@@ -1,0 +1,28 @@
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+Patient Group  &\multicolumn{1}{c}{(Before Generic Entry)}&\multicolumn{1}{c}{(After Generic Entry)}&\multicolumn{1}{c}{Difference}\\
+\hline
+\textbf{OnLabel}                                               &   0.0404\sym{***}   &   0.0591\sym{***}   &   .0187\\
+(=1 if at least one diagnosis made during visit is          &     [0.000]         &     [0.000]         &     [0.0675]       \\
+associated with FDA approved use of \\
+sulfamethoxazole-trimethoprim)\\
+[.5em]
+\textbf{OffLabel}                                     &     0.00783\sym{***}&     .00778\sym{***}  &   -.0000418\\
+(=1 if no diagnoses made were associated with            &    [0.000]          &    [.000]         &    [0.955]         \\
+FDA approved uses of\\
+sulfamethoxazole-trimethoprim)\\
+[.5em]
+\textbf{GovInsurance}$\times$\textbf{OnLabel}&    0.0405\sym{***}         &     0.0604\sym{***} &   0.0199\\
+(Patient on Medicare or Medicaid        &      [0.000]         &      [0.000]        &    [0.0526]         \\
+and \textbf{onLabel}=1)\\
+[.5em]
+\textbf{Nonwhite}$\times$\textbf{OnLabel}    &  0.0403\sym{***}         &     0.0609\sym{***}&   0.0205\sym{*}\\
+(Patient race other than white            &     [0.000]        &      [0.000]         &    [0.0466]         \\
+and \textbf{onLabel}=1)\\
+\hline
+N           &      230182         &      169063\\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \scalebox{1.25}{$\text{Pr}(\frac{\hat{\beta}^\text{before}_i - \hat{\beta}^\text{after}_i}{[\hat{\sigma}^2\{\hat{\beta}^\text{before}_i\} + \hat{\sigma}^2\{\hat{\beta}^\text{after}_i\}]^\frac{1}{2}} > X^2)$} in brackets}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}

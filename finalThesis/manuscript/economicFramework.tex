@@ -1,0 +1,62 @@
+\chapter{Economic Framework}
+\section{Theoretical Model}
+To elucidate how entry of generics may lead to an increase in demand for antibiotics, I first posit the following model. The model assumes that, with assistance from their physician, an individual patient seeks to maximize their utility from the treatment of their specific medical condition. To do so, a patient considers both the cost of a treatment option and how effective this treatment will be. Weighing these two characteristics, a patient will choose treatment with a given antibiotic if it is the utility maximizing treatment option. A patient may be willing to trade a higher probability of treatment success (effectiveness) for a less expensive treatment. Conversely, a patient may be willing to pay more for treatment if it shortens convalescence or has a higher probability of effectiveness. I assume, holding effectiveness constant, a patient will choose the lower priced treatment option.\\
+\indent Entry of generic manufacturers shifts the supply curve to right and lowers the price of an antibiotic. Following the model laid out above, this price reduction would increase demand for treatments in which the active ingredient of said antibiotic is used.
+
+\indent Formally, a patient's utility $(U)$ decreases with the cost of the treatment $(C)$ and increases with the treatment's efficacy $(E)$. Hence, a patient's utility can be expressed as $U(C,E)$ where $U_C < 0$ and $U_E > 0$. In the case of antibiotic therapy, $C$ represents the sum of the costs of the antibiotic as well as the cost of associated services. Effectiveness can also be broken down further to be a reflection of both the probability an ailment will be cured and the convalescence of a treatment.\\
+\indent Simply put, the patient can either demand a treatment that leverages the active ingredient in antibiotic $\alpha$ or not. The case of choosing a treatment which does not use $\alpha$ will be denoted by the $\omega$ superscript and serves as the utility maximize treatment choice which does not use the antibiotic. The patient will demand a treatment for medical condition $m$ that uses the active ingredient of antibiotic $\alpha$ if the expected utility of a treatment with antibiotic $\alpha$, $\EX[U(C^\alpha_m,E^\alpha_m)]$, is greater than the expected value of the utility maximizing treatment for the patient's condition that does not include the active ingredient of antibiotic $\alpha$, $(\EX[U(C^\omega_m,E^\omega_m)])$.\\
+Extending this notation, define the patient's decision, $y$, to be $y=1$ if the patient demands a treatment that uses the active ingredient in antibiotic $\alpha$ and $D=0$ otherwise. Hence, the entire decision can be described symbolically as
+\begin{eqnarray}
+  D =
+  \begin{cases}
+    1, & \text{if }\EX[U(C^\alpha_m,E^\alpha_m)] > (\EX[U(C^\omega_m,E^\omega_m)]) \\
+    0, & \text{if }(\EX[U(C^\omega_m,E^\omega_m)]) > \EX[U(C^\alpha_m,E^\alpha_m)] \\
+  \end{cases}
+\end{eqnarray}
+\indent Theory says that the entry of generic antibiotic manufacturers would increase the supply of antibiotic $\alpha$. This increase in supply will lower the price of treatments using its active ingredient. Holding efficacy constant, we can anticipate expected utility of treatment to increase in response to a decrease in prices caused by entry of the generic. At the margin, this increase in expected utility causes consumers to substitute treatments that do not use the active ingredient of antibiotic $\alpha$ with treatments that do, raising the number of total prescriptions of antibiotic $\alpha$.
+\section{Econometric Model and Estimation Procedures}
+\indent It is important to distinguish that, although these expected utilities are known to the patient, they cannot be observed by a researcher. Instead, the binary decision must be transformed into a probabilistic one \cite{train_discrete_nodate, templeton_household_2008}. To do so, define the transformed expected utility for patient $i$ of a given treatment, $\EX[U(C_m^s,E_m^s)]$ where $s = \{\alpha,0\}$ into two parts
+\begin{eqnarray}
+\EX[U(C^s_m,E^s_m)] = \bar{U}_m^s + \nu_m^s
+\end{eqnarray}
+where $\bar{U}_m^s$ is the observable portion of the expectation of the patient's expected utility from treatment choice $s$ for medical condition $a$ and $\nu_m^s$ is the unobservable portion. $\bar{U}_m^s$ is a function of characteristics of the treatment, the visit, and the patient. The variable $\nu_m^s$ is an independently and identically distributed random variable. This makes the decision to demand a treatment with antibiotic $\alpha$ for medical condition $m$ to be
+\begin{equation}
+\begin{split}\text{Pr}(y = 1)_m & = \text{Pr}(\bar{U}^\alpha_m + \nu^\alpha_m > \bar{U}^\omega_m + \nu^\omega_m))\\
+  & = \text{Pr}(\nu^\alpha_m - \nu^\omega_m > \bar{U}^\omega_m - \bar{U}^\alpha_m))
+\end{split}
+\end{equation}which is the probability a patient $i$ chooses a treatment that utilizes antibiotic $\alpha$.\\
+\indent $\bar{U}_m^s$ can be broken down further to reflect theory and data as
+\begin{equation}
+\begin{split}  \EX[U_m^s] & =\bar{U}_m^s + \nu_m^s\\
+& = \beta_m^s + \gamma C_m^s + \delta_m^st + \zeta_m^sK + \nu_m^s
+\end{split}
+\end{equation}
+For this equation, $\beta_m^s$ is the treatment choice specific constant representing the mean effect of omitted variables for medical condition $a$ with treatment s. $\gamma$ is the effect on expected utility from $C_m^s$ which is the cost of treatment $s$ for medical condition $a$. $\delta_m^s$ is marginal effect of time since entry of a generic form of $\alpha$, $t$, specific to the medical condition and treatment. $\zeta_m^s$ are marginal effects of the vector of patient characteristics $K$ specific to the treatment and medical condition. Lastly, $\nu_m^s$ serves as an error term which is assumed to be uncorrelated with the other variables and have an expected value of zero.\\
+The final step is to derive the differences in expected utility due to treatment-specific values. Define $\bar{U}_m \equiv \bar{U}^\alpha_m - \bar{U}^\omega_m$ which implies
+\begin{equation}
+\begin{split}
+  \EX[U_m] & = (\beta_m^\alpha - \beta_m^\omega) + \gamma (C_m^\alpha - C_m^\omega) + (\delta_m^\alpha - \delta_m^\omega)t\\
+  & + (\zeta^\alpha_m - \zeta^\omega_m)K + (\nu_m^\alpha - \nu_m^\omega)\\
+  & = \beta_m + \gamma C_m + \delta_mt + \zeta_mK + \nu_m
+\end{split}
+\end{equation}
+\indent This yields an equation whose coefficients represent the marginal effect differences in the treatment options on a patient's expected utility. Assuming $\EX[U_m] \in [0,1]$, equations 2.3 and 2.5 can be combined to give the following linear probability model
+\begin{equation}
+  \text{Pr}(y = 1)_m = \beta_m + \gamma C_m + \delta_mt + \zeta_mK + \nu_m
+\end{equation}
+This equation is estimated once before entry of the generic and again after in order to see how these equations change between the two time periods.\\
+\indent For the patient characteristics, I consider the age of the patient, the squared age of the patient, whether the patient is on Medicare or Medicaid (\textbf{GovInsurance}=1), and whether or not the patient is white (\textbf{NonWhite}=1). Additionally I consider whether the patient has any diagnoses whose treatment is associated with FDA approved uses for using sulfamethozaxole-trimethoprim (\textbf{OffLabel}=1). The time in months since entry of the generic antibiotic is indicated by \textbf{TimeSinceGeneric} Interactions between the off-label distinction and the time since entry of the generic as well as interaction between the age and age squared variables with time since entry of the generic are also included. With these variables, the equation above becomes
+\begin{equation}
+\begin{split}
+    P_i^\alpha =\text{Pr}(y = 1)_i & = \beta^t_0 + \beta^t_1\cdot(TimeSinceGeneric_i) + \beta_2^t\cdot(OffLabel_i)\\
+    & + \beta_3^t\cdot(OffLabel_i\times TimeSinceGeneric_i) + \beta_4^t\cdot(Age_i) + \beta_5^t\cdot(AgeSQ_i)\\
+    & + \beta_6^t\cdot(Age_i\times TimeSinceGeneric_i) + \beta_7^t\cdot(AgeSQ_i\times TimeSinceGeneric_i)\\
+    & + \beta_8^t\cdot(GovInsurance_i) + \beta_9^t\cdot(NonWhite_i) + \varepsilon_i
+\end{split}
+\end{equation}
+where $t$ represents if the treatment is occurring before or after entry of the generic and the variable $\varepsilon_i$ is the error term.\\
+\indent To test the significance of the differences among coefficients for the two possible treatment times, I use a cross model hypothesis test which rejects the null hypothesis that $\beta_i^{before} = \beta_i^{after}$ if 
+\begin{equation}
+\text{Pr}(\frac{\hat{\beta}^\text{before}_i - \hat{\beta}^\text{after}_i}{[\hat{\sigma}^2\{\hat{\beta}^\text{before}_i\} + \hat{\sigma}^2\{\hat{\beta}^\text{after}_i\}]^\frac{1}{2}})
+\end{equation}
+exceeds the chi sqaured threshold.\\

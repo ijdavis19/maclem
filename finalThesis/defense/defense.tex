@@ -1,0 +1,372 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+%%Packages
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[english]{babel}
+%\usepackage{Romannum}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage[para, flushleft]{threeparttablex}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[capposition=top]{floatrow}
+%\usepackage[plainpages=false,pdfpagelabels]{hyperref}
+%\usepackage[toc,title,page]{appendix}
+%\usepackage{tocloft}
+%\usepackage{indentfirst}
+%\usepackage{fancyhdr}
+\usepackage{graphicx}
+%\usepackage{setspace}
+\DeclareMathOperator{\EX}{\mathbb{E}}
+%Commands
+\newcommand\fnote[1]{\captionsetup{font=small}\caption*{#1}}
+
+
+\title{The Effect of the Entry of Generic Antibiotics on Prescriptions of the Antibiotic}
+\subtitle{The Case of Sulfamethoxazole-Trimethoprim}
+\author{Ian Davis}
+\institute{Clemson University}
+\date{August 4, 2020}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction and Background}
+\begin{frame}{Introduction}
+\begin{itemize}
+\item The effectiveness of an antibiotic is an exhaustible resource and efficient use eventually renders them ineffective.
+\item Over 2.8 million Americans per year are sickened by antibiotic resistant bacteria leading to at least 35,000 deaths (\cite{centers_for_disease_control_and_prevention_us_antibiotic_2019}).
+\item Adverse effects are exacerbated by increased usage.
+\item Through increasing the amount of treatment options available to a patient and raising the quantity demanded of treatments using a given antibiotic, entry of generic antibiotics may accelerate the spread of antibiotic resistant bacteria.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Research Question}
+\begin{itemize}
+\item How does entry of a generic form of an antibiotic affect demand for the antibiotic? 
+\begin{itemize}
+\item How does this effect differ among patient populations?
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Generic Medications}
+\begin{itemize}
+\item The Drug Price Competition and Patent Term Restoration Act (1984) established the rules for generic medicines as they are known today.
+\item Generic medications need only to prove bioequivalence to name brands (\cite{fda_primer}).
+\begin{itemize}
+  \item Same active ingredient
+  \item Same actions within the body
+\end{itemize}
+\item The new standards significantly lowered the cost of entry for generic medications (\cite{eban_bottle_2019}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Entry of Generic Medicines}
+\begin{itemize}
+\item Demand for antibiotics persists beyond patent expiration and entry of generic forms (\cite{mansley_utilization_2008}).
+\begin{itemize}
+  \item Between 64\% and 99\% usage remains 15 to 30 years after initial patent expiration.
+\end{itemize}
+\item The price of an antibiotic is negatively correlated with the number of suppliers (\cite{alpern_trends_2017}).
+\item The average price of a medication decreases significantly upon entry of generic medications (\cite{frank_generic_1997}, \cite{grabowski_brand_1992})
+\begin{itemize}
+  \item Decrease in price range from 6.6\% to 66\% 1 to 5 years after entry of generics (\cite{vondeling_impact_2018}).
+  \item Many instances found where the price of the branded drug remains stable or increases.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Brand Name and Generic Comparisions}
+\begin{itemize}
+\item Empirical evidence has found comparable to equivalent outcomes between treatments using brand named drugs and generic counterparts (\cite{lin_comparative_2017}, \cite{desai_comparative_2019}).
+\item A 2015 meta analysis found patients held negative views of generic medicines while physicians do not (\cite{dunne_what_2015}).
+\item A patient's trust in their physician often overrules their biases.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Demand for Antibiotics}
+\begin{itemize}
+\item Antibiotics behave similarly to other normal goods in terms of own price and cross price elasticities.
+\item Negative own price and cross price elasticities have been observed in both newer, narrow spectrum antibiotics as well as older, broad spectrum antibiotics (\cite{kianmehr_system_2020}).
+\item Significant own price elasticities observed in outpatient settings but not in hospital settings (\cite{kaier_impact_2013}).
+\end{itemize}
+\end{frame}
+
+\section{Economic Framework}
+\begin{frame}{Theoretical Model}
+\begin{itemize}
+\item A patient, with assistance from their physician, seeks to maximize their expected utility from treatment of their medical condition, $a$.
+\begin{equation}
+\EX[U(C_a^s,E_a^s)]
+\end{equation}
+with treatment $s = \{\alpha,\omega\}$
+\begin{itemize}
+  \item $s = \alpha \rightarrow$ treatment using antibiotic $\alpha$
+  \item $s = \omega \rightarrow$ treatment using the utility maximizing treatment option which does not include antibiotic $\alpha$
+\end{itemize}
+\item A patient considers both the cost, $C_a^s$, and effectiveness. $E_a^s$, of the treatment.
+  \begin{itemize}
+    \item Probability condition will be cured
+    \item Minimizing treatment convalescence
+  \end{itemize}
+\item $U_{C_a} < 0$
+\item $U_{E_a} > 0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Theoretical Model Cont.}
+\begin{itemize}
+\item A patients demands a treatment with antibiotic $\alpha$ if the expected value of said treatment is greater than the expected value of the utility maximizing treatment that does not use $\alpha$.
+\item Decision to demand treatment with antibiotic $\alpha$ formally described as
+\begin{eqnarray}
+  y =
+  \begin{cases}
+    1, & \text{if }\EX[U(C_a^\alpha,E_a^\alpha)] \geq \EX[U(C_a^\omega,E_a^\omega)] \\
+    0, & \text{if }\EX[U(C_a^\omega,E_a^\omega)] > \EX[U(C_a^\alpha,E_a^\alpha)] \\
+  \end{cases}
+\end{eqnarray}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Econometric Model and Estimation Procedures}
+\begin{itemize}
+\item The expected utilities are known to the patient but are not observable to the researcher.
+\item The binary decision of the patient becomes a probabilistic one to the researcher (\cite{train_discrete_nodate}).
+\item The patient's expected utility is split into two parts
+\begin{equation}
+  \EX[U(C_a^s,E_a^s)] = \bar{U}_a^s + \nu_a^s
+\end{equation}
+\item $\bar{U}_a^s \equiv$ observable portion of the expectation of the patient's expected utility from treatment $s$ for medical condition $a$
+\begin{itemize}
+  \item function of characteristics of the treatment, patient, and medical visit
+\end{itemize}
+\item $\nu_a^s \equiv$ unobservable portion of the expectation of the patient's expected utility from treatment $s$ for medical condition $a$
+\begin{itemize}
+  \item Independently and identically distributed random variable.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
+\begin{itemize}
+\item The probability a patient demands treatment with antibiotic $\alpha$ for medical condition $a$ is
+  \begin{equation}
+  \begin{split}
+      P_a^\alpha =\text{Pr}(y = 1)_a & = \text{Pr}(\bar{U}_a^\alpha + \nu_a^\alpha > \bar{U}_a^\omega + \nu_a^\omega)\\
+      & = \text{Pr}(\nu_a^\alpha - \nu_a^\omega > \bar{U}_a^\omega - \bar{U}_a^\alpha)\\
+  \end{split}
+  \end{equation}
+\end{itemize}  
+\end{frame}
+
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
+\begin{itemize}
+\item $\bar{U}_a^s$ can be altered further to reflect theory and data
+\begin{equation}
+\begin{split}  \EX[U_a^s] & =\bar{U}_a^s + \nu_a^s\\
+& = \beta_a^s + \gamma C_a^s + \delta_a^st + \zeta_a^sK + \nu_a^s
+\end{split}
+\end{equation}
+\item $\beta_a^s$ is the treatment choice specific constant representing the mean effect of omitted variables for medical condition $a$ with treatment s.
+\item $\gamma$ is the effect on expected utility from $C_a^s$ which is the cost of treatment $s$ for medical condition $a$
+\item $\delta_a^s$ is marginal effect of time since entry of a generic form of $\alpha$, $t$, specific to the medical condition and treatment.
+\item $\zeta_a^s$ are marginal effects of the vector of patient characteristics $K$ specific to the treatment and medical condition.
+\item $\nu_a^s$ serves as an error term
+\begin{itemize} 
+  \item Assumed to be uncorrelated with the other variables and to have an expected value of zero.
+\end{itemize}
+\end{itemize}  
+\end{frame}
+
+
+\begin{frame}{Econometric Model and Estimation Procedures Cont.}
+\begin{itemize}
+\item The final step is to derive the difference in expected utility due to treatment-specific values.
+\item Let $\bar{U}_a \equiv \bar{U}_a^\alpha - \bar{U}_a^\omega \implies$
+\begin{equation}
+\begin{split}
+  \EX[U_a] & = (\beta_a^\alpha - \beta_a^\omega) + \gamma (C_a^\alpha - C_a^\omega) + (\delta_a^\alpha - \delta_a^\omega)t\\
+  & + (\zeta^\alpha_a - \zeta^\omega_a)K + (\nu_a^\alpha - \nu_a^\omega)\\
+  & = \beta_a + \gamma C_a + \delta_at + \zeta_aK + \nu_a
+\end{split}
+\end{equation}
+\item Marginal effects are now due to differences in the treatment options.
+\item Assuming $\EX[U_a] \in [0,1]$ equations (4) and (6) can be combined to get a binary linear probability model where
+\begin{equation}
+  \text{Pr}(y = 1)_a = \beta_a + \gamma C_a + \delta_at + \zeta_aK + \nu_a
+\end{equation}
+\item $\text{Pr}(y = 1)_a$ is estimated twice. Once for patients before entry of the generic and again for patients after.
+\end{itemize}  
+\end{frame}
+
+\section{Data and Variables}
+\begin{frame}{Sulfamethoxazole-Trimethoprim}
+\begin{itemize}
+\item Analysis focuses on sulfamethoxazole-trimethoprim due to its generic appearing in the middle of the observational period and having a relatively large amount of prescriptions in the data compared to other antibiotics with similar dates of entry of generics.
+\item The drug is a combination antibiotic from the antimetabolite/sulfonamide class first introduced in 1968.
+\item Brand name versions of the antibiotic include Bactrim, Bactrim DS, Septra and Septra DS.
+\item The antibiotic is popular due to its low cost and high familiarity among physicians (\cite{ho_considerations_2011}).
+\item Generic form of the drug entered the market in July 2012 (\cite{noauthor_sulfamethoxazole_nodate}).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sulfamethoxazole-Trimethoprim}
+\begin{itemize}
+\item The FDA has approved the drug to fight urinary tract infections, ear infections (acute otitis media), acute exacerbations of chronic bronchitis in adults, Shigellosis, treatment and prophylaxis of \textit{Pneumocystis jirovecii} pneumonia, and Traveler's diarrhea in adults.
+\item The antibiotic is also approved for use against infections due to \textit{Listeria, Nocardia, Salmonella, Brucella, Paracoccidioides,} melioidosis, \textit{Burkholderia, Stenotrophomonas,} cyclospora, isospora, Whipple's disease, and alternative therapy for toxoplasmosis and community-acquired MRSA skin infections (\cite{schlossberg_antibiotics_2017}).
+\item On-label and off-label antibiotic usage.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{National Ambulatory Medical Care Survey}
+\begin{itemize}
+\item Data used are from the National Ambulatory Medical Care Survey (NAMCS) years 2006-2016.
+\item The NAMCS is a nationally representative survey of outpatient medical visits.
+\item Visits are weighted in order to create national estimates.
+\item Only visits where sulfamethoxazole-trimethoprim could have been prescribed are included in the analysis.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{National Ambulatory Medical Care Survey Scope}
+\begin{itemize}
+\item Included in the NAMCS are freestanding clinics/urgicenters, community health centers, mental health centers, health maintenance organizations,  non-federal government clinics, family practice plans, and private solo or group practices.
+\item Not included in the scope are hospital emergency or outpatient departments, ambulatory surgicenters, institutional settings such as schools or prisons, industrial outpatient facilities, clinics operated by the federal government, and laser vision surgery centers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Data Cleaning Procedures}
+\begin{itemize}
+\item Only visits which could have led to a prescription of sulfamethoxazole-trimethoprim are used in the analysis.
+\item Each diagnosis which occurred during a visit is tagged as a "relevant diagnosis".
+\item Every visit where one of these diagnoses occurred is then considered a visit which a prescription of sulfamethoxazole-trimethoprim could have occurred.
+\item Because the specific diagnosis which lead to the prescription is not known, this method could lead to over counting observations.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Variables}
+\begin{itemize}
+\item Variables included in the analysis are
+\begin{itemize}
+  \item \textbf{TimeSinceGeneric} = Time in months since the first full month the generic sulfamethoxazole-trimethoprim entered the market, August of 2012
+  \item \textbf{Age} = The age of the patient in years
+  \item \textbf{AgeSQ} = The age of the patient squared
+  \item \textbf{offLabel = 1} if no diagnoses made during during the visit were associated with FDA approved uses of sulfamethoxazole-trimethoprim
+  \item \textbf{onLabel = 1} if at least one diagnoses made during during the visit were associated with FDA approved uses of sulfamethoxazole-trimethoprim  
+  \item \textbf{GovInsurance = 1} if the patient was on either Medicare or Medicaid
+  \item \textbf{NonWhite = 1} if the patient a race other than white
+  \begin{itemize}
+  \item Serves as a proxy for income
+  \end{itemize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistical Descriptions of Continuous Variables}
+\scalebox{.475}{\input{figs/contVars.tex}}
+\end{frame}
+
+\begin{frame}{Statistical Descriptions of Categorical Variables}
+\scalebox{.65}{\input{figs/catVars.tex}}
+\end{frame}
+
+% Probs split into two
+\begin{frame}{Proportions of Patients Prescribed Sulfamethoxazole-Trimethoprim by Patient Characteristics}
+\begin{center}
+\scalebox{.5}{\input{figs/proportions.tex}}
+\end{center}
+\end{frame}
+
+\begin{frame}{12-Month Moving-Average Probability of Prescription of Sulfamethoxazole-Trimethoprim}
+\includegraphics[width=\textwidth, height=.75\textheight]{figs/twelveMonthMA.png}
+\end{frame}
+
+\begin{frame}{12-Month Moving-Average Probabilities of Prescription of Sulfamethoxazole-Trimethoprim by Type of Diagnosis}
+\includegraphics[width=\textwidth, height=.75\textheight]{figs/twelveMonthMAonoff.png}
+\end{frame}
+%Fix X label
+%Visits with at least one diagnosis associated with an on-label indication
+
+
+\section{Empirical Analysis and Results}
+\begin{frame}{Estimated Effects on Probability of Prescription Before and After Generic Entry}
+\begin{center}
+\scalebox{.45}{\input{figs/reg.tex}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Estimated Probability of Prescription Immediately Before and After Generic Entry}
+\begin{center}
+\scalebox{.6}{\input{figs/regdiff.tex}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Results}
+\begin{itemize}
+\item Patients with diagnoses whose treatments are associated with on-label uses of sulfamethoxazole-trimethoprim were 1.87 percentage points (90\% CI) more likely to demand treatments which used the drug.
+\item Patients on Medicare or Medicaid and non white patients were no more or less likely to demand treatment with the antibiotic before entry of the generic than other patient groups.
+\item Patients on Medicare or Medicaid were .185 percentage points (99\% CI) more likely to demand treatment that uses the antibiotic than those on other forms of insurance after entrance of the generic.
+\item Non white patients were .219 percentage points (99.9\% CI) more likely to demand treatment that uses sulfamethoxazole-trimethoprim than white patients after entrance of the generic.
+\item Probability of prescription of the antibiotic was falling before the generic began being sold. After an initial increase in the probability of patients still became less incline to demand the antibiotic over time.
+\end{itemize}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}{Discussion}
+\begin{itemize}
+\item Increases in probability of prescriptions can be attributed to the entrance of generic manufacturers shifting the supply curve out. 
+\item Non white patients may become more likely to use the antibiotic after the shift in the supply curve because they are more likely to be affected by the price decrease.
+\item Patients on Medicare or Medicaid become may more likely to demand the antibiotic because of their more restrictive choice sets.
+\item  Decreases in probability of prescription over time can be attributed to the rise of sulfamethoxazole-trimethoprim resistant bacteria.
+\begin{itemize}
+  \item Resistant bacteria had been discovered as early as 1997 (\cite{gales_urinary_2002}) and has continued to develop through the 2000s and 2010s (\cite{noauthor_resistance_nodate}, \cite{khamash_increasing_2019})
+  \item Increases in the prevalence of resistance can be interpreted as an increase in the cost of a treatment option through necessitating a greater quantity to achieve similar outcomes.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Limitations of Study}
+\begin{itemize}
+\item Findings are restricted to the specific setting where the data is from.
+\item Doctors may be prescribing each part of sulfamethoxazole-trimethoprim separately
+\item Sulfamethoxazole-trimethoprim is just one of many antibiotics.
+\item Limited number of variables were included.
+\item Further refinement of the observation selection process.
+\item No inclusion of drugs which could be considered close substitutes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recommendations for Future Research}
+\begin{itemize}
+\item Expand data used to include hospital emergency departments
+\item Subject additional drugs to the same methodologies to determine if results persist between antibiotics.
+\item Consider visits where sulfamethoxazole and trimethoprim were prescribed individually as having had sulfamethoxazole-trimethoprim prescribed.
+\item Include additional variables for patient characteristics
+\item Develop a more accurate method of determining diagnoses which could be treated with sulfamethoxazole-trimethoprim.
+\item Controlling for prescription trends of antibiotics which can be considered close substitutes.
+\item Inclusion of a probit or logit model.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Bibliography}
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
+\end{frame}
+
+
+\end{document}
