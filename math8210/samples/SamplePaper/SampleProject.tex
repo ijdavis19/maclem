@@ -672,22 +672,6 @@ Here's how you use the \mylstinline{subfigure} environment.
 
 \singlespacing
 \myfancyverbatim{Subfigures}
-\begin{lstlisting}
-Consider the average sodium and potassium time constant values given in Figure \ref{figure:averagenat} and
-Figure \ref{figure:averagek1t} respectively.
-
-\begin{figure}[h]
-\begin{center}
-\mysubfigurethree{Average Sodium Time constant}{fig:averagenat}%
-                            {.4}{BookFigures/average_t_m_NA.png}
-\goodgap
-\mysubfigurethree{Average Potassium Time constant}{fig:averagek1t}%
-                            {.4}{BookFigures/average_t_m_K1.png}
-\caption{Time Constants}
-\label{fig:iontimeconstants}
-\end{center}
-\end{figure}
-\end{lstlisting}
 \onehalfspacing
 \lstset{fancyvrb=false}
 
@@ -697,18 +681,6 @@ Figure \ref{figure:averagek1t} respectively.
 Consider the average sodium and potassium time constant values given in Figure \ref{fig:averagenat} and
 Figure \ref{fig:averagek1t} respectively.
 
-\begin{figure}[h]
-\begin{center}
-\mysubfigurethree{Average Sodium Time constant}{fig:averagenat}%
-                            {.4}{BookFigures/average_t_m_NA.png}
-\goodgap
-\mysubfigurethree{Average Potassium Time constant}{fig:averagek1t}%
-                            {.4}{BookFigures/average_t_m_K1.png}
-\caption{Time Constants}
-\label{fig:iontimeconstants}
-\end{center}
-\end{figure}
-
 \subsection{Including a .png file}
 
 \noindent
@@ -716,26 +688,11 @@ Here's how you embed a .png file: note the full path name must be entered as one
 carriage return because the line is too long.  That will screw things
 up!
 
-\singlespacing
-\myfancyverbatim{Including a .png file}
-\begin{lstlisting}
-Consider the outline for cognitive processing given in Figure \ref{fig:metaone}.
-
-\begin{figure}
-\myputimagetwo{A Model of Cognition}{fig:metaone}{.5}{BookFigures/meta.png}
-\end{figure}
-\end{lstlisting}
-\onehalfspacing
-\lstset{fancyvrb=false}
-
 \noindent
 \LaTeX~ output:
 
 Consider the outline for cognitive processing given in Figure \ref{figure:metaone}.
 
-\begin{figure}
-\myputimagetwo{A Model of Cognition}{figure:metaone}{.5}{BookFigures/meta.png}
-\end{figure}
 
 \subsection{A Sample with citations, quotes etc}
 
