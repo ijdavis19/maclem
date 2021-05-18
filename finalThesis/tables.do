@@ -52,7 +52,7 @@ regress prescriptionIndicator timeSinceGeneric offLabel offLabelINT age ageSQ ag
 estimate store After
 suest Before After
 
-//Test 
+//Test
 test [Before_mean]_cons = [After_mean]_cons
 test [Before_mean]timeSinceGeneric = [After_mean]timeSinceGeneric
 test [Before_mean]offLabel = [After_mean]offLabel
@@ -89,7 +89,7 @@ test [Before_mean]_cons = [After_mean]_cons
 mat Base = Base\r(p)
 
 // Off Label
-mat Off = [Before_mean]_cons + [Before_mean]offLabel 
+mat Off = [Before_mean]_cons + [Before_mean]offLabel
 test [Before_mean]_cons + [Before_mean]offLabel = 0
 mat Off = Off\r(p)
 mat Off = Off\([After_mean]_cons  + [After_mean]offLabel)
@@ -290,7 +290,7 @@ gen ONfitGI = Before[1,10] + timeSinceGeneric*Before[1,1] + `age0'*Before[1,4] +
 replace ONfitGI = After[1,10] + timeSinceGeneric*After[1,1] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + After[1,8] + `nonwhite0'*After[1,9] if genericOn == 1
 gen OFFfitGI = Before[1,10] + timeSinceGeneric*Before[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age0'*Before[1,4] + `ageSQ0'*Before[1,5] + `age0'*timeSinceGeneric*Before[1,6] + `ageSQ0'*timeSinceGeneric*Before[1,7] + Before[1,8] + `nonwhite0'*Before[1,9] if genericOn == 0
 replace OFFfitGI = After[1,10] + timeSinceGeneric*After[1,1] + Before[1,2] + timeSinceGeneric*Before[1,3] + `age1'*After[1,4] + `ageSQ1'*After[1,5] + `age1'*timeSinceGeneric*After[1,6] + `ageSQ1'*timeSinceGeneric*After[1,7] + After[1,8] + `nonwhite1'*After[1,9] if genericOn == 1
-sum ONfitGI  
+sum ONfitGI
 sum OFFfitGI
 line ONfitGI OFFfitGI timeSinceGeneric, legend(rows(2))
 
